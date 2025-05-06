@@ -174,7 +174,7 @@ export default function Dashboard() {
 
       {/* Main Content */}
       <div className="pt-20 pb-8">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
           {/* Stories */}
           <div className="mb-8">
             <div className="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide">
@@ -194,9 +194,9 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="grid grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Left Sidebar - Servers */}
-            <div className="col-span-3">
+            <div className="md:col-span-3 order-2 md:order-1">
               {/* Local Servers Card */}
               <div className="bg-gray-900/80 backdrop-blur-md rounded-xl border border-gray-800 p-4 mb-6 shadow-lg shadow-blue-500/5">
                 <div className="flex items-center justify-between mb-4">
@@ -261,7 +261,7 @@ export default function Dashboard() {
             </div>
 
             {/* Main Content - Stream Feed */}
-            <div className="col-span-6">
+            <div className="md:col-span-6 order-1 md:order-2 mb-6 md:mb-0">
               <div className="space-y-6">
                 {recentStreams.map((stream, index) => (
                   <div key={index} className="bg-gray-900/80 backdrop-blur-md rounded-xl overflow-hidden border border-gray-800 shadow-lg hover:shadow-blue-500/10 transition-all duration-300">
@@ -311,7 +311,7 @@ export default function Dashboard() {
             </div>
 
             {/* Right Sidebar - Friends and Activity */}
-            <div className="col-span-3">
+            <div className="md:col-span-3 order-3">
               {/* Friends List */}
               <div className="bg-gray-900/80 backdrop-blur-md rounded-xl border border-gray-800 p-4 mb-6 shadow-lg shadow-blue-500/5">
                 <div className="flex justify-between items-center mb-4">
