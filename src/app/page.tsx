@@ -12,8 +12,8 @@ const featuredStreams = [
     streamer: 'Gamer123', 
     viewers: 12500, 
     category: 'Just Chatting', 
-    thumbnail: '/images/stream1.jpg',
-    avatar: '/images/avatar1.jpg'
+    thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3',
+    avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde'
   },
   { 
     id: 2, 
@@ -21,8 +21,8 @@ const featuredStreams = [
     streamer: 'ProGamer', 
     viewers: 8500, 
     category: 'League of Legends', 
-    thumbnail: '/images/stream2.jpg',
-    avatar: '/images/avatar2.jpg'
+    thumbnail: 'https://images.unsplash.com/photo-1542751371-adc38448a05e',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330'
   },
   { 
     id: 3, 
@@ -30,8 +30,8 @@ const featuredStreams = [
     streamer: 'BuilderMaster', 
     viewers: 3200, 
     category: 'Minecraft', 
-    thumbnail: '/images/stream3.jpg',
-    avatar: '/images/avatar3.jpg'
+    thumbnail: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f',
+    avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36'
   },
   { 
     id: 4, 
@@ -39,8 +39,8 @@ const featuredStreams = [
     streamer: 'ShooterPro', 
     viewers: 15000, 
     category: 'Valorant', 
-    thumbnail: '/images/stream4.jpg',
-    avatar: '/images/avatar4.jpg'
+    thumbnail: 'https://images.unsplash.com/photo-1511512578047-dfb367046420',
+    avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61'
   },
   { 
     id: 5, 
@@ -48,8 +48,8 @@ const featuredStreams = [
     streamer: 'SpeedKing', 
     viewers: 4500, 
     category: 'Speedrunning', 
-    thumbnail: '/images/stream5.jpg',
-    avatar: '/images/avatar5.jpg'
+    thumbnail: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f',
+    avatar: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e'
   },
   { 
     id: 6, 
@@ -57,8 +57,8 @@ const featuredStreams = [
     streamer: 'DigitalArtist', 
     viewers: 2800, 
     category: 'Art', 
-    thumbnail: '/images/stream6.jpg',
-    avatar: '/images/avatar6.jpg'
+    thumbnail: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80'
   },
 ]
 
@@ -66,22 +66,12 @@ const featuredCategories = [
   {
     name: 'IRL',
     viewers: 350000,
-    thumbnail: '/images/irl.jpg',
-    topStreams: [
-      { title: 'Travel Vlog', streamer: 'Traveler123', viewers: 25000 },
-      { title: 'Cooking Show', streamer: 'ChefMaster', viewers: 18000 },
-      { title: 'Fitness Stream', streamer: 'FitGuru', viewers: 12000 },
-    ]
+    thumbnail: '/motel.gif'
   },
   {
     name: 'RPG',
     viewers: 280000,
-    thumbnail: '/images/rpg.jpg',
-    topStreams: [
-      { title: 'Elden Ring', streamer: 'SoulsMaster', viewers: 32000 },
-      { title: 'Skyrim Modded', streamer: 'Dragonborn', viewers: 15000 },
-      { title: 'Witcher 3', streamer: 'Geralt', viewers: 12000 },
-    ]
+    thumbnail: 'https://images.unsplash.com/photo-1542751371-adc38448a05e'
   }
 ]
 
@@ -89,32 +79,32 @@ const categories = [
   { 
     name: 'Just Chatting', 
     viewers: 250000, 
-    thumbnail: '/images/category1.jpg' 
+    thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3'
   },
   { 
     name: 'League of Legends', 
     viewers: 180000, 
-    thumbnail: '/images/category2.jpg' 
+    thumbnail: 'https://images.unsplash.com/photo-1542751371-adc38448a05e'
   },
   { 
     name: 'Valorant', 
     viewers: 150000, 
-    thumbnail: '/images/category3.jpg' 
+    thumbnail: 'https://images.unsplash.com/photo-1511512578047-dfb367046420'
   },
   { 
     name: 'Minecraft', 
     viewers: 120000, 
-    thumbnail: '/images/category4.jpg' 
+    thumbnail: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f'
   },
   { 
     name: 'Fortnite', 
     viewers: 100000, 
-    thumbnail: '/images/category5.jpg' 
+    thumbnail: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f'
   },
   { 
     name: 'Art', 
     viewers: 80000, 
-    thumbnail: '/images/category6.jpg' 
+    thumbnail: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f'
   },
 ]
 
@@ -239,22 +229,6 @@ export default function Home() {
                   <div className="absolute top-4 left-4">
                     <div className="text-2xl font-bold">{category.name}</div>
                     <div className="text-sm text-gray-300">{category.viewers.toLocaleString()} viewers</div>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="space-y-2">
-                      {category.topStreams.map((stream, index) => (
-                        <div key={index} className="flex items-center justify-between bg-black bg-opacity-50 p-2 rounded">
-                          <div className="flex items-center space-x-2">
-                            <div className="w-8 h-8 bg-gray-600 rounded-full"></div>
-                            <div>
-                              <div className="font-medium">{stream.title}</div>
-                              <div className="text-sm text-gray-400">{stream.streamer}</div>
-                            </div>
-                          </div>
-                          <div className="text-sm text-gray-300">{stream.viewers.toLocaleString()} viewers</div>
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </div>
