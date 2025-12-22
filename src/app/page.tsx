@@ -801,10 +801,86 @@ export default function Home() {
           </Col>
           <Col>
             <Space size="large">
-              <Link href="#" style={{ color: '#595959', fontSize: 12 }}>Privacy Policy</Link>
-              <Link href="#" style={{ color: '#595959', fontSize: 12 }}>Terms of Service</Link>
-              <Link href="#" style={{ color: '#595959', fontSize: 12 }}>Security</Link>
-              <Link href="#" style={{ color: '#595959', fontSize: 12 }}>Compliance</Link>
+              <Link 
+                href="/privacy-policy" 
+                style={{ 
+                  color: '#595959', 
+                  fontSize: 12,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  textShadow: '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff'
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#595959'
+                  e.currentTarget.style.textShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                href="/terms-of-service" 
+                style={{ 
+                  color: '#595959', 
+                  fontSize: 12,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  textShadow: '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff'
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#595959'
+                  e.currentTarget.style.textShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+              >
+                Terms of Service
+              </Link>
+              <Link 
+                href="/security" 
+                style={{ 
+                  color: '#595959', 
+                  fontSize: 12,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  textShadow: '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff'
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#595959'
+                  e.currentTarget.style.textShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+              >
+                Security
+              </Link>
+              <Link 
+                href="/compliance" 
+                style={{ 
+                  color: '#595959', 
+                  fontSize: 12,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  textShadow: '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff'
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#595959'
+                  e.currentTarget.style.textShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+              >
+                Compliance
+              </Link>
             </Space>
           </Col>
         </Row>
