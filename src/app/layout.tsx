@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { ConfigProvider } from 'antd'
 import type { ThemeConfig } from 'antd'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -49,6 +50,7 @@ export default function RootLayout({
           <div style={{ minHeight: '100vh', background: '#000000', color: '#ffffff' }}>
             {children}
           </div>
+          <Analytics />
         </ConfigProvider>
       </body>
     </html>

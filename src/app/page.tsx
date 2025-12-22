@@ -130,6 +130,7 @@ export default function Home() {
                     paddingLeft: 40,
                     paddingRight: 40
                   }}
+                  href="/usage-model"
                 >
                   VIEW USAGE MODEL
                 </Button>
@@ -712,6 +713,7 @@ export default function Home() {
                       paddingLeft: 40,
                       paddingRight: 40
                     }}
+                    href="/usage-model"
                   >
                     VIEW USAGE MODEL
                   </Button>
@@ -759,10 +761,10 @@ export default function Home() {
               Platform
             </Title>
             <Space direction="vertical" size="small" style={{ width: '100%' }}>
-              <Link href="/login" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Access Network</Link>
-              <Link href="/login" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Create Account</Link>
-              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Usage Model</Link>
-              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Pricing & Rates</Link>
+              <Link href="/access-network" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Access Network</Link>
+              <Link href="/create-account" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Create Account</Link>
+              <Link href="/usage-model" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Usage Model</Link>
+              <Link href="/pricing-rates" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Pricing & Rates</Link>
             </Space>
           </Col>
           
