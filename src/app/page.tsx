@@ -2,7 +2,10 @@
 
 import Link from 'next/link'
 import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space } from 'antd'
-import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined } from '@ant-design/icons'
+import dynamic from 'next/dynamic'
+
+const HeroScene = dynamic(() => import('@/components/HeroScene'), { ssr: false })
 
 const { Header, Content, Footer } = Layout
 const { Title, Paragraph, Text } = Typography
@@ -133,25 +136,7 @@ export default function Home() {
               </Space>
             </Col>
             <Col xs={24} lg={12}>
-              <Card 
-                bordered 
-                style={{ 
-                  background: '#0a0a0a', 
-                  borderColor: '#1f1f1f',
-                  borderRadius: 12
-                }}
-                bodyStyle={{ padding: 40 }}
-              >
-                <Paragraph style={{ fontSize: 16, color: '#d9d9d9', lineHeight: 1.8, marginBottom: 32 }}>
-                  OldWest operates as infrastructure for digital interaction. Unlike traditional social platforms that rely on advertising revenue and engagement metrics, OldWest meters every interaction through VM minutes—transparent, accountable compute credits that ensure responsible resource consumption.
-                </Paragraph>
-                <Paragraph style={{ fontSize: 16, color: '#d9d9d9', lineHeight: 1.8, marginBottom: 32 }}>
-                  Each user session runs within an isolated virtual environment. This architecture provides security, accountability, and precise resource tracking. Every message sent, connection established, and content viewed consumes minutes at defined rates, visible in real-time through your account dashboard.
-                </Paragraph>
-                <Paragraph style={{ fontSize: 16, color: '#d9d9d9', lineHeight: 1.8, margin: 0 }}>
-                  The platform is designed for intentional use. No infinite scroll. No algorithmic manipulation. No hidden costs. Just transparent, metered access to a utility-grade social infrastructure.
-                </Paragraph>
-              </Card>
+              <HeroScene />
             </Col>
           </Row>
         </section>
@@ -488,55 +473,93 @@ export default function Home() {
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
               </div>
 
-              <Row gutter={[32, 32]}>
-                <Col xs={24} md={12}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#000000', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 40 }}
-                  >
-                    <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                      TRADITIONAL SOCIAL MEDIA
-                    </Text>
-                    <Divider style={{ borderColor: '#1f1f1f', margin: '20px 0' }} />
-                    <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.6 }}>— Infinite scroll consumption designed to maximize time on platform</Text>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.6 }}>— Engagement farming algorithms that manipulate user behavior</Text>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.6 }}>— Free resource abuse with hidden costs through data monetization</Text>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.6 }}>— Algorithmic manipulation of content visibility and user feeds</Text>
-                    </Space>
-                  </Card>
-                </Col>
-
-                <Col xs={24} md={12}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#000000', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 40 }}
-                  >
-                    <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                      OLDWEST
-                    </Text>
-                    <Divider style={{ borderColor: '#1f1f1f', margin: '20px 0' }} />
-                    <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-                      <Text style={{ color: '#d9d9d9', fontSize: 15, lineHeight: 1.6 }}>— Intentional usage metering with transparent costs for every action</Text>
-                      <Text style={{ color: '#d9d9d9', fontSize: 15, lineHeight: 1.6 }}>— Accountable resource consumption tracked and settled in real-time</Text>
-                      <Text style={{ color: '#d9d9d9', fontSize: 15, lineHeight: 1.6 }}>— Resource-based access model ensuring fair and sustainable platform usage</Text>
-                      <Text style={{ color: '#d9d9d9', fontSize: 15, lineHeight: 1.6 }}>— Transparent usage tracking with complete audit trails and settlement logs</Text>
-                    </Space>
-                  </Card>
-                </Col>
-              </Row>
+              <Card 
+                bordered 
+                style={{ 
+                  background: '#000000', 
+                  borderColor: '#1f1f1f',
+                  borderRadius: 12
+                }}
+                bodyStyle={{ padding: 48 }}
+              >
+                <Paragraph style={{ fontSize: 18, color: '#d9d9d9', lineHeight: 1.8, marginBottom: 32, textAlign: 'center' }}>
+                  OldWest recognizes achievement and verified work through merit-based NFTs. These tokens signify milestones reached, credentials verified, and contributions made to the platform.
+                </Paragraph>
+                
+                <Row gutter={[32, 32]} style={{ marginTop: 40 }}>
+                  <Col xs={24} md={8}>
+                    <div style={{ textAlign: 'center' }}>
+                      <div style={{ 
+                        width: 64, 
+                        height: 64, 
+                        background: '#141414', 
+                        border: '1px solid #1f1f1f',
+                        borderRadius: 12,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        margin: '0 auto 20px'
+                      }}>
+                        <TrophyOutlined style={{ fontSize: 32, color: '#595959' }} />
+                      </div>
+                      <Title level={5} style={{ color: '#ffffff', marginBottom: 12, fontSize: 16, fontWeight: 600 }}>
+                        Milestone Achievements
+                      </Title>
+                      <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+                        NFTs are minted when you reach significant milestones—message thresholds, connection counts, platform tenure. Each NFT represents a verified achievement in your OldWest journey.
+                      </Paragraph>
+                    </div>
+                  </Col>
+                  
+                  <Col xs={24} md={8}>
+                    <div style={{ textAlign: 'center' }}>
+                      <div style={{ 
+                        width: 64, 
+                        height: 64, 
+                        background: '#141414', 
+                        border: '1px solid #1f1f1f',
+                        borderRadius: 12,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        margin: '0 auto 20px'
+                      }}>
+                        <FileProtectOutlined style={{ fontSize: 32, color: '#595959' }} />
+                      </div>
+                      <Title level={5} style={{ color: '#ffffff', marginBottom: 12, fontSize: 16, fontWeight: 600 }}>
+                        Verified Work
+                      </Title>
+                      <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+                        Completed projects, verified contributions, and validated work are recorded as NFTs. These tokens provide immutable proof of your accomplishments on the platform.
+                      </Paragraph>
+                    </div>
+                  </Col>
+                  
+                  <Col xs={24} md={8}>
+                    <div style={{ textAlign: 'center' }}>
+                      <div style={{ 
+                        width: 64, 
+                        height: 64, 
+                        background: '#141414', 
+                        border: '1px solid #1f1f1f',
+                        borderRadius: 12,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        margin: '0 auto 20px'
+                      }}>
+                        <CheckCircleFilled style={{ fontSize: 32, color: '#595959' }} />
+                      </div>
+                      <Title level={5} style={{ color: '#ffffff', marginBottom: 12, fontSize: 16, fontWeight: 600 }}>
+                        Credentials
+                      </Title>
+                      <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+                        Professional credentials, certifications, and verified qualifications are issued as NFTs. These tokens establish your verified identity and expertise within the OldWest network.
+                      </Paragraph>
+                    </div>
+                  </Col>
+                </Row>
+              </Card>
             </Col>
           </Row>
         </section>
