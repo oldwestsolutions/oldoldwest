@@ -1,324 +1,628 @@
 'use client'
 
 import Link from 'next/link'
+import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space } from 'antd'
+import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined } from '@ant-design/icons'
+
+const { Header, Content, Footer } = Layout
+const { Title, Paragraph, Text } = Typography
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <Layout style={{ minHeight: '100vh', background: '#000000' }}>
       {/* Navigation */}
-      <nav className="border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gray-900 border border-gray-700 flex items-center justify-center">
-              <div className="w-4 h-4 bg-gray-600"></div>
+      <Header style={{ 
+        background: '#000000', 
+        borderBottom: '1px solid #1f1f1f',
+        padding: '0 48px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        height: '72px'
+      }}>
+        <Row align="middle" gutter={16}>
+          <Col>
+            <div style={{ 
+              width: 32, 
+              height: 32, 
+              background: '#141414', 
+              border: '1px solid #1f1f1f',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 8
+            }}>
+              <div style={{ width: 16, height: 16, background: '#595959', borderRadius: 4 }}></div>
             </div>
-            <span className="text-lg font-semibold tracking-tight text-gray-100">OLDWEST</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <Link href="/login" className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors">
-              ACCESS NETWORK
-            </Link>
-            <Link href="/login" className="px-6 py-2 text-sm font-semibold bg-gray-900 border border-gray-700 text-white hover:bg-gray-800 transition-colors">
-              CREATE ACCOUNT
-            </Link>
-          </div>
-        </div>
-      </nav>
+          </Col>
+          <Col>
+            <Text strong style={{ fontSize: 18, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
+          </Col>
+        </Row>
+        <Space size="middle">
+          <Button 
+            type="text" 
+            style={{ color: '#8c8c8c', borderRadius: 12 }}
+            href="/login"
+          >
+            ACCESS NETWORK
+          </Button>
+          <Button 
+            type="primary" 
+            style={{ 
+              background: '#141414', 
+              borderColor: '#1f1f1f',
+              color: '#ffffff',
+              borderRadius: 12,
+              fontWeight: 600
+            }}
+            href="/login"
+          >
+            CREATE ACCOUNT
+          </Button>
+        </Space>
+      </Header>
 
-      {/* Hero Section */}
-      <section className="border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-24">
-          <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 text-gray-100 leading-tight">
-              Social Infrastructure.
-              <span className="block mt-2">Metered by Design.</span>
-            </h1>
-            <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
-              OldWest is a VMaaS-based social network. Every user operates inside a virtual environment. Interactions consume minutes. Minutes function like compute credits. Usage is tracked and settled.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Content>
+        {/* Hero Section */}
+        <section style={{ borderBottom: '1px solid #1f1f1f', padding: '96px 48px' }}>
+          <Row justify="center">
+            <Col xs={24} lg={20} xl={16}>
+              <Title 
+                level={1} 
+                style={{ 
+                  fontSize: 64, 
+                  fontWeight: 700, 
+                  color: '#ffffff',
+                  marginBottom: 24,
+                  lineHeight: 1.2,
+                  letterSpacing: '-0.02em'
+                }}
+              >
+                Social Infrastructure.
+                <br />
+                Metered by Design.
+              </Title>
+              <Paragraph style={{ fontSize: 18, color: '#8c8c8c', lineHeight: 1.75, maxWidth: 800 }}>
+                OldWest is a VMaaS-based social network. Every user operates inside a virtual environment. Interactions consume minutes. Minutes function like compute credits. Usage is tracked and settled.
+              </Paragraph>
+            </Col>
+          </Row>
+        </section>
 
-      {/* How the Platform Works */}
-      <section className="border-b border-gray-800 bg-gray-950">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="mb-12">
-            <h2 className="text-sm font-semibold tracking-wider text-gray-500 uppercase mb-2">HOW THE PLATFORM WORKS</h2>
-            <div className="w-16 h-0.5 bg-gray-700 mt-2"></div>
-          </div>
+        {/* How the Platform Works */}
+        <section style={{ borderBottom: '1px solid #1f1f1f', background: '#0a0a0a', padding: '80px 48px' }}>
+          <Row justify="center" style={{ marginBottom: 48 }}>
+            <Col xs={24} lg={20} xl={16}>
+              <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                HOW THE PLATFORM WORKS
+              </Text>
+              <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
+            </Col>
+          </Row>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Identity */}
-            <div className="bg-black border border-gray-800 p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gray-900 border border-gray-700 flex items-center justify-center mb-4">
-                  <div className="w-6 h-6 border-2 border-gray-600"></div>
-                </div>
-                <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-2">IDENTITY</h3>
-              </div>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                Phone-number verified identity. Each user is authenticated through a verified phone number, establishing a single, accountable identity.
-              </p>
-            </div>
+          <Row justify="center">
+            <Col xs={24} lg={20} xl={16}>
+              <Row gutter={[24, 24]}>
+                <Col xs={24} sm={12} lg={6}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 24 }}
+                  >
+                    <div style={{ marginBottom: 16 }}>
+                      <div style={{ 
+                        width: 48, 
+                        height: 48, 
+                        background: '#141414', 
+                        border: '1px solid #1f1f1f',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: 8,
+                        marginBottom: 16
+                      }}>
+                        <AppstoreOutlined style={{ fontSize: 24, color: '#595959' }} />
+                      </div>
+                      <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                        IDENTITY
+                      </Text>
+                    </div>
+                    <Paragraph style={{ color: '#d9d9d9', fontSize: 14, lineHeight: 1.75, margin: 0 }}>
+                      Phone-number verified identity. Each user is authenticated through a verified phone number, establishing a single, accountable identity.
+                    </Paragraph>
+                  </Card>
+                </Col>
 
-            {/* Session */}
-            <div className="bg-black border border-gray-800 p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gray-900 border border-gray-700 flex items-center justify-center mb-4">
-                  <div className="w-6 h-6 border-2 border-gray-600"></div>
-                </div>
-                <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-2">SESSION</h3>
-              </div>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                Virtual machine allocation per session. When you access the network, a virtual environment is provisioned for your session.
-              </p>
-            </div>
+                <Col xs={24} sm={12} lg={6}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 24 }}
+                  >
+                    <div style={{ marginBottom: 16 }}>
+                      <div style={{ 
+                        width: 48, 
+                        height: 48, 
+                        background: '#141414', 
+                        border: '1px solid #1f1f1f',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: 8,
+                        marginBottom: 16
+                      }}>
+                        <DatabaseOutlined style={{ fontSize: 24, color: '#595959' }} />
+                      </div>
+                      <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                        SESSION
+                      </Text>
+                    </div>
+                    <Paragraph style={{ color: '#d9d9d9', fontSize: 14, lineHeight: 1.75, margin: 0 }}>
+                      Virtual machine allocation per session. When you access the network, a virtual environment is provisioned for your session.
+                    </Paragraph>
+                  </Card>
+                </Col>
 
-            {/* Runtime */}
-            <div className="bg-black border border-gray-800 p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gray-900 border border-gray-700 flex items-center justify-center mb-4">
-                  <div className="w-6 h-6 border-2 border-gray-600"></div>
-                </div>
-                <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-2">RUNTIME</h3>
-              </div>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                Interactions consume minutes. Every action—messaging, viewing, connecting—consumes VM minutes from your balance.
-              </p>
-            </div>
+                <Col xs={24} sm={12} lg={6}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 24 }}
+                  >
+                    <div style={{ marginBottom: 16 }}>
+                      <div style={{ 
+                        width: 48, 
+                        height: 48, 
+                        background: '#141414', 
+                        border: '1px solid #1f1f1f',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: 8,
+                        marginBottom: 16
+                      }}>
+                        <ClockCircleOutlined style={{ fontSize: 24, color: '#595959' }} />
+                      </div>
+                      <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                        RUNTIME
+                      </Text>
+                    </div>
+                    <Paragraph style={{ color: '#d9d9d9', fontSize: 14, lineHeight: 1.75, margin: 0 }}>
+                      Interactions consume minutes. Every action—messaging, viewing, connecting—consumes VM minutes from your balance.
+                    </Paragraph>
+                  </Card>
+                </Col>
 
-            {/* Settlement */}
-            <div className="bg-black border border-gray-800 p-6">
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-gray-900 border border-gray-700 flex items-center justify-center mb-4">
-                  <div className="w-6 h-6 border-2 border-gray-600"></div>
-                </div>
-                <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-2">SETTLEMENT</h3>
-              </div>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                Usage is tracked and settled. All consumption is logged, metered, and settled against your account balance.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+                <Col xs={24} sm={12} lg={6}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 24 }}
+                  >
+                    <div style={{ marginBottom: 16 }}>
+                      <div style={{ 
+                        width: 48, 
+                        height: 48, 
+                        background: '#141414', 
+                        border: '1px solid #1f1f1f',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: 8,
+                        marginBottom: 16
+                      }}>
+                        <CheckCircleOutlined style={{ fontSize: 24, color: '#595959' }} />
+                      </div>
+                      <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                        SETTLEMENT
+                      </Text>
+                    </div>
+                    <Paragraph style={{ color: '#d9d9d9', fontSize: 14, lineHeight: 1.75, margin: 0 }}>
+                      Usage is tracked and settled. All consumption is logged, metered, and settled against your account balance.
+                    </Paragraph>
+                  </Card>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </section>
 
-      {/* VM Minutes Explanation */}
-      <section className="border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-sm font-semibold tracking-wider text-gray-500 uppercase mb-2">VM MINUTES</h2>
-              <div className="w-16 h-0.5 bg-gray-700 mt-2 mb-8"></div>
+        {/* VM Minutes Explanation */}
+        <section style={{ borderBottom: '1px solid #1f1f1f', padding: '80px 48px' }}>
+          <Row justify="center" gutter={[48, 48]}>
+            <Col xs={24} lg={12}>
+              <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                VM MINUTES
+              </Text>
+              <Divider style={{ margin: '8px 0 32px 0', borderColor: '#1f1f1f' }} />
               
-              <div className="space-y-6">
+              <Space direction="vertical" size="large" style={{ width: '100%' }}>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-200 mb-3">What Minutes Are</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 12, fontSize: 18, fontWeight: 600 }}>
+                    What Minutes Are
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.75, margin: 0 }}>
                     VM minutes are compute credits that meter your usage of the platform. Each minute represents a unit of virtual machine runtime consumed during your session.
-                  </p>
+                  </Paragraph>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-200 mb-3">Why They Exist</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 12, fontSize: 18, fontWeight: 600 }}>
+                    Why They Exist
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.75, margin: 0 }}>
                     Minutes ensure accountable resource consumption. Every interaction requires compute resources. Minutes provide transparent, metered access to these resources.
-                  </p>
+                  </Paragraph>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-200 mb-3">What Actions Consume Minutes</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 12, fontSize: 18, fontWeight: 600 }}>
+                    What Actions Consume Minutes
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.75, margin: 0 }}>
                     Messaging, viewing content, establishing connections, and all platform interactions consume minutes at a defined rate per action type.
-                  </p>
+                  </Paragraph>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-200 mb-3">How Users Acquire Minutes</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 12, fontSize: 18, fontWeight: 600 }}>
+                    How Users Acquire Minutes
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.75, margin: 0 }}>
                     Minutes are purchased and added to your account balance. Usage is deducted from your balance in real-time as you interact with the platform.
-                  </p>
+                  </Paragraph>
                 </div>
-              </div>
-            </div>
+              </Space>
+            </Col>
 
-            <div className="bg-gray-950 border border-gray-800 p-8">
-              <div className="mb-6">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-semibold tracking-wider text-gray-500 uppercase">BALANCE</span>
-                  <span className="text-xs font-semibold tracking-wider text-gray-500 uppercase">RATE</span>
-                </div>
-                <div className="h-1 bg-gray-900 border border-gray-800 mb-2">
-                  <div className="h-full bg-gray-700" style={{ width: '65%' }}></div>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300 font-mono">1,247 MIN</span>
-                  <span className="text-gray-400 font-mono">0.5 MIN/MSG</span>
-                </div>
-              </div>
-
-              <div className="space-y-4 border-t border-gray-800 pt-6">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">Session Duration</span>
-                  <span className="text-gray-300 font-mono">12:34</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">Consumed This Session</span>
-                  <span className="text-gray-300 font-mono">23 MIN</span>
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">Remaining Balance</span>
-                  <span className="text-gray-300 font-mono">1,224 MIN</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What Makes OldWest Different */}
-      <section className="border-b border-gray-800 bg-gray-950">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="mb-12">
-            <h2 className="text-sm font-semibold tracking-wider text-gray-500 uppercase mb-2">WHAT MAKES OLDWEST DIFFERENT</h2>
-            <div className="w-16 h-0.5 bg-gray-700 mt-2"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-black border border-gray-800 p-8">
-              <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-4">TRADITIONAL SOCIAL MEDIA</h3>
-              <ul className="space-y-3 text-sm text-gray-400">
-                <li className="flex items-start">
-                  <span className="text-gray-600 mr-3">—</span>
-                  <span>Infinite scroll consumption</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-gray-600 mr-3">—</span>
-                  <span>Engagement farming algorithms</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-gray-600 mr-3">—</span>
-                  <span>Free resource abuse</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-gray-600 mr-3">—</span>
-                  <span>Algorithmic manipulation</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-black border border-gray-800 p-8">
-              <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-4">OLDWEST</h3>
-              <ul className="space-y-3 text-sm text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-gray-500 mr-3">—</span>
-                  <span>Intentional usage metering</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-gray-500 mr-3">—</span>
-                  <span>Accountable resource consumption</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-gray-500 mr-3">—</span>
-                  <span>Resource-based access model</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-gray-500 mr-3">—</span>
-                  <span>Transparent usage tracking</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust & Infrastructure */}
-      <section className="border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="mb-12">
-            <h2 className="text-sm font-semibold tracking-wider text-gray-500 uppercase mb-2">TRUST & INFRASTRUCTURE</h2>
-            <div className="w-16 h-0.5 bg-gray-700 mt-2"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gray-950 border border-gray-800 p-6">
-              <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-3">PHONE-NUMBER IDENTITY</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Every account is verified through a phone number. This establishes a single, verifiable identity tied to your usage and settlement.
-              </p>
-            </div>
-
-            <div className="bg-gray-950 border border-gray-800 p-6">
-              <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-3">USAGE TRANSPARENCY</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                All consumption is logged and visible. You can view your usage history, current session consumption, and balance at any time.
-              </p>
-            </div>
-
-            <div className="bg-gray-950 border border-gray-800 p-6">
-              <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-3">LOGS & SETTLEMENT</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Complete audit trail of all interactions. Settlement occurs automatically against your account balance with full transaction logs.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-8 bg-black border border-gray-800 p-8">
-            <h3 className="text-sm font-semibold tracking-wider text-gray-400 uppercase mb-4">UTILITY-GRADE DESIGN</h3>
-            <p className="text-gray-300 text-sm leading-relaxed max-w-3xl">
-              OldWest is built as infrastructure, not entertainment. The platform operates like a public utility for digital interaction. Every component is designed for reliability, transparency, and accountable resource management.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="bg-gray-950">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-semibold text-gray-200 mb-6 tracking-tight">
-              Access the Network
-            </h2>
-            <p className="text-gray-400 text-sm mb-8 leading-relaxed">
-              Create an account to begin using OldWest. View the usage model documentation for detailed information on rates and settlement.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/login" 
-                className="px-8 py-3 bg-black border border-gray-700 text-white font-semibold text-sm hover:bg-gray-900 transition-colors tracking-wide"
+            <Col xs={24} lg={12}>
+              <Card 
+                bordered 
+                style={{ 
+                  background: '#0a0a0a', 
+                  borderColor: '#1f1f1f',
+                  borderRadius: 12
+                }}
+                bodyStyle={{ padding: 32 }}
               >
-                CREATE ACCOUNT
-              </Link>
-              <Link 
-                href="#" 
-                className="px-8 py-3 bg-gray-900 border border-gray-800 text-gray-300 font-semibold text-sm hover:bg-gray-800 hover:text-white transition-colors tracking-wide"
+                <div style={{ marginBottom: 24 }}>
+                  <Row justify="space-between" style={{ marginBottom: 8 }}>
+                    <Col>
+                      <Text style={{ fontSize: 11, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                        BALANCE
+                      </Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ fontSize: 11, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                        RATE
+                      </Text>
+                    </Col>
+                  </Row>
+                  <Progress 
+                    percent={65} 
+                    strokeColor="#595959"
+                    trailColor="#141414"
+                    showInfo={false}
+                    style={{ marginBottom: 8 }}
+                  />
+                  <Row justify="space-between">
+                    <Col>
+                      <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 14 }}>
+                        1,247 MIN
+                      </Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ color: '#8c8c8c', fontFamily: 'monospace', fontSize: 14 }}>
+                        0.5 MIN/MSG
+                      </Text>
+                    </Col>
+                  </Row>
+                </div>
+
+                <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+
+                <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+                  <Row justify="space-between">
+                    <Col>
+                      <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Session Duration</Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 14 }}>12:34</Text>
+                    </Col>
+                  </Row>
+                  <Row justify="space-between">
+                    <Col>
+                      <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Consumed This Session</Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 14 }}>23 MIN</Text>
+                    </Col>
+                  </Row>
+                  <Row justify="space-between">
+                    <Col>
+                      <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Remaining Balance</Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 14 }}>1,224 MIN</Text>
+                    </Col>
+                  </Row>
+                </Space>
+              </Card>
+            </Col>
+          </Row>
+        </section>
+
+        {/* What Makes OldWest Different */}
+        <section style={{ borderBottom: '1px solid #1f1f1f', background: '#0a0a0a', padding: '80px 48px' }}>
+          <Row justify="center" style={{ marginBottom: 48 }}>
+            <Col xs={24} lg={20} xl={16}>
+              <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                WHAT MAKES OLDWEST DIFFERENT
+              </Text>
+              <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
+            </Col>
+          </Row>
+
+          <Row justify="center">
+            <Col xs={24} lg={20} xl={16}>
+              <Row gutter={[32, 32]}>
+                <Col xs={24} md={12}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 32 }}
+                  >
+                    <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                      TRADITIONAL SOCIAL MEDIA
+                    </Text>
+                    <Divider style={{ borderColor: '#1f1f1f', margin: '16px 0' }} />
+                    <Space direction="vertical" size="small" style={{ width: '100%' }}>
+                      <Text style={{ color: '#8c8c8c', fontSize: 14 }}>— Infinite scroll consumption</Text>
+                      <Text style={{ color: '#8c8c8c', fontSize: 14 }}>— Engagement farming algorithms</Text>
+                      <Text style={{ color: '#8c8c8c', fontSize: 14 }}>— Free resource abuse</Text>
+                      <Text style={{ color: '#8c8c8c', fontSize: 14 }}>— Algorithmic manipulation</Text>
+                    </Space>
+                  </Card>
+                </Col>
+
+                <Col xs={24} md={12}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 32 }}
+                  >
+                    <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                      OLDWEST
+                    </Text>
+                    <Divider style={{ borderColor: '#1f1f1f', margin: '16px 0' }} />
+                    <Space direction="vertical" size="small" style={{ width: '100%' }}>
+                      <Text style={{ color: '#d9d9d9', fontSize: 14 }}>— Intentional usage metering</Text>
+                      <Text style={{ color: '#d9d9d9', fontSize: 14 }}>— Accountable resource consumption</Text>
+                      <Text style={{ color: '#d9d9d9', fontSize: 14 }}>— Resource-based access model</Text>
+                      <Text style={{ color: '#d9d9d9', fontSize: 14 }}>— Transparent usage tracking</Text>
+                    </Space>
+                  </Card>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </section>
+
+        {/* Trust & Infrastructure */}
+        <section style={{ borderBottom: '1px solid #1f1f1f', padding: '80px 48px' }}>
+          <Row justify="center" style={{ marginBottom: 48 }}>
+            <Col xs={24} lg={20} xl={16}>
+              <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                TRUST & INFRASTRUCTURE
+              </Text>
+              <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
+            </Col>
+          </Row>
+
+          <Row justify="center">
+            <Col xs={24} lg={20} xl={16}>
+              <Row gutter={[24, 24]}>
+                <Col xs={24} md={8}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#0a0a0a', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 24 }}
+                  >
+                    <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                      PHONE-NUMBER IDENTITY
+                    </Text>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.75, marginTop: 12, marginBottom: 0 }}>
+                      Every account is verified through a phone number. This establishes a single, verifiable identity tied to your usage and settlement.
+                    </Paragraph>
+                  </Card>
+                </Col>
+
+                <Col xs={24} md={8}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#0a0a0a', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 24 }}
+                  >
+                    <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                      USAGE TRANSPARENCY
+                    </Text>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.75, marginTop: 12, marginBottom: 0 }}>
+                      All consumption is logged and visible. You can view your usage history, current session consumption, and balance at any time.
+                    </Paragraph>
+                  </Card>
+                </Col>
+
+                <Col xs={24} md={8}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#0a0a0a', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 24 }}
+                  >
+                    <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                      LOGS & SETTLEMENT
+                    </Text>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.75, marginTop: 12, marginBottom: 0 }}>
+                      Complete audit trail of all interactions. Settlement occurs automatically against your account balance with full transaction logs.
+                    </Paragraph>
+                  </Card>
+                </Col>
+              </Row>
+
+              <Card 
+                bordered 
+                style={{ 
+                  background: '#000000', 
+                  borderColor: '#1f1f1f',
+                  borderRadius: 12,
+                  marginTop: 32
+                }}
+                bodyStyle={{ padding: 32 }}
               >
-                VIEW USAGE MODEL
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+                <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                  UTILITY-GRADE DESIGN
+                </Text>
+                <Paragraph style={{ color: '#d9d9d9', fontSize: 14, lineHeight: 1.75, marginTop: 16, marginBottom: 0, maxWidth: 800 }}>
+                  OldWest is built as infrastructure, not entertainment. The platform operates like a public utility for digital interaction. Every component is designed for reliability, transparency, and accountable resource management.
+                </Paragraph>
+              </Card>
+            </Col>
+          </Row>
+        </section>
+
+        {/* Call to Action */}
+        <section style={{ background: '#0a0a0a', padding: '80px 48px' }}>
+          <Row justify="center">
+            <Col xs={24} lg={16} xl={12}>
+              <div style={{ textAlign: 'center' }}>
+                <Title level={2} style={{ color: '#ffffff', marginBottom: 24, fontSize: 32, fontWeight: 600 }}>
+                  Access the Network
+                </Title>
+                <Paragraph style={{ color: '#8c8c8c', fontSize: 14, marginBottom: 32, lineHeight: 1.75 }}>
+                  Create an account to begin using OldWest. View the usage model documentation for detailed information on rates and settlement.
+                </Paragraph>
+                <Space size="middle">
+                  <Button 
+                    type="primary"
+                    size="large"
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      color: '#ffffff',
+                      borderRadius: 12,
+                      fontWeight: 600,
+                      height: 48,
+                      paddingLeft: 32,
+                      paddingRight: 32
+                    }}
+                    href="/login"
+                  >
+                    CREATE ACCOUNT
+                  </Button>
+                  <Button 
+                    size="large"
+                    style={{ 
+                      background: '#141414', 
+                      borderColor: '#1f1f1f',
+                      color: '#d9d9d9',
+                      borderRadius: 12,
+                      fontWeight: 600,
+                      height: 48,
+                      paddingLeft: 32,
+                      paddingRight: 32
+                    }}
+                  >
+                    VIEW USAGE MODEL
+                  </Button>
+                </Space>
+              </div>
+            </Col>
+          </Row>
+        </section>
+      </Content>
 
       {/* Footer */}
-      <footer className="border-t border-gray-800 bg-black">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gray-900 border border-gray-700 flex items-center justify-center">
-                <div className="w-4 h-4 bg-gray-600"></div>
-              </div>
-              <span className="text-sm font-semibold tracking-tight text-gray-400">OLDWEST</span>
-            </div>
-            <div className="flex items-center space-x-6 text-xs text-gray-500">
-              <Link href="#" className="hover:text-gray-400 transition-colors">DOCUMENTATION</Link>
-              <Link href="#" className="hover:text-gray-400 transition-colors">SETTLEMENT</Link>
-              <Link href="#" className="hover:text-gray-400 transition-colors">INFRASTRUCTURE</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <Footer style={{ 
+        background: '#000000', 
+        borderTop: '1px solid #1f1f1f',
+        padding: '48px 48px'
+      }}>
+        <Row justify="space-between" align="middle">
+          <Col>
+            <Row align="middle" gutter={12}>
+              <Col>
+                <div style={{ 
+                  width: 32, 
+                  height: 32, 
+                  background: '#141414', 
+                  border: '1px solid #1f1f1f',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 8
+                }}>
+                  <div style={{ width: 16, height: 16, background: '#595959', borderRadius: 4 }}></div>
+                </div>
+              </Col>
+              <Col>
+                <Text style={{ fontSize: 14, color: '#8c8c8c', fontWeight: 600, letterSpacing: '0.5px' }}>OLDWEST</Text>
+              </Col>
+            </Row>
+          </Col>
+          <Col>
+            <Space size="large">
+              <Link href="#" style={{ color: '#595959', fontSize: 12 }}>DOCUMENTATION</Link>
+              <Link href="#" style={{ color: '#595959', fontSize: 12 }}>SETTLEMENT</Link>
+              <Link href="#" style={{ color: '#595959', fontSize: 12 }}>INFRASTRUCTURE</Link>
+            </Space>
+          </Col>
+        </Row>
+      </Footer>
+    </Layout>
   )
 }
