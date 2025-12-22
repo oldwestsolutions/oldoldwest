@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space } from 'antd'
 import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
+import { useState, useEffect } from 'react'
 
 const HeroScene = dynamic(() => import('@/components/HeroScene'), { ssr: false })
 
@@ -11,6 +12,25 @@ const { Header, Content, Footer } = Layout
 const { Title, Paragraph, Text } = Typography
 
 export default function Home() {
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHeaderVisible(false)
+      } else {
+        setIsHeaderVisible(true)
+      }
+      
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
   return (
     <Layout style={{ minHeight: '100vh', background: '#000000' }}>
       {/* Navigation */}
@@ -22,9 +42,12 @@ export default function Home() {
         alignItems: 'center',
         justifyContent: 'space-between',
         height: '72px',
-        position: 'sticky',
-        top: 0,
-        zIndex: 1000
+        position: 'fixed',
+        top: isHeaderVisible ? 0 : -72,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
+        transition: 'top 0.3s ease-in-out'
       }}>
         <Row align="middle" gutter={16}>
           <Col>
@@ -49,9 +72,9 @@ export default function Home() {
           <Button 
             type="text" 
             style={{ color: '#8c8c8c', borderRadius: 12 }}
-            href="/login"
+            href="/access-blockspace"
           >
-            ACCESS NETWORK
+            ACCESS BLOCKSPACE
           </Button>
           <Button 
             type="primary" 
@@ -65,12 +88,12 @@ export default function Home() {
             }}
             href="/login"
           >
-            CREATE ACCOUNT
+            LOGIN
           </Button>
         </Space>
       </Header>
 
-      <Content>
+      <Content style={{ marginTop: isHeaderVisible ? 0 : 0 }}>
         {/* Hero Section - Two Column */}
         <section style={{ 
           minHeight: '100vh', 
@@ -116,7 +139,7 @@ export default function Home() {
                   }}
                   href="/login"
                 >
-                  CREATE ACCOUNT
+                  LOGIN
                 </Button>
                 <Button 
                   size="large"
@@ -770,13 +793,13 @@ export default function Home() {
           
           <Col xs={24} sm={12} md={6}>
             <Title level={5} style={{ color: '#ffffff', marginBottom: 24, fontSize: 14, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              Documentation
+              Merit & Credentials
             </Title>
             <Space direction="vertical" size="small" style={{ width: '100%' }}>
-              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>API Reference</Link>
-              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Settlement Guide</Link>
-              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Infrastructure Docs</Link>
-              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Developer Resources</Link>
+              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>NFT Achievements</Link>
+              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Verified Work</Link>
+              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Credentials</Link>
+              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Milestone Tracking</Link>
             </Space>
           </Col>
           
