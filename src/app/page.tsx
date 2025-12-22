@@ -72,9 +72,9 @@ export default function Home() {
           <Button 
             type="text" 
             style={{ color: '#8c8c8c', borderRadius: 12 }}
-            href="/access-blockspace"
+            href="/launch-session"
           >
-            ACCESS BLOCKSPACE
+            LAUNCH SESSION
           </Button>
           <Button 
             type="primary" 

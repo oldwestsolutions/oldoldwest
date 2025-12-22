@@ -6,7 +6,7 @@ import Link from 'next/link'
 const { Content } = Layout
 const { Title, Paragraph, Text } = Typography
 
-export default function AccessBlockSpace() {
+export default function LaunchSession() {
   return (
     <Layout style={{ minHeight: '100vh', background: '#000000', color: '#ffffff' }}>
       <Content style={{ padding: '120px 48px', maxWidth: 900, margin: '0 auto' }}>
@@ -17,11 +17,11 @@ export default function AccessBlockSpace() {
         </div>
         
         <Title level={1} style={{ color: '#ffffff', marginBottom: 24, fontSize: 48, fontWeight: 700 }}>
-          Access BlockSpace
+          Launch Session
         </Title>
         
         <Paragraph style={{ color: '#8c8c8c', fontSize: 18, lineHeight: 1.8, marginBottom: 40 }}>
-          BlockSpace is the isolated virtual environment where all OldWest interactions occur. Each user session operates within a dedicated BlockSpace, ensuring security, accountability, and precise resource tracking.
+          Launch a new session to access the OldWest network. Each session operates within an isolated virtual environment with transparent usage tracking and real-time settlement.
         </Paragraph>
         
         <Divider style={{ borderColor: '#1f1f1f', margin: '40px 0' }} />
@@ -37,13 +37,13 @@ export default function AccessBlockSpace() {
             bodyStyle={{ padding: 32 }}
           >
             <Title level={3} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-              What is BlockSpace?
+              Starting a Session
             </Title>
             <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 16 }}>
-              BlockSpace is a dedicated virtual machine environment allocated to each user session. It provides complete isolation from other users, encrypted storage, and precise resource tracking. All interactions within BlockSpace consume VM minutes at published rates.
+              When you launch a session, a dedicated virtual environment is provisioned for your use. This environment provides complete isolation, encrypted storage, and precise resource tracking. All interactions within your session consume VM minutes at published rates.
             </Paragraph>
             <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-              Each BlockSpace is provisioned when you start a session and deallocated when the session ends. All data and interactions are logged within your BlockSpace for settlement and audit purposes.
+              Sessions are active until you manually close them or they timeout due to inactivity. All session activity is logged for settlement and audit purposes. You can have multiple active sessions simultaneously.
             </Paragraph>
           </Card>
           
@@ -57,10 +57,10 @@ export default function AccessBlockSpace() {
             bodyStyle={{ padding: 32 }}
           >
             <Title level={3} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-              Accessing BlockSpace
+              Session Requirements
             </Title>
             <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
-              To access BlockSpace, you must have an authenticated account with sufficient VM minutes balance. Each session allocates a new BlockSpace instance. You can have multiple active sessions, each with its own BlockSpace.
+              To launch a session, you must have an authenticated account with sufficient VM minutes balance. Each session consumes minutes based on your activity. Session duration and resource consumption are tracked in real-time and visible through your account dashboard.
             </Paragraph>
             <Button 
               type="primary"
@@ -74,7 +74,7 @@ export default function AccessBlockSpace() {
               }}
               href="/login"
             >
-              Login to Access BlockSpace
+              Login to Launch Session
             </Button>
           </Card>
           
@@ -88,20 +88,20 @@ export default function AccessBlockSpace() {
             bodyStyle={{ padding: 32 }}
           >
             <Title level={3} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-              BlockSpace Features
+              Session Features
             </Title>
             <Row gutter={[16, 16]}>
               <Col xs={24} sm={12}>
-                <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Complete Isolation</Text>
+                <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Isolated Environment</Text>
               </Col>
               <Col xs={24} sm={12}>
                 <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Encrypted Storage</Text>
               </Col>
               <Col xs={24} sm={12}>
-                <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Resource Metering</Text>
+                <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Real-time Metering</Text>
               </Col>
               <Col xs={24} sm={12}>
-                <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Usage Tracking</Text>
+                <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Usage Transparency</Text>
               </Col>
             </Row>
           </Card>
