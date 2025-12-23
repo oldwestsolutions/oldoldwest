@@ -1,7 +1,7 @@
 'use client'
 
-import { Layout, Typography, Button, Card, Row, Col, List, Avatar, Input, Tabs, Calendar, Badge } from 'antd'
-import { UserOutlined, MailOutlined, CalendarOutlined, VideoCameraOutlined, SearchOutlined, PlusOutlined, PhoneOutlined, MessageOutlined } from '@ant-design/icons'
+import { Layout, Typography, Button, Card, Row, Col, List, Avatar, Input, Tabs, Calendar, Badge, Modal } from 'antd'
+import { UserOutlined, MailOutlined, CalendarOutlined, VideoCameraOutlined, SearchOutlined, PlusOutlined, PhoneOutlined, MessageOutlined, MicOutlined, AudioMutedOutlined, CloseOutlined, FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
@@ -12,6 +12,11 @@ const { Title, Text } = Typography
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('contacts')
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null)
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [modalType, setModalType] = useState<'contacts' | 'calendar' | 'mailbox' | null>(null)
+  const [isMuted, setIsMuted] = useState(false)
+  const [isVideoOff, setIsVideoOff] = useState(false)
+  const [isFullscreen, setIsFullscreen] = useState(false)
 
   // Mock data
   const contacts = [
@@ -262,18 +267,56 @@ export default function Dashboard() {
           </div>
           <Text strong style={{ fontSize: 18, color: '#ffffff' }}>OldWest</Text>
         </div>
-        <Button 
-          type="primary"
-          icon={<VideoCameraOutlined />}
-          style={{ 
-            background: '#141414', 
-            borderColor: '#1f1f1f',
-            color: '#ffffff',
-            borderRadius: 12
-          }}
-        >
-          New Meeting
-        </Button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <Button 
+            type="text"
+            icon={<UserOutlined />}
+            onClick={() => {
+              setModalType('contacts')
+              setIsModalVisible(true)
+            }}
+            style={{ 
+              color: '#8c8c8c',
+              borderRadius: 8
+            }}
+          />
+          <Button 
+            type="text"
+            icon={<CalendarOutlined />}
+            onClick={() => {
+              setModalType('calendar')
+              setIsModalVisible(true)
+            }}
+            style={{ 
+              color: '#8c8c8c',
+              borderRadius: 8
+            }}
+          />
+          <Button 
+            type="text"
+            icon={<MailOutlined />}
+            onClick={() => {
+              setModalType('mailbox')
+              setIsModalVisible(true)
+            }}
+            style={{ 
+              color: '#8c8c8c',
+              borderRadius: 8
+            }}
+          />
+          <Button 
+            type="primary"
+            icon={<VideoCameraOutlined />}
+            style={{ 
+              background: '#141414', 
+              borderColor: '#1f1f1f',
+              color: '#ffffff',
+              borderRadius: 12
+            }}
+          >
+            New Meeting
+          </Button>
+        </div>
       </Header>
 
       <Layout>
@@ -353,6 +396,173 @@ export default function Dashboard() {
           </Card>
         </Content>
       </Layout>
+
+      <Modal
+        open={isModalVisible}
+        onCancel={() => {
+          setIsModalVisible(false)
+          setModalType(null)
+        }}
+        footer={null}
+        width="100%"
+        style={{ 
+          top: 0, 
+          paddingBottom: 0,
+          maxWidth: '100%'
+        }}
+        bodyStyle={{ 
+          padding: 0, 
+          height: '100vh',
+          background: '#000000'
+        }}
+        closable={false}
+        maskStyle={{ background: 'rgba(0, 0, 0, 0.95)' }}
+      >
+        <div style={{ 
+          height: '100vh', 
+          display: 'flex', 
+          flexDirection: 'column',
+          background: '#000000'
+        }}>
+          {/* Video Grid Area */}
+          <div style={{ 
+            flex: 1, 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '8px',
+            padding: '16px',
+            overflow: 'auto'
+          }}>
+            {/* Mock video participants */}
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+              <div
+                key={num}
+                style={{
+                  aspectRatio: '16/9',
+                  background: '#141414',
+                  borderRadius: '8px',
+                  border: '1px solid #1f1f1f',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+              >
+                <Avatar 
+                  size={80}
+                  icon={<UserOutlined />}
+                  style={{ background: '#595959' }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  bottom: '8px',
+                  left: '8px',
+                  background: 'rgba(0, 0, 0, 0.6)',
+                  padding: '4px 8px',
+                  borderRadius: '4px',
+                  fontSize: '12px',
+                  color: '#ffffff'
+                }}>
+                  Participant {num}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Controls Bar */}
+          <div style={{
+            background: '#0a0a0a',
+            borderTop: '1px solid #1f1f1f',
+            padding: '16px 24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Text style={{ color: '#8c8c8c', fontSize: '14px' }}>
+                {modalType === 'contacts' ? 'Contacts Meeting' : modalType === 'calendar' ? 'Calendar Meeting' : 'Mailbox Meeting'}
+              </Text>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Button
+                type={isMuted ? 'primary' : 'default'}
+                danger={isMuted}
+                icon={isMuted ? <AudioMutedOutlined /> : <MicOutlined />}
+                onClick={() => setIsMuted(!isMuted)}
+                style={{
+                  background: isMuted ? '#ff4d4f' : '#141414',
+                  borderColor: '#1f1f1f',
+                  color: '#ffffff',
+                  borderRadius: '50%',
+                  width: '48px',
+                  height: '48px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              />
+              <Button
+                type={isVideoOff ? 'primary' : 'default'}
+                danger={isVideoOff}
+                icon={<VideoCameraOutlined />}
+                onClick={() => setIsVideoOff(!isVideoOff)}
+                style={{
+                  background: isVideoOff ? '#ff4d4f' : '#141414',
+                  borderColor: '#1f1f1f',
+                  color: '#ffffff',
+                  borderRadius: '50%',
+                  width: '48px',
+                  height: '48px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              />
+              <Button
+                type="default"
+                icon={isFullscreen ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
+                onClick={() => setIsFullscreen(!isFullscreen)}
+                style={{
+                  background: '#141414',
+                  borderColor: '#1f1f1f',
+                  color: '#ffffff',
+                  borderRadius: '50%',
+                  width: '48px',
+                  height: '48px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              />
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Button
+                type="primary"
+                danger
+                icon={<PhoneOutlined />}
+                onClick={() => {
+                  setIsModalVisible(false)
+                  setModalType(null)
+                }}
+                style={{
+                  background: '#ff4d4f',
+                  borderColor: '#ff4d4f',
+                  color: '#ffffff',
+                  borderRadius: '50%',
+                  width: '48px',
+                  height: '48px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </Modal>
     </Layout>
   )
 }
