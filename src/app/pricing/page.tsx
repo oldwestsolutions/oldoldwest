@@ -1,12 +1,12 @@
 'use client'
 
-import { Layout, Typography, Divider, Space, Card, Row, Col, Table } from 'antd'
+import { Layout, Typography, Divider, Space, Card, Row, Col, Table, Header } from 'antd'
 import Link from 'next/link'
 
 const { Content } = Layout
 const { Title, Paragraph, Text } = Typography
 
-export default function PricingRates() {
+export default function Pricing() {
   const pricingColumns = [
     {
       title: 'Package',
@@ -37,15 +37,22 @@ export default function PricingRates() {
 
   return (
     <Layout style={{ minHeight: '100vh', background: '#000000', color: '#ffffff' }}>
-      <Content style={{ padding: '120px 48px', maxWidth: 900, margin: '0 auto' }}>
-        <div style={{ marginBottom: 48 }}>
-          <Link href="/" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none' }}>
-            ← Back to Home
-          </Link>
-        </div>
-        
+      <Header style={{ 
+        background: '#000000', 
+        borderBottom: '1px solid #1f1f1f',
+        padding: '0 48px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        height: '72px'
+      }}>
+        <Link href="/" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none' }}>
+          ← Back to Home
+        </Link>
+      </Header>
+      <Content style={{ padding: '60px 48px', maxWidth: 900, margin: '0 auto' }}>
         <Title level={1} style={{ color: '#ffffff', marginBottom: 24, fontSize: 48, fontWeight: 700 }}>
-          Pricing & Rates
+          Pricing
         </Title>
         
         <Paragraph style={{ color: '#8c8c8c', fontSize: 18, lineHeight: 1.8, marginBottom: 40 }}>

@@ -1,24 +1,31 @@
 'use client'
 
-import { Layout, Typography, Divider, Space, Card, Row, Col } from 'antd'
+import { Layout, Typography, Divider, Space, Card, Row, Col, Header } from 'antd'
 import Link from 'next/link'
 import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined } from '@ant-design/icons'
 
 const { Content } = Layout
 const { Title, Paragraph, Text } = Typography
 
-export default function Product() {
+export default function Products() {
   return (
     <Layout style={{ minHeight: '100vh', background: '#000000', color: '#ffffff' }}>
-      <Content style={{ padding: '120px 48px', maxWidth: 1200, margin: '0 auto' }}>
-        <div style={{ marginBottom: 48 }}>
-          <Link href="/" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none' }}>
-            ← Back to Home
-          </Link>
-        </div>
-        
+      <Header style={{ 
+        background: '#000000', 
+        borderBottom: '1px solid #1f1f1f',
+        padding: '0 48px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        height: '72px'
+      }}>
+        <Link href="/" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none' }}>
+          ← Back to Home
+        </Link>
+      </Header>
+      <Content style={{ padding: '60px 48px', maxWidth: 1200, margin: '0 auto' }}>
         <Title level={1} style={{ color: '#ffffff', marginBottom: 24, fontSize: 56, fontWeight: 700 }}>
-          Product
+          Products
         </Title>
         
         <Paragraph style={{ color: '#8c8c8c', fontSize: 20, lineHeight: 1.8, marginBottom: 64, maxWidth: 800 }}>

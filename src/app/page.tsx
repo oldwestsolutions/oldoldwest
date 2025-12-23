@@ -86,11 +86,11 @@ export default function Home() {
             </Link>
           </Col>
           <Col>
-            <Link href="/product" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+            <Link href="/products" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
               onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
               onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
             >
-              Product
+              Products
             </Link>
           </Col>
           <Col>
@@ -102,7 +102,7 @@ export default function Home() {
             </Link>
           </Col>
           <Col>
-            <Link href="/pricing-rates" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+            <Link href="/pricing" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
               onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
               onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
             >
@@ -130,9 +130,9 @@ export default function Home() {
               fontWeight: 600,
               boxShadow: 'none'
             }}
-            href="/login"
+            href="/explore-platform"
           >
-            LOGIN
+            EXPLORE PLATFORM
           </Button>
         </Space>
       </Header>
@@ -181,9 +181,9 @@ export default function Home() {
                     paddingRight: 40,
                     boxShadow: 'none'
                   }}
-                  href="/login"
+                  href="/explore-platform"
                 >
-                  LOGIN
+                  EXPLORE PLATFORM
                 </Button>
                 <Button 
                   size="large"
@@ -197,9 +197,9 @@ export default function Home() {
                     paddingLeft: 40,
                     paddingRight: 40
                   }}
-                  href="/usage-model"
+                  href="/create-account"
                 >
-                  VIEW USAGE MODEL
+                  CREATE ACCOUNT
                 </Button>
               </Space>
             </Col>
@@ -782,7 +782,7 @@ export default function Home() {
                     }}
                     href="/usage-model"
                   >
-                    VIEW USAGE MODEL
+                    CREATE ACCOUNT
                   </Button>
                 </Space>
               </div>
