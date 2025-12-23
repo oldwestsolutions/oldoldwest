@@ -1,10 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space } from 'antd'
-import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined } from '@ant-design/icons'
+import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown } from 'antd'
+import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
+import type { MenuProps } from 'antd'
 
 const HeroScene = dynamic(() => import('@/components/HeroScene'), { ssr: false })
 
@@ -31,6 +32,21 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [lastScrollY])
+
+  const launchMenuItems: MenuProps['items'] = [
+    {
+      key: 'host',
+      label: <Link href="/host-session" style={{ color: '#ffffff', textDecoration: 'none' }}>Host Session</Link>,
+    },
+    {
+      key: 'launch',
+      label: <Link href="/launch-session" style={{ color: '#ffffff', textDecoration: 'none' }}>Launch Session</Link>,
+    },
+    {
+      key: 'download',
+      label: <Link href="/download-app" style={{ color: '#ffffff', textDecoration: 'none' }}>Download App</Link>,
+    },
+  ]
   return (
     <Layout style={{ minHeight: '100vh', background: '#000000' }}>
       {/* Navigation */}
@@ -95,13 +111,15 @@ export default function Home() {
           </Col>
         </Row>
         <Space size="middle">
-          <Button 
-            type="text" 
-            style={{ color: '#8c8c8c', borderRadius: 12 }}
-            href="/launch-session"
-          >
-            LAUNCH SESSION
-          </Button>
+          <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft">
+            <Button 
+              type="text" 
+              style={{ color: '#8c8c8c', borderRadius: 12, display: 'flex', alignItems: 'center', gap: 4 }}
+            >
+              LAUNCH SESSION
+              <DownOutlined style={{ fontSize: 10 }} />
+            </Button>
+          </Dropdown>
           <Button 
             type="primary" 
             style={{ 
