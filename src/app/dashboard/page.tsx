@@ -1,7 +1,7 @@
 'use client'
 
 import { Layout, Typography, Button, Card, Row, Col, List, Avatar, Input, Tabs, Calendar, Badge, Modal } from 'antd'
-import { UserOutlined, MailOutlined, CalendarOutlined, VideoCameraOutlined, SearchOutlined, PlusOutlined, PhoneOutlined, MessageOutlined, MicOutlined, AudioMutedOutlined, CloseOutlined, FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons'
+import { UserOutlined, MailOutlined, CalendarOutlined, VideoCameraOutlined, SearchOutlined, PlusOutlined, PhoneOutlined, MessageOutlined, AudioOutlined, AudioMutedOutlined, CloseOutlined, FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
@@ -490,7 +490,7 @@ export default function Dashboard() {
               <Button
                 type={isMuted ? 'primary' : 'default'}
                 danger={isMuted}
-                icon={isMuted ? <AudioMutedOutlined /> : <MicOutlined />}
+                icon={isMuted ? <AudioMutedOutlined /> : <AudioOutlined />}
                 onClick={() => setIsMuted(!isMuted)}
                 style={{
                   background: isMuted ? '#ff4d4f' : '#141414',
