@@ -1,7 +1,7 @@
 'use client'
 
 import { Layout, Typography, Button, Card, Row, Col, List, Avatar, Input, Tabs, Calendar, Badge, Modal, Dropdown } from 'antd'
-import { UserOutlined, MailOutlined, CalendarOutlined, VideoCameraOutlined, SearchOutlined, PlusOutlined, PhoneOutlined, MessageOutlined, AudioOutlined, AudioMutedOutlined, CloseOutlined, FullscreenOutlined, FullscreenExitOutlined, DownOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons'
+import { UserOutlined, MailOutlined, CalendarOutlined, VideoCameraOutlined, SearchOutlined, PlusOutlined, PhoneOutlined, MessageOutlined, AudioOutlined, AudioMutedOutlined, CloseOutlined, FullscreenOutlined, FullscreenExitOutlined, DownOutlined, SettingOutlined, LogoutOutlined, WalletOutlined, ContactsOutlined, SendOutlined, InboxOutlined, FileTextOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import type { Dayjs } from 'dayjs'
 import type { MenuProps } from 'antd'
@@ -16,7 +16,7 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('contacts')
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null)
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const [modalType, setModalType] = useState<'contacts' | 'calendar' | 'mailbox' | null>(null)
+  const [modalType, setModalType] = useState<'wallet' | 'calendar' | 'mailbox' | null>(null)
   const [isMuted, setIsMuted] = useState(false)
   const [isVideoOff, setIsVideoOff] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
@@ -335,9 +335,9 @@ export default function Dashboard() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <Button 
             type="text"
-            icon={<UserOutlined />}
+            icon={<WalletOutlined />}
             onClick={() => {
-              setModalType('contacts')
+              setModalType('wallet')
               setIsModalVisible(true)
             }}
             style={{ 
@@ -380,7 +380,8 @@ export default function Dashboard() {
                 borderRadius: 12,
                 display: 'flex',
                 alignItems: 'center',
-                gap: 8
+                gap: 8,
+                boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
               }}
             >
               Account
@@ -427,7 +428,8 @@ export default function Dashboard() {
                     background: '#141414',
                     borderColor: '#1f1f1f',
                     color: '#ffffff',
-                    borderRadius: 12
+                    borderRadius: 12,
+                    boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
                   }}
                 >
                   Start Meeting
@@ -479,143 +481,243 @@ export default function Dashboard() {
           flexDirection: 'column',
           background: '#000000'
         }}>
-          {/* Video Grid Area */}
-          <div style={{ 
-            flex: 1, 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '8px',
-            padding: '16px',
-            overflow: 'auto'
-          }}>
-            {/* Mock video participants */}
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-              <div
-                key={num}
-                style={{
-                  aspectRatio: '16/9',
-                  background: '#141414',
-                  borderRadius: '8px',
-                  border: '1px solid #1f1f1f',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}
-              >
-                <Avatar 
-                  size={80}
-                  icon={<UserOutlined />}
-                  style={{ background: '#595959' }}
-                />
-                <div style={{
-                  position: 'absolute',
-                  bottom: '8px',
-                  left: '8px',
-                  background: 'rgba(0, 0, 0, 0.6)',
-                  padding: '4px 8px',
-                  borderRadius: '4px',
-                  fontSize: '12px',
-                  color: '#ffffff'
-                }}>
-                  Participant {num}
+          {modalType === 'wallet' && (
+            <div style={{ flex: 1, padding: '24px', overflow: 'auto' }}>
+              <Title level={2} style={{ color: '#ffffff', marginBottom: 24 }}>
+                <WalletOutlined style={{ marginRight: 12 }} />
+                Wallet
+              </Title>
+              <Row gutter={[24, 24]}>
+                <Col xs={24} md={12}>
+                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12 }}>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16 }}>Balance</Title>
+                    <Text style={{ fontSize: 32, color: '#ffffff', fontWeight: 600 }}>1,224 MIN</Text>
+                    <div style={{ marginTop: 16 }}>
+                      <Text style={{ color: '#8c8c8c', fontSize: 14 }}>VM Minutes Available</Text>
+                    </div>
+                  </Card>
+                </Col>
+                <Col xs={24} md={12}>
+                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12 }}>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16 }}>Recent Transactions</Title>
+                    <List
+                      dataSource={[
+                        { id: 1, type: 'Purchase', amount: '+500 MIN', date: '2 hours ago' },
+                        { id: 2, type: 'Usage', amount: '-25 MIN', date: '5 hours ago' },
+                        { id: 3, type: 'Purchase', amount: '+1000 MIN', date: '1 day ago' },
+                      ]}
+                      renderItem={(item) => (
+                        <List.Item style={{ borderColor: '#1f1f1f', padding: '12px 0' }}>
+                          <List.Item.Meta
+                            title={<Text style={{ color: '#ffffff' }}>{item.type}</Text>}
+                            description={<Text style={{ color: '#8c8c8c', fontSize: 12 }}>{item.date}</Text>}
+                          />
+                          <Text style={{ color: item.type === 'Purchase' ? '#52c41a' : '#ff4d4f', fontWeight: 600 }}>
+                            {item.amount}
+                          </Text>
+                        </List.Item>
+                      )}
+                    />
+                  </Card>
+                </Col>
+                <Col xs={24}>
+                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12 }}>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16 }}>Payment Methods</Title>
+                    <Button type="primary" icon={<PlusOutlined />} style={{ background: '#141414', borderColor: '#1f1f1f' }}>
+                      Add Payment Method
+                    </Button>
+                  </Card>
+                </Col>
+              </Row>
+            </div>
+          )}
+
+          {modalType === 'calendar' && (
+            <div style={{ flex: 1, padding: '24px', overflow: 'auto', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ marginBottom: 24 }}>
+                <Title level={2} style={{ color: '#ffffff', marginBottom: 8 }}>
+                  <CalendarOutlined style={{ marginRight: 12 }} />
+                  Schedule Meeting
+                </Title>
+                <Text style={{ color: '#8c8c8c' }}>Select a date and time for your meeting</Text>
+              </div>
+              <Row gutter={[24, 24]} style={{ flex: 1 }}>
+                <Col xs={24} md={12}>
+                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12 }}>
+                    <Calendar
+                      fullscreen={false}
+                      style={{ background: '#000000' }}
+                      dateCellRender={dateCellRender}
+                      onSelect={(date) => setSelectedDate(date)}
+                    />
+                  </Card>
+                </Col>
+                <Col xs={24} md={12}>
+                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12 }}>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16 }}>Available Times</Title>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+                      {['9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'].map((time) => (
+                        <Button
+                          key={time}
+                          style={{
+                            background: '#141414',
+                            borderColor: '#1f1f1f',
+                            color: '#ffffff',
+                            borderRadius: 8
+                          }}
+                        >
+                          {time}
+                        </Button>
+                      ))}
+                    </div>
+                    <div style={{ marginTop: 24 }}>
+                      <Input
+                        placeholder="Meeting Title"
+                        style={{
+                          background: '#000000',
+                          borderColor: '#1f1f1f',
+                          color: '#ffffff',
+                          marginBottom: 12
+                        }}
+                      />
+                      <Input.TextArea
+                        placeholder="Meeting Description"
+                        rows={4}
+                        style={{
+                          background: '#000000',
+                          borderColor: '#1f1f1f',
+                          color: '#ffffff',
+                          marginBottom: 12
+                        }}
+                      />
+                      <Button type="primary" block style={{ background: '#141414', borderColor: '#1f1f1f' }}>
+                        Schedule Meeting
+                      </Button>
+                    </div>
+                  </Card>
+                </Col>
+              </Row>
+            </div>
+          )}
+
+          {modalType === 'mailbox' && (
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#000000' }}>
+              <div style={{ borderBottom: '1px solid #1f1f1f', padding: '16px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Title level={3} style={{ color: '#ffffff', margin: 0 }}>
+                  <MailOutlined style={{ marginRight: 12 }} />
+                  Mail
+                </Title>
+                <Button
+                  icon={<ContactsOutlined />}
+                  onClick={() => {
+                    setModalType('wallet')
+                  }}
+                  style={{
+                    background: '#141414',
+                    borderColor: '#1f1f1f',
+                    color: '#ffffff'
+                  }}
+                >
+                  Contacts
+                </Button>
+              </div>
+              <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
+                <div style={{ width: 200, borderRight: '1px solid #1f1f1f', padding: '16px', background: '#0a0a0a' }}>
+                  <Button
+                    type="primary"
+                    icon={<PlusOutlined />}
+                    block
+                    style={{
+                      background: '#141414',
+                      borderColor: '#1f1f1f',
+                      marginBottom: 16
+                    }}
+                  >
+                    Compose
+                  </Button>
+                  <List
+                    dataSource={[
+                      { key: 'inbox', label: 'Inbox', icon: <InboxOutlined />, count: 12 },
+                      { key: 'sent', label: 'Sent', icon: <SendOutlined /> },
+                      { key: 'drafts', label: 'Drafts', icon: <FileTextOutlined /> },
+                    ]}
+                    renderItem={(item) => (
+                      <List.Item
+                        style={{
+                          padding: '12px',
+                          borderRadius: 8,
+                          cursor: 'pointer',
+                          background: '#000000',
+                          marginBottom: 4
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                            {item.icon}
+                            <Text style={{ color: '#ffffff' }}>{item.label}</Text>
+                          </div>
+                          {item.count && <Badge count={item.count} />}
+                        </div>
+                      </List.Item>
+                    )}
+                  />
+                </div>
+                <div style={{ flex: 1, padding: '24px', overflow: 'auto' }}>
+                  <Input
+                    placeholder="Search mail"
+                    prefix={<SearchOutlined style={{ color: '#8c8c8c' }} />}
+                    style={{
+                      background: '#0a0a0a',
+                      borderColor: '#1f1f1f',
+                      color: '#ffffff',
+                      marginBottom: 16
+                    }}
+                  />
+                  <List
+                    dataSource={messages}
+                    renderItem={(item) => (
+                      <List.Item
+                        style={{
+                          padding: '16px',
+                          borderRadius: 8,
+                          marginBottom: 8,
+                          background: item.unread ? '#141414' : '#000000',
+                          border: '1px solid #1f1f1f',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <List.Item.Meta
+                          avatar={
+                            <Avatar 
+                              icon={<UserOutlined />} 
+                              style={{ background: '#141414' }}
+                            />
+                          }
+                          title={
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                              <Text strong style={{ color: '#ffffff', fontSize: 14 }}>{item.from}</Text>
+                              {item.unread && <Badge dot />}
+                            </div>
+                          }
+                          description={
+                            <div>
+                              <Text style={{ color: '#ffffff', fontSize: 13, display: 'block', marginBottom: 4 }}>
+                                {item.subject}
+                              </Text>
+                              <Text style={{ color: '#8c8c8c', fontSize: 12 }}>{item.preview}</Text>
+                              <Text style={{ color: '#595959', fontSize: 11, display: 'block', marginTop: 4 }}>
+                                {item.time}
+                              </Text>
+                            </div>
+                          }
+                        />
+                      </List.Item>
+                    )}
+                  />
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Bottom Controls Bar */}
-          <div style={{
-            background: '#0a0a0a',
-            borderTop: '1px solid #1f1f1f',
-            padding: '16px 24px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Text style={{ color: '#8c8c8c', fontSize: '14px' }}>
-                {modalType === 'contacts' ? 'Contacts Meeting' : modalType === 'calendar' ? 'Calendar Meeting' : modalType === 'mailbox' ? 'Mailbox Meeting' : 'Meeting'}
-              </Text>
             </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Button
-                type={isMuted ? 'primary' : 'default'}
-                danger={isMuted}
-                icon={isMuted ? <AudioMutedOutlined /> : <AudioOutlined />}
-                onClick={() => setIsMuted(!isMuted)}
-                style={{
-                  background: isMuted ? '#ff4d4f' : '#141414',
-                  borderColor: '#1f1f1f',
-                  color: '#ffffff',
-                  borderRadius: '50%',
-                  width: '48px',
-                  height: '48px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              />
-              <Button
-                type={isVideoOff ? 'primary' : 'default'}
-                danger={isVideoOff}
-                icon={<VideoCameraOutlined />}
-                onClick={() => setIsVideoOff(!isVideoOff)}
-                style={{
-                  background: isVideoOff ? '#ff4d4f' : '#141414',
-                  borderColor: '#1f1f1f',
-                  color: '#ffffff',
-                  borderRadius: '50%',
-                  width: '48px',
-                  height: '48px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              />
-              <Button
-                type="default"
-                icon={isFullscreen ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
-                onClick={() => setIsFullscreen(!isFullscreen)}
-                style={{
-                  background: '#141414',
-                  borderColor: '#1f1f1f',
-                  color: '#ffffff',
-                  borderRadius: '50%',
-                  width: '48px',
-                  height: '48px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              />
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Button
-                type="primary"
-                danger
-                icon={<PhoneOutlined />}
-                onClick={() => {
-                  setIsModalVisible(false)
-                  setModalType(null)
-                }}
-                style={{
-                  background: '#ff4d4f',
-                  borderColor: '#ff4d4f',
-                  color: '#ffffff',
-                  borderRadius: '50%',
-                  width: '48px',
-                  height: '48px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}
-              />
-            </div>
-          </div>
+          )}
         </div>
       </Modal>
     </Layout>
