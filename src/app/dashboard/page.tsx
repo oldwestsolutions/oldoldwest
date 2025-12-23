@@ -29,6 +29,22 @@ export default function Dashboard() {
 
   const accountMenuItems: MenuProps['items'] = [
     {
+      key: 'wallet',
+      label: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <WalletOutlined />
+          <span>Wallet</span>
+        </div>
+      ),
+      onClick: () => {
+        setModalType('wallet')
+        setIsModalVisible(true)
+      },
+    },
+    {
+      type: 'divider',
+    },
+    {
       key: 'join-meeting',
       label: (
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -333,18 +349,6 @@ export default function Dashboard() {
           <Text strong style={{ fontSize: 18, color: '#ffffff' }}>OldWest</Text>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <Button 
-            type="text"
-            icon={<WalletOutlined />}
-            onClick={() => {
-              setModalType('wallet')
-              setIsModalVisible(true)
-            }}
-            style={{ 
-              color: '#8c8c8c',
-              borderRadius: 8
-            }}
-          />
           <Button 
             type="text"
             icon={<CalendarOutlined />}
