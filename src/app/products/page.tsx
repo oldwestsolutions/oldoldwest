@@ -1,10 +1,10 @@
 'use client'
 
-import { Layout, Typography, Divider, Space, Card, Row, Col, Header } from 'antd'
+import { Layout, Typography, Divider, Space, Card, Row, Col } from 'antd'
 import Link from 'next/link'
 import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined } from '@ant-design/icons'
 
-const { Content } = Layout
+const { Header, Content } = Layout
 const { Title, Paragraph, Text } = Typography
 
 export default function Products() {

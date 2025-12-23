@@ -1,9 +1,9 @@
 'use client'
 
-import { Layout, Typography, Divider, Space, Card, Row, Col, Table, Header } from 'antd'
+import { Layout, Typography, Divider, Space, Card, Row, Col, Table } from 'antd'
 import Link from 'next/link'
 
-const { Content } = Layout
+const { Header, Content } = Layout
 const { Title, Paragraph, Text } = Typography
 
 export default function Pricing() {
