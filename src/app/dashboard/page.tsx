@@ -8,7 +8,7 @@ import type { MenuProps } from 'antd'
 import dayjs from 'dayjs'
 import { useRouter } from 'next/navigation'
 
-const { Header, Content, Sider } = Layout
+const { Header, Content } = Layout
 const { Title, Text } = Typography
 
 export default function Dashboard() {
@@ -395,7 +395,8 @@ export default function Dashboard() {
           padding: '24px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          minHeight: 'calc(100vh - 64px)'
         }}>
           <Card
             bordered
