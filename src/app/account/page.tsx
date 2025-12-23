@@ -3,19 +3,22 @@
 import { Layout, Typography, Divider, Space, Button, Card, Input, Form, Checkbox } from 'antd'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 const { Header, Content } = Layout
 const { Title, Paragraph, Text } = Typography
 
 export default function Account() {
   const [loading, setLoading] = useState(false)
+  const router = useRouter()
 
   const onFinish = async (values: any) => {
     setLoading(true)
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000))
     setLoading(false)
-    // Redirect would happen here
+    // Redirect to dashboard
+    router.push('/dashboard')
   }
 
   return (
@@ -33,7 +36,7 @@ export default function Account() {
           ← Back to Home
         </Link>
       </Header>
-      <Content style={{ padding: '120px 48px', maxWidth: 500, margin: '0 auto' }}>
+      <Content style={{ padding: '60px 48px', maxWidth: 500, margin: '0 auto' }}>
         <Card 
           bordered 
           style={{ 
@@ -72,11 +75,11 @@ export default function Account() {
             requiredMark={false}
           >
             <Form.Item
-              name="phone"
-              rules={[{ required: true, message: 'Please input your phone number!' }]}
+              name="username"
+              rules={[{ required: true, message: 'Please input your username!' }]}
             >
               <Input
-                placeholder="Phone Number"
+                placeholder="Username"
                 size="large"
                 style={{
                   background: '#000000',
