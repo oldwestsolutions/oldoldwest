@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown } from 'antd'
-import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
 import type { MenuProps } from 'antd'
@@ -209,6 +209,7 @@ export default function Home() {
         <section style={{ 
           minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
+          background: '#0a0a0a',
           padding: '120px 48px',
           display: 'flex',
           alignItems: 'center'
@@ -234,13 +235,26 @@ export default function Home() {
                   <Card 
                     bordered 
                     style={{ 
-                      background: '#0a0a0a', 
+                      background: '#000000', 
                       borderColor: '#1f1f1f',
                       borderRadius: 12,
                       height: '100%'
                     }}
                     bodyStyle={{ padding: 32 }}
                   >
+                    <div style={{ 
+                      width: 56, 
+                      height: 56, 
+                      background: '#141414', 
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 12,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 24
+                    }}>
+                      <TrophyOutlined style={{ fontSize: 28, color: '#595959' }} />
+                    </div>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       Merit Tracking
                     </Title>
@@ -254,13 +268,26 @@ export default function Home() {
                   <Card 
                     bordered 
                     style={{ 
-                      background: '#0a0a0a', 
+                      background: '#000000', 
                       borderColor: '#1f1f1f',
                       borderRadius: 12,
                       height: '100%'
                     }}
                     bodyStyle={{ padding: 32 }}
                   >
+                    <div style={{ 
+                      width: 56, 
+                      height: 56, 
+                      background: '#141414', 
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 12,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 24
+                    }}>
+                      <GiftOutlined style={{ fontSize: 28, color: '#595959' }} />
+                    </div>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       Merit NFTs
                     </Title>
@@ -274,13 +301,26 @@ export default function Home() {
                   <Card 
                     bordered 
                     style={{ 
-                      background: '#0a0a0a', 
+                      background: '#000000', 
                       borderColor: '#1f1f1f',
                       borderRadius: 12,
                       height: '100%'
                     }}
                     bodyStyle={{ padding: 32 }}
                   >
+                    <div style={{ 
+                      width: 56, 
+                      height: 56, 
+                      background: '#141414', 
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 12,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 24
+                    }}>
+                      <RocketOutlined style={{ fontSize: 28, color: '#595959' }} />
+                    </div>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       Incentives
                     </Title>
