@@ -415,7 +415,8 @@ export default function Dashboard() {
           height: '100vh',
           background: '#000000'
         }}
-        closable={false}
+        closable={true}
+        closeIcon={<CloseOutlined style={{ color: '#ffffff', fontSize: 20 }} />}
         maskStyle={{ background: 'rgba(0, 0, 0, 0.95)' }}
       >
         <div style={{ 
@@ -481,7 +482,7 @@ export default function Dashboard() {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Text style={{ color: '#8c8c8c', fontSize: '14px' }}>
-                {modalType === 'contacts' ? 'Contacts Meeting' : modalType === 'calendar' ? 'Calendar Meeting' : 'Mailbox Meeting'}
+                {modalType === 'contacts' ? 'Contacts Meeting' : modalType === 'calendar' ? 'Calendar Meeting' : modalType === 'mailbox' ? 'Mailbox Meeting' : 'Meeting'}
               </Text>
             </div>
 
