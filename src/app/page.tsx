@@ -49,7 +49,7 @@ export default function Home() {
         zIndex: 1000,
         transition: 'top 0.3s ease-in-out'
       }}>
-        <Row align="middle" gutter={16}>
+        <Row align="middle" gutter={24}>
           <Col>
             <div style={{ 
               width: 32, 
@@ -65,7 +65,33 @@ export default function Home() {
             </div>
           </Col>
           <Col>
-            <Text strong style={{ fontSize: 18, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
+            <Link href="/" style={{ textDecoration: 'none' }}>
+              <Text strong style={{ fontSize: 18, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
+            </Link>
+          </Col>
+          <Col>
+            <Link href="/product" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+            >
+              Product
+            </Link>
+          </Col>
+          <Col>
+            <Link href="/solutions" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+            >
+              Solutions
+            </Link>
+          </Col>
+          <Col>
+            <Link href="/pricing-rates" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+            >
+              Pricing
+            </Link>
           </Col>
         </Row>
         <Space size="middle">

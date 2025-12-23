@@ -1,16 +1,32 @@
 'use client'
 
-import { Layout, Typography, Divider, Space, Button, Card, Row, Col } from 'antd'
+import { Layout, Typography, Divider, Space, Button, Card, Row, Col, Dropdown } from 'antd'
 import Link from 'next/link'
+import { DownOutlined } from '@ant-design/icons'
+import type { MenuProps } from 'antd'
 
 const { Content } = Layout
 const { Title, Paragraph, Text } = Typography
 
 export default function LaunchSession() {
+  const launchMenuItems: MenuProps['items'] = [
+    {
+      key: 'host',
+      label: <Link href="/host-session" style={{ color: '#ffffff', textDecoration: 'none' }}>Host Session</Link>,
+    },
+    {
+      key: 'launch',
+      label: <Link href="/launch-session" style={{ color: '#ffffff', textDecoration: 'none' }}>Launch Session</Link>,
+    },
+    {
+      key: 'download',
+      label: <Link href="/download-app" style={{ color: '#ffffff', textDecoration: 'none' }}>Download App</Link>,
+    },
+  ]
   return (
     <Layout style={{ minHeight: '100vh', background: '#000000', color: '#ffffff' }}>
-      <Content style={{ padding: '120px 48px', maxWidth: 900, margin: '0 auto' }}>
-        <div style={{ marginBottom: 48 }}>
+      <Content style={{ padding: '60px 48px', maxWidth: 900, margin: '0 auto' }}>
+        <div style={{ marginBottom: 32 }}>
           <Link href="/" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none' }}>
             ← Back to Home
           </Link>
@@ -62,20 +78,26 @@ export default function LaunchSession() {
             <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
               To launch a session, you must have an authenticated account with sufficient VM minutes balance. Each session consumes minutes based on your activity. Session duration and resource consumption are tracked in real-time and visible through your account dashboard.
             </Paragraph>
-            <Button 
-              type="primary"
-              style={{ 
-                background: '#000000', 
-                borderColor: '#1f1f1f',
-                color: '#ffffff',
-                borderRadius: 12,
-                fontWeight: 600,
-                boxShadow: 'none'
-              }}
-              href="/login"
-            >
-              Login to Launch Session
-            </Button>
+            <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft">
+              <Button 
+                type="primary"
+                style={{ 
+                  background: '#000000', 
+                  borderColor: '#1f1f1f',
+                  color: '#ffffff',
+                  borderRadius: 12,
+                  fontWeight: 600,
+                  boxShadow: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8
+                }}
+                href="/login"
+              >
+                Launch Session
+                <DownOutlined style={{ fontSize: 12 }} />
+              </Button>
+            </Dropdown>
           </Card>
           
           <Card 
