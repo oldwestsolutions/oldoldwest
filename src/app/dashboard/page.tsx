@@ -385,7 +385,6 @@ export default function Dashboard() {
               }}
             >
               Account
-              <DownOutlined style={{ fontSize: 10 }} />
             </Button>
           </Dropdown>
         </div>
