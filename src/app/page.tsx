@@ -799,13 +799,13 @@ export default function Home() {
           
           <Col xs={24} sm={12} md={6}>
             <Title level={5} style={{ color: '#ffffff', marginBottom: 24, fontSize: 14, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-              Merit & Credentials
+              Documentation
             </Title>
             <Space direction="vertical" size="small" style={{ width: '100%' }}>
-              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>NFT Achievements</Link>
-              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Verified Work</Link>
-              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Credentials</Link>
-              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Milestone Tracking</Link>
+              <Link href="/documentation/api" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>API Reference</Link>
+              <Link href="/documentation/developer-guide" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Developer Guide</Link>
+              <Link href="/documentation/integration" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Integration Guide</Link>
+              <Link href="/documentation/sdk" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>SDK Documentation</Link>
             </Space>
           </Col>
           
@@ -911,6 +911,26 @@ export default function Home() {
                 }}
               >
                 Compliance
+              </Link>
+              <Link 
+                href="/whitepaper" 
+                style={{ 
+                  color: '#595959', 
+                  fontSize: 12,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  textShadow: '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff'
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#595959'
+                  e.currentTarget.style.textShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+              >
+                White Paper
               </Link>
             </Space>
           </Col>
