@@ -42,10 +42,6 @@ export default function Home() {
       key: 'launch',
       label: <Link href="/launch-session" style={{ color: '#ffffff', textDecoration: 'none' }}>Launch Session</Link>,
     },
-    {
-      key: 'download',
-      label: <Link href="/download-app" style={{ color: '#ffffff', textDecoration: 'none' }}>Download App</Link>,
-    },
   ]
   return (
     <Layout style={{ minHeight: '100vh', background: '#000000' }}>
@@ -130,9 +126,9 @@ export default function Home() {
               fontWeight: 600,
               boxShadow: 'none'
             }}
-            href="/explore-platform"
+            href="/account"
           >
-            EXPLORE PLATFORM
+            ACCOUNT
           </Button>
         </Space>
       </Header>
@@ -197,14 +193,103 @@ export default function Home() {
                     paddingLeft: 40,
                     paddingRight: 40
                   }}
-                  href="/create-account"
+                  href="/download-app"
                 >
-                  CREATE ACCOUNT
+                  DOWNLOAD APP
                 </Button>
               </Space>
             </Col>
             <Col xs={24} lg={12}>
               <HeroScene />
+            </Col>
+          </Row>
+        </section>
+
+        {/* Cosmos Network & Merit NFTs */}
+        <section style={{ 
+          minHeight: '100vh', 
+          borderBottom: '1px solid #1f1f1f', 
+          padding: '120px 48px',
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+          <Row justify="center" style={{ width: '100%' }}>
+            <Col xs={24} lg={20} xl={16}>
+              <div style={{ marginBottom: 64 }}>
+                <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                  COSMOS NETWORK INTEGRATION
+                </Text>
+                <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
+              </div>
+              
+              <Title level={2} style={{ color: '#ffffff', marginBottom: 24, fontSize: 40, fontWeight: 600 }}>
+                Merit-Based NFTs on Cosmos
+              </Title>
+              <Paragraph style={{ color: '#8c8c8c', fontSize: 18, lineHeight: 1.8, marginBottom: 48 }}>
+                OldWest integrates with the Cosmos Network to enable a transparent, immutable merit system. Achievements are tracked on-chain and automatically minted as NFTs, creating a self-sustaining merit economy.
+              </Paragraph>
+
+              <Row gutter={[32, 32]}>
+                <Col xs={24} md={8}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#0a0a0a', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 32 }}
+                  >
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                      Merit Tracking
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
+                      Users gain merit through verified achievements: completed Coursera courses, social media analytics milestones, and platform contributions. The Cosmos blockchain provides a secure, immutable ledger that permanently records all merit accrual and achievement verification.
+                    </Paragraph>
+                  </Card>
+                </Col>
+
+                <Col xs={24} md={8}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#0a0a0a', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 32 }}
+                  >
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                      Merit NFTs
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
+                      When merit milestones are reached, NFTs are automatically minted on Cosmos. These NFTs serve as proof-of-contribution or proof-of-skill, unlock platform perks like bonus VM minutes or priority BlockSpace access, and are displayed as reputation assets on user profiles.
+                    </Paragraph>
+                  </Card>
+                </Col>
+
+                <Col xs={24} md={8}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#0a0a0a', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 32 }}
+                  >
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                      Incentives
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
+                      Users are rewarded for measurable achievements. NFT issuance and merit accrual are automated via Cosmos smart contracts, creating a self-sustaining merit economy. The system incentivizes skill development, verified contributions, and platform engagement.
+                    </Paragraph>
+                  </Card>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </section>
