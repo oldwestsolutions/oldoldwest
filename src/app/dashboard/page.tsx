@@ -450,7 +450,6 @@ export default function Dashboard() {
             </Row>
           </Card>
         </Content>
-      </Layout>
 
       <Modal
         open={isModalVisible}
