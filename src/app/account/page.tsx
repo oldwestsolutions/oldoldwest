@@ -1,10 +1,10 @@
 'use client'
 
-import { Layout, Typography, Divider, Space, Button, Card, Input, Form, Checkbox, Header } from 'antd'
+import { Layout, Typography, Divider, Space, Button, Card, Input, Form, Checkbox } from 'antd'
 import Link from 'next/link'
 import { useState } from 'react'
 
-const { Content } = Layout
+const { Header, Content } = Layout
 const { Title, Paragraph, Text } = Typography
 
 export default function Account() {
