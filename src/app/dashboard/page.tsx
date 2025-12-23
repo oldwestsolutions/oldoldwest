@@ -1,15 +1,18 @@
 'use client'
 
-import { Layout, Typography, Button, Card, Row, Col, List, Avatar, Input, Tabs, Calendar, Badge, Modal } from 'antd'
-import { UserOutlined, MailOutlined, CalendarOutlined, VideoCameraOutlined, SearchOutlined, PlusOutlined, PhoneOutlined, MessageOutlined, AudioOutlined, AudioMutedOutlined, CloseOutlined, FullscreenOutlined, FullscreenExitOutlined } from '@ant-design/icons'
+import { Layout, Typography, Button, Card, Row, Col, List, Avatar, Input, Tabs, Calendar, Badge, Modal, Dropdown } from 'antd'
+import { UserOutlined, MailOutlined, CalendarOutlined, VideoCameraOutlined, SearchOutlined, PlusOutlined, PhoneOutlined, MessageOutlined, AudioOutlined, AudioMutedOutlined, CloseOutlined, FullscreenOutlined, FullscreenExitOutlined, DownOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import type { Dayjs } from 'dayjs'
+import type { MenuProps } from 'antd'
 import dayjs from 'dayjs'
+import { useRouter } from 'next/navigation'
 
 const { Header, Content, Sider } = Layout
 const { Title, Text } = Typography
 
 export default function Dashboard() {
+  const router = useRouter()
   const [activeTab, setActiveTab] = useState('contacts')
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null)
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -17,6 +20,68 @@ export default function Dashboard() {
   const [isMuted, setIsMuted] = useState(false)
   const [isVideoOff, setIsVideoOff] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
+
+  const handleLogout = () => {
+    // Clear any stored authentication data
+    // Redirect to home page
+    router.push('/')
+  }
+
+  const accountMenuItems: MenuProps['items'] = [
+    {
+      key: 'join-meeting',
+      label: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <PhoneOutlined />
+          <span>Join Meeting</span>
+        </div>
+      ),
+    },
+    {
+      key: 'new-meeting',
+      label: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <VideoCameraOutlined />
+          <span>New Meeting</span>
+        </div>
+      ),
+    },
+    {
+      type: 'divider',
+    },
+    {
+      key: 'profile',
+      label: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <UserOutlined />
+          <span>Profile</span>
+        </div>
+      ),
+    },
+    {
+      key: 'settings',
+      label: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <SettingOutlined />
+          <span>Settings</span>
+        </div>
+      ),
+    },
+    {
+      type: 'divider',
+    },
+    {
+      key: 'logout',
+      label: (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#ff4d4f' }}>
+          <LogoutOutlined />
+          <span>Logout</span>
+        </div>
+      ),
+      danger: true,
+      onClick: handleLogout,
+    },
+  ]
 
   // Mock data
   const contacts = [
@@ -304,39 +369,28 @@ export default function Dashboard() {
               borderRadius: 8
             }}
           />
-          <Button 
-            type="primary"
-            icon={<VideoCameraOutlined />}
-            style={{ 
-              background: '#141414', 
-              borderColor: '#1f1f1f',
-              color: '#ffffff',
-              borderRadius: 12
-            }}
-          >
-            New Meeting
-          </Button>
+          <Dropdown menu={{ items: accountMenuItems }} placement="bottomRight">
+            <Button 
+              type="primary"
+              icon={<UserOutlined />}
+              style={{ 
+                background: '#141414', 
+                borderColor: '#1f1f1f',
+                color: '#ffffff',
+                borderRadius: 12,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 8
+              }}
+            >
+              Account
+              <DownOutlined style={{ fontSize: 10 }} />
+            </Button>
+          </Dropdown>
         </div>
       </Header>
 
-      <Layout>
-        <Sider 
-          width={280} 
-          style={{ 
-            background: '#0a0a0a', 
-            borderRight: '1px solid #1f1f1f',
-            padding: '24px 0'
-          }}
-        >
-          <Tabs
-            activeKey={activeTab}
-            onChange={setActiveTab}
-            tabBarStyle={{ padding: '0 16px', marginBottom: 16 }}
-            items={tabItems}
-          />
-        </Sider>
-
-        <Content style={{ 
+      <Content style={{ 
           background: '#000000', 
           padding: '24px',
           display: 'flex',
