@@ -4,10 +4,10 @@ import { Layout, Typography, Button, Card, Row, Col, List, Avatar, Input, Tabs, 
 import { UserOutlined, MailOutlined, CalendarOutlined, VideoCameraOutlined, SearchOutlined, PlusOutlined, PhoneOutlined, MessageOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import type { Dayjs } from 'dayjs'
+import dayjs from 'dayjs'
 
 const { Header, Content, Sider } = Layout
 const { Title, Text } = Typography
-const { TabPane } = Tabs
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('contacts')
@@ -52,6 +52,189 @@ export default function Dashboard() {
       </ul>
     )
   }
+
+  const tabItems = [
+    {
+      key: 'contacts',
+      label: (
+        <span style={{ color: activeTab === 'contacts' ? '#ffffff' : '#8c8c8c' }}>
+          <UserOutlined style={{ marginRight: 8 }} />
+          Contacts
+        </span>
+      ),
+      children: (
+        <div style={{ padding: '0 16px' }}>
+          <Input
+            placeholder="Search contacts"
+            prefix={<SearchOutlined style={{ color: '#8c8c8c' }} />}
+            style={{
+              background: '#000000',
+              borderColor: '#1f1f1f',
+              color: '#ffffff',
+              borderRadius: 8,
+              marginBottom: 16
+            }}
+          />
+          <List
+            dataSource={contacts}
+            renderItem={(item) => (
+              <List.Item
+                style={{
+                  padding: '12px',
+                  borderRadius: 8,
+                  marginBottom: 8,
+                  background: '#000000',
+                  border: '1px solid #1f1f1f',
+                  cursor: 'pointer'
+                }}
+                actions={[
+                  <Button 
+                    type="text" 
+                    icon={<PhoneOutlined />} 
+                    style={{ color: '#8c8c8c' }}
+                  />,
+                  <Button 
+                    type="text" 
+                    icon={<VideoCameraOutlined />} 
+                    style={{ color: '#8c8c8c' }}
+                  />,
+                ]}
+              >
+                <List.Item.Meta
+                  avatar={
+                    <Avatar 
+                      icon={<UserOutlined />} 
+                      style={{ background: '#141414' }}
+                    />
+                  }
+                  title={
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <Text style={{ color: '#ffffff', fontSize: 14 }}>{item.name}</Text>
+                      <Badge 
+                        status={item.status === 'online' ? 'success' : item.status === 'away' ? 'warning' : 'default'} 
+                        style={{ marginLeft: 8 }}
+                      />
+                    </div>
+                  }
+                  description={<Text style={{ color: '#8c8c8c', fontSize: 12 }}>{item.email}</Text>}
+                />
+              </List.Item>
+            )}
+          />
+          <Button 
+            block 
+            icon={<PlusOutlined />}
+            style={{
+              background: '#141414',
+              borderColor: '#1f1f1f',
+              color: '#ffffff',
+              borderRadius: 8,
+              marginTop: 16
+            }}
+          >
+            Add Contact
+          </Button>
+        </div>
+      ),
+    },
+    {
+      key: 'calendar',
+      label: (
+        <span style={{ color: activeTab === 'calendar' ? '#ffffff' : '#8c8c8c' }}>
+          <CalendarOutlined style={{ marginRight: 8 }} />
+          Calendar
+        </span>
+      ),
+      children: (
+        <div style={{ padding: '0 16px', height: 'calc(100vh - 200px)', overflow: 'auto' }}>
+          <Calendar
+            fullscreen={false}
+            style={{ background: '#000000' }}
+            dateCellRender={dateCellRender}
+            onSelect={(date) => setSelectedDate(date)}
+          />
+        </div>
+      ),
+    },
+    {
+      key: 'mailbox',
+      label: (
+        <span style={{ color: activeTab === 'mailbox' ? '#ffffff' : '#8c8c8c' }}>
+          <MailOutlined style={{ marginRight: 8 }} />
+          Mailbox
+        </span>
+      ),
+      children: (
+        <div style={{ padding: '0 16px' }}>
+          <Input
+            placeholder="Search messages"
+            prefix={<SearchOutlined style={{ color: '#8c8c8c' }} />}
+            style={{
+              background: '#000000',
+              borderColor: '#1f1f1f',
+              color: '#ffffff',
+              borderRadius: 8,
+              marginBottom: 16
+            }}
+          />
+          <List
+            dataSource={messages}
+            renderItem={(item) => (
+              <List.Item
+                style={{
+                  padding: '12px',
+                  borderRadius: 8,
+                  marginBottom: 8,
+                  background: item.unread ? '#141414' : '#000000',
+                  border: '1px solid #1f1f1f',
+                  cursor: 'pointer'
+                }}
+              >
+                <List.Item.Meta
+                  avatar={
+                    <Avatar 
+                      icon={<UserOutlined />} 
+                      style={{ background: '#141414' }}
+                    />
+                  }
+                  title={
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <Text strong style={{ color: '#ffffff', fontSize: 14 }}>{item.from}</Text>
+                      {item.unread && <Badge dot />}
+                    </div>
+                  }
+                  description={
+                    <div>
+                      <Text style={{ color: '#ffffff', fontSize: 13, display: 'block', marginBottom: 4 }}>
+                        {item.subject}
+                      </Text>
+                      <Text style={{ color: '#8c8c8c', fontSize: 12 }}>{item.preview}</Text>
+                      <Text style={{ color: '#595959', fontSize: 11, display: 'block', marginTop: 4 }}>
+                        {item.time}
+                      </Text>
+                    </div>
+                  }
+                />
+              </List.Item>
+            )}
+          />
+          <Button 
+            block 
+            icon={<PlusOutlined />}
+            style={{
+              background: '#141414',
+              borderColor: '#1f1f1f',
+              color: '#ffffff',
+              borderRadius: 8,
+              marginTop: 16
+            }}
+          >
+            Compose
+          </Button>
+        </div>
+      ),
+    },
+  ]
 
   return (
     <Layout style={{ minHeight: '100vh', background: '#000000', color: '#ffffff' }}>
