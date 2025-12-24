@@ -82,30 +82,6 @@ export default function Home() {
               <Text strong style={{ fontSize: 18, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
             </Link>
           </Col>
-          <Col>
-            <Link href="/products" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
-            >
-              Products
-            </Link>
-          </Col>
-          <Col>
-            <Link href="/solutions" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
-            >
-              Solutions
-                    </Link>
-          </Col>
-          <Col>
-            <Link href="/pricing" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
-            >
-              Pricing
-                    </Link>
-          </Col>
         </Row>
         <Space size="middle">
           <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft">
