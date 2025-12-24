@@ -911,7 +911,6 @@ export default function Home() {
               <Link href="/access-network" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Access Network</Link>
               <Link href="/create-account" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Create Account</Link>
               <Link href="/usage-model" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Usage Model</Link>
-              <Link href="/pricing" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Pricing</Link>
             </Space>
           </Col>
           
