@@ -312,7 +312,17 @@ export default function Home() {
                     'education,learning,study'
                   )}`
 
-  return (
+                  // Better stock images from Unsplash with specific dimensions
+                  const stockImages: { [key: string]: string } = {
+                    'Music & Audio Engineering': 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop',
+                    'Graphic Design & Video Editing': 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
+                    'Coding & Software Development': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop',
+                    'Finance': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
+                    'Collaboration & Project-Based Work': 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop',
+                    'Education & Learning': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop'
+                  }
+                  
+                  return (
                     <Col xs={24} sm={12} md={8} lg={6} xl={4} key={index}>
                       <Card
                         bordered
@@ -321,14 +331,13 @@ export default function Home() {
                           borderColor: '#1f1f1f',
                           borderRadius: 12,
                           height: '100%',
-                          minHeight: 300,
                           overflow: 'hidden'
                         }}
                         bodyStyle={{ padding: 0 }}
                       >
-                        <div style={{ position: 'relative', height: 200, background: '#141414' }}>
+                        <div style={{ position: 'relative', height: 180, background: '#141414' }}>
                           <img
-                            src={imageUrl}
+                            src={stockImages[service.title] || imageUrl}
                             alt={service.title}
                             style={{
                               width: '100%',
@@ -345,19 +354,12 @@ export default function Home() {
                               }
                             }}
                           />
-                          <div style={{
-                            position: 'absolute',
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%)',
-                            padding: '24px 32px'
-                          }}>
-                            <Title level={3} style={{ color: '#ffffff', margin: 0, fontSize: 24, fontWeight: 600 }}>
-                              {service.title}
-                            </Title>
-          </div>
-        </div>
+                        </div>
+                        <div style={{ padding: '20px' }}>
+                          <Title level={4} style={{ color: '#ffffff', margin: 0, fontSize: 16, fontWeight: 600, lineHeight: 1.4 }}>
+                            {service.title}
+                          </Title>
+                        </div>
                       </Card>
                     </Col>
                   )
