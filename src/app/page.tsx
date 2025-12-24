@@ -82,6 +82,22 @@ export default function Home() {
               <Text strong style={{ fontSize: 18, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
             </Link>
           </Col>
+          <Col>
+            <Link href="/marketplace" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+            >
+              Marketplace
+            </Link>
+          </Col>
+          <Col>
+            <Link href="/treasury" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+            >
+              Treasury
+            </Link>
+          </Col>
         </Row>
         <Space size="middle">
           <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft">
@@ -286,28 +302,25 @@ export default function Home() {
                     ]
                   }
                 ].map((service, index) => {
-                  // Animated GIFs from Giphy - tech/abstract themed
-                  const animatedImages = [
-                    'https://media.giphy.com/media/3o7aCTPPm4OHfRLSH6/giphy.gif', // Abstract tech
-                    'https://media.giphy.com/media/l0MYC0LajbaPoEADu/giphy.gif', // Digital art
-                    'https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif', // Code/data
-                    'https://media.giphy.com/media/3o7aD2sa0vjP2Zgvva/giphy.gif', // Network/connection
-                    'https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif', // Collaboration
-                    'https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif'  // Learning
-                  ]
+                  // Professional animated stock images from Pexels - relevant to each service
+                  const serviceImages: { [key: string]: string } = {
+                    'Music & Audio Engineering': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
+                    'Graphic Design & Video Editing': 'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
+                    'Coding & Software Development': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
+                    'Finance': 'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
+                    'Collaboration & Project-Based Work': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
+                    'Education & Learning': 'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800'
+                  }
                   
-                  // Alternative: Use Pexels animated video thumbnails
-                  const pexelsVideos = [
-                    'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
-                    'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
-                    'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
-                    'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
-                    'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
-                    'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800'
-                  ]
-                  
-                  // Use Giphy animated GIFs as primary, Pexels as fallback
-                  const imageUrl = animatedImages[index % animatedImages.length]
+                  // Use Unsplash for professional stock images with service-specific keywords
+                  const imageUrl = `https://source.unsplash.com/800x400/?${encodeURIComponent(
+                    service.title === 'Music & Audio Engineering' ? 'music,audio,studio' :
+                    service.title === 'Graphic Design & Video Editing' ? 'design,graphic,creative' :
+                    service.title === 'Coding & Software Development' ? 'coding,programming,computer' :
+                    service.title === 'Finance' ? 'finance,business,data' :
+                    service.title === 'Collaboration & Project-Based Work' ? 'teamwork,collaboration,meeting' :
+                    'education,learning,study'
+                  )}`
                   
                   return (
                     <div key={index} style={{ padding: '0 12px' }}>
@@ -334,16 +347,11 @@ export default function Home() {
                               opacity: 0.9
                             }}
                             onError={(e) => {
-                              // Fallback to Pexels or gradient if Giphy fails
+                              // Fallback to gradient if image fails to load
                               const target = e.target as HTMLImageElement
-                              const fallbackUrl = pexelsVideos[index % pexelsVideos.length]
-                              if (target.src !== fallbackUrl) {
-                                target.src = fallbackUrl
-                              } else {
-                                target.style.display = 'none'
-                                if (target.parentElement) {
-                                  target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
-                                }
+                              target.style.display = 'none'
+                              if (target.parentElement) {
+                                target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
                               }
                             }}
                           />
@@ -732,7 +740,7 @@ export default function Home() {
           </Row>
         </section>
 
-        {/* Trust & Infrastructure */}
+        {/* Verified Identity */}
         <section style={{ 
           minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
@@ -744,7 +752,7 @@ export default function Home() {
             <Col xs={24} lg={20} xl={16}>
               <div style={{ marginBottom: 64 }}>
                 <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                  TRUST & INFRASTRUCTURE
+                  VERIFIED IDENTITY
                 </Text>
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
               </div>
@@ -805,7 +813,8 @@ export default function Home() {
                         background: '#141414',
                         borderColor: '#1f1f1f',
                         color: '#ffffff',
-                        borderRadius: 12
+                        borderRadius: 12,
+                        boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
                       }}
                       href="/create-account"
                     >
