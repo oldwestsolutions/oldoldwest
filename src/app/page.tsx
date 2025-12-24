@@ -285,53 +285,77 @@ export default function Home() {
                       'Mentorship and guided learning sessions'
                     ]
                   }
-                ].map((service, index) => (
-                  <div key={index} style={{ padding: '0 12px' }}>
-                    <Card
-                      bordered
-                      style={{
-                        background: '#000000',
-                        borderColor: '#1f1f1f',
-                        borderRadius: 12,
-                        height: '100%',
-                        minHeight: 300,
-                        overflow: 'hidden'
-                      }}
-                      bodyStyle={{ padding: 0 }}
-                    >
-                      <div style={{ position: 'relative', height: 200, background: '#141414' }}>
-                        <img
-                          src={`https://source.unsplash.com/800x400/?${encodeURIComponent(service.title.toLowerCase().replace(/[^a-z0-9]+/g, ','))}`}
-                          alt={service.title}
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                            opacity: 0.8
-                          }}
-                          onError={(e) => {
-                            // Fallback to gradient if image fails to load
-                            const target = e.target as HTMLImageElement
-                            target.style.display = 'none'
-                            target.parentElement!.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
-                          }}
-                        />
-                        <div style={{
-                          position: 'absolute',
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)',
-                          padding: '24px 32px'
-                        }}>
-                          <Title level={3} style={{ color: '#ffffff', margin: 0, fontSize: 24, fontWeight: 600 }}>
-                            {service.title}
-                          </Title>
+                ].map((service, index) => {
+                  // Map services to animated stock image URLs from Pexels/Giphy or similar
+                  const imageMap: { [key: string]: string } = {
+                    'Music & Audio Engineering': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800',
+                    'Graphic Design & Video Editing': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800',
+                    'Coding & Software Development': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800',
+                    'Finance': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800',
+                    'Collaboration & Project-Based Work': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800',
+                    'Education & Learning': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800'
+                  }
+                  
+                  // Use animated GIFs or video thumbnails from reliable sources
+                  const animatedImages = [
+                    'https://media.giphy.com/media/3o7aCTPPm4OHfRLSH6/giphy.gif',
+                    'https://media.giphy.com/media/l0MYC0LajbaPoEADu/giphy.gif',
+                    'https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif',
+                    'https://media.giphy.com/media/3o7aD2sa0vjP2Zgvva/giphy.gif',
+                    'https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif',
+                    'https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif'
+                  ]
+                  
+                  return (
+                    <div key={index} style={{ padding: '0 12px' }}>
+                      <Card
+                        bordered
+                        style={{
+                          background: '#000000',
+                          borderColor: '#1f1f1f',
+                          borderRadius: 12,
+                          height: '100%',
+                          minHeight: 300,
+                          overflow: 'hidden'
+                        }}
+                        bodyStyle={{ padding: 0 }}
+                      >
+                        <div style={{ position: 'relative', height: 200, background: '#141414' }}>
+                          <img
+                            src={animatedImages[index % animatedImages.length]}
+                            alt={service.title}
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              opacity: 0.9
+                            }}
+                            onError={(e) => {
+                              // Fallback to gradient if image fails to load
+                              const target = e.target as HTMLImageElement
+                              target.style.display = 'none'
+                              if (target.parentElement) {
+                                target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
+                              }
+                            }}
+                          />
+                          <div style={{
+                            position: 'absolute',
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%)',
+                            padding: '24px 32px'
+                          }}>
+                            <Title level={3} style={{ color: '#ffffff', margin: 0, fontSize: 24, fontWeight: 600 }}>
+                              {service.title}
+                            </Title>
+                          </div>
                         </div>
-                      </div>
-                    </Card>
-                  </div>
-                ))}
+                      </Card>
+                    </div>
+                  )
+                })}
               </Carousel>
             </Col>
           </Row>
