@@ -286,25 +286,28 @@ export default function Home() {
                     ]
                   }
                 ].map((service, index) => {
-                  // Map services to animated stock image URLs from Pexels/Giphy or similar
-                  const imageMap: { [key: string]: string } = {
-                    'Music & Audio Engineering': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800',
-                    'Graphic Design & Video Editing': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800',
-                    'Coding & Software Development': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800',
-                    'Finance': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800',
-                    'Collaboration & Project-Based Work': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800',
-                    'Education & Learning': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=1&w=800'
-                  }
-                  
-                  // Use animated GIFs or video thumbnails from reliable sources
+                  // Animated GIFs from Giphy - tech/abstract themed
                   const animatedImages = [
-                    'https://media.giphy.com/media/3o7aCTPPm4OHfRLSH6/giphy.gif',
-                    'https://media.giphy.com/media/l0MYC0LajbaPoEADu/giphy.gif',
-                    'https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif',
-                    'https://media.giphy.com/media/3o7aD2sa0vjP2Zgvva/giphy.gif',
-                    'https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif',
-                    'https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif'
+                    'https://media.giphy.com/media/3o7aCTPPm4OHfRLSH6/giphy.gif', // Abstract tech
+                    'https://media.giphy.com/media/l0MYC0LajbaPoEADu/giphy.gif', // Digital art
+                    'https://media.giphy.com/media/3o7abKhOpu0NwenH3O/giphy.gif', // Code/data
+                    'https://media.giphy.com/media/3o7aD2sa0vjP2Zgvva/giphy.gif', // Network/connection
+                    'https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif', // Collaboration
+                    'https://media.giphy.com/media/3o7abldj0b3rxrZUxW/giphy.gif'  // Learning
                   ]
+                  
+                  // Alternative: Use Pexels animated video thumbnails
+                  const pexelsVideos = [
+                    'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
+                    'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
+                    'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
+                    'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
+                    'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
+                    'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800'
+                  ]
+                  
+                  // Use Giphy animated GIFs as primary, Pexels as fallback
+                  const imageUrl = animatedImages[index % animatedImages.length]
                   
                   return (
                     <div key={index} style={{ padding: '0 12px' }}>
@@ -322,7 +325,7 @@ export default function Home() {
                       >
                         <div style={{ position: 'relative', height: 200, background: '#141414' }}>
                           <img
-                            src={animatedImages[index % animatedImages.length]}
+                            src={imageUrl}
                             alt={service.title}
                             style={{
                               width: '100%',
@@ -331,11 +334,16 @@ export default function Home() {
                               opacity: 0.9
                             }}
                             onError={(e) => {
-                              // Fallback to gradient if image fails to load
+                              // Fallback to Pexels or gradient if Giphy fails
                               const target = e.target as HTMLImageElement
-                              target.style.display = 'none'
-                              if (target.parentElement) {
-                                target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
+                              const fallbackUrl = pexelsVideos[index % pexelsVideos.length]
+                              if (target.src !== fallbackUrl) {
+                                target.src = fallbackUrl
+                              } else {
+                                target.style.display = 'none'
+                                if (target.parentElement) {
+                                  target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
+                                }
                               }
                             }}
                           />
