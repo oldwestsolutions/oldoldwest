@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown, Carousel, List } from 'antd'
+import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown, List } from 'antd'
 import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined, PhoneOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
@@ -212,7 +212,7 @@ export default function Home() {
         </div>
       </section>
 
-        {/* VM Services Carousel */}
+        {/* VM Services */}
         <section style={{ 
           minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
@@ -234,17 +234,7 @@ export default function Home() {
                 Services Offered Through Virtual Machine Environment
               </Title>
 
-              <Carousel
-                autoplay
-                autoplaySpeed={3000}
-                dots={true}
-                infinite
-                slidesToShow={2}
-                slidesToScroll={1}
-                responsive={[
-                  { breakpoint: 1024, settings: { slidesToShow: 1 } }
-                ]}
-              >
+              <Row gutter={[24, 24]}>
                 {[
                   {
                     title: 'Music & Audio Engineering',
@@ -323,7 +313,7 @@ export default function Home() {
                   )}`
                   
                   return (
-                    <div key={index} style={{ padding: '0 12px' }}>
+                    <Col xs={24} sm={12} lg={8} key={index}>
                       <Card
                         bordered
                         style={{
@@ -369,10 +359,10 @@ export default function Home() {
                           </div>
                         </div>
                       </Card>
-                    </div>
+                    </Col>
                   )
                 })}
-              </Carousel>
+              </Row>
             </Col>
           </Row>
         </section>
@@ -827,7 +817,7 @@ export default function Home() {
           </Row>
       </section>
 
-        {/* Platform Carousel */}
+        {/* Integrated Platforms */}
         <section style={{ 
           minHeight: '100vh', 
           background: '#0a0a0a', 
@@ -842,19 +832,8 @@ export default function Home() {
                   INTEGRATED PLATFORMS
                 </Text>
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
-          </div>
-              <Carousel
-                autoplay
-                autoplaySpeed={2000}
-                dots={true}
-                infinite
-                slidesToShow={3}
-                slidesToScroll={1}
-                responsive={[
-                  { breakpoint: 1024, settings: { slidesToShow: 2 } },
-                  { breakpoint: 768, settings: { slidesToShow: 1 } }
-                ]}
-              >
+              </div>
+              <Row gutter={[24, 24]}>
                 {[
                   { name: 'Coursera', logo: 'https://cdn.simpleicons.org/coursera/0056D2' },
                   { name: 'YouTube', logo: 'https://cdn.simpleicons.org/youtube/FF0000' },
@@ -863,7 +842,7 @@ export default function Home() {
                   { name: 'LinkedIn', logo: 'https://cdn.simpleicons.org/linkedin/0A66C2' },
                   { name: 'GitHub', logo: 'https://cdn.simpleicons.org/github/181717' }
                 ].map((platform) => (
-                  <div key={platform.name} style={{ padding: '0 12px' }}>
+                  <Col xs={24} sm={12} md={8} lg={4} key={platform.name}>
                     <Card
                       bordered
                       style={{
@@ -904,9 +883,9 @@ export default function Home() {
                         }}
                       />
                     </Card>
-                  </div>
+                  </Col>
                 ))}
-              </Carousel>
+              </Row>
             </Col>
           </Row>
         </section>
