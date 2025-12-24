@@ -311,9 +311,9 @@ export default function Home() {
                     service.title === 'Collaboration & Project-Based Work' ? 'teamwork,collaboration,meeting' :
                     'education,learning,study'
                   )}`
-                  
-                  return (
-                    <Col xs={24} sm={12} lg={8} key={index}>
+
+  return (
+                    <Col xs={24} sm={12} md={8} lg={6} xl={4} key={index}>
                       <Card
                         bordered
                         style={{
@@ -356,8 +356,8 @@ export default function Home() {
                             <Title level={3} style={{ color: '#ffffff', margin: 0, fontSize: 24, fontWeight: 600 }}>
                               {service.title}
                             </Title>
-                          </div>
-                        </div>
+          </div>
+        </div>
                       </Card>
                     </Col>
                   )
@@ -390,7 +390,7 @@ export default function Home() {
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
                     VM minutes are compute credits that meter your usage of the platform. Each minute represents a unit of virtual machine runtime consumed during your session. Minutes function as a transparent, accountable currency for platform resources, ensuring every interaction has a defined cost.
                   </Paragraph>
-                </div>
+          </div>
 
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
@@ -399,7 +399,7 @@ export default function Home() {
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
                     Minutes ensure accountable resource consumption. Every interaction requires compute resources—processing, storage, bandwidth. Minutes provide transparent, metered access to these resources, preventing abuse and ensuring fair usage across all users.
                   </Paragraph>
-        </div>
+          </div>
 
             <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
@@ -408,7 +408,7 @@ export default function Home() {
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
                     Messaging, viewing content, establishing connections, and all platform interactions consume minutes at defined rates per action type. Rates are published and visible before execution, ensuring complete transparency in resource consumption.
                   </Paragraph>
-                </div>
+        </div>
 
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
@@ -417,7 +417,7 @@ export default function Home() {
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
                     Minutes are purchased and added to your account balance. Usage is deducted from your balance in real-time as you interact with the platform. Balances can be replenished at any time, and usage history is available for complete transparency.
                   </Paragraph>
-                </div>
+          </div>
               </Space>
             </Col>
 
@@ -497,7 +497,7 @@ export default function Home() {
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
                       Total minutes consumed during the current session through all interactions, including messaging, content viewing, and connection establishment.
                     </Paragraph>
-            </div>
+          </div>
                   
                   <div>
                     <Row justify="space-between" style={{ marginBottom: 8 }}>
@@ -511,12 +511,12 @@ export default function Home() {
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
                       Available minutes remaining after deducting all session consumption. This balance will be used for future interactions until replenished.
                     </Paragraph>
-                  </div>
+        </div>
                 </Space>
               </Card>
             </Col>
           </Row>
-        </section>
+      </section>
 
         {/* Tokenomics */}
         <section style={{ 
@@ -534,7 +534,7 @@ export default function Home() {
                   TOKENOMICS
                 </Text>
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
-              </div>
+                </div>
 
               <Title level={2} style={{ color: '#ffffff', marginBottom: 24, fontSize: 40, fontWeight: 600, textAlign: 'center' }}>
                 Platform Tokenomics
@@ -567,7 +567,7 @@ export default function Home() {
                       marginBottom: 24
                     }}>
                       <DatabaseOutlined style={{ fontSize: 28, color: '#595959' }} />
-                    </div>
+                </div>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       Paid Placement
                     </Title>
@@ -600,7 +600,7 @@ export default function Home() {
                       marginBottom: 24
                     }}>
                       <CheckCircleOutlined style={{ fontSize: 28, color: '#595959' }} />
-                    </div>
+                </div>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       Equity Verification
                     </Title>
@@ -633,7 +633,7 @@ export default function Home() {
                       marginBottom: 24
                     }}>
                       <GiftOutlined style={{ fontSize: 28, color: '#595959' }} />
-                </div>
+              </div>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       Merit-Based NFTs
                     </Title>
@@ -683,9 +683,9 @@ export default function Home() {
                         margin: '0 auto 16px'
                       }}>
                         <DatabaseOutlined style={{ fontSize: 40, color: '#595959' }} />
-                      </div>
+            </div>
                       <Text style={{ color: '#ffffff', fontSize: 14, display: 'block' }}>VM Minutes</Text>
-                    </div>
+                  </div>
                     <div style={{ display: 'flex', alignItems: 'center', color: '#595959', fontSize: 24 }}>→</div>
                     <div style={{ textAlign: 'center' }}>
                       <div style={{
@@ -700,9 +700,9 @@ export default function Home() {
                         margin: '0 auto 16px'
                       }}>
                         <GiftOutlined style={{ fontSize: 40, color: '#595959' }} />
-                      </div>
+                </div>
                       <Text style={{ color: '#ffffff', fontSize: 14, display: 'block' }}>Merit NFTs</Text>
-                    </div>
+                      </div>
                     <div style={{ display: 'flex', alignItems: 'center', color: '#595959', fontSize: 24 }}>→</div>
                     <div style={{ textAlign: 'center' }}>
                       <div style={{
@@ -717,7 +717,7 @@ export default function Home() {
                         margin: '0 auto 16px'
                       }}>
                         <CheckCircleOutlined style={{ fontSize: 40, color: '#595959' }} />
-                      </div>
+                    </div>
                       <Text style={{ color: '#ffffff', fontSize: 14, display: 'block' }}>Equity & Placement</Text>
                     </div>
                   </div>
@@ -832,7 +832,7 @@ export default function Home() {
                   INTEGRATED PLATFORMS
                 </Text>
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
-              </div>
+          </div>
               <Row gutter={[24, 24]}>
                 {[
                   { name: 'Coursera', logo: 'https://cdn.simpleicons.org/coursera/0056D2' },
@@ -912,7 +912,7 @@ export default function Home() {
                   borderRadius: 8
                 }}>
                   <div style={{ width: 20, height: 20, background: '#595959', borderRadius: 4 }}></div>
-                </div>
+          </div>
               </Col>
               <Col>
                 <Text style={{ fontSize: 18, color: '#ffffff', fontWeight: 600, letterSpacing: '0.5px' }}>OLDWEST</Text>
