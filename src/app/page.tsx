@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown, Carousel, List } from 'antd'
-import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined, PhoneOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
 import type { MenuProps } from 'antd'
