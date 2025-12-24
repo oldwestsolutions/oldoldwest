@@ -96,7 +96,7 @@ export default function Home() {
               onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
             >
               Solutions
-            </Link>
+                    </Link>
           </Col>
           <Col>
             <Link href="/pricing" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
@@ -104,7 +104,7 @@ export default function Home() {
               onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
             >
               Pricing
-            </Link>
+                    </Link>
           </Col>
         </Row>
         <Space size="middle">
@@ -158,66 +158,67 @@ export default function Home() {
             <HeroVideoBackground />
           </div>
           <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
-          <Row justify="center" align="middle" gutter={[64, 48]} style={{ width: '100%' }}>
-            <Col xs={24} lg={12}>
-              <Title 
-                level={1} 
-                style={{ 
-                  fontSize: 72, 
-                  fontWeight: 700, 
-                  color: '#ffffff',
-                  marginBottom: 32,
-                  lineHeight: 1.1,
-                  letterSpacing: '-0.03em'
-                }}
-              >
-                Create Anything
-              </Title>
-              <Paragraph style={{ fontSize: 20, color: '#8c8c8c', lineHeight: 1.8, marginBottom: 40 }}>
-                Your Virtual Environment. Secure. Sovereign. Limitless
-              </Paragraph>
-              <Space size="middle">
-                <Button 
-                  type="primary"
-                  size="large"
+            <Row justify="center" align="middle" gutter={[64, 48]} style={{ width: '100%' }}>
+              <Col xs={24} lg={12}>
+                <Title 
+                  level={1} 
                   style={{ 
-                    background: '#000000', 
-                    borderColor: '#1f1f1f',
+                    fontSize: 72, 
+                    fontWeight: 700, 
                     color: '#ffffff',
-                    borderRadius: 12,
-                    fontWeight: 600,
-                    height: 52,
-                    paddingLeft: 40,
-                    paddingRight: 40,
-                    boxShadow: 'none'
+                    marginBottom: 32,
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.03em'
                   }}
-                  href="/explore-platform"
                 >
-                  EXPLORE PLATFORM
-                </Button>
-                <Button 
-                  size="large"
-                  style={{ 
-                    background: '#141414', 
-                    borderColor: '#1f1f1f',
-                    color: '#d9d9d9',
-                    borderRadius: 12,
-                    fontWeight: 600,
-                    height: 52,
-                    paddingLeft: 40,
-                    paddingRight: 40
-                  }}
-                  href="/download-app"
-                >
-                  DOWNLOAD APP
-                </Button>
-              </Space>
-            </Col>
-            <Col xs={24} lg={12}>
-              <HeroScene />
-            </Col>
-          </Row>
-        </section>
+                  Create Anything
+                </Title>
+                <Paragraph style={{ fontSize: 20, color: '#8c8c8c', lineHeight: 1.8, marginBottom: 40 }}>
+                  Your Virtual Environment. Secure. Sovereign. Limitless
+                </Paragraph>
+                <Space size="middle">
+                  <Button 
+                    type="primary"
+                    size="large"
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      color: '#ffffff',
+                      borderRadius: 12,
+                      fontWeight: 600,
+                      height: 52,
+                      paddingLeft: 40,
+                      paddingRight: 40,
+                      boxShadow: 'none'
+                    }}
+                    href="/explore-platform"
+                  >
+                    EXPLORE PLATFORM
+                  </Button>
+                  <Button 
+                    size="large"
+                    style={{ 
+                      background: '#141414', 
+                      borderColor: '#1f1f1f',
+                      color: '#d9d9d9',
+                      borderRadius: 12,
+                      fontWeight: 600,
+                      height: 52,
+                      paddingLeft: 40,
+                      paddingRight: 40
+                    }}
+                    href="/download-app"
+                  >
+                    DOWNLOAD APP
+                  </Button>
+                </Space>
+              </Col>
+              <Col xs={24} lg={12}>
+                <HeroScene />
+              </Col>
+            </Row>
+        </div>
+      </section>
 
         {/* VM Services Carousel */}
         <section style={{ 
@@ -235,7 +236,7 @@ export default function Home() {
                   VM SERVICES
                 </Text>
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
-              </div>
+          </div>
               
               <Title level={2} style={{ color: '#ffffff', marginBottom: 48, fontSize: 40, fontWeight: 600, textAlign: 'center' }}>
                 Services Offered Through Virtual Machine Environment
@@ -374,9 +375,9 @@ export default function Home() {
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
                     Minutes ensure accountable resource consumption. Every interaction requires compute resources—processing, storage, bandwidth. Minutes provide transparent, metered access to these resources, preventing abuse and ensuring fair usage across all users.
                   </Paragraph>
-                </div>
+        </div>
 
-                <div>
+            <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                     What Actions Consume Minutes
                   </Title>
@@ -458,7 +459,7 @@ export default function Home() {
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
                       Total time elapsed in your current active session, measured from login to present moment.
                     </Paragraph>
-                  </div>
+              </div>
                   
                   <div>
                     <Row justify="space-between" style={{ marginBottom: 8 }}>
@@ -472,7 +473,7 @@ export default function Home() {
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
                       Total minutes consumed during the current session through all interactions, including messaging, content viewing, and connection establishment.
                     </Paragraph>
-                  </div>
+            </div>
                   
                   <div>
                     <Row justify="space-between" style={{ marginBottom: 8 }}>
@@ -608,7 +609,7 @@ export default function Home() {
                       marginBottom: 24
                     }}>
                       <GiftOutlined style={{ fontSize: 28, color: '#595959' }} />
-                    </div>
+                </div>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       Merit-Based NFTs
                     </Title>
@@ -758,8 +759,8 @@ export default function Home() {
                         marginTop: 16
                       }}>
                         <Text style={{ color: '#8c8c8c', fontSize: 14 }}>+1 (555) 123-4567</Text>
-                      </div>
-                    </div>
+            </div>
+          </div>
                   </Col>
                   <Col xs={24} md={12}>
                     <Title level={3} style={{ color: '#ffffff', marginBottom: 16, fontSize: 28, fontWeight: 600 }}>
@@ -789,7 +790,7 @@ export default function Home() {
               </Card>
             </Col>
           </Row>
-        </section>
+      </section>
 
         {/* Platform Carousel */}
         <section style={{ 
@@ -806,7 +807,7 @@ export default function Home() {
                   INTEGRATED PLATFORMS
                 </Text>
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
-              </div>
+          </div>
               <Carousel
                 autoplay
                 autoplaySpeed={2000}
