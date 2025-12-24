@@ -838,8 +838,15 @@ export default function Home() {
                   { breakpoint: 768, settings: { slidesToShow: 1 } }
                 ]}
               >
-                {['Coursera', 'YouTube', 'TikTok', 'Instagram', 'LinkedIn', 'GitHub'].map((platform) => (
-                  <div key={platform} style={{ padding: '0 12px' }}>
+                {[
+                  { name: 'Coursera', logo: 'https://cdn.simpleicons.org/coursera/0056D2' },
+                  { name: 'YouTube', logo: 'https://cdn.simpleicons.org/youtube/FF0000' },
+                  { name: 'TikTok', logo: 'https://cdn.simpleicons.org/tiktok/000000' },
+                  { name: 'Instagram', logo: 'https://cdn.simpleicons.org/instagram/E4405F' },
+                  { name: 'LinkedIn', logo: 'https://cdn.simpleicons.org/linkedin/0A66C2' },
+                  { name: 'GitHub', logo: 'https://cdn.simpleicons.org/github/181717' }
+                ].map((platform) => (
+                  <div key={platform.name} style={{ padding: '0 12px' }}>
                     <Card
                       bordered
                       style={{
@@ -853,9 +860,32 @@ export default function Home() {
                       }}
                       bodyStyle={{ padding: 32, textAlign: 'center' }}
                     >
-                      <Title level={3} style={{ color: '#ffffff', margin: 0, fontSize: 32, fontWeight: 600 }}>
-                        {platform}
-                      </Title>
+                      <img
+                        src={platform.logo}
+                        alt={platform.name}
+                        style={{
+                          maxWidth: '120px',
+                          maxHeight: '120px',
+                          width: 'auto',
+                          height: 'auto',
+                          objectFit: 'contain'
+                        }}
+                        onError={(e) => {
+                          // Fallback to text if logo fails to load
+                          const target = e.target as HTMLImageElement
+                          target.style.display = 'none'
+                          const parent = target.parentElement
+                          if (parent) {
+                            const title = document.createElement('h3')
+                            title.textContent = platform.name
+                            title.style.color = '#ffffff'
+                            title.style.fontSize = '32px'
+                            title.style.fontWeight = '600'
+                            title.style.margin = '0'
+                            parent.appendChild(title)
+                          }
+                        }}
+                      />
                     </Card>
                   </div>
                 ))}
