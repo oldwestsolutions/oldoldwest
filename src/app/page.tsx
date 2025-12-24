@@ -318,23 +318,41 @@ export default function Home() {
                         borderColor: '#1f1f1f',
                         borderRadius: 12,
                         height: '100%',
-                        minHeight: 300
+                        minHeight: 300,
+                        overflow: 'hidden'
                       }}
-                      bodyStyle={{ padding: 32 }}
+                      bodyStyle={{ padding: 0 }}
                     >
-                      <Title level={3} style={{ color: '#ffffff', marginBottom: 24, fontSize: 24, fontWeight: 600 }}>
-                        {service.title}
-                      </Title>
-                      <List
-                        dataSource={service.items}
-                        renderItem={(item) => (
-                          <List.Item style={{ border: 'none', padding: '8px 0' }}>
-                            <Text style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75 }}>
-                              • {item}
-                            </Text>
-                          </List.Item>
-                        )}
-                      />
+                      <div style={{ position: 'relative', height: 200, background: '#141414' }}>
+                        <img
+                          src={`https://source.unsplash.com/800x400/?${encodeURIComponent(service.title.toLowerCase().replace(/[^a-z0-9]+/g, ','))}`}
+                          alt={service.title}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            opacity: 0.8
+                          }}
+                          onError={(e) => {
+                            // Fallback to gradient if image fails to load
+                            const target = e.target as HTMLImageElement
+                            target.style.display = 'none'
+                            target.parentElement!.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
+                          }}
+                        />
+                        <div style={{
+                          position: 'absolute',
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)',
+                          padding: '24px 32px'
+                        }}>
+                          <Title level={3} style={{ color: '#ffffff', margin: 0, fontSize: 24, fontWeight: 600 }}>
+                            {service.title}
+                          </Title>
+                        </div>
+                      </div>
                     </Card>
                   </div>
                 ))}
