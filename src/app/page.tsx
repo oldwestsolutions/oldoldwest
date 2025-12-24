@@ -1,13 +1,14 @@
 'use client'
 
 import Link from 'next/link'
-import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown } from 'antd'
+import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown, Carousel, List } from 'antd'
 import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
 import type { MenuProps } from 'antd'
 
 const HeroScene = dynamic(() => import('@/components/HeroScene'), { ssr: false })
+const HeroVideoBackground = dynamic(() => import('@/components/HeroVideoBackground'), { ssr: false })
 
 const { Header, Content, Footer } = Layout
 const { Title, Paragraph, Text } = Typography
@@ -140,8 +141,23 @@ export default function Home() {
           borderBottom: '1px solid #1f1f1f', 
           padding: '120px 48px',
           display: 'flex',
-          alignItems: 'center'
+          alignItems: 'center',
+          position: 'relative',
+          overflow: 'hidden'
         }}>
+          {/* Video Background */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 0,
+            opacity: 0.3
+          }}>
+            <HeroVideoBackground />
+          </div>
+          <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <Row justify="center" align="middle" gutter={[64, 48]} style={{ width: '100%' }}>
             <Col xs={24} lg={12}>
               <Title 
@@ -155,12 +171,10 @@ export default function Home() {
                   letterSpacing: '-0.03em'
                 }}
               >
-                Social Infrastructure.
-                <br />
-                Metered by Design.
+                Create Anything
               </Title>
               <Paragraph style={{ fontSize: 20, color: '#8c8c8c', lineHeight: 1.8, marginBottom: 40 }}>
-                OldWest is a VMaaS-based social network. Every user operates inside a virtual environment. Interactions consume minutes. Minutes function like compute credits. Usage is tracked and settled.
+                Your Virtual Environment. Secure. Sovereign. Limitless
               </Paragraph>
               <Space size="middle">
                 <Button 
@@ -205,7 +219,7 @@ export default function Home() {
           </Row>
         </section>
 
-        {/* Cosmos Network & Merit NFTs */}
+        {/* VM Services Carousel */}
         <section style={{ 
           minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
@@ -218,118 +232,112 @@ export default function Home() {
             <Col xs={24} lg={20} xl={16}>
               <div style={{ marginBottom: 64 }}>
                 <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                  COSMOS NETWORK INTEGRATION
+                  VM SERVICES
                 </Text>
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
               </div>
               
-              <Title level={2} style={{ color: '#ffffff', marginBottom: 24, fontSize: 40, fontWeight: 600 }}>
-                Merit-Based NFTs on Cosmos
+              <Title level={2} style={{ color: '#ffffff', marginBottom: 48, fontSize: 40, fontWeight: 600, textAlign: 'center' }}>
+                Services Offered Through Virtual Machine Environment
               </Title>
-              <Paragraph style={{ color: '#8c8c8c', fontSize: 18, lineHeight: 1.8, marginBottom: 48 }}>
-                OldWest integrates with the Cosmos Network to enable a transparent, immutable merit system. Achievements are tracked on-chain and automatically minted as NFTs, creating a self-sustaining merit economy.
-              </Paragraph>
 
-              <Row gutter={[32, 32]}>
-                <Col xs={24} md={8}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#000000', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 32 }}
-                  >
-                    <div style={{ 
-                      width: 56, 
-                      height: 56, 
-                      background: '#141414', 
-                      border: '1px solid #1f1f1f',
-                      borderRadius: 12,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: 24
-                    }}>
-                      <TrophyOutlined style={{ fontSize: 28, color: '#595959' }} />
-                    </div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                      Merit Tracking
-                    </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
-                      Users gain merit through verified achievements: completed Coursera courses, social media analytics milestones, and platform contributions. The Cosmos blockchain provides a secure, immutable ledger that permanently records all merit accrual and achievement verification.
-                    </Paragraph>
-                  </Card>
-                </Col>
-
-                <Col xs={24} md={8}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#000000', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 32 }}
-                  >
-                    <div style={{ 
-                      width: 56, 
-                      height: 56, 
-                      background: '#141414', 
-                      border: '1px solid #1f1f1f',
-                      borderRadius: 12,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: 24
-                    }}>
-                      <GiftOutlined style={{ fontSize: 28, color: '#595959' }} />
-                    </div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                      Merit NFTs
-                    </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
-                      When merit milestones are reached, NFTs are automatically minted on Cosmos. These NFTs serve as proof-of-contribution or proof-of-skill, unlock platform perks like bonus VM minutes or priority BlockSpace access, and are displayed as reputation assets on user profiles.
-                    </Paragraph>
-                  </Card>
-                </Col>
-
-                <Col xs={24} md={8}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#000000', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 32 }}
-                  >
-                    <div style={{ 
-                      width: 56, 
-                      height: 56, 
-                      background: '#141414', 
-                      border: '1px solid #1f1f1f',
-                      borderRadius: 12,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: 24
-                    }}>
-                      <RocketOutlined style={{ fontSize: 28, color: '#595959' }} />
-                    </div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                      Incentives
-                    </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
-                      Users are rewarded for measurable achievements. NFT issuance and merit accrual are automated via Cosmos smart contracts, creating a self-sustaining merit economy. The system incentivizes skill development, verified contributions, and platform engagement.
-                    </Paragraph>
-                  </Card>
-                </Col>
-              </Row>
+              <Carousel
+                autoplay
+                autoplaySpeed={3000}
+                dots={true}
+                infinite
+                slidesToShow={2}
+                slidesToScroll={1}
+                responsive={[
+                  { breakpoint: 1024, settings: { slidesToShow: 1 } }
+                ]}
+              >
+                {[
+                  {
+                    title: 'Music & Audio Engineering',
+                    items: [
+                      'Composing, arranging, and producing music',
+                      'Mixing and mastering tracks',
+                      'Audio synthesis and sound design',
+                      'Collaborative music sessions',
+                      'Practicing or performing with virtual instruments'
+                    ]
+                  },
+                  {
+                    title: 'Graphic Design & Video Editing',
+                    items: [
+                      'Image creation and enhancement',
+                      'Video montage, editing, and post-production',
+                      'Animation and motion graphics',
+                      'AI-assisted content creation (photogenic pictures/videos)',
+                      'Collaborative creative projects'
+                    ]
+                  },
+                  {
+                    title: 'Coding & Software Development',
+                    items: [
+                      'Writing, testing, and deploying code',
+                      'Collaborative coding sessions',
+                      'Algorithm development and experimentation',
+                      'Running scripts, simulations, or software projects'
+                    ]
+                  },
+                  {
+                    title: 'Finance',
+                    items: [
+                      'Algorithmic trading simulations',
+                      'Data analysis for financial markets',
+                      'Portfolio modeling and risk assessment',
+                      'Backtesting trading strategies'
+                    ]
+                  },
+                  {
+                    title: 'Collaboration & Project-Based Work',
+                    items: [
+                      'Multi-user sessions for joint projects',
+                      'Sharing VM resources for teamwork',
+                      'Merit and token rewards for contributions',
+                      'Project tracking and analytics'
+                    ]
+                  },
+                  {
+                    title: 'Education & Learning',
+                    items: [
+                      'Skill-building exercises (coding, music, design)',
+                      'Virtual workshops or tutorials',
+                      'Mentorship and guided learning sessions'
+                    ]
+                  }
+                ].map((service, index) => (
+                  <div key={index} style={{ padding: '0 12px' }}>
+                    <Card
+                      bordered
+                      style={{
+                        background: '#000000',
+                        borderColor: '#1f1f1f',
+                        borderRadius: 12,
+                        height: '100%',
+                        minHeight: 300
+                      }}
+                      bodyStyle={{ padding: 32 }}
+                    >
+                      <Title level={3} style={{ color: '#ffffff', marginBottom: 24, fontSize: 24, fontWeight: 600 }}>
+                        {service.title}
+                      </Title>
+                      <List
+                        dataSource={service.items}
+                        renderItem={(item) => (
+                          <List.Item style={{ border: 'none', padding: '8px 0' }}>
+                            <Text style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75 }}>
+                              • {item}
+                            </Text>
+                          </List.Item>
+                        )}
+                      />
+                    </Card>
+                  </div>
+                ))}
+              </Carousel>
             </Col>
           </Row>
         </section>
@@ -485,7 +493,7 @@ export default function Home() {
           </Row>
         </section>
 
-        {/* What Makes OldWest Different */}
+        {/* Tokenomics */}
         <section style={{ 
           minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
@@ -498,97 +506,200 @@ export default function Home() {
             <Col xs={24} lg={20} xl={16}>
               <div style={{ marginBottom: 64 }}>
                 <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                  WHAT MAKES OLDWEST DIFFERENT
+                  TOKENOMICS
                 </Text>
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
               </div>
+
+              <Title level={2} style={{ color: '#ffffff', marginBottom: 24, fontSize: 40, fontWeight: 600, textAlign: 'center' }}>
+                Platform Tokenomics
+              </Title>
+              <Paragraph style={{ color: '#8c8c8c', fontSize: 18, lineHeight: 1.8, marginBottom: 48, textAlign: 'center' }}>
+                OldWest's tokenomics enable paid placement, equity verification, and merit-based NFTs through a transparent, blockchain-integrated system.
+              </Paragraph>
+
+              <Row gutter={[32, 32]}>
+                <Col xs={24} md={8}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 32 }}
+                  >
+                    <div style={{ 
+                      width: 56, 
+                      height: 56, 
+                      background: '#141414', 
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 12,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 24
+                    }}>
+                      <DatabaseOutlined style={{ fontSize: 28, color: '#595959' }} />
+                    </div>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                      Paid Placement
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
+                      Users can purchase premium placement for content, services, or profiles using VM minutes. This creates a transparent marketplace where visibility is directly tied to platform usage and contribution.
+                    </Paragraph>
+                  </Card>
+                </Col>
+
+                <Col xs={24} md={8}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 32 }}
+                  >
+                    <div style={{ 
+                      width: 56, 
+                      height: 56, 
+                      background: '#141414', 
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 12,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 24
+                    }}>
+                      <CheckCircleOutlined style={{ fontSize: 28, color: '#595959' }} />
+                    </div>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                      Equity Verification
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
+                      Platform equity and ownership stakes are verified on-chain through Cosmos smart contracts. This ensures transparent, immutable records of equity distribution and ownership verification.
+                    </Paragraph>
+                  </Card>
+                </Col>
+
+                <Col xs={24} md={8}>
+                  <Card 
+                    bordered 
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      height: '100%'
+                    }}
+                    bodyStyle={{ padding: 32 }}
+                  >
+                    <div style={{ 
+                      width: 56, 
+                      height: 56, 
+                      background: '#141414', 
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 12,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: 24
+                    }}>
+                      <GiftOutlined style={{ fontSize: 28, color: '#595959' }} />
+                    </div>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                      Merit-Based NFTs
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
+                      Achievements and verified contributions automatically mint NFTs on Cosmos. These tokens unlock platform perks, demonstrate verified skills, and serve as reputation assets.
+                    </Paragraph>
+                  </Card>
+                </Col>
+              </Row>
 
               <Card 
                 bordered 
                 style={{ 
                   background: '#000000', 
                   borderColor: '#1f1f1f',
-                  borderRadius: 12
+                  borderRadius: 12,
+                  marginTop: 48
                 }}
                 bodyStyle={{ padding: 48 }}
               >
-                <Paragraph style={{ fontSize: 18, color: '#d9d9d9', lineHeight: 1.8, marginBottom: 32, textAlign: 'center' }}>
-                  OldWest recognizes achievement and verified work through merit-based NFTs. These tokens signify milestones reached, credentials verified, and contributions made to the platform.
-                </Paragraph>
-                
-                <Row gutter={[32, 32]} style={{ marginTop: 40 }}>
-                  <Col xs={24} md={8}>
+                <Title level={3} style={{ color: '#ffffff', marginBottom: 24, fontSize: 24, fontWeight: 600, textAlign: 'center' }}>
+                  Tokenomics Diagram
+                </Title>
+                <div style={{
+                  background: '#141414',
+                  border: '1px solid #1f1f1f',
+                  borderRadius: 12,
+                  padding: 48,
+                  textAlign: 'center',
+                  minHeight: 300,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
                     <div style={{ textAlign: 'center' }}>
-                      <div style={{ 
-                        width: 64, 
-                        height: 64, 
-                        background: '#141414', 
+                      <div style={{
+                        width: 80,
+                        height: 80,
+                        background: '#0a0a0a',
                         border: '1px solid #1f1f1f',
                         borderRadius: 12,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '0 auto 20px'
+                        margin: '0 auto 16px'
                       }}>
-                        <TrophyOutlined style={{ fontSize: 32, color: '#595959' }} />
+                        <DatabaseOutlined style={{ fontSize: 40, color: '#595959' }} />
                       </div>
-                      <Title level={5} style={{ color: '#ffffff', marginBottom: 12, fontSize: 16, fontWeight: 600 }}>
-                        Milestone Achievements
-                      </Title>
-                      <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.6, margin: 0 }}>
-                        NFTs are minted when you reach significant milestones—message thresholds, connection counts, platform tenure. Each NFT represents a verified achievement in your OldWest journey.
-                      </Paragraph>
+                      <Text style={{ color: '#ffffff', fontSize: 14, display: 'block' }}>VM Minutes</Text>
                     </div>
-                  </Col>
-                  
-                  <Col xs={24} md={8}>
+                    <div style={{ display: 'flex', alignItems: 'center', color: '#595959', fontSize: 24 }}>→</div>
                     <div style={{ textAlign: 'center' }}>
-                      <div style={{ 
-                        width: 64, 
-                        height: 64, 
-                        background: '#141414', 
+                      <div style={{
+                        width: 80,
+                        height: 80,
+                        background: '#0a0a0a',
                         border: '1px solid #1f1f1f',
                         borderRadius: 12,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '0 auto 20px'
+                        margin: '0 auto 16px'
                       }}>
-                        <FileProtectOutlined style={{ fontSize: 32, color: '#595959' }} />
+                        <GiftOutlined style={{ fontSize: 40, color: '#595959' }} />
                       </div>
-                      <Title level={5} style={{ color: '#ffffff', marginBottom: 12, fontSize: 16, fontWeight: 600 }}>
-                        Verified Work
-                      </Title>
-                      <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.6, margin: 0 }}>
-                        Completed projects, verified contributions, and validated work are recorded as NFTs. These tokens provide immutable proof of your accomplishments on the platform.
-                      </Paragraph>
+                      <Text style={{ color: '#ffffff', fontSize: 14, display: 'block' }}>Merit NFTs</Text>
                     </div>
-                  </Col>
-                  
-                  <Col xs={24} md={8}>
+                    <div style={{ display: 'flex', alignItems: 'center', color: '#595959', fontSize: 24 }}>→</div>
                     <div style={{ textAlign: 'center' }}>
-                      <div style={{ 
-                        width: 64, 
-                        height: 64, 
-                        background: '#141414', 
+                      <div style={{
+                        width: 80,
+                        height: 80,
+                        background: '#0a0a0a',
                         border: '1px solid #1f1f1f',
                         borderRadius: 12,
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        margin: '0 auto 20px'
+                        margin: '0 auto 16px'
                       }}>
-                        <CheckCircleFilled style={{ fontSize: 32, color: '#595959' }} />
+                        <CheckCircleOutlined style={{ fontSize: 40, color: '#595959' }} />
                       </div>
-                      <Title level={5} style={{ color: '#ffffff', marginBottom: 12, fontSize: 16, fontWeight: 600 }}>
-                        Credentials
-                      </Title>
-                      <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.6, margin: 0 }}>
-                        Professional credentials, certifications, and verified qualifications are issued as NFTs. These tokens establish your verified identity and expertise within the OldWest network.
-                      </Paragraph>
+                      <Text style={{ color: '#ffffff', fontSize: 14, display: 'block' }}>Equity & Placement</Text>
                     </div>
-                  </Col>
-                </Row>
+                  </div>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, marginTop: 32, maxWidth: 600 }}>
+                    VM minutes are consumed for platform usage. Achievements mint merit NFTs. NFTs unlock paid placement opportunities and equity verification, creating a self-sustaining token economy.
+                  </Paragraph>
+                </div>
               </Card>
             </Col>
           </Row>
@@ -611,90 +722,76 @@ export default function Home() {
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
               </div>
 
-              <Row gutter={[24, 24]}>
-                <Col xs={24} md={8}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#0a0a0a', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 32 }}
-                  >
-                    <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                      PHONE-NUMBER IDENTITY
-                    </Text>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, marginTop: 16, marginBottom: 0 }}>
-                      Every account is verified through a phone number. This establishes a single, verifiable identity tied to your usage and settlement, ensuring accountability and preventing abuse.
-                    </Paragraph>
-                  </Card>
-                </Col>
-
-                <Col xs={24} md={8}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#0a0a0a', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 32 }}
-                  >
-                    <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                      USAGE TRANSPARENCY
-                    </Text>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, marginTop: 16, marginBottom: 0 }}>
-                      All consumption is logged and visible. You can view your usage history, current session consumption, and balance at any time through your account dashboard.
-                    </Paragraph>
-                  </Card>
-                </Col>
-
-                <Col xs={24} md={8}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#0a0a0a', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 32 }}
-                  >
-                    <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                      LOGS & SETTLEMENT
-                    </Text>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, marginTop: 16, marginBottom: 0 }}>
-                      Complete audit trail of all interactions. Settlement occurs automatically against your account balance with full transaction logs available for review.
-                    </Paragraph>
-                  </Card>
-                </Col>
-              </Row>
-
               <Card 
                 bordered 
                 style={{ 
                   background: '#000000', 
                   borderColor: '#1f1f1f',
-                  borderRadius: 12,
-                  marginTop: 40
+                  borderRadius: 12
                 }}
-                bodyStyle={{ padding: 40 }}
+                bodyStyle={{ padding: 48 }}
               >
-                <Text style={{ fontSize: 12, color: '#8c8c8c', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                  UTILITY-GRADE DESIGN
-                </Text>
-                <Paragraph style={{ color: '#d9d9d9', fontSize: 16, lineHeight: 1.8, marginTop: 20, marginBottom: 0 }}>
-                  OldWest is built as infrastructure, not entertainment. The platform operates like a public utility for digital interaction. Every component is designed for reliability, transparency, and accountable resource management. This utility-grade approach ensures consistent performance, predictable costs, and complete visibility into all platform operations.
-                </Paragraph>
+                <Row gutter={[48, 48]} align="middle">
+                  <Col xs={24} md={12}>
+                    <div style={{
+                      width: '100%',
+                      height: 300,
+                      background: '#141414',
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 12,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexDirection: 'column',
+                      gap: 16
+                    }}>
+                      <PhoneOutlined style={{ fontSize: 64, color: '#595959' }} />
+                      <div style={{
+                        width: 120,
+                        height: 80,
+                        background: '#0a0a0a',
+                        border: '1px solid #1f1f1f',
+                        borderRadius: 8,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginTop: 16
+                      }}>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>+1 (555) 123-4567</Text>
+                      </div>
+                    </div>
+                  </Col>
+                  <Col xs={24} md={12}>
+                    <Title level={3} style={{ color: '#ffffff', marginBottom: 16, fontSize: 28, fontWeight: 600 }}>
+                      Phone Number Verification
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
+                      All users sign up with a verified phone number, ensuring every account is tied to a real, verifiable identity. This telecom-verified secure system connects you only with verified individuals.
+                    </Paragraph>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
+                      The phone number verification process establishes a single, accountable identity tied to all usage and settlement activities, preventing abuse and ensuring platform security.
+                    </Paragraph>
+                    <Button 
+                      type="primary"
+                      size="large"
+                      style={{
+                        background: '#141414',
+                        borderColor: '#1f1f1f',
+                        color: '#ffffff',
+                        borderRadius: 12
+                      }}
+                      href="/create-account"
+                    >
+                      Sign Up with Phone Number
+                    </Button>
+                  </Col>
+                </Row>
               </Card>
             </Col>
           </Row>
         </section>
 
-        {/* Call to Action */}
+        {/* Platform Carousel */}
         <section style={{ 
           minHeight: '100vh', 
           background: '#0a0a0a', 
@@ -703,51 +800,47 @@ export default function Home() {
           alignItems: 'center'
         }}>
           <Row justify="center" style={{ width: '100%' }}>
-            <Col xs={24} lg={16} xl={12}>
-              <div style={{ textAlign: 'center' }}>
-                <Title level={2} style={{ color: '#ffffff', marginBottom: 32, fontSize: 48, fontWeight: 600 }}>
-                  Access the Network
-                </Title>
-                <Paragraph style={{ color: '#8c8c8c', fontSize: 18, marginBottom: 48, lineHeight: 1.75 }}>
-                  Create an account to begin using OldWest. View the usage model documentation for detailed information on rates and settlement.
-                </Paragraph>
-                <Space size="large">
-                  <Button 
-                    type="primary"
-                    size="large"
-                    style={{ 
-                      background: '#000000', 
-                      borderColor: '#1f1f1f',
-                      color: '#ffffff',
-                      borderRadius: 12,
-                      fontWeight: 600,
-                      height: 56,
-                      paddingLeft: 40,
-                      paddingRight: 40,
-                      boxShadow: 'none'
-                    }}
-                    href="/login"
-                  >
-                    CREATE ACCOUNT
-                  </Button>
-                  <Button 
-                    size="large"
-                    style={{ 
-                      background: '#141414', 
-                      borderColor: '#1f1f1f',
-                      color: '#d9d9d9',
-                      borderRadius: 12,
-                      fontWeight: 600,
-                      height: 56,
-                      paddingLeft: 40,
-                      paddingRight: 40
-                    }}
-                    href="/usage-model"
-                  >
-                    CREATE ACCOUNT
-                  </Button>
-                </Space>
+            <Col xs={24} lg={20} xl={16}>
+              <div style={{ marginBottom: 64 }}>
+                <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                  INTEGRATED PLATFORMS
+                </Text>
+                <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
               </div>
+              <Carousel
+                autoplay
+                autoplaySpeed={2000}
+                dots={true}
+                infinite
+                slidesToShow={3}
+                slidesToScroll={1}
+                responsive={[
+                  { breakpoint: 1024, settings: { slidesToShow: 2 } },
+                  { breakpoint: 768, settings: { slidesToShow: 1 } }
+                ]}
+              >
+                {['Coursera', 'YouTube', 'TikTok', 'Instagram', 'LinkedIn', 'GitHub'].map((platform) => (
+                  <div key={platform} style={{ padding: '0 12px' }}>
+                    <Card
+                      bordered
+                      style={{
+                        background: '#000000',
+                        borderColor: '#1f1f1f',
+                        borderRadius: 12,
+                        height: 200,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                      bodyStyle={{ padding: 32, textAlign: 'center' }}
+                    >
+                      <Title level={3} style={{ color: '#ffffff', margin: 0, fontSize: 32, fontWeight: 600 }}>
+                        {platform}
+                      </Title>
+                    </Card>
+                  </div>
+                ))}
+              </Carousel>
             </Col>
           </Row>
         </section>
