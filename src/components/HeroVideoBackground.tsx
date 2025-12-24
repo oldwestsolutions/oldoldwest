@@ -1,119 +1,65 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-
-// Using direct video URLs - these are example placeholder URLs
-// In production, you would host these videos or use a CDN
-const videoUrls = [
-  'https://pixabay.com/videos/download/video-26533_medium.mp4',
-  'https://pixabay.com/videos/download/video-249067_medium.mp4',
-  'https://pixabay.com/videos/download/video-273927_medium.mp4',
-  'https://pixabay.com/videos/download/video-202134_medium.mp4',
-  'https://pixabay.com/videos/download/video-83152_medium.mp4',
-  'https://pixabay.com/videos/download/video-67823_medium.mp4',
-  'https://pixabay.com/videos/download/video-286879_medium.mp4',
-]
+import { useEffect, useState } from 'react'
 
 export default function HeroVideoBackground() {
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
-  const [videosLoaded, setVideosLoaded] = useState<boolean[]>(new Array(videoUrls.length).fill(false))
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+  const [gradientAngle, setGradientAngle] = useState(0)
+  const [colorShift, setColorShift] = useState(0)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentVideoIndex((prev) => (prev + 1) % videoUrls.length)
-    }, 1000) // Change video every 1 second
+    // Animate gradient angle
+    const angleInterval = setInterval(() => {
+      setGradientAngle((prev) => (prev + 0.5) % 360)
+    }, 50)
 
-    return () => clearInterval(interval)
-  }, [])
+    // Animate color shift
+    const colorInterval = setInterval(() => {
+      setColorShift((prev) => (prev + 1) % 100)
+    }, 100)
 
-  useEffect(() => {
-    // Preload all videos
-    videoUrls.forEach((url, index) => {
-      const video = document.createElement('video')
-      video.src = url
-      video.muted = true
-      video.preload = 'auto'
-      video.onloadeddata = () => {
-        setVideosLoaded((prev) => {
-          const newState = [...prev]
-          newState[index] = true
-          return newState
-        })
-      }
-      video.onerror = () => {
-        // Video failed to load, mark as loaded anyway to prevent infinite retries
-        setVideosLoaded((prev) => {
-          const newState = [...prev]
-          newState[index] = true
-          return newState
-        })
-      }
-    })
-  }, [])
-
-  useEffect(() => {
-    // Play current video
-    const currentVideo = videoRefs.current[currentVideoIndex]
-    if (currentVideo) {
-      currentVideo.currentTime = 0
-      currentVideo.play().catch(() => {
-        // Handle autoplay restrictions
-      })
+    return () => {
+      clearInterval(angleInterval)
+      clearInterval(colorInterval)
     }
+  }, [])
 
-    // Pause other videos
-    videoRefs.current.forEach((video, index) => {
-      if (video && index !== currentVideoIndex) {
-        video.pause()
-      }
-    })
-  }, [currentVideoIndex])
+  // Create animated gradient background
+  const getGradient = () => {
+    const baseColor1 = `hsl(${(colorShift * 3.6) % 360}, 10%, ${8 + Math.sin(colorShift * 0.1) * 2}%)`
+    const baseColor2 = `hsl(${(colorShift * 3.6 + 60) % 360}, 8%, ${12 + Math.cos(colorShift * 0.1) * 2}%)`
+    const baseColor3 = `hsl(${(colorShift * 3.6 + 120) % 360}, 10%, ${10 + Math.sin(colorShift * 0.15) * 2}%)`
+    
+    return `linear-gradient(${gradientAngle}deg, ${baseColor1} 0%, ${baseColor2} 33%, ${baseColor3} 66%, ${baseColor1} 100%)`
+  }
 
   return (
-    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-      {videoUrls.map((url, index) => (
-        <video
-          key={index}
-          ref={(el) => {
-            videoRefs.current[index] = el
-          }}
-          src={url}
-          muted
-          playsInline
-          preload="auto"
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            opacity: index === currentVideoIndex ? 1 : 0,
-            transition: 'opacity 0.5s ease-in-out',
-            zIndex: index === currentVideoIndex ? 1 : 0
-          }}
-          onError={() => {
-            // If video fails to load, show a gradient background instead
-            console.warn(`Video ${index} failed to load: ${url}`)
-          }}
-        />
-      ))}
-      {/* Fallback gradient background if videos don't load */}
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        background: getGradient(),
+        backgroundSize: '200% 200%',
+        animation: 'gradientMove 15s ease infinite',
+        transition: 'background 0.3s ease'
+      }}
+    >
+      {/* Animated particles effect */}
       <div
         style={{
           position: 'absolute',
-          top: 0,
-          left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 50%, #0a0a0a 100%)',
-          zIndex: 0,
-          opacity: videosLoaded.every(loaded => !loaded) ? 1 : 0,
-          transition: 'opacity 0.5s ease-in-out'
+          background: `
+            radial-gradient(circle at ${20 + Math.sin(colorShift * 0.1) * 10}% ${30 + Math.cos(colorShift * 0.1) * 10}%, rgba(89, 89, 89, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at ${80 + Math.cos(colorShift * 0.15) * 10}% ${70 + Math.sin(colorShift * 0.15) * 10}%, rgba(89, 89, 89, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at ${50 + Math.sin(colorShift * 0.2) * 15}% ${50 + Math.cos(colorShift * 0.2) * 15}%, rgba(89, 89, 89, 0.05) 0%, transparent 50%)
+          `,
+          animation: 'particleMove 20s ease infinite'
         }}
       />
     </div>
   )
 }
-
