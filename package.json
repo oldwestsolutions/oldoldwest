@@ -30,7 +30,9 @@
     "three": "^0.161.0",
     "@react-three/fiber": "^8.15.11",
     "@react-three/drei": "^9.88.13",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "next-cloudinary": "^5.11.0",
+    "cloudinary": "^1.41.0"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
