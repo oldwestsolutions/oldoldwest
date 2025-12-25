@@ -150,8 +150,6 @@ function ConnectionLine({
   end: [number, number, number]
   color: string 
 }) {
-  const lineRef = useRef<THREE.Line>(null!)
-  
   const points = useMemo(() => {
     const curve = new THREE.QuadraticBezierCurve3(
       new THREE.Vector3(...start),
@@ -161,15 +159,8 @@ function ConnectionLine({
     return curve.getPoints(50)
   }, [start, end])
 
-  useFrame((state) => {
-    if (lineRef.current) {
-      const material = lineRef.current.material as THREE.LineBasicMaterial
-      material.opacity = 0.4 + Math.sin(state.clock.elapsedTime * 2) * 0.2
-    }
-  })
-
   return (
-    <line ref={lineRef}>
+    <line>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
@@ -178,7 +169,7 @@ function ConnectionLine({
           itemSize={3}
         />
       </bufferGeometry>
-      <lineBasicMaterial color={color} opacity={0.4} transparent linewidth={2} />
+      <lineBasicMaterial color={color} opacity={0.4} transparent />
     </line>
   )
 }
