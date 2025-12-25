@@ -67,11 +67,11 @@ export default function Treasury() {
         </Row>
       </Header>
 
-      <Content style={{ paddingTop: isHeaderVisible ? 120 : 60 }}>
+      <Content style={{ paddingTop: isHeaderVisible ? 80 : 40 }}>
         {/* Hero and Buy Coins Side by Side */}
         <div style={{
           background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 100%)',
-          padding: '80px 48px',
+          padding: '40px 48px',
           borderBottom: '1px solid #1f1f1f'
         }}>
           <Row gutter={[64, 48]} align="middle">
