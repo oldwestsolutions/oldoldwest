@@ -549,191 +549,82 @@ export default function Home() {
                 Platform Tokenomics
               </Title>
               <Paragraph style={{ color: '#8c8c8c', fontSize: 18, lineHeight: 1.8, marginBottom: 48, textAlign: 'center' }}>
-                OldWest's tokenomics enable paid placement, equity verification, and merit-based NFTs through a transparent, blockchain-integrated system.
+                Token = Merit + Compute + Access. Earn by creating and collaborating, spend to access tools and exposure, stake to amplify visibility.
               </Paragraph>
-
-              <Row gutter={[32, 32]}>
-                <Col xs={24} md={8}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#000000', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 32 }}
-                  >
-                    <div style={{ 
-                      width: 56, 
-                      height: 56, 
-                      background: '#141414', 
-                      border: '1px solid #1f1f1f',
-                      borderRadius: 12,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: 24
-                    }}>
-                      <DatabaseOutlined style={{ fontSize: 28, color: '#595959' }} />
-                </div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                      Paid Placement
-                    </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
-                      Users can purchase premium placement for content, services, or profiles using VM minutes. This creates a transparent marketplace where visibility is directly tied to platform usage and contribution.
-                    </Paragraph>
-                  </Card>
-                </Col>
-
-                <Col xs={24} md={8}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#000000', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 32 }}
-                  >
-                    <div style={{ 
-                      width: 56, 
-                      height: 56, 
-                      background: '#141414', 
-                      border: '1px solid #1f1f1f',
-                      borderRadius: 12,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: 24
-                    }}>
-                      <CheckCircleOutlined style={{ fontSize: 28, color: '#595959' }} />
-                </div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                      Equity Verification
-                    </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
-                      Platform equity and ownership stakes are verified on-chain through Cosmos smart contracts. This ensures transparent, immutable records of equity distribution and ownership verification.
-                    </Paragraph>
-                  </Card>
-                </Col>
-
-                <Col xs={24} md={8}>
-                  <Card 
-                    bordered 
-                    style={{ 
-                      background: '#000000', 
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      height: '100%'
-                    }}
-                    bodyStyle={{ padding: 32 }}
-                  >
-                    <div style={{ 
-                      width: 56, 
-                      height: 56, 
-                      background: '#141414', 
-                      border: '1px solid #1f1f1f',
-                      borderRadius: 12,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      marginBottom: 24
-                    }}>
-                      <GiftOutlined style={{ fontSize: 28, color: '#595959' }} />
-              </div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                      Merit-Based NFTs
-                    </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, lineHeight: 1.75, margin: 0 }}>
-                      Achievements and verified contributions automatically mint NFTs on Cosmos. These tokens unlock platform perks, demonstrate verified skills, and serve as reputation assets.
-                    </Paragraph>
-                  </Card>
-                </Col>
-              </Row>
 
               <Card 
                 bordered 
                 style={{ 
                   background: '#000000', 
                   borderColor: '#1f1f1f',
-                  borderRadius: 12,
-                  marginTop: 48
+                  borderRadius: 12
                 }}
                 bodyStyle={{ padding: 48 }}
               >
-                <Title level={3} style={{ color: '#ffffff', marginBottom: 24, fontSize: 24, fontWeight: 600, textAlign: 'center' }}>
-                  Tokenomics Diagram
-                </Title>
-                <div style={{
-                  background: '#141414',
-                  border: '1px solid #1f1f1f',
-                  borderRadius: 12,
-                  padding: 48,
-                  textAlign: 'center',
-                  minHeight: 300,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', justifyContent: 'center' }}>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{
-                        width: 80,
-                        height: 80,
-                        background: '#0a0a0a',
-                        border: '1px solid #1f1f1f',
-                        borderRadius: 12,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 16px'
-                      }}>
-                        <DatabaseOutlined style={{ fontSize: 40, color: '#595959' }} />
-            </div>
-                      <Text style={{ color: '#ffffff', fontSize: 14, display: 'block' }}>VM Minutes</Text>
+                <Space direction="vertical" size="large" style={{ width: '100%' }}>
+                  <div>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Earning Tokens / Merit</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Users earn tokens based on measurable work and contributions: completing projects in music, design, coding, finance, or AI workloads; collaborating with other users in shared VMs; contributing high-quality output that passes verification or gains recognition; engaging in challenges, contests, or merit-based competitions. Tokens are non-speculative and represent platform influence, compute access, and earned merit.
+                    </Paragraph>
                   </div>
-                    <div style={{ display: 'flex', alignItems: 'center', color: '#595959', fontSize: 24 }}>→</div>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{
-                        width: 80,
-                        height: 80,
-                        background: '#0a0a0a',
-                        border: '1px solid #1f1f1f',
-                        borderRadius: 12,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 16px'
-                      }}>
-                        <GiftOutlined style={{ fontSize: 40, color: '#595959' }} />
-                </div>
-                      <Text style={{ color: '#ffffff', fontSize: 14, display: 'block' }}>Merit NFTs</Text>
-                      </div>
-                    <div style={{ display: 'flex', alignItems: 'center', color: '#595959', fontSize: 24 }}>→</div>
-                    <div style={{ textAlign: 'center' }}>
-                      <div style={{
-                        width: 80,
-                        height: 80,
-                        background: '#0a0a0a',
-                        border: '1px solid #1f1f1f',
-                        borderRadius: 12,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        margin: '0 auto 16px'
-                      }}>
-                        <CheckCircleOutlined style={{ fontSize: 40, color: '#595959' }} />
-                    </div>
-                      <Text style={{ color: '#ffffff', fontSize: 14, display: 'block' }}>Equity & Placement</Text>
-                    </div>
+
+                  <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+
+                  <div>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Spending / Using Tokens</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Tokens can be spent to: access premium VM features or specialized software; collaborate with other users in private sessions; purchase sponsored visibility for profiles or work in search/discovery features; unlock specialized tools, templates, or AI assistants.
+                    </Paragraph>
                   </div>
-                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, marginTop: 32, maxWidth: 600 }}>
-                    VM minutes are consumed for platform usage. Achievements mint merit NFTs. NFTs unlock paid placement opportunities and equity verification, creating a self-sustaining token economy.
-                  </Paragraph>
-                </div>
+
+                  <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+
+                  <div>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Staking & Exposure</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Users can stake tokens to promote their work or profiles in category searches (similar to sponsored content). Staking acts as both visibility leverage and merit investment, aligning effort with exposure.
+                    </Paragraph>
+                  </div>
+
+                  <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+
+                  <div>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Supply & Flow</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Tokens are generated by the platform as users earn merit. They flow between users and the platform as: payments for collaboration or visibility; consumption of VM resources; rewards for contribution and output. The system is self-contained, ensuring the token's purpose is work-driven, not speculative.
+                    </Paragraph>
+                  </div>
+
+                  <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+
+                  <div>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 600 }}>Summary</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Token = Merit + Compute + Access. Users earn by creating and collaborating, spend to access tools and exposure, and stake to amplify visibility. OldWest.net's tokenomics incentivizes skill, productivity, and contribution, not speculation.
+                    </Paragraph>
+                  </div>
+                </Space>
               </Card>
             </Col>
           </Row>
