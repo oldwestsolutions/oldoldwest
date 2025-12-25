@@ -533,19 +533,22 @@ export default function Home() {
                 opacity: 0.6
               }}>
                 <svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Wallet Body */}
-                  <rect x="20" y="30" width="80" height="40" rx="4" fill="#1f1f1f" stroke="#595959" strokeWidth="1.5"/>
-                  {/* Wallet Flap */}
-                  <path d="M20 30 Q20 20 30 20 L90 20 Q100 20 100 30" stroke="#595959" strokeWidth="1.5" fill="#0a0a0a"/>
+                  {/* Coin Purse Body */}
+                  <path d="M35 25 Q35 20 40 20 L80 20 Q85 20 85 25 L85 55 Q85 60 80 60 L40 60 Q35 60 35 55 Z" fill="#1f1f1f" stroke="#595959" strokeWidth="1.5"/>
+                  {/* Drawstring Opening */}
+                  <ellipse cx="60" cy="25" rx="25" ry="3" fill="#0a0a0a" stroke="#595959" strokeWidth="1.5"/>
+                  {/* Drawstring Cord */}
+                  <path d="M35 25 Q30 22 30 20" stroke="#595959" strokeWidth="1.5" fill="none"/>
+                  <path d="M85 25 Q90 22 90 20" stroke="#595959" strokeWidth="1.5" fill="none"/>
                   {/* Coin 1 */}
-                  <circle cx="40" cy="50" r="8" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
-                  <text x="40" y="54" textAnchor="middle" fill="#0a0a0a" fontSize="8" fontWeight="600">$</text>
+                  <circle cx="45" cy="42" r="6" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
                   {/* Coin 2 */}
-                  <circle cx="60" cy="50" r="8" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
-                  <text x="60" y="54" textAnchor="middle" fill="#0a0a0a" fontSize="8" fontWeight="600">$</text>
+                  <circle cx="60" cy="45" r="6" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
                   {/* Coin 3 */}
-                  <circle cx="80" cy="50" r="8" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
-                  <text x="80" y="54" textAnchor="middle" fill="#0a0a0a" fontSize="8" fontWeight="600">$</text>
+                  <circle cx="75" cy="42" r="6" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
+                  {/* Coin 4 (smaller, in back) */}
+                  <circle cx="52" cy="50" r="5" fill="#1f1f1f" stroke="#595959" strokeWidth="1"/>
+                  <circle cx="68" cy="50" r="5" fill="#1f1f1f" stroke="#595959" strokeWidth="1"/>
                 </svg>
               </div>
             </Col>
