@@ -395,37 +395,37 @@ export default function Home() {
               <Space direction="vertical" size="large" style={{ width: '100%' }}>
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    What Are Coins?
+                    Platform Currency
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Coins are like money you use on OldWest. Think of them like tokens at an arcade! Every time you do something on the platform, like sending a message or using a virtual machine, it costs a few coins. You can see how many coins each action costs before you do it.
+                    Coins serve as the primary currency for platform interactions and resource consumption. Each platform action—including messaging, content access, and virtual machine utilization—is metered through a transparent coin-based system. All consumption rates are displayed prior to execution, ensuring complete transparency in resource allocation.
                   </Paragraph>
           </div>
 
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    Why Do We Use Coins?
+                    Resource Management
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Coins make sure everyone uses the platform fairly. Just like you need tickets to play games at an arcade, you need coins to use OldWest. This helps keep the platform running smoothly for everyone and makes sure no one uses too much at once.
+                    The coin system ensures equitable resource distribution across all platform users. By implementing a metered consumption model, we maintain platform stability, prevent resource abuse, and guarantee fair access to computational resources for all participants.
                   </Paragraph>
           </div>
 
             <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    What Uses Coins?
+                    Consumption Model
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Almost everything you do uses coins! Sending messages, looking at content, connecting with other people, and using virtual machines all cost coins. The good news is you can always see how many coins something costs before you do it, so there are no surprises!
+                    Platform interactions including messaging, content viewing, user connections, and virtual machine operations consume coins at predefined rates. All consumption rates are published and visible before action execution, providing complete transparency in resource utilization and cost management.
                   </Paragraph>
         </div>
 
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    How Do You Get Coins?
+                    Acquisition & Balance Management
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    You buy coins and they go into your wallet! When you do things on the platform, coins are taken out of your wallet right away. Don't worry - you can always buy more coins whenever you need them. You can also see exactly how many coins you've used, just like checking your piggy bank!
+                    Coins are purchased and deposited directly into your account wallet. Consumption is deducted in real-time as platform interactions occur. Balances can be replenished at any time through the treasury, and complete usage history is available for comprehensive account transparency and financial tracking.
                   </Paragraph>
           </div>
               </Space>
@@ -474,7 +474,7 @@ export default function Home() {
                     </Col>
                   </Row>
                   <Paragraph style={{ color: '#595959', fontSize: 13, marginTop: 16, lineHeight: 1.6, marginBottom: 0 }}>
-                    You have 1,247 coins in your wallet right now! Each message you send costs 0.5 coins. When you send a message, the coins are taken out of your wallet right away.
+                    Your current account balance displays 1,247 coins available. The consumption rate for messaging is 0.5 coins per message sent. This rate applies to all direct messages and is deducted immediately upon message delivery.
                   </Paragraph>
                 </div>
 
@@ -491,7 +491,7 @@ export default function Home() {
                       </Col>
                     </Row>
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      How long you've been on OldWest since you logged in today.
+                      Total time elapsed in your current active session, measured from login to present moment.
                     </Paragraph>
               </div>
                   
@@ -505,7 +505,7 @@ export default function Home() {
                       </Col>
                     </Row>
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      You've used 23 coins since you logged in today! This includes all the messages you sent, things you looked at, and people you connected with.
+                      Total coins consumed during the current session through all interactions, including messaging, content viewing, and connection establishment.
                     </Paragraph>
           </div>
                   
@@ -519,7 +519,7 @@ export default function Home() {
                       </Col>
                     </Row>
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      You still have 1,224 coins left in your wallet! You can use these coins for everything you want to do on OldWest. When you run low, just buy more coins!
+                      Available coins remaining after deducting all session consumption. This balance will be used for future interactions until replenished through the treasury.
                     </Paragraph>
         </div>
                 </Space>
