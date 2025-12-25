@@ -175,7 +175,7 @@ export default function Treasury() {
                           fontFamily: 'monospace'
                         }}>
                           {pkg.amount.toLocaleString()}
-                        </Text>
+                        </Title>
                         <Text style={{ 
                           color: pkg.color, 
                           fontSize: 14, 
