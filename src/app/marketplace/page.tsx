@@ -3,6 +3,7 @@
 import { Layout, Typography, Row, Col, Card, Input, Button, Space, Tag, Avatar, Rate, Divider } from 'antd'
 import Link from 'next/link'
 import { SearchOutlined, StarFilled, FireOutlined, ClockCircleOutlined } from '@ant-design/icons'
+import { useState, useEffect } from 'react'
 
 const { Header, Content } = Layout
 const { Title, Text, Paragraph } = Typography
