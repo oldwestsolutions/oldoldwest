@@ -317,18 +317,17 @@ export default function CategoryPage() {
         <div style={{
           background: '#0a0a0a',
           padding: isMobile ? '24px' : '32px 48px',
-          borderBottom: '1px solid #1f1f1f',
-          position: 'sticky',
-          top: 72,
-          zIndex: 100
+          borderBottom: '1px solid #1f1f1f'
         }}>
           <Row gutter={[16, 16]} align="middle">
             <Col xs={24} sm={12} md={6}>
               <Select
                 placeholder="Service options"
-                style={{ width: '100%', background: '#000000' }}
+                style={{ width: '100%' }}
+                className="category-select"
                 suffixIcon={<DownOutlined style={{ color: '#8c8c8c' }} />}
                 dropdownStyle={{ background: '#0a0a0a', borderColor: '#1f1f1f' }}
+                popupClassName="category-select-dropdown"
               >
                 <Option value="all">All Services</Option>
                 <Option value="basic">Basic</Option>
@@ -339,9 +338,11 @@ export default function CategoryPage() {
             <Col xs={24} sm={12} md={6}>
               <Select
                 placeholder="Seller details"
-                style={{ width: '100%', background: '#000000' }}
+                style={{ width: '100%' }}
+                className="category-select"
                 suffixIcon={<DownOutlined style={{ color: '#8c8c8c' }} />}
                 dropdownStyle={{ background: '#0a0a0a', borderColor: '#1f1f1f' }}
+                popupClassName="category-select-dropdown"
               >
                 <Option value="all">All Sellers</Option>
                 <Option value="top-rated">Top Rated</Option>
@@ -352,9 +353,11 @@ export default function CategoryPage() {
             <Col xs={24} sm={12} md={6}>
               <Select
                 placeholder="Budget"
-                style={{ width: '100%', background: '#000000' }}
+                style={{ width: '100%' }}
+                className="category-select"
                 suffixIcon={<DownOutlined style={{ color: '#8c8c8c' }} />}
                 dropdownStyle={{ background: '#0a0a0a', borderColor: '#1f1f1f' }}
+                popupClassName="category-select-dropdown"
                 onChange={(value) => {
                   if (value) {
                     const [min, max] = value.split('-').map(Number)
@@ -376,9 +379,11 @@ export default function CategoryPage() {
             <Col xs={24} sm={12} md={6}>
               <Select
                 placeholder="Delivery time"
-                style={{ width: '100%', background: '#000000' }}
+                style={{ width: '100%' }}
+                className="category-select"
                 suffixIcon={<DownOutlined style={{ color: '#8c8c8c' }} />}
                 dropdownStyle={{ background: '#0a0a0a', borderColor: '#1f1f1f' }}
+                popupClassName="category-select-dropdown"
                 onChange={setDeliveryTime}
               >
                 <Option value={null}>Any delivery time</Option>
@@ -417,9 +422,11 @@ export default function CategoryPage() {
                 <Select
                   value={sortBy}
                   onChange={setSortBy}
-                  style={{ width: 150, background: '#000000' }}
+                  style={{ width: 150 }}
+                  className="category-select category-select-sort"
                   suffixIcon={<DownOutlined style={{ color: '#8c8c8c' }} />}
                   dropdownStyle={{ background: '#0a0a0a', borderColor: '#1f1f1f' }}
+                  popupClassName="category-select-dropdown"
                 >
                   <Option value="best-selling">Best selling</Option>
                   <Option value="rating">Highest rated</Option>
