@@ -92,23 +92,26 @@ export default function Home() {
               <Link href="/" style={{ textDecoration: 'none' }}>
                 <Text strong style={{ fontSize: 16, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
               </Link>
+              {/* Desktop Navigation - Left Side */}
+              <Space size="middle" style={{ display: isMobile ? 'none' : 'flex', marginLeft: 24 }}>
+                <Link href="/marketplace" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+                >
+                  Marketplace
+                </Link>
+                <Link href="/treasury" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+                >
+                  Treasury
+                </Link>
+              </Space>
             </div>
           </Col>
           <Col flex="none" style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Right Side */}
             <Space size="middle" style={{ display: isMobile ? 'none' : 'flex' }}>
-              <Link href="/marketplace" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
-              >
-                Marketplace
-              </Link>
-              <Link href="/treasury" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
-              >
-                Treasury
-              </Link>
               <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft">
                 <Button 
                   type="text" 
