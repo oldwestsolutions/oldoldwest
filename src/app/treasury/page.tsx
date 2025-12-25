@@ -90,19 +90,19 @@ export default function Treasury() {
 
             {/* Right: Buy Coins Section */}
             <Col xs={24} lg={12}>
-              <div style={{ marginBottom: 32 }}>
-                <Title level={2} style={{ color: '#ffffff', marginBottom: 12, fontSize: 36, fontWeight: 700 }}>
+              <div style={{ marginBottom: 20 }}>
+                <Title level={2} style={{ color: '#ffffff', marginBottom: 8, fontSize: 24, fontWeight: 700 }}>
                   Buy Coins
                 </Title>
-                <Text style={{ color: '#8c8c8c', fontSize: 16 }}>
+                <Text style={{ color: '#8c8c8c', fontSize: 12 }}>
                   Choose a package to add coins to your wallet
                 </Text>
               </div>
               
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '20px'
+                gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+                gap: '12px'
               }}>
             {coinPackages.map((pkg) => (
               <Card
@@ -117,7 +117,7 @@ export default function Treasury() {
                   position: 'relative',
                   transition: 'all 0.3s ease'
                 }}
-                bodyStyle={{ padding: 24, textAlign: 'center' }}
+                bodyStyle={{ padding: 16, textAlign: 'center' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-4px)'
                   e.currentTarget.style.boxShadow = pkg.popular ? `0 8px 24px ${pkg.color}40` : '0 4px 16px rgba(0, 0, 0, 0.6)'
@@ -130,39 +130,39 @@ export default function Treasury() {
                 {pkg.popular && (
                   <div style={{
                     position: 'absolute',
-                    top: -10,
+                    top: -8,
                     left: '50%',
                     transform: 'translateX(-50%)',
                     background: pkg.color,
                     color: '#ffffff',
-                    padding: '4px 16px',
-                    borderRadius: 20,
-                    fontSize: 10,
+                    padding: '3px 12px',
+                    borderRadius: 12,
+                    fontSize: 9,
                     fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '0.5px',
                     boxShadow: `0 2px 8px ${pkg.color}50`
                   }}>
-                    <FireOutlined style={{ marginRight: 4 }} /> Most Popular
+                    <FireOutlined style={{ marginRight: 3, fontSize: 9 }} /> Most Popular
                   </div>
                 )}
                 <div style={{
-                  width: 60,
-                  height: 60,
+                  width: 40,
+                  height: 40,
                   background: '#141414',
                   border: `2px solid ${pkg.color}`,
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  margin: `${pkg.popular ? 8 : 0} auto 16px`
+                  margin: `${pkg.popular ? 6 : 0} auto 10px`
                 }}>
-                  <DollarOutlined style={{ fontSize: 30, color: pkg.color }} />
+                  <DollarOutlined style={{ fontSize: 20, color: pkg.color }} />
                 </div>
                 <Title level={2} style={{ 
                   color: '#ffffff', 
-                  marginBottom: 4, 
-                  fontSize: 24, 
+                  marginBottom: 2, 
+                  fontSize: 18, 
                   fontWeight: 700,
                   fontFamily: 'monospace'
                 }}>
@@ -170,10 +170,10 @@ export default function Treasury() {
                 </Title>
                 <Text style={{ 
                   color: pkg.color, 
-                  fontSize: 12, 
+                  fontSize: 10, 
                   fontWeight: 600,
                   display: 'block', 
-                  marginBottom: 10 
+                  marginBottom: 6 
                 }}>
                   COINS
                 </Text>
@@ -181,22 +181,22 @@ export default function Treasury() {
                   <div style={{
                     background: `${pkg.color}20`,
                     border: `1px solid ${pkg.color}40`,
-                    borderRadius: 8,
-                    padding: '6px 10px',
-                    marginBottom: 12,
+                    borderRadius: 6,
+                    padding: '4px 8px',
+                    marginBottom: 8,
                     display: 'inline-block'
                   }}>
-                    <Text style={{ color: pkg.color, fontSize: 11, fontWeight: 600 }}>
+                    <Text style={{ color: pkg.color, fontSize: 9, fontWeight: 600 }}>
                       +{pkg.bonus} Bonus
                     </Text>
                   </div>
                 )}
                 <div style={{ 
                   borderTop: '1px solid #1f1f1f', 
-                  margin: '12px 0',
-                  paddingTop: '12px'
+                  margin: '8px 0',
+                  paddingTop: '8px'
                 }}>
-                  <Text style={{ color: '#ffffff', fontSize: 22, fontWeight: 700, fontFamily: 'monospace' }}>
+                  <Text style={{ color: '#ffffff', fontSize: 16, fontWeight: 700, fontFamily: 'monospace' }}>
                     ${pkg.price.toFixed(2)}
                   </Text>
                 </div>
@@ -207,9 +207,10 @@ export default function Treasury() {
                     background: pkg.popular ? pkg.color : '#141414',
                     borderColor: pkg.popular ? pkg.color : '#1f1f1f',
                     color: '#ffffff',
-                    borderRadius: 8,
-                    marginTop: 12,
-                    height: 40,
+                    borderRadius: 6,
+                    marginTop: 8,
+                    height: 32,
+                    fontSize: 12,
                     fontWeight: 600,
                     boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
                   }}
