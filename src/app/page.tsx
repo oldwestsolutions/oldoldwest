@@ -431,7 +431,7 @@ export default function Home() {
               </Space>
             </Col>
 
-            <Col xs={24} lg={12}>
+            <Col xs={24} lg={12} style={{ marginTop: 48 }}>
               <Card 
                 bordered 
                 style={{ 
