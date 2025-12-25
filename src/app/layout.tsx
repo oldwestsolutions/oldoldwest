@@ -7,6 +7,11 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'OldWest',
   description: 'OldWest.net is a VM-based social platform where creators earn merit through real work. Music, design, coding, finance, and collaboration.',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
   keywords: [
     'virtual machine platform',
     'creator infrastructure',

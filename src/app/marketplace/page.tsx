@@ -3,7 +3,6 @@
 import { Layout, Typography, Row, Col, Card, Input, Button, Space, Tag, Avatar, Rate, Divider } from 'antd'
 import Link from 'next/link'
 import { SearchOutlined, StarFilled, FireOutlined, ClockCircleOutlined } from '@ant-design/icons'
-import { useState, useEffect } from 'react'
 
 const { Header, Content } = Layout
 const { Title, Text, Paragraph } = Typography
@@ -87,6 +86,16 @@ export default function Marketplace() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -112,7 +121,7 @@ export default function Marketplace() {
       <Header style={{ 
         background: '#000000', 
         borderBottom: '1px solid #1f1f1f',
-        padding: '0 48px',
+        padding: isMobile ? '0 24px' : '0 48px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -140,12 +149,12 @@ export default function Marketplace() {
         {/* Hero Section */}
         <div style={{
           background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 100%)',
-          padding: '80px 48px',
+          padding: isMobile ? '60px 24px' : '80px 48px',
           borderBottom: '1px solid #1f1f1f'
         }}>
           <Row justify="center">
             <Col xs={24} lg={18}>
-              <Title level={1} style={{ color: '#ffffff', marginBottom: 16, fontSize: 56, fontWeight: 700, textAlign: 'center' }}>
+              <Title level={1} style={{ color: '#ffffff', marginBottom: 16, fontSize: isMobile ? 32 : 56, fontWeight: 700, textAlign: 'center' }}>
                 Marketplace
               </Title>
               <Paragraph style={{ color: '#8c8c8c', fontSize: 20, textAlign: 'center', marginBottom: 40 }}>
@@ -171,12 +180,12 @@ export default function Marketplace() {
         </div>
 
         {/* Featured Services */}
-        <div style={{ padding: '60px 48px', background: '#000000' }}>
+        <div style={{ padding: isMobile ? '40px 24px' : '60px 48px', background: '#000000' }}>
           <Row gutter={[24, 24]}>
             <Col xs={24}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
                 <FireOutlined style={{ fontSize: 24, color: '#ff4d4f' }} />
-                <Title level={2} style={{ color: '#ffffff', margin: 0, fontSize: 32, fontWeight: 600 }}>
+                <Title level={2} style={{ color: '#ffffff', margin: 0, fontSize: isMobile ? 24 : 32, fontWeight: 600 }}>
                   Featured Services
                 </Title>
               </div>
@@ -265,8 +274,8 @@ export default function Marketplace() {
         </div>
 
         {/* All Services */}
-        <div style={{ padding: '60px 48px', background: '#0a0a0a', borderTop: '1px solid #1f1f1f' }}>
-          <Title level={2} style={{ color: '#ffffff', marginBottom: 32, fontSize: 32, fontWeight: 600 }}>
+        <div style={{ padding: isMobile ? '40px 24px' : '60px 48px', background: '#0a0a0a', borderTop: '1px solid #1f1f1f' }}>
+          <Title level={2} style={{ color: '#ffffff', marginBottom: 32, fontSize: isMobile ? 24 : 32, fontWeight: 600 }}>
             All Services
           </Title>
           <Row gutter={[24, 24]}>

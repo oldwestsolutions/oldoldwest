@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown, List } from 'antd'
-import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined, PhoneOutlined, WalletOutlined, TeamOutlined, FireOutlined, ThunderboltOutlined, StarOutlined, ArrowRightOutlined, ArrowDownOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined, PhoneOutlined, WalletOutlined, TeamOutlined, FireOutlined, ThunderboltOutlined, StarOutlined, ArrowRightOutlined, ArrowDownOutlined, MenuOutlined, CloseOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
 import type { MenuProps } from 'antd'
@@ -17,6 +17,17 @@ const { Title, Paragraph, Text } = Typography
 export default function Home() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +62,7 @@ export default function Home() {
       <Header style={{ 
         background: '#000000', 
         borderBottom: '1px solid #1f1f1f',
-        padding: '0 48px',
+        padding: '0 24px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -63,8 +74,8 @@ export default function Home() {
         zIndex: 1000,
         transition: 'top 0.3s ease-in-out'
       }}>
-        <Row align="middle" gutter={24}>
-          <Col>
+        <Row align="middle" gutter={[12, 0]} style={{ width: '100%', flexWrap: 'nowrap' }}>
+          <Col flex="none">
             <div style={{ 
               width: 32, 
               height: 32, 
@@ -78,53 +89,120 @@ export default function Home() {
               <div style={{ width: 16, height: 16, background: '#595959', borderRadius: 4 }}></div>
             </div>
           </Col>
-          <Col>
+          <Col flex="none">
             <Link href="/" style={{ textDecoration: 'none' }}>
-              <Text strong style={{ fontSize: 18, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
+              <Text strong style={{ fontSize: 16, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
             </Link>
           </Col>
-          <Col>
-            <Link href="/marketplace" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
-            >
-              Marketplace
-            </Link>
-          </Col>
-          <Col>
-            <Link href="/treasury" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
-            >
-              Treasury
-            </Link>
+          <Col flex="auto" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            {/* Desktop Navigation */}
+            <Space size="middle" style={{ display: isMobile ? 'none' : 'flex' }}>
+              <Link href="/marketplace" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+              >
+                Marketplace
+              </Link>
+              <Link href="/treasury" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+              >
+                Treasury
+              </Link>
+              <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft">
+                <Button 
+                  type="text" 
+                  style={{ color: '#8c8c8c', borderRadius: 12, display: 'flex', alignItems: 'center', gap: 4, minHeight: 44 }}
+                >
+                  LAUNCH SESSION
+                  <DownOutlined style={{ fontSize: 10 }} />
+                </Button>
+              </Dropdown>
+              <Button 
+                type="primary" 
+                style={{ 
+                  background: '#141414', 
+                  borderColor: '#1f1f1f',
+                  color: '#ffffff',
+                  borderRadius: 12,
+                  fontWeight: 600,
+                  boxShadow: 'none',
+                  minHeight: 44
+                }}
+                href="/account"
+              >
+                ACCOUNT
+              </Button>
+            </Space>
+            {/* Mobile Menu Button */}
+            <Button 
+              type="text"
+              icon={mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              style={{ 
+                color: '#ffffff', 
+                display: isMobile ? 'flex' : 'none',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minWidth: 44,
+                minHeight: 44
+              }}
+            />
           </Col>
         </Row>
-        <Space size="middle">
-          <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft">
-            <Button 
-              type="text" 
-              style={{ color: '#8c8c8c', borderRadius: 12, display: 'flex', alignItems: 'center', gap: 4 }}
-            >
-              LAUNCH SESSION
-              <DownOutlined style={{ fontSize: 10 }} />
-            </Button>
-          </Dropdown>
-          <Button 
-            type="primary" 
-            style={{ 
-              background: '#141414', 
-              borderColor: '#1f1f1f',
-              color: '#ffffff',
-              borderRadius: 12,
-              fontWeight: 600,
-              boxShadow: 'none'
-            }}
-            href="/account"
-          >
-            ACCOUNT
-          </Button>
-        </Space>
+        {/* Mobile Menu */}
+        {mobileMenuOpen && isMobile && (
+          <div style={{
+            position: 'absolute',
+            top: '72px',
+            left: 0,
+            right: 0,
+            background: '#000000',
+            borderBottom: '1px solid #1f1f1f',
+            padding: '24px',
+            zIndex: 999
+          }}>
+            <Space direction="vertical" size="large" style={{ width: '100%' }}>
+              <Link href="/marketplace" style={{ color: '#8c8c8c', fontSize: 16, textDecoration: 'none', display: 'block', padding: '12px 0' }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Marketplace
+              </Link>
+              <Link href="/treasury" style={{ color: '#8c8c8c', fontSize: 16, textDecoration: 'none', display: 'block', padding: '12px 0' }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Treasury
+              </Link>
+              <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft" trigger={['click']}>
+                <Button 
+                  type="text" 
+                  block
+                  style={{ color: '#8c8c8c', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', minHeight: 44, textAlign: 'left' }}
+                >
+                  LAUNCH SESSION
+                  <DownOutlined style={{ fontSize: 10 }} />
+                </Button>
+              </Dropdown>
+              <Button 
+                type="primary" 
+                block
+                style={{ 
+                  background: '#141414', 
+                  borderColor: '#1f1f1f',
+                  color: '#ffffff',
+                  borderRadius: 12,
+                  fontWeight: 600,
+                  boxShadow: 'none',
+                  minHeight: 44
+                }}
+                href="/account"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                ACCOUNT
+              </Button>
+            </Space>
+          </div>
+        )}
       </Header>
 
       <Content style={{ marginTop: isHeaderVisible ? 0 : 0 }}>
@@ -132,7 +210,7 @@ export default function Home() {
         <section style={{ 
           minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
-          padding: '120px 48px',
+          padding: '80px 24px',
           display: 'flex',
           alignItems: 'center',
           position: 'relative',
@@ -156,23 +234,24 @@ export default function Home() {
                 <Title 
                   level={1} 
                   style={{ 
-                    fontSize: 72, 
+                    fontSize: isMobile ? 40 : 72, 
                     fontWeight: 700, 
                     color: '#ffffff',
-                    marginBottom: 32,
+                    marginBottom: 24,
                     lineHeight: 1.1,
                     letterSpacing: '-0.03em'
                   }}
                 >
                   Create Anything
                 </Title>
-                <Paragraph style={{ fontSize: 20, color: '#8c8c8c', lineHeight: 1.8, marginBottom: 40 }}>
+                <Paragraph style={{ fontSize: isMobile ? 16 : 20, color: '#8c8c8c', lineHeight: 1.8, marginBottom: 32 }}>
                   Your Virtual Environment. Sovereign. Limitless
                 </Paragraph>
-                <Space size="middle">
+                <Space size="middle" direction={isMobile ? 'vertical' : 'horizontal'} style={{ width: isMobile ? '100%' : 'auto' }}>
                   <Button 
                     type="primary"
                     size="large"
+                    block={isMobile}
                     style={{ 
                       background: '#000000', 
                       borderColor: '#1f1f1f',
@@ -180,9 +259,10 @@ export default function Home() {
                       borderRadius: 12,
                       fontWeight: 600,
                       height: 52,
-                      paddingLeft: 40,
-                      paddingRight: 40,
-                      boxShadow: 'none'
+                      paddingLeft: isMobile ? 24 : 40,
+                      paddingRight: isMobile ? 24 : 40,
+                      boxShadow: 'none',
+                      minHeight: 44
                     }}
                     href="/explore-platform"
                   >
@@ -190,6 +270,7 @@ export default function Home() {
                   </Button>
                   <Button 
                     size="large"
+                    block={isMobile}
                     style={{ 
                       background: '#141414', 
                       borderColor: '#1f1f1f',
@@ -197,8 +278,9 @@ export default function Home() {
                       borderRadius: 12,
                       fontWeight: 600,
                       height: 52,
-                      paddingLeft: 40,
-                      paddingRight: 40
+                      paddingLeft: isMobile ? 24 : 40,
+                      paddingRight: isMobile ? 24 : 40,
+                      minHeight: 44
                     }}
                     href="/download-app"
                   >
@@ -218,7 +300,7 @@ export default function Home() {
           minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
           background: '#0a0a0a',
-          padding: '120px 48px',
+          padding: isMobile ? '60px 24px' : '120px 48px',
           display: 'flex',
           alignItems: 'center'
         }}>
@@ -231,7 +313,7 @@ export default function Home() {
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
           </div>
               
-              <Title level={2} style={{ color: '#ffffff', marginBottom: 48, fontSize: 40, fontWeight: 600, textAlign: 'center' }}>
+              <Title level={2} style={{ color: '#ffffff', marginBottom: isMobile ? 32 : 48, fontSize: isMobile ? 28 : 40, fontWeight: 600, textAlign: 'center' }}>
                 Services Offered Through Virtual Machine Environment
               </Title>
 
@@ -381,7 +463,7 @@ export default function Home() {
         <section style={{ 
           minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
-          padding: '120px 48px',
+          padding: isMobile ? '60px 24px' : '120px 48px',
           display: 'flex',
           alignItems: 'center'
         }}>
@@ -533,7 +615,7 @@ export default function Home() {
           minHeight: '100vh',
           borderBottom: '1px solid #1f1f1f',
           background: '#0a0a0a',
-          padding: '120px 48px',
+          padding: isMobile ? '60px 24px' : '120px 48px',
           display: 'flex',
           alignItems: 'center'
         }}>
@@ -621,7 +703,7 @@ export default function Home() {
         <section style={{
           minHeight: '100vh',
           background: '#000000',
-          padding: '120px 48px',
+          padding: isMobile ? '60px 24px' : '120px 48px',
           display: 'flex',
           alignItems: 'center'
         }}>
@@ -695,7 +777,7 @@ export default function Home() {
       <Footer style={{ 
         background: '#000000', 
         borderTop: '1px solid #1f1f1f',
-        padding: '80px 48px 40px 48px'
+        padding: isMobile ? '40px 24px 20px 24px' : '80px 48px 40px 48px'
       }}>
         <Row gutter={[48, 48]}>
           <Col xs={24} sm={12} md={6}>

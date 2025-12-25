@@ -23,6 +23,16 @@ const coinPackages = [
 export default function Treasury() {
   const [isHeaderVisible, setIsHeaderVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +53,7 @@ export default function Treasury() {
       <Header style={{ 
         background: '#000000', 
         borderBottom: '1px solid #1f1f1f',
-        padding: '0 48px',
+        padding: isMobile ? '0 24px' : '0 48px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -67,20 +77,20 @@ export default function Treasury() {
         </Row>
       </Header>
 
-      <Content style={{ paddingTop: isHeaderVisible ? 80 : 40 }}>
+      <Content style={{ paddingTop: isHeaderVisible ? (isMobile ? 80 : 80) : 40 }}>
         {/* Hero and Buy Coins Side by Side */}
         <div style={{
           background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 100%)',
-          padding: '40px 48px',
+          padding: isMobile ? '40px 24px' : '40px 48px',
           borderBottom: '1px solid #1f1f1f'
         }}>
           <Row gutter={[64, 48]} align="middle">
             {/* Left: Hero Section */}
             <Col xs={24} lg={12}>
-              <Title level={1} style={{ color: '#ffffff', marginBottom: 16, fontSize: 48, fontWeight: 700 }}>
+              <Title level={1} style={{ color: '#ffffff', marginBottom: 16, fontSize: isMobile ? 32 : 48, fontWeight: 700 }}>
                 Treasury
               </Title>
-              <Text style={{ color: '#8c8c8c', fontSize: 18, display: 'block', marginBottom: 32 }}>
+              <Text style={{ color: '#8c8c8c', fontSize: isMobile ? 14 : 18, display: 'block', marginBottom: 32 }}>
                 Buy coins to power your virtual environment
               </Text>
               <div style={{ maxWidth: '500px' }}>
@@ -91,18 +101,18 @@ export default function Treasury() {
             {/* Right: Buy Coins Section */}
             <Col xs={24} lg={12}>
               <div style={{ marginBottom: 20 }}>
-                <Title level={2} style={{ color: '#ffffff', marginBottom: 8, fontSize: 24, fontWeight: 700 }}>
+                <Title level={2} style={{ color: '#ffffff', marginBottom: 8, fontSize: isMobile ? 20 : 24, fontWeight: 700 }}>
                   Buy Coins
                 </Title>
-                <Text style={{ color: '#8c8c8c', fontSize: 12 }}>
+                <Text style={{ color: '#8c8c8c', fontSize: isMobile ? 11 : 12 }}>
                   Choose a package to add coins to your wallet
                 </Text>
               </div>
               
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-                gap: '12px'
+                gridTemplateColumns: isMobile ? 'repeat(auto-fit, minmax(120px, 1fr))' : 'repeat(auto-fit, minmax(140px, 1fr))',
+                gap: isMobile ? '8px' : '12px'
               }}>
             {coinPackages.map((pkg) => (
               <Card
@@ -209,10 +219,11 @@ export default function Treasury() {
                     color: '#ffffff',
                     borderRadius: 6,
                     marginTop: 8,
-                    height: 32,
-                    fontSize: 12,
+                    height: isMobile ? 36 : 40,
+                    fontSize: isMobile ? 11 : 12,
                     fontWeight: 600,
-                    boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
+                    boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)',
+                    minHeight: 44
                   }}
                 >
                   Buy Now
