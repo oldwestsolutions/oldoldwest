@@ -561,132 +561,299 @@ export default function Home() {
                 }}
                 bodyStyle={{ padding: 48 }}
               >
-                {/* Visual Tokenomics Flow Illustration */}
+                {/* Visual Tokenomics Flow Illustration - Horizontal Flow */}
                 <div style={{ 
                   background: '#0a0a0a',
                   border: '1px solid #1f1f1f',
                   borderRadius: 12,
-                  padding: '40px 24px',
-                  marginBottom: 48
+                  padding: '48px 32px',
+                  marginBottom: 48,
+                  overflowX: 'auto'
                 }}>
-                  {/* Top: Earning Section */}
-                  <div style={{ textAlign: 'center', marginBottom: 32 }}>
-                    <div style={{ 
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 12,
-                      padding: '16px 24px',
-                      background: '#141414',
-                      border: '1px solid #1f1f1f',
-                      borderRadius: 8,
-                      marginBottom: 16
-                    }}>
-                      <CodeOutlined style={{ fontSize: 24, color: '#595959' }} />
-                      <TrophyOutlined style={{ fontSize: 24, color: '#595959' }} />
-                      <TeamOutlined style={{ fontSize: 24, color: '#595959' }} />
-                      <CheckCircleOutlined style={{ fontSize: 24, color: '#595959' }} />
-                    </div>
-                    <div>
-                      <Text style={{ color: '#8c8c8c', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                        EARN TOKENS
-                      </Text>
-                      <div style={{ marginTop: 8 }}>
-                        <Text style={{ color: '#595959', fontSize: 11 }}>
-                          Projects • Collaboration • Quality Output • Competitions
-                        </Text>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Arrow Down */}
-                  <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                    <ArrowDownOutlined style={{ fontSize: 24, color: '#595959' }} />
-                  </div>
-
-                  {/* Center: Token Hub */}
-                  <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                    <div style={{
-                      display: 'inline-flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      padding: '24px 32px',
-                      background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-                      border: '2px solid #1f1f1f',
-                      borderRadius: 12,
-                      minWidth: 200
-                    }}>
-                      <WalletOutlined style={{ fontSize: 48, color: '#d9d9d9', marginBottom: 12 }} />
-                      <Text style={{ color: '#ffffff', fontSize: 18, fontWeight: 600, marginBottom: 4 }}>
-                        TOKEN
-                      </Text>
-                      <Text style={{ color: '#8c8c8c', fontSize: 11 }}>
-                        Merit + Compute + Access
-                      </Text>
-                    </div>
-                  </div>
-
-                  {/* Arrow Down */}
-                  <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                    <ArrowDownOutlined style={{ fontSize: 24, color: '#595959' }} />
-                  </div>
-
-                  {/* Bottom: Three Paths */}
-                  <Row gutter={[16, 16]} justify="center">
-                    <Col xs={24} sm={8}>
+                  <Row gutter={[24, 24]} align="middle" justify="center" style={{ flexWrap: 'nowrap', minWidth: 'max-content' }}>
+                    {/* Left: Earning Section */}
+                    <Col flex="0 0 auto">
                       <div style={{
-                        padding: '20px',
-                        background: '#141414',
+                        padding: '24px',
+                        background: 'linear-gradient(135deg, #141414 0%, #0f0f0f 100%)',
                         border: '1px solid #1f1f1f',
-                        borderRadius: 8,
-                        textAlign: 'center',
-                        height: '100%'
+                        borderRadius: 12,
+                        minWidth: 200,
+                        textAlign: 'center'
                       }}>
-                        <ThunderboltOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 12 }} />
-                        <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
-                          SPEND
-                        </Text>
-                        <Text style={{ color: '#595959', fontSize: 10, lineHeight: 1.4 }}>
-                          VM Features • Collaboration • Visibility • Tools
-                        </Text>
+                        <div style={{ marginBottom: 16 }}>
+                          <div style={{ 
+                            display: 'flex',
+                            justifyContent: 'center',
+                            gap: 8,
+                            marginBottom: 12,
+                            flexWrap: 'wrap'
+                          }}>
+                            <div style={{
+                              width: 40,
+                              height: 40,
+                              background: '#0a0a0a',
+                              border: '1px solid #1f1f1f',
+                              borderRadius: 8,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}>
+                              <CodeOutlined style={{ fontSize: 20, color: '#595959' }} />
+                            </div>
+                            <div style={{
+                              width: 40,
+                              height: 40,
+                              background: '#0a0a0a',
+                              border: '1px solid #1f1f1f',
+                              borderRadius: 8,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}>
+                              <TrophyOutlined style={{ fontSize: 20, color: '#595959' }} />
+                            </div>
+                            <div style={{
+                              width: 40,
+                              height: 40,
+                              background: '#0a0a0a',
+                              border: '1px solid #1f1f1f',
+                              borderRadius: 8,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}>
+                              <TeamOutlined style={{ fontSize: 20, color: '#595959' }} />
+                            </div>
+                            <div style={{
+                              width: 40,
+                              height: 40,
+                              background: '#0a0a0a',
+                              border: '1px solid #1f1f1f',
+                              borderRadius: 8,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center'
+                            }}>
+                              <CheckCircleOutlined style={{ fontSize: 20, color: '#595959' }} />
+                            </div>
+                          </div>
+                          <Text style={{ color: '#8c8c8c', fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
+                            EARN
+                          </Text>
+                          <div style={{ marginTop: 8 }}>
+                            <Text style={{ color: '#595959', fontSize: 10, display: 'block' }}>Projects</Text>
+                            <Text style={{ color: '#595959', fontSize: 10, display: 'block' }}>Collaboration</Text>
+                            <Text style={{ color: '#595959', fontSize: 10, display: 'block' }}>Quality Output</Text>
+                            <Text style={{ color: '#595959', fontSize: 10, display: 'block' }}>Competitions</Text>
+                          </div>
+                        </div>
                       </div>
                     </Col>
-                    <Col xs={24} sm={8}>
+
+                    {/* Arrow Right */}
+                    <Col flex="0 0 auto">
+                      <ArrowRightOutlined style={{ fontSize: 32, color: '#595959' }} />
+                    </Col>
+
+                    {/* Center: Token Hub */}
+                    <Col flex="0 0 auto">
                       <div style={{
-                        padding: '20px',
-                        background: '#141414',
-                        border: '1px solid #1f1f1f',
-                        borderRadius: 8,
+                        padding: '32px 40px',
+                        background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
+                        border: '2px solid #1f1f1f',
+                        borderRadius: 16,
+                        minWidth: 220,
                         textAlign: 'center',
-                        height: '100%'
+                        position: 'relative',
+                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)'
                       }}>
-                        <StarOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 12 }} />
-                        <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
-                          STAKE
-                        </Text>
-                        <Text style={{ color: '#595959', fontSize: 10, lineHeight: 1.4 }}>
-                          Promote Work • Category Search • Visibility Leverage
-                        </Text>
+                        <div style={{
+                          position: 'absolute',
+                          top: -8,
+                          left: '50%',
+                          transform: 'translateX(-50%)',
+                          width: 60,
+                          height: 60,
+                          background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
+                          border: '2px solid #1f1f1f',
+                          borderRadius: '50%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
+                        }}>
+                          <WalletOutlined style={{ fontSize: 32, color: '#d9d9d9' }} />
+                        </div>
+                        <div style={{ marginTop: 32 }}>
+                          <Text style={{ color: '#ffffff', fontSize: 24, fontWeight: 700, marginBottom: 8, display: 'block' }}>
+                            TOKEN
+                          </Text>
+                          <div style={{
+                            padding: '8px 12px',
+                            background: '#0a0a0a',
+                            border: '1px solid #1f1f1f',
+                            borderRadius: 6,
+                            marginTop: 12
+                          }}>
+                            <Text style={{ color: '#8c8c8c', fontSize: 11, display: 'block' }}>Merit</Text>
+                            <Text style={{ color: '#8c8c8c', fontSize: 11, display: 'block' }}>+ Compute</Text>
+                            <Text style={{ color: '#8c8c8c', fontSize: 11, display: 'block' }}>+ Access</Text>
+                          </div>
+                        </div>
                       </div>
                     </Col>
-                    <Col xs={24} sm={8}>
-                      <div style={{
-                        padding: '20px',
-                        background: '#141414',
-                        border: '1px solid #1f1f1f',
-                        borderRadius: 8,
-                        textAlign: 'center',
-                        height: '100%'
-                      }}>
-                        <FireOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 12 }} />
-                        <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
-                          FLOW
-                        </Text>
-                        <Text style={{ color: '#595959', fontSize: 10, lineHeight: 1.4 }}>
-                          Platform Rewards • Resource Consumption • Self-Contained
-                        </Text>
-                      </div>
+
+                    {/* Arrow Right */}
+                    <Col flex="0 0 auto">
+                      <ArrowRightOutlined style={{ fontSize: 32, color: '#595959' }} />
+                    </Col>
+
+                    {/* Right: Three Paths */}
+                    <Col flex="1 1 auto">
+                      <Row gutter={[12, 12]} style={{ width: '100%' }}>
+                        <Col xs={24} sm={8}>
+                          <div style={{
+                            padding: '20px 16px',
+                            background: 'linear-gradient(135deg, #141414 0%, #0f0f0f 100%)',
+                            border: '1px solid #1f1f1f',
+                            borderRadius: 10,
+                            textAlign: 'center',
+                            height: '100%',
+                            position: 'relative'
+                          }}>
+                            <div style={{
+                              width: 48,
+                              height: 48,
+                              background: '#0a0a0a',
+                              border: '1px solid #1f1f1f',
+                              borderRadius: '50%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              margin: '0 auto 12px'
+                            }}>
+                              <ThunderboltOutlined style={{ fontSize: 24, color: '#595959' }} />
+                            </div>
+                            <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
+                              SPEND
+                            </Text>
+                            <div style={{ marginTop: 8 }}>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>VM Features</Text>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Collaboration</Text>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Visibility</Text>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Tools</Text>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col xs={24} sm={8}>
+                          <div style={{
+                            padding: '20px 16px',
+                            background: 'linear-gradient(135deg, #141414 0%, #0f0f0f 100%)',
+                            border: '1px solid #1f1f1f',
+                            borderRadius: 10,
+                            textAlign: 'center',
+                            height: '100%',
+                            position: 'relative'
+                          }}>
+                            <div style={{
+                              width: 48,
+                              height: 48,
+                              background: '#0a0a0a',
+                              border: '1px solid #1f1f1f',
+                              borderRadius: '50%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              margin: '0 auto 12px'
+                            }}>
+                              <StarOutlined style={{ fontSize: 24, color: '#595959' }} />
+                            </div>
+                            <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
+                              STAKE
+                            </Text>
+                            <div style={{ marginTop: 8 }}>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Promote Work</Text>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Category Search</Text>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Visibility</Text>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Leverage</Text>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col xs={24} sm={8}>
+                          <div style={{
+                            padding: '20px 16px',
+                            background: 'linear-gradient(135deg, #141414 0%, #0f0f0f 100%)',
+                            border: '1px solid #1f1f1f',
+                            borderRadius: 10,
+                            textAlign: 'center',
+                            height: '100%',
+                            position: 'relative'
+                          }}>
+                            <div style={{
+                              width: 48,
+                              height: 48,
+                              background: '#0a0a0a',
+                              border: '1px solid #1f1f1f',
+                              borderRadius: '50%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              margin: '0 auto 12px'
+                            }}>
+                              <FireOutlined style={{ fontSize: 24, color: '#595959' }} />
+                            </div>
+                            <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
+                              FLOW
+                            </Text>
+                            <div style={{ marginTop: 8 }}>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Platform Rewards</Text>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Resource Consumption</Text>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Self-Contained</Text>
+                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Ecosystem</Text>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
                     </Col>
                   </Row>
+
+                  {/* Flow Lines */}
+                  <div style={{
+                    position: 'relative',
+                    marginTop: 24,
+                    padding: '16px',
+                    background: '#0a0a0a',
+                    border: '1px solid #1f1f1f',
+                    borderRadius: 8
+                  }}>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexWrap: 'wrap',
+                      gap: 16
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <div style={{ width: 8, height: 8, background: '#595959', borderRadius: '50%' }}></div>
+                        <Text style={{ color: '#595959', fontSize: 10 }}>Work & Contribution</Text>
+                      </div>
+                      <ArrowRightOutlined style={{ fontSize: 16, color: '#595959' }} />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <div style={{ width: 8, height: 8, background: '#595959', borderRadius: '50%' }}></div>
+                        <Text style={{ color: '#595959', fontSize: 10 }}>Token Generation</Text>
+                      </div>
+                      <ArrowRightOutlined style={{ fontSize: 16, color: '#595959' }} />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <div style={{ width: 8, height: 8, background: '#595959', borderRadius: '50%' }}></div>
+                        <Text style={{ color: '#595959', fontSize: 10 }}>Utility & Circulation</Text>
+                      </div>
+                      <ArrowRightOutlined style={{ fontSize: 16, color: '#595959' }} />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <div style={{ width: 8, height: 8, background: '#595959', borderRadius: '50%' }}></div>
+                        <Text style={{ color: '#595959', fontSize: 10 }}>Platform Rewards</Text>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Detailed Text Sections */}
