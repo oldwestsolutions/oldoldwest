@@ -435,34 +435,23 @@ export default function Home() {
                               e.currentTarget.style.transform = 'translateY(0)'
                             }}
                           >
-                          <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: '#141414' }}>
-                            <img
-                              src={stockImages[service.title] || imageUrl}
-                              alt={service.title}
-                              style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover',
-                                opacity: 0.9
-                              }}
-                              onError={(e) => {
-                                // Fallback to gradient if image fails to load
-                                const target = e.target as HTMLImageElement
-                                target.style.display = 'none'
-                                if (target.parentElement) {
-                                  target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
-                                }
-                              }}
-                            />
-              </div>
+                          <div style={{ 
+                            width: '100%', 
+                            height: '100%', 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            justifyContent: 'center',
+                            background: '#141414',
+                            padding: '24px'
+                          }}>
+                            <div style={{ textAlign: 'center' }}>
+                              <Title level={3} style={{ color: '#ffffff', margin: 0, fontSize: 24, fontWeight: 600 }}>
+                                {service.title}
+                              </Title>
+                            </div>
+                          </div>
                           </Card>
                           <div style={{ textAlign: 'center', paddingTop: 8 }}>
-                            <Title level={4} style={{ color: '#ffffff', margin: '0 0 4px 0', fontSize: 16, fontWeight: 600, lineHeight: 1.4 }}>
-                              {service.title}
-                            </Title>
                             <p style={{ color: '#999999', margin: 0, fontSize: 12, lineHeight: 1.4 }}>
                               {service.description}
                             </p>
