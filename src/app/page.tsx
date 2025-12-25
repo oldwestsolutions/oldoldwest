@@ -401,23 +401,40 @@ export default function Home() {
                     'Education': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=400&fit=crop'
   }
 
+  const serviceSlug = service.title.toLowerCase().replace(/\s+/g, '-')
+  
   return (
                     <Col xs={24} sm={12} md={8} lg={4} xl={4} key={index}>
-                      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                        <Card
-                          bordered
-                          style={{
-                            background: '#000000',
-                            borderColor: '#1f1f1f',
-                            borderRadius: 12,
-                            overflow: 'hidden',
-                            aspectRatio: '1',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            marginBottom: 12
-                          }}
-                          bodyStyle={{ padding: 0, display: 'flex', flexDirection: 'column', flex: 1 }}
-                        >
+                      <Link href={`/services/${serviceSlug}`} style={{ textDecoration: 'none' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                          <Card
+                            bordered
+                            hoverable
+                            style={{
+                              background: '#000000',
+                              borderColor: '#1f1f1f',
+                              borderRadius: 12,
+                              overflow: 'hidden',
+                              aspectRatio: '1',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              marginBottom: 12,
+                              cursor: 'pointer',
+                              transition: 'all 0.3s ease',
+                              boxShadow: 'none'
+                            }}
+                            bodyStyle={{ padding: 0, display: 'flex', flexDirection: 'column', flex: 1 }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.borderColor = '#595959'
+                              e.currentTarget.style.boxShadow = '0 0 20px rgba(89, 89, 89, 0.5), 0 0 40px rgba(89, 89, 89, 0.3)'
+                              e.currentTarget.style.transform = 'translateY(-4px)'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.borderColor = '#1f1f1f'
+                              e.currentTarget.style.boxShadow = 'none'
+                              e.currentTarget.style.transform = 'translateY(0)'
+                            }}
+                          >
                           <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: '#141414' }}>
                             <img
                               src={stockImages[service.title] || imageUrl}
@@ -441,16 +458,17 @@ export default function Home() {
                               }}
                             />
               </div>
-                        </Card>
-                        <div style={{ textAlign: 'center', paddingTop: 8 }}>
-                          <Title level={4} style={{ color: '#ffffff', margin: '0 0 4px 0', fontSize: 16, fontWeight: 600, lineHeight: 1.4 }}>
-                            {service.title}
-                          </Title>
-                          <p style={{ color: '#999999', margin: 0, fontSize: 12, lineHeight: 1.4 }}>
-                            {service.description}
-                          </p>
-          </div>
-        </div>
+                          </Card>
+                          <div style={{ textAlign: 'center', paddingTop: 8 }}>
+                            <Title level={4} style={{ color: '#ffffff', margin: '0 0 4px 0', fontSize: 16, fontWeight: 600, lineHeight: 1.4 }}>
+                              {service.title}
+                            </Title>
+                            <p style={{ color: '#999999', margin: 0, fontSize: 12, lineHeight: 1.4 }}>
+                              {service.description}
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
                     </Col>
                   )
                 })}
