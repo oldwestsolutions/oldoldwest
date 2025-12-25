@@ -401,18 +401,18 @@ export default function Home() {
                     'Education': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=400&fit=crop'
   }
 
-  const categoryMap: { [key: string]: string } = {
-    'Music': 'Music & Audio',
-    'Graphic Design': 'Graphic Design',
-    'Coding': 'Development',
-    'Finance': 'Finance',
-    'Collaboration': 'Collaboration',
-    'Education': 'Education'
+  const categorySlugMap: { [key: string]: string } = {
+    'Music': 'music',
+    'Graphic Design': 'graphic-design',
+    'Coding': 'coding',
+    'Finance': 'finance',
+    'Collaboration': 'collaboration',
+    'Education': 'education'
   }
-  
+
   return (
                     <Col xs={24} sm={12} md={8} lg={4} xl={4} key={index}>
-                      <Link href={`/marketplace?category=${encodeURIComponent(categoryMap[service.title] || service.title)}`} style={{ textDecoration: 'none' }}>
+                      <Link href={`/category/${categorySlugMap[service.title] || service.title.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                           <Card
                             bordered
@@ -478,8 +478,8 @@ export default function Home() {
                             <p style={{ color: '#999999', margin: 0, fontSize: 12, lineHeight: 1.4 }}>
                               {service.description}
                             </p>
-                          </div>
-                        </div>
+          </div>
+        </div>
                       </Link>
                     </Col>
                   )

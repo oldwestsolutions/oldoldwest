@@ -202,9 +202,20 @@ export default function Marketplace() {
                 </Title>
               </div>
             </Col>
-            {filteredServices.filter(s => s.featured).map((service) => (
+            {filteredServices.filter(s => s.featured).map((service) => {
+              const categorySlugMap: { [key: string]: string } = {
+                'Music & Audio': 'music',
+                'Graphic Design': 'graphic-design',
+                'Development': 'coding',
+                'Finance': 'finance',
+                'Collaboration': 'collaboration',
+                'Education': 'education',
+                'Video Editing': 'graphic-design'
+              }
+              const categorySlug = categorySlugMap[service.category] || service.category.toLowerCase().replace(/\s+/g, '-').replace('&', '')
+              return (
               <Col xs={24} sm={12} lg={8} key={service.id}>
-                <Link href={`/sellers/${service.seller.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none' }}>
+                <Link href={`/category/${categorySlug}`} style={{ textDecoration: 'none' }}>
                   <Card
                     hoverable
                     bordered
@@ -291,7 +302,8 @@ export default function Marketplace() {
                 </Card>
                 </Link>
               </Col>
-            ))}
+            )
+            })}
           </Row>
         </div>
 
@@ -301,9 +313,20 @@ export default function Marketplace() {
             All Services
           </Title>
           <Row gutter={[24, 24]}>
-            {filteredServices.map((service) => (
+            {filteredServices.map((service) => {
+              const categorySlugMap: { [key: string]: string } = {
+                'Music & Audio': 'music',
+                'Graphic Design': 'graphic-design',
+                'Development': 'coding',
+                'Finance': 'finance',
+                'Collaboration': 'collaboration',
+                'Education': 'education',
+                'Video Editing': 'graphic-design'
+              }
+              const categorySlug = categorySlugMap[service.category] || service.category.toLowerCase().replace(/\s+/g, '-').replace('&', '')
+              return (
               <Col xs={24} sm={12} lg={8} key={service.id}>
-                <Link href={`/sellers/${service.seller.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none' }}>
+                <Link href={`/category/${categorySlug}`} style={{ textDecoration: 'none' }}>
                   <Card
                     hoverable
                     bordered
@@ -381,7 +404,8 @@ export default function Marketplace() {
                 </Card>
                 </Link>
               </Col>
-            ))}
+            )
+            })}
           </Row>
         </div>
       </Content>
