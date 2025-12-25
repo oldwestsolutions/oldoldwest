@@ -9,6 +9,7 @@ import type { MenuProps } from 'antd'
 
 const HeroScene = dynamic(() => import('@/components/HeroScene'), { ssr: false })
 const HeroVideoBackground = dynamic(() => import('@/components/HeroVideoBackground'), { ssr: false })
+const Tokenomics3D = dynamic(() => import('@/components/Tokenomics3D'), { ssr: false })
 
 const { Header, Content, Footer } = Layout
 const { Title, Paragraph, Text } = Typography
@@ -562,164 +563,50 @@ export default function Home() {
                 bodyStyle={{ padding: 48 }}
               >
                 <Row gutter={[32, 32]}>
-                  {/* Left: Visual Illustration */}
-                  <Col xs={24} lg={10}>
+                  {/* Left: 3D Visual Illustration */}
+                  <Col xs={24} lg={12}>
                     <div style={{ 
                       background: '#0a0a0a',
                       border: '1px solid #1f1f1f',
                       borderRadius: 12,
-                      padding: '32px 24px',
+                      padding: '24px',
                       height: '100%',
                       display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center'
+                      flexDirection: 'column'
                     }}>
-                      {/* Earning Section */}
-                      <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                        <div style={{ 
-                          display: 'flex',
-                          justifyContent: 'center',
-                          gap: 8,
-                          marginBottom: 16,
-                          flexWrap: 'wrap'
-                        }}>
-                          <div style={{
-                            width: 48,
-                            height: 48,
-                            background: '#141414',
-                            border: '1px solid #1f1f1f',
-                            borderRadius: 10,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                          }}>
-                            <CodeOutlined style={{ fontSize: 24, color: '#595959' }} />
-                          </div>
-                          <div style={{
-                            width: 48,
-                            height: 48,
-                            background: '#141414',
-                            border: '1px solid #1f1f1f',
-                            borderRadius: 10,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                          }}>
-                            <TrophyOutlined style={{ fontSize: 24, color: '#595959' }} />
-                          </div>
-                          <div style={{
-                            width: 48,
-                            height: 48,
-                            background: '#141414',
-                            border: '1px solid #1f1f1f',
-                            borderRadius: 10,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                          }}>
-                            <TeamOutlined style={{ fontSize: 24, color: '#595959' }} />
-                          </div>
-                          <div style={{
-                            width: 48,
-                            height: 48,
-                            background: '#141414',
-                            border: '1px solid #1f1f1f',
-                            borderRadius: 10,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                          }}>
-                            <CheckCircleOutlined style={{ fontSize: 24, color: '#595959' }} />
-                          </div>
-                        </div>
+                      <div style={{ marginBottom: 16, textAlign: 'center' }}>
                         <Text style={{ color: '#8c8c8c', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
-                          EARN TOKENS
+                          Interactive Tokenomics Flow
                         </Text>
                       </div>
-
-                      {/* Arrow Down */}
-                      <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                        <ArrowDownOutlined style={{ fontSize: 24, color: '#595959' }} />
-                      </div>
-
-                      {/* Token Hub */}
-                      <div style={{ textAlign: 'center', marginBottom: 24 }}>
+                      <Tokenomics3D />
+                      <div style={{ marginTop: 16, textAlign: 'center' }}>
                         <div style={{
-                          display: 'inline-flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          padding: '24px 32px',
-                          background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-                          border: '2px solid #1f1f1f',
-                          borderRadius: 12,
-                          minWidth: 180
+                          display: 'flex',
+                          justifyContent: 'center',
+                          gap: 16,
+                          flexWrap: 'wrap',
+                          marginTop: 12
                         }}>
-                          <WalletOutlined style={{ fontSize: 40, color: '#d9d9d9', marginBottom: 12 }} />
-                          <Text style={{ color: '#ffffff', fontSize: 20, fontWeight: 700, marginBottom: 8 }}>
-                            TOKEN
-                          </Text>
-                          <div style={{
-                            padding: '8px 12px',
-                            background: '#0a0a0a',
-                            border: '1px solid #1f1f1f',
-                            borderRadius: 6,
-                            marginTop: 8
-                          }}>
-                            <Text style={{ color: '#8c8c8c', fontSize: 10, display: 'block' }}>Merit + Compute</Text>
-                            <Text style={{ color: '#8c8c8c', fontSize: 10, display: 'block' }}>+ Access</Text>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <div style={{ width: 12, height: 12, background: '#ff6b35', borderRadius: '50%' }}></div>
+                            <Text style={{ color: '#8c8c8c', fontSize: 11 }}>Spend</Text>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <div style={{ width: 12, height: 12, background: '#4ecdc4', borderRadius: '50%' }}></div>
+                            <Text style={{ color: '#8c8c8c', fontSize: 11 }}>Stake</Text>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <div style={{ width: 12, height: 12, background: '#95e1d3', borderRadius: '50%' }}></div>
+                            <Text style={{ color: '#8c8c8c', fontSize: 11 }}>Flow</Text>
                           </div>
                         </div>
                       </div>
-
-                      {/* Arrow Down */}
-                      <div style={{ textAlign: 'center', marginBottom: 24 }}>
-                        <ArrowDownOutlined style={{ fontSize: 24, color: '#595959' }} />
-                      </div>
-
-                      {/* Three Paths */}
-                      <Row gutter={[8, 8]} justify="center">
-                        <Col xs={8}>
-                          <div style={{
-                            padding: '16px 12px',
-                            background: '#141414',
-                            border: '1px solid #1f1f1f',
-                            borderRadius: 8,
-                            textAlign: 'center'
-                          }}>
-                            <ThunderboltOutlined style={{ fontSize: 24, color: '#595959', marginBottom: 8 }} />
-                            <Text style={{ color: '#8c8c8c', fontSize: 10, fontWeight: 600 }}>SPEND</Text>
-                          </div>
-                        </Col>
-                        <Col xs={8}>
-                          <div style={{
-                            padding: '16px 12px',
-                            background: '#141414',
-                            border: '1px solid #1f1f1f',
-                            borderRadius: 8,
-                            textAlign: 'center'
-                          }}>
-                            <StarOutlined style={{ fontSize: 24, color: '#595959', marginBottom: 8 }} />
-                            <Text style={{ color: '#8c8c8c', fontSize: 10, fontWeight: 600 }}>STAKE</Text>
-                          </div>
-                        </Col>
-                        <Col xs={8}>
-                          <div style={{
-                            padding: '16px 12px',
-                            background: '#141414',
-                            border: '1px solid #1f1f1f',
-                            borderRadius: 8,
-                            textAlign: 'center'
-                          }}>
-                            <FireOutlined style={{ fontSize: 24, color: '#595959', marginBottom: 8 }} />
-                            <Text style={{ color: '#8c8c8c', fontSize: 10, fontWeight: 600 }}>FLOW</Text>
-                          </div>
-                        </Col>
-                      </Row>
                     </div>
                   </Col>
 
                   {/* Right: Text Content Sections */}
-                  <Col xs={24} lg={14}>
+                  <Col xs={24} lg={12}>
                     <Space direction="vertical" size="large" style={{ width: '100%' }}>
                       <div>
                         <Row justify="space-between" style={{ marginBottom: 8 }}>
