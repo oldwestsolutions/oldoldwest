@@ -431,7 +431,7 @@ export default function Home() {
               </Space>
             </Col>
 
-            <Col xs={24} lg={12} style={{ marginTop: 48 }}>
+            <Col xs={24} lg={12} style={{ marginTop: 80 }}>
               <Card 
                 bordered 
                 style={{ 
@@ -524,33 +524,6 @@ export default function Home() {
                 </div>
                 </Space>
               </Card>
-              
-              {/* Small Wallet Illustration */}
-              <div style={{ 
-                marginTop: 24, 
-                display: 'flex', 
-                justifyContent: 'center',
-                opacity: 0.6
-              }}>
-                <svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Coin Purse Body */}
-                  <path d="M35 25 Q35 20 40 20 L80 20 Q85 20 85 25 L85 55 Q85 60 80 60 L40 60 Q35 60 35 55 Z" fill="#1f1f1f" stroke="#595959" strokeWidth="1.5"/>
-                  {/* Drawstring Opening */}
-                  <ellipse cx="60" cy="25" rx="25" ry="3" fill="#0a0a0a" stroke="#595959" strokeWidth="1.5"/>
-                  {/* Drawstring Cord */}
-                  <path d="M35 25 Q30 22 30 20" stroke="#595959" strokeWidth="1.5" fill="none"/>
-                  <path d="M85 25 Q90 22 90 20" stroke="#595959" strokeWidth="1.5" fill="none"/>
-                  {/* Coin 1 */}
-                  <circle cx="45" cy="42" r="6" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
-                  {/* Coin 2 */}
-                  <circle cx="60" cy="45" r="6" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
-                  {/* Coin 3 */}
-                  <circle cx="75" cy="42" r="6" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
-                  {/* Coin 4 (smaller, in back) */}
-                  <circle cx="52" cy="50" r="5" fill="#1f1f1f" stroke="#595959" strokeWidth="1"/>
-                  <circle cx="68" cy="50" r="5" fill="#1f1f1f" stroke="#595959" strokeWidth="1"/>
-                </svg>
-              </div>
             </Col>
           </Row>
       </section>
