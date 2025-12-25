@@ -88,6 +88,8 @@ export default function Marketplace() {
   const [lastScrollY, setLastScrollY] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const [isMobile, setIsMobile] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
   useEffect(() => {
     const checkMobile = () => {
@@ -96,6 +98,14 @@ export default function Marketplace() {
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const category = params.get('category')
+    if (category) {
+      setSelectedCategory(category)
+    }
   }, [])
 
   useEffect(() => {
@@ -112,10 +122,12 @@ export default function Marketplace() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [lastScrollY])
 
-  const filteredServices = mockServices.filter(service =>
-    service.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    service.category.toLowerCase().includes(searchQuery.toLowerCase())
-  )
+  const filteredServices = mockServices.filter(service => {
+    const matchesSearch = service.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      service.category.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesCategory = !selectedCategory || service.category === selectedCategory
+    return matchesSearch && matchesCategory
+  })
 
   return (
     <Layout style={{ minHeight: '100vh', background: '#000000', color: '#ffffff' }}>
@@ -193,27 +205,34 @@ export default function Marketplace() {
             </Col>
             {filteredServices.filter(s => s.featured).map((service) => (
               <Col xs={24} sm={12} lg={8} key={service.id}>
-                <Card
-                  hoverable
-                  bordered
-                  style={{
-                    background: '#0a0a0a',
-                    borderColor: '#1f1f1f',
-                    borderRadius: 12,
-                    overflow: 'hidden',
-                    height: '100%'
-                  }}
-                  bodyStyle={{ padding: 0 }}
-                >
+                <Link href={`/sellers/${service.seller.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none' }}>
+                  <Card
+                    hoverable
+                    bordered
+                    style={{
+                      background: '#0a0a0a',
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      overflow: 'hidden',
+                      height: '100%',
+                      cursor: 'pointer'
+                    }}
+                    bodyStyle={{ padding: 0 }}
+                  >
                   <div style={{ position: 'relative', height: 200, background: '#141414' }}>
                     <img
                       src={service.image}
                       alt={service.title}
+                      draggable="false"
                       style={{
                         width: '100%',
                         height: '100%',
-                        objectFit: 'cover'
-                      }}
+                        objectFit: 'cover',
+                        pointerEvents: 'none',
+                        userSelect: 'none'
+                      } as any}
+                      onContextMenu={(e) => e.preventDefault()}
+                      onDragStart={(e) => e.preventDefault()}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement
                         target.style.display = 'none'
@@ -254,21 +273,24 @@ export default function Marketplace() {
                       <Text style={{ color: '#ffffff', fontSize: 24, fontWeight: 700 }}>
                         {service.price} MIN
                       </Text>
-                      <Button
-                        type="primary"
-                        style={{
-                          background: '#141414',
-                          borderColor: '#1f1f1f',
-                          color: '#ffffff',
-                          borderRadius: 8,
-                          boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
-                        }}
-                      >
-                        View Details
-                      </Button>
+                      <Link href={`/sellers/${service.seller.toLowerCase().replace(/\s+/g, '-')}`}>
+                        <Button
+                          type="primary"
+                          style={{
+                            background: '#141414',
+                            borderColor: '#1f1f1f',
+                            color: '#ffffff',
+                            borderRadius: 8,
+                            boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
+                          }}
+                        >
+                          View Details
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </Card>
+                </Link>
               </Col>
             ))}
           </Row>
@@ -282,27 +304,34 @@ export default function Marketplace() {
           <Row gutter={[24, 24]}>
             {filteredServices.map((service) => (
               <Col xs={24} sm={12} lg={8} key={service.id}>
-                <Card
-                  hoverable
-                  bordered
-                  style={{
-                    background: '#000000',
-                    borderColor: '#1f1f1f',
-                    borderRadius: 12,
-                    overflow: 'hidden',
-                    height: '100%'
-                  }}
-                  bodyStyle={{ padding: 0 }}
-                >
+                <Link href={`/sellers/${service.seller.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none' }}>
+                  <Card
+                    hoverable
+                    bordered
+                    style={{
+                      background: '#000000',
+                      borderColor: '#1f1f1f',
+                      borderRadius: 12,
+                      overflow: 'hidden',
+                      height: '100%',
+                      cursor: 'pointer'
+                    }}
+                    bodyStyle={{ padding: 0 }}
+                  >
                   <div style={{ position: 'relative', height: 180, background: '#141414' }}>
                     <img
                       src={service.image}
                       alt={service.title}
+                      draggable="false"
                       style={{
                         width: '100%',
                         height: '100%',
-                        objectFit: 'cover'
-                      }}
+                        objectFit: 'cover',
+                        pointerEvents: 'none',
+                        userSelect: 'none'
+                      } as any}
+                      onContextMenu={(e) => e.preventDefault()}
+                      onDragStart={(e) => e.preventDefault()}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement
                         target.style.display = 'none'
@@ -334,21 +363,24 @@ export default function Marketplace() {
                       <Text style={{ color: '#ffffff', fontSize: 20, fontWeight: 700 }}>
                         {service.price} MIN
                       </Text>
-                      <Button
-                        size="small"
-                        style={{
-                          background: '#141414',
-                          borderColor: '#1f1f1f',
-                          color: '#ffffff',
-                          borderRadius: 8,
-                          boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
-                        }}
-                      >
-                        View
-                      </Button>
+                      <Link href={`/sellers/${service.seller.toLowerCase().replace(/\s+/g, '-')}`}>
+                        <Button
+                          size="small"
+                          style={{
+                            background: '#141414',
+                            borderColor: '#1f1f1f',
+                            color: '#ffffff',
+                            borderRadius: 8,
+                            boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
+                          }}
+                        >
+                          View
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </Card>
+                </Link>
               </Col>
             ))}
           </Row>

@@ -401,11 +401,18 @@ export default function Home() {
                     'Education': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=400&fit=crop'
   }
 
-  const serviceSlug = service.title.toLowerCase().replace(/\s+/g, '-')
+  const categoryMap: { [key: string]: string } = {
+    'Music': 'Music & Audio',
+    'Graphic Design': 'Graphic Design',
+    'Coding': 'Development',
+    'Finance': 'Finance',
+    'Collaboration': 'Collaboration',
+    'Education': 'Education'
+  }
   
   return (
                     <Col xs={24} sm={12} md={8} lg={4} xl={4} key={index}>
-                      <Link href={`/services/${serviceSlug}`} style={{ textDecoration: 'none' }}>
+                      <Link href={`/marketplace?category=${encodeURIComponent(categoryMap[service.title] || service.title)}`} style={{ textDecoration: 'none' }}>
                         <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                           <Card
                             bordered
