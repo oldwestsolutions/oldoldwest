@@ -237,7 +237,7 @@ export default function Home() {
               <Row gutter={[24, 24]}>
                 {[
                   {
-                    title: 'Music & Audio Engineering',
+                    title: 'Music',
                     items: [
                       'Composing, arranging, and producing music',
                       'Mixing and mastering tracks',
@@ -247,7 +247,7 @@ export default function Home() {
                     ]
                   },
                   {
-                    title: 'Graphic Design & Video Editing',
+                    title: 'Graphic Design',
                     items: [
                       'Image creation and enhancement',
                       'Video montage, editing, and post-production',
@@ -257,7 +257,7 @@ export default function Home() {
                     ]
                   },
                   {
-                    title: 'Coding & Software Development',
+                    title: 'Coding',
                     items: [
                       'Writing, testing, and deploying code',
                       'Collaborative coding sessions',
@@ -275,7 +275,7 @@ export default function Home() {
                     ]
                   },
                   {
-                    title: 'Collaboration & Project-Based Work',
+                    title: 'Collaboration',
                     items: [
                       'Multi-user sessions for joint projects',
                       'Sharing VM resources for teamwork',
@@ -284,7 +284,7 @@ export default function Home() {
                     ]
                   },
                   {
-                    title: 'Education & Learning',
+                    title: 'Education',
                     items: [
                       'Skill-building exercises (coding, music, design)',
                       'Virtual workshops or tutorials',
@@ -292,34 +292,24 @@ export default function Home() {
                     ]
                   }
                 ].map((service, index) => {
-                  // Professional animated stock images from Pexels - relevant to each service
-                  const serviceImages: { [key: string]: string } = {
-                    'Music & Audio Engineering': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
-                    'Graphic Design & Video Editing': 'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
-                    'Coding & Software Development': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
-                    'Finance': 'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
-                    'Collaboration & Project-Based Work': 'https://images.pexels.com/videos/3045163/free-video-3045163.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800',
-                    'Education & Learning': 'https://images.pexels.com/videos/2491284/free-video-2491284.jpg?auto=compress&cs=tinysrgb&dpr=2&w=800'
-                  }
-                  
-                  // Use Unsplash for professional stock images with service-specific keywords
-                  const imageUrl = `https://source.unsplash.com/800x400/?${encodeURIComponent(
-                    service.title === 'Music & Audio Engineering' ? 'music,audio,studio' :
-                    service.title === 'Graphic Design & Video Editing' ? 'design,graphic,creative' :
-                    service.title === 'Coding & Software Development' ? 'coding,programming,computer' :
+                  // Use Unsplash for professional stock images with service-specific keywords (fallback)
+                  const imageUrl = `https://source.unsplash.com/400x400/?${encodeURIComponent(
+                    service.title === 'Music' ? 'music,audio,studio' :
+                    service.title === 'Graphic Design' ? 'design,graphic,creative' :
+                    service.title === 'Coding' ? 'coding,programming,computer' :
                     service.title === 'Finance' ? 'finance,business,data' :
-                    service.title === 'Collaboration & Project-Based Work' ? 'teamwork,collaboration,meeting' :
+                    service.title === 'Collaboration' ? 'teamwork,collaboration,meeting' :
                     'education,learning,study'
                   )}`
 
-                  // Better stock images from Unsplash with specific dimensions
+                  // Better stock images from Unsplash with specific dimensions (square)
                   const stockImages: { [key: string]: string } = {
-                    'Music & Audio Engineering': 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop',
-                    'Graphic Design & Video Editing': 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
-                    'Coding & Software Development': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop',
-                    'Finance': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
-                    'Collaboration & Project-Based Work': 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop',
-                    'Education & Learning': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop'
+                    'Music': 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop',
+                    'Graphic Design': 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=400&fit=crop',
+                    'Coding': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=400&fit=crop',
+                    'Finance': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop',
+                    'Collaboration': 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop',
+                    'Education': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=400&fit=crop'
                   }
                   
                   return (
@@ -330,16 +320,21 @@ export default function Home() {
                           background: '#000000',
                           borderColor: '#1f1f1f',
                           borderRadius: 12,
-                          height: '100%',
-                          overflow: 'hidden'
+                          overflow: 'hidden',
+                          aspectRatio: '1',
+                          display: 'flex',
+                          flexDirection: 'column'
                         }}
-                        bodyStyle={{ padding: 0 }}
+                        bodyStyle={{ padding: 0, display: 'flex', flexDirection: 'column', flex: 1 }}
                       >
-                        <div style={{ position: 'relative', height: 180, background: '#141414' }}>
+                        <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: '#141414' }}>
                           <img
                             src={stockImages[service.title] || imageUrl}
                             alt={service.title}
                             style={{
+                              position: 'absolute',
+                              top: 0,
+                              left: 0,
                               width: '100%',
                               height: '100%',
                               objectFit: 'cover',
@@ -355,8 +350,8 @@ export default function Home() {
                             }}
                           />
                         </div>
-                        <div style={{ padding: '20px' }}>
-                          <Title level={4} style={{ color: '#ffffff', margin: 0, fontSize: 16, fontWeight: 600, lineHeight: 1.4 }}>
+                        <div style={{ padding: '16px', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <Title level={4} style={{ color: '#ffffff', margin: 0, fontSize: 16, fontWeight: 600, lineHeight: 1.4, textAlign: 'center' }}>
                             {service.title}
                           </Title>
                         </div>
