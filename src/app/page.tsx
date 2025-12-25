@@ -238,7 +238,7 @@ export default function Home() {
                 {[
                   {
                     title: 'Music',
-                    description: 'Professional audio production and music creation tools',
+                    description: 'Audio production tools',
                     items: [
                       'Composing, arranging, and producing music',
                       'Mixing and mastering tracks',
@@ -249,7 +249,7 @@ export default function Home() {
                   },
                   {
                     title: 'Graphic Design',
-                    description: 'Creative design and video editing capabilities',
+                    description: 'Design and video editing',
                     items: [
                       'Image creation and enhancement',
                       'Video montage, editing, and post-production',
@@ -260,7 +260,7 @@ export default function Home() {
                   },
                   {
                     title: 'Coding',
-                    description: 'Full-stack development and programming environments',
+                    description: 'Development environments',
                     items: [
                       'Writing, testing, and deploying code',
                       'Collaborative coding sessions',
@@ -270,7 +270,7 @@ export default function Home() {
                   },
                   {
                     title: 'Finance',
-                    description: 'Financial analysis and trading simulation tools',
+                    description: 'Trading and analysis tools',
                     items: [
                       'Algorithmic trading simulations',
                       'Data analysis for financial markets',
@@ -280,7 +280,7 @@ export default function Home() {
                   },
                   {
                     title: 'Collaboration',
-                    description: 'Team-based projects and shared workspaces',
+                    description: 'Team workspaces',
                     items: [
                       'Multi-user sessions for joint projects',
                       'Sharing VM resources for teamwork',
@@ -290,7 +290,7 @@ export default function Home() {
                   },
                   {
                     title: 'Education',
-                    description: 'Learning platforms and skill development resources',
+                    description: 'Learning platforms',
                     items: [
                       'Skill-building exercises (coding, music, design)',
                       'Virtual workshops or tutorials',
@@ -319,7 +319,7 @@ export default function Home() {
                   }
                   
                   return (
-                    <Col xs={24} sm={12} md={8} lg={8} xl={8} key={index} style={{ padding: 0 }}>
+                    <Col xs={24} sm={12} md={8} lg={4} xl={4} key={index} style={{ padding: 0 }}>
                       <Card
                         bordered
                         style={{
