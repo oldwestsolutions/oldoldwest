@@ -317,9 +317,9 @@ export default function Home() {
                     'Finance': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop',
                     'Collaboration': 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop',
                     'Education': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=400&fit=crop'
-                  }
-                  
-                  return (
+  }
+
+  return (
                     <Col xs={24} sm={12} md={8} lg={4} xl={4} key={index}>
                       <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                         <Card
@@ -358,7 +358,7 @@ export default function Home() {
                                 }
                               }}
                             />
-                          </div>
+              </div>
                         </Card>
                         <div style={{ textAlign: 'center', paddingTop: 8 }}>
                           <Title level={4} style={{ color: '#ffffff', margin: '0 0 4px 0', fontSize: 16, fontWeight: 600, lineHeight: 1.4 }}>
@@ -367,15 +367,15 @@ export default function Home() {
                           <p style={{ color: '#999999', margin: 0, fontSize: 12, lineHeight: 1.4 }}>
                             {service.description}
                           </p>
-                        </div>
-                      </div>
+          </div>
+        </div>
                     </Col>
                   )
                 })}
               </Row>
             </Col>
           </Row>
-        </section>
+      </section>
 
         {/* Tokenomics */}
         <section style={{ 
@@ -398,7 +398,7 @@ export default function Home() {
                     Platform Currency
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Coins serve as the primary currency for platform interactions and resource consumption. Each platform action—including messaging, content access, and virtual machine utilization—is metered through a transparent coin-based system. All consumption rates are displayed prior to execution, ensuring complete transparency in resource allocation.
+                    Coins are the primary currency for all platform interactions. Each action—messaging, content access, and VM utilization—is metered through a transparent system with rates displayed before execution.
                   </Paragraph>
           </div>
 
@@ -407,25 +407,25 @@ export default function Home() {
                     Resource Management
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    The coin system ensures equitable resource distribution across all platform users. By implementing a metered consumption model, we maintain platform stability, prevent resource abuse, and guarantee fair access to computational resources for all participants.
+                    The metered consumption model ensures equitable resource distribution, maintains platform stability, and prevents resource abuse while guaranteeing fair access for all users.
                   </Paragraph>
-          </div>
+                </div>
 
             <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                     Consumption Model
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Platform interactions including messaging, content viewing, user connections, and virtual machine operations consume coins at predefined rates. All consumption rates are published and visible before action execution, providing complete transparency in resource utilization and cost management.
+                    All platform interactions consume coins at predefined, published rates. Consumption rates are visible before execution, ensuring complete transparency in resource utilization.
                   </Paragraph>
-        </div>
+              </div>
 
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                     Acquisition & Balance Management
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Coins are purchased and deposited directly into your account wallet. Consumption is deducted in real-time as platform interactions occur. Balances can be replenished at any time through the treasury, and complete usage history is available for comprehensive account transparency and financial tracking.
+                    Coins are purchased and deposited into your account wallet. Consumption is deducted in real-time, and balances can be replenished through the treasury with complete usage history available.
                   </Paragraph>
           </div>
               </Space>
@@ -474,14 +474,14 @@ export default function Home() {
                     </Col>
                   </Row>
                   <Paragraph style={{ color: '#595959', fontSize: 13, marginTop: 16, lineHeight: 1.6, marginBottom: 0 }}>
-                    Your current account balance displays 1,247 coins available. The consumption rate for messaging is 0.5 coins per message sent. This rate applies to all direct messages and is deducted immediately upon message delivery.
+                    Current balance: 1,247 coins. Messaging rate: 0.5 coins per message, deducted immediately upon delivery.
                   </Paragraph>
-                </div>
+        </div>
 
                 <Divider style={{ borderColor: '#1f1f1f', margin: '32px 0' }} />
 
                 <Space direction="vertical" size="large" style={{ width: '100%' }}>
-                  <div>
+            <div>
                     <Row justify="space-between" style={{ marginBottom: 8 }}>
                       <Col>
                         <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Session Duration</Text>
@@ -491,9 +491,9 @@ export default function Home() {
                       </Col>
                     </Row>
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Total time elapsed in your current active session, measured from login to present moment.
+                      Total time elapsed in current active session.
                     </Paragraph>
-              </div>
+                </div>
                   
                   <div>
                     <Row justify="space-between" style={{ marginBottom: 8 }}>
@@ -505,9 +505,9 @@ export default function Home() {
                       </Col>
                     </Row>
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Total coins consumed during the current session through all interactions, including messaging, content viewing, and connection establishment.
+                      Total coins consumed this session through all platform interactions.
                     </Paragraph>
-          </div>
+                </div>
                   
                   <div>
                     <Row justify="space-between" style={{ marginBottom: 8 }}>
@@ -519,9 +519,9 @@ export default function Home() {
                       </Col>
                     </Row>
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Available coins remaining after deducting all session consumption. This balance will be used for future interactions until replenished through the treasury.
+                      Available coins remaining after session consumption. Replenish through the treasury as needed.
                     </Paragraph>
-        </div>
+                </div>
                 </Space>
               </Card>
             </Col>
@@ -544,7 +544,7 @@ export default function Home() {
                   VERIFIED IDENTITY
                 </Text>
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
-              </div>
+          </div>
 
               <Card
                 bordered
@@ -582,8 +582,8 @@ export default function Home() {
                         marginTop: 16
                       }}>
                         <Text style={{ color: '#8c8c8c', fontSize: 14 }}>+1 (555) 123-4567</Text>
-                      </div>
-                    </div>
+                  </div>
+                </div>
                   </Col>
                   <Col xs={24} md={12}>
                     <Title level={3} style={{ color: '#ffffff', marginBottom: 16, fontSize: 28, fontWeight: 600 }}>
@@ -632,7 +632,7 @@ export default function Home() {
                   INTEGRATED PLATFORMS
                 </Text>
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
-          </div>
+              </div>
               <Row gutter={[24, 24]}>
                 {[
                   { name: 'Coursera', logo: 'https://cdn.simpleicons.org/coursera/0056D2' },
@@ -712,7 +712,7 @@ export default function Home() {
                   borderRadius: 8
                 }}>
                   <div style={{ width: 20, height: 20, background: '#595959', borderRadius: 4 }}></div>
-          </div>
+            </div>
               </Col>
               <Col>
                 <Text style={{ fontSize: 18, color: '#ffffff', fontWeight: 600, letterSpacing: '0.5px' }}>OLDWEST</Text>
