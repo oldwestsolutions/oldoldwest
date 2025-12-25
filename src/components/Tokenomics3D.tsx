@@ -2,7 +2,7 @@
 
 import { useRef, useMemo, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Float, Ring } from '@react-three/drei'
+import { OrbitControls, Float, Ring, Sphere } from '@react-three/drei'
 import * as THREE from 'three'
 
 function Token({ position }: { position: [number, number, number] }) {
