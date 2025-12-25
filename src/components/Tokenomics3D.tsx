@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Text, Sphere, MeshDistortMaterial, Float, Trail, Stars, Ring } from '@react-three/drei'
+import { OrbitControls, Float, Ring } from '@react-three/drei'
 import * as THREE from 'three'
 
 function Token({ position }: { position: [number, number, number] }) {
@@ -24,20 +24,17 @@ function Token({ position }: { position: [number, number, number] }) {
       <group position={position}>
         {/* Outer Ring */}
         <Ring ref={ringRef} args={[1.2, 1.3, 64]} rotation={[Math.PI / 2, 0, 0]}>
-          <meshStandardMaterial color="#595959" emissive="#595959" emissiveIntensity={0.2} transparent opacity={0.5} />
+          <meshStandardMaterial color="#595959" emissive="#595959" emissiveIntensity={0.3} transparent opacity={0.6} />
         </Ring>
         
         {/* Main Token Sphere */}
         <Sphere ref={meshRef} args={[0.8, 32, 32]}>
-          <MeshDistortMaterial
+          <meshStandardMaterial
             color="#d9d9d9"
-            attach="material"
-            distort={0.3}
-            speed={2}
-            roughness={0.1}
-            metalness={0.9}
             emissive="#d9d9d9"
-            emissiveIntensity={0.3}
+            emissiveIntensity={0.4}
+            metalness={0.9}
+            roughness={0.1}
           />
         </Sphere>
         
@@ -46,97 +43,93 @@ function Token({ position }: { position: [number, number, number] }) {
           <meshStandardMaterial
             color="#ffffff"
             emissive="#ffffff"
-            emissiveIntensity={0.5}
+            emissiveIntensity={0.6}
             transparent
-            opacity={0.2}
+            opacity={0.3}
           />
         </Sphere>
-        
-        <Text
-          position={[0, 0, 1.1]}
-          fontSize={0.25}
-          color="#ffffff"
-          anchorX="center"
-          anchorY="middle"
-          fontWeight="bold"
-        >
-          TOKEN
-        </Text>
       </group>
     </Float>
   )
 }
 
 function OrbitingElement({ 
-  position, 
   color, 
   label,
-  radius = 2,
+  radius = 2.5,
   offset = 0
 }: { 
-  position: [number, number, number]
   color: string
   label: string
   radius?: number
   offset?: number
 }) {
   const meshRef = useRef<THREE.Mesh>(null!)
-  const trailRef = useRef<THREE.Mesh>(null!)
-  const timeRef = useRef(0)
+  const groupRef = useRef<THREE.Group>(null!)
 
   useFrame((state) => {
-    if (meshRef.current) {
-      timeRef.current = state.clock.elapsedTime
-      const angle = timeRef.current * 0.5 + offset
-      const x = Math.cos(angle) * radius
-      const z = Math.sin(angle) * radius
-      meshRef.current.position.x = x
-      meshRef.current.position.z = z
-      meshRef.current.rotation.y = timeRef.current * 2
+    if (groupRef.current) {
+      const time = state.clock.elapsedTime
+      const angle = time * 0.5 + offset
+      groupRef.current.position.x = Math.cos(angle) * radius
+      groupRef.current.position.z = Math.sin(angle) * radius
+      if (meshRef.current) {
+        meshRef.current.rotation.y = time * 2
+      }
     }
   })
 
   return (
-    <group position={position}>
-      {/* Trail Effect */}
-      <Trail
-        width={0.1}
-        length={8}
-        color={color}
-        attenuation={(t) => t * t}
-      >
-        <Sphere ref={meshRef} args={[0.35, 16, 16]}>
-          <meshStandardMaterial 
-            color={color} 
-            emissive={color} 
-            emissiveIntensity={0.8}
-            metalness={0.7}
-            roughness={0.2}
-          />
-        </Sphere>
-      </Trail>
+    <group ref={groupRef}>
+      {/* Main Orbiting Sphere */}
+      <Sphere ref={meshRef} args={[0.4, 16, 16]}>
+        <meshStandardMaterial 
+          color={color} 
+          emissive={color} 
+          emissiveIntensity={0.9}
+          metalness={0.8}
+          roughness={0.2}
+        />
+      </Sphere>
       
       {/* Glow Ring */}
       <Ring args={[0.5, 0.6, 32]} rotation={[Math.PI / 2, 0, 0]}>
         <meshStandardMaterial 
           color={color} 
           emissive={color} 
-          emissiveIntensity={0.3}
+          emissiveIntensity={0.4}
           transparent
-          opacity={0.4}
+          opacity={0.5}
         />
       </Ring>
       
-      <Text
-        position={[0, -0.7, 0]}
-        fontSize={0.18}
-        color={color}
-        anchorX="center"
-        anchorY="middle"
-        fontWeight="bold"
-      >
-        {label}
-      </Text>
+      {/* Label Text using HTML */}
+      <mesh position={[0, -0.8, 0]}>
+        <planeGeometry args={[1, 0.3]} />
+        <meshBasicMaterial transparent opacity={0}>
+          <primitive object={new THREE.Object3D()} />
+        </meshBasicMaterial>
+      </mesh>
+    </group>
+  )
+}
+
+function EarningElements() {
+  return (
+    <group position={[0, 3.5, 0]}>
+      {[-1.2, -0.4, 0.4, 1.2].map((x, i) => (
+        <Float key={i} speed={1 + i * 0.2} rotationIntensity={0.3} floatIntensity={0.3}>
+          <Sphere args={[0.3, 16, 16]} position={[x, 0, 0]}>
+            <meshStandardMaterial 
+              color="#595959" 
+              emissive="#595959" 
+              emissiveIntensity={0.6}
+              metalness={0.7}
+              roughness={0.2}
+            />
+          </Sphere>
+        </Float>
+      ))}
     </group>
   )
 }
@@ -153,7 +146,7 @@ function ConnectionLine({
   const points = useMemo(() => {
     const curve = new THREE.QuadraticBezierCurve3(
       new THREE.Vector3(...start),
-      new THREE.Vector3((start[0] + end[0]) / 2, (start[1] + end[1]) / 2 + 1, (start[2] + end[2]) / 2),
+      new THREE.Vector3((start[0] + end[0]) / 2, (start[1] + end[1]) / 2 + 1.5, (start[2] + end[2]) / 2),
       new THREE.Vector3(...end)
     )
     return curve.getPoints(50)
@@ -169,7 +162,7 @@ function ConnectionLine({
           itemSize={3}
         />
       </bufferGeometry>
-      <lineBasicMaterial color={color} opacity={0.4} transparent />
+      <lineBasicMaterial color={color} opacity={0.5} transparent />
     </line>
   )
 }
@@ -178,17 +171,17 @@ function ParticleField() {
   const particlesRef = useRef<THREE.Points>(null!)
   
   const particles = useMemo(() => {
-    const count = 150
+    const count = 200
     const positions = new Float32Array(count * 3)
     for (let i = 0; i < count * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 12
+      positions[i] = (Math.random() - 0.5) * 15
     }
     return positions
   }, [])
 
   useFrame((state) => {
     if (particlesRef.current) {
-      particlesRef.current.rotation.y = state.clock.elapsedTime * 0.1
+      particlesRef.current.rotation.y = state.clock.elapsedTime * 0.05
     }
   })
 
@@ -197,83 +190,99 @@ function ParticleField() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={150}
+          count={200}
           array={particles}
           itemSize={3}
         />
       </bufferGeometry>
-      <pointsMaterial size={0.08} color="#595959" transparent opacity={0.6} />
+      <pointsMaterial size={0.1} color="#595959" transparent opacity={0.5} />
     </points>
   )
 }
 
 export default function Tokenomics3D() {
   return (
-    <div style={{ width: '100%', height: '500px', background: '#0a0a0a', borderRadius: 12, overflow: 'hidden' }}>
-      <Canvas
-        camera={{ position: [0, 2, 8], fov: 50 }}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-      >
-        <ambientLight intensity={0.4} />
-        <pointLight position={[5, 5, 5]} intensity={1.2} color="#ffffff" />
-        <pointLight position={[-5, -5, -5]} intensity={0.8} color="#4ecdc4" />
-        <pointLight position={[0, 8, 0]} intensity={0.6} color="#ffffff" />
-        <directionalLight position={[0, 5, 0]} intensity={0.4} />
-        <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={0.5} />
+    <div style={{ width: '100%', height: '500px', background: '#0a0a0a', borderRadius: 12, overflow: 'hidden', position: 'relative' }}>
+      <Suspense fallback={
+        <div style={{ 
+          width: '100%', 
+          height: '100%', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          color: '#595959',
+          fontSize: 14
+        }}>
+          Loading 3D Visualization...
+        </div>
+      }>
+        <Canvas
+          camera={{ position: [0, 2, 8], fov: 50 }}
+          gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+        >
+          <ambientLight intensity={0.5} />
+          <pointLight position={[5, 5, 5]} intensity={1.5} color="#ffffff" />
+          <pointLight position={[-5, -5, -5]} intensity={1} color="#4ecdc4" />
+          <pointLight position={[0, 8, 0]} intensity={0.8} color="#ffffff" />
+          <directionalLight position={[0, 5, 0]} intensity={0.5} />
+          <spotLight position={[10, 10, 10]} angle={0.3} penumbra={1} intensity={0.6} />
 
-        {/* Central Token */}
-        <Token position={[0, 0, 0]} />
+          {/* Central Token */}
+          <Token position={[0, 0, 0]} />
 
-        {/* Orbiting Elements - Positioned around token */}
-        <OrbitingElement position={[0, 0, 0]} color="#ff6b35" label="SPEND" radius={2.5} offset={0} />
-        <OrbitingElement position={[0, 0, 0]} color="#4ecdc4" label="STAKE" radius={2.5} offset={Math.PI * 2 / 3} />
-        <OrbitingElement position={[0, 0, 0]} color="#95e1d3" label="FLOW" radius={2.5} offset={Math.PI * 4 / 3} />
+          {/* Orbiting Elements */}
+          <OrbitingElement color="#ff6b35" label="SPEND" radius={2.5} offset={0} />
+          <OrbitingElement color="#4ecdc4" label="STAKE" radius={2.5} offset={Math.PI * 2 / 3} />
+          <OrbitingElement color="#95e1d3" label="FLOW" radius={2.5} offset={Math.PI * 4 / 3} />
 
-        {/* Earning Elements - Floating above */}
-        <group position={[0, 3.5, 0]}>
-          {[-1, -0.33, 0.33, 1].map((x, i) => (
-            <Float key={i} speed={1 + i * 0.2} rotationIntensity={0.3} floatIntensity={0.3}>
-              <Sphere args={[0.25, 16, 16]} position={[x, 0, 0]}>
-                <meshStandardMaterial 
-                  color="#595959" 
-                  emissive="#595959" 
-                  emissiveIntensity={0.5}
-                  metalness={0.6}
-                  roughness={0.3}
-                />
-              </Sphere>
-            </Float>
-          ))}
-          <Text
-            position={[0, -0.8, 0]}
-            fontSize={0.2}
-            color="#8c8c8c"
-            anchorX="center"
-            anchorY="middle"
-          >
-            EARN
-          </Text>
-        </group>
+          {/* Earning Elements */}
+          <EarningElements />
 
-        {/* Connection Lines */}
-        <ConnectionLine start={[0, 3, 0]} end={[0, 1, 0]} color="#595959" />
-        <ConnectionLine start={[0, -1, 0]} end={[2.5, 0, 0]} color="#ff6b35" />
-        <ConnectionLine start={[0, -1, 0]} end={[-1.25, 0, 2.16]} color="#4ecdc4" />
-        <ConnectionLine start={[0, -1, 0]} end={[-1.25, 0, -2.16]} color="#95e1d3" />
+          {/* Connection Lines */}
+          <ConnectionLine start={[0, 3.2, 0]} end={[0, 1.2, 0]} color="#595959" />
+          <ConnectionLine start={[0, -1.2, 0]} end={[2.3, 0, 0]} color="#ff6b35" />
+          <ConnectionLine start={[0, -1.2, 0]} end={[-1.15, 0, 2]} color="#4ecdc4" />
+          <ConnectionLine start={[0, -1.2, 0]} end={[-1.15, 0, -2]} color="#95e1d3" />
 
-        {/* Particle Field */}
-        <ParticleField />
+          {/* Particle Field */}
+          <ParticleField />
 
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          minPolarAngle={Math.PI / 3}
-          maxPolarAngle={Math.PI / 1.5}
-          autoRotate
-          autoRotateSpeed={0.5}
-        />
-      </Canvas>
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            minPolarAngle={Math.PI / 3}
+            maxPolarAngle={Math.PI / 1.5}
+            autoRotate
+            autoRotateSpeed={0.5}
+          />
+        </Canvas>
+      </Suspense>
+      
+      {/* Overlay Labels */}
+      <div style={{
+        position: 'absolute',
+        bottom: 20,
+        left: 0,
+        right: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        gap: 24,
+        pointerEvents: 'none',
+        zIndex: 10
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ width: 12, height: 12, background: '#ff6b35', borderRadius: '50%', margin: '0 auto 4px', boxShadow: '0 0 8px #ff6b35' }}></div>
+          <div style={{ color: '#8c8c8c', fontSize: 11, fontWeight: 600 }}>SPEND</div>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ width: 12, height: 12, background: '#4ecdc4', borderRadius: '50%', margin: '0 auto 4px', boxShadow: '0 0 8px #4ecdc4' }}></div>
+          <div style={{ color: '#8c8c8c', fontSize: 11, fontWeight: 600 }}>STAKE</div>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ width: 12, height: 12, background: '#95e1d3', borderRadius: '50%', margin: '0 auto 4px', boxShadow: '0 0 8px #95e1d3' }}></div>
+          <div style={{ color: '#8c8c8c', fontSize: 11, fontWeight: 600 }}>FLOW</div>
+        </div>
+      </div>
     </div>
   )
 }
-
