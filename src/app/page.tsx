@@ -449,10 +449,9 @@ export default function Home() {
                                 objectFit: 'cover',
                                 opacity: 0.9,
                                 pointerEvents: 'none',
-                                userSelect: 'none',
-                                WebkitUserDrag: 'none',
-                                WebkitUserSelect: 'none'
-                              }}
+                                userSelect: 'none'
+                              } as any}
+                              onDragStart={(e) => e.preventDefault()}
                               onContextMenu={(e) => e.preventDefault()}
                               onError={(e) => {
                                 // Fallback to gradient if image fails to load
