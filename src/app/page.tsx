@@ -234,7 +234,7 @@ export default function Home() {
                 Services Offered Through Virtual Machine Environment
               </Title>
 
-              <Row gutter={0}>
+              <Row gutter={[16, 24]}>
                 {[
                   {
                     title: 'Music',
@@ -319,53 +319,55 @@ export default function Home() {
                   }
                   
                   return (
-                    <Col xs={24} sm={12} md={8} lg={4} xl={4} key={index} style={{ padding: 0 }}>
-                      <Card
-                        bordered
-                        style={{
-                          background: '#000000',
-                          borderColor: '#1f1f1f',
-                          borderRadius: 0,
-                          overflow: 'hidden',
-                          aspectRatio: '1',
-                          display: 'flex',
-                          flexDirection: 'column',
-                          height: '100%'
-                        }}
-                        bodyStyle={{ padding: 0, display: 'flex', flexDirection: 'column', flex: 1 }}
-                      >
-                        <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: '#141414' }}>
-                          <img
-                            src={stockImages[service.title] || imageUrl}
-                            alt={service.title}
-                            style={{
-                              position: 'absolute',
-                              top: 0,
-                              left: 0,
-                              width: '100%',
-                              height: '100%',
-                              objectFit: 'cover',
-                              opacity: 0.9
-                            }}
-                            onError={(e) => {
-                              // Fallback to gradient if image fails to load
-                              const target = e.target as HTMLImageElement
-                              target.style.display = 'none'
-                              if (target.parentElement) {
-                                target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
-                              }
-                            }}
-                          />
-                        </div>
-                        <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                          <Title level={4} style={{ color: '#ffffff', margin: '0 0 8px 0', fontSize: 18, fontWeight: 600, lineHeight: 1.4, textAlign: 'center' }}>
+                    <Col xs={24} sm={12} md={8} lg={4} xl={4} key={index}>
+                      <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                        <Card
+                          bordered
+                          style={{
+                            background: '#000000',
+                            borderColor: '#1f1f1f',
+                            borderRadius: 12,
+                            overflow: 'hidden',
+                            aspectRatio: '1',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            marginBottom: 12
+                          }}
+                          bodyStyle={{ padding: 0, display: 'flex', flexDirection: 'column', flex: 1 }}
+                        >
+                          <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: '#141414' }}>
+                            <img
+                              src={stockImages[service.title] || imageUrl}
+                              alt={service.title}
+                              style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                                opacity: 0.9
+                              }}
+                              onError={(e) => {
+                                // Fallback to gradient if image fails to load
+                                const target = e.target as HTMLImageElement
+                                target.style.display = 'none'
+                                if (target.parentElement) {
+                                  target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
+                                }
+                              }}
+                            />
+                          </div>
+                        </Card>
+                        <div style={{ textAlign: 'center', paddingTop: 8 }}>
+                          <Title level={4} style={{ color: '#ffffff', margin: '0 0 4px 0', fontSize: 16, fontWeight: 600, lineHeight: 1.4 }}>
                             {service.title}
                           </Title>
-                          <p style={{ color: '#999999', margin: 0, fontSize: 13, lineHeight: 1.5, textAlign: 'center' }}>
+                          <p style={{ color: '#999999', margin: 0, fontSize: 12, lineHeight: 1.4 }}>
                             {service.description}
                           </p>
                         </div>
-                      </Card>
+                      </div>
                     </Col>
                   )
                 })}
