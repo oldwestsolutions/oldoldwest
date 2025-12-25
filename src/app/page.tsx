@@ -686,15 +686,14 @@ export default function Home() {
                     }}>
                       <PhoneOutlined style={{ fontSize: 64, color: '#595959' }} />
                       <div style={{
-                        width: 120,
-                        height: 80,
                         background: '#0a0a0a',
                         border: '1px solid #1f1f1f',
                         borderRadius: 8,
-                        display: 'flex',
+                        display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        marginTop: 16
+                        marginTop: 16,
+                        padding: '8px 12px'
                       }}>
                         <Text style={{ color: '#8c8c8c', fontSize: 14 }}>+1 (555) 123-4567</Text>
                   </div>
