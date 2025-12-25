@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown, List } from 'antd'
-import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined, PhoneOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined, PhoneOutlined, WalletOutlined, TeamOutlined, FireOutlined, ThunderboltOutlined, StarOutlined, ArrowRightOutlined, ArrowDownOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
 import type { MenuProps } from 'antd'
@@ -561,6 +561,135 @@ export default function Home() {
                 }}
                 bodyStyle={{ padding: 48 }}
               >
+                {/* Visual Tokenomics Flow Illustration */}
+                <div style={{ 
+                  background: '#0a0a0a',
+                  border: '1px solid #1f1f1f',
+                  borderRadius: 12,
+                  padding: '40px 24px',
+                  marginBottom: 48
+                }}>
+                  {/* Top: Earning Section */}
+                  <div style={{ textAlign: 'center', marginBottom: 32 }}>
+                    <div style={{ 
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 12,
+                      padding: '16px 24px',
+                      background: '#141414',
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 8,
+                      marginBottom: 16
+                    }}>
+                      <CodeOutlined style={{ fontSize: 24, color: '#595959' }} />
+                      <TrophyOutlined style={{ fontSize: 24, color: '#595959' }} />
+                      <TeamOutlined style={{ fontSize: 24, color: '#595959' }} />
+                      <CheckCircleOutlined style={{ fontSize: 24, color: '#595959' }} />
+                    </div>
+                    <div>
+                      <Text style={{ color: '#8c8c8c', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                        EARN TOKENS
+                      </Text>
+                      <div style={{ marginTop: 8 }}>
+                        <Text style={{ color: '#595959', fontSize: 11 }}>
+                          Projects • Collaboration • Quality Output • Competitions
+                        </Text>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Arrow Down */}
+                  <div style={{ textAlign: 'center', marginBottom: 24 }}>
+                    <ArrowDownOutlined style={{ fontSize: 24, color: '#595959' }} />
+                  </div>
+
+                  {/* Center: Token Hub */}
+                  <div style={{ textAlign: 'center', marginBottom: 24 }}>
+                    <div style={{
+                      display: 'inline-flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      padding: '24px 32px',
+                      background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
+                      border: '2px solid #1f1f1f',
+                      borderRadius: 12,
+                      minWidth: 200
+                    }}>
+                      <WalletOutlined style={{ fontSize: 48, color: '#d9d9d9', marginBottom: 12 }} />
+                      <Text style={{ color: '#ffffff', fontSize: 18, fontWeight: 600, marginBottom: 4 }}>
+                        TOKEN
+                      </Text>
+                      <Text style={{ color: '#8c8c8c', fontSize: 11 }}>
+                        Merit + Compute + Access
+                      </Text>
+                    </div>
+                  </div>
+
+                  {/* Arrow Down */}
+                  <div style={{ textAlign: 'center', marginBottom: 24 }}>
+                    <ArrowDownOutlined style={{ fontSize: 24, color: '#595959' }} />
+                  </div>
+
+                  {/* Bottom: Three Paths */}
+                  <Row gutter={[16, 16]} justify="center">
+                    <Col xs={24} sm={8}>
+                      <div style={{
+                        padding: '20px',
+                        background: '#141414',
+                        border: '1px solid #1f1f1f',
+                        borderRadius: 8,
+                        textAlign: 'center',
+                        height: '100%'
+                      }}>
+                        <ThunderboltOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 12 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
+                          SPEND
+                        </Text>
+                        <Text style={{ color: '#595959', fontSize: 10, lineHeight: 1.4 }}>
+                          VM Features • Collaboration • Visibility • Tools
+                        </Text>
+                      </div>
+                    </Col>
+                    <Col xs={24} sm={8}>
+                      <div style={{
+                        padding: '20px',
+                        background: '#141414',
+                        border: '1px solid #1f1f1f',
+                        borderRadius: 8,
+                        textAlign: 'center',
+                        height: '100%'
+                      }}>
+                        <StarOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 12 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
+                          STAKE
+                        </Text>
+                        <Text style={{ color: '#595959', fontSize: 10, lineHeight: 1.4 }}>
+                          Promote Work • Category Search • Visibility Leverage
+                        </Text>
+                      </div>
+                    </Col>
+                    <Col xs={24} sm={8}>
+                      <div style={{
+                        padding: '20px',
+                        background: '#141414',
+                        border: '1px solid #1f1f1f',
+                        borderRadius: 8,
+                        textAlign: 'center',
+                        height: '100%'
+                      }}>
+                        <FireOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 12 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
+                          FLOW
+                        </Text>
+                        <Text style={{ color: '#595959', fontSize: 10, lineHeight: 1.4 }}>
+                          Platform Rewards • Resource Consumption • Self-Contained
+                        </Text>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+
+                {/* Detailed Text Sections */}
                 <Space direction="vertical" size="large" style={{ width: '100%' }}>
                   <div>
                     <Row justify="space-between" style={{ marginBottom: 8 }}>
