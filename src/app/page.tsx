@@ -234,10 +234,11 @@ export default function Home() {
                 Services Offered Through Virtual Machine Environment
               </Title>
 
-              <Row gutter={[24, 24]}>
+              <Row gutter={0}>
                 {[
                   {
                     title: 'Music',
+                    description: 'Professional audio production and music creation tools',
                     items: [
                       'Composing, arranging, and producing music',
                       'Mixing and mastering tracks',
@@ -248,6 +249,7 @@ export default function Home() {
                   },
                   {
                     title: 'Graphic Design',
+                    description: 'Creative design and video editing capabilities',
                     items: [
                       'Image creation and enhancement',
                       'Video montage, editing, and post-production',
@@ -258,6 +260,7 @@ export default function Home() {
                   },
                   {
                     title: 'Coding',
+                    description: 'Full-stack development and programming environments',
                     items: [
                       'Writing, testing, and deploying code',
                       'Collaborative coding sessions',
@@ -267,6 +270,7 @@ export default function Home() {
                   },
                   {
                     title: 'Finance',
+                    description: 'Financial analysis and trading simulation tools',
                     items: [
                       'Algorithmic trading simulations',
                       'Data analysis for financial markets',
@@ -276,6 +280,7 @@ export default function Home() {
                   },
                   {
                     title: 'Collaboration',
+                    description: 'Team-based projects and shared workspaces',
                     items: [
                       'Multi-user sessions for joint projects',
                       'Sharing VM resources for teamwork',
@@ -285,6 +290,7 @@ export default function Home() {
                   },
                   {
                     title: 'Education',
+                    description: 'Learning platforms and skill development resources',
                     items: [
                       'Skill-building exercises (coding, music, design)',
                       'Virtual workshops or tutorials',
@@ -313,17 +319,18 @@ export default function Home() {
                   }
                   
                   return (
-                    <Col xs={24} sm={12} md={8} lg={6} xl={4} key={index}>
+                    <Col xs={24} sm={12} md={8} lg={8} xl={8} key={index} style={{ padding: 0 }}>
                       <Card
                         bordered
                         style={{
                           background: '#000000',
                           borderColor: '#1f1f1f',
-                          borderRadius: 12,
+                          borderRadius: 0,
                           overflow: 'hidden',
                           aspectRatio: '1',
                           display: 'flex',
-                          flexDirection: 'column'
+                          flexDirection: 'column',
+                          height: '100%'
                         }}
                         bodyStyle={{ padding: 0, display: 'flex', flexDirection: 'column', flex: 1 }}
                       >
@@ -350,10 +357,13 @@ export default function Home() {
                             }}
                           />
                         </div>
-                        <div style={{ padding: '16px', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <Title level={4} style={{ color: '#ffffff', margin: 0, fontSize: 16, fontWeight: 600, lineHeight: 1.4, textAlign: 'center' }}>
+                        <div style={{ padding: '20px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                          <Title level={4} style={{ color: '#ffffff', margin: '0 0 8px 0', fontSize: 18, fontWeight: 600, lineHeight: 1.4, textAlign: 'center' }}>
                             {service.title}
                           </Title>
+                          <p style={{ color: '#999999', margin: 0, fontSize: 13, lineHeight: 1.5, textAlign: 'center' }}>
+                            {service.description}
+                          </p>
                         </div>
                       </Card>
                     </Col>
