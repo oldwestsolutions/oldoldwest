@@ -74,27 +74,27 @@ export default function Home() {
         zIndex: 1000,
         transition: 'top 0.3s ease-in-out'
       }}>
-        <Row align="middle" gutter={[12, 0]} style={{ width: '100%', flexWrap: 'nowrap' }}>
+        <Row align="middle" justify="space-between" gutter={[12, 0]} style={{ width: '100%', flexWrap: 'nowrap' }}>
           <Col flex="none">
-            <div style={{ 
-              width: 32, 
-              height: 32, 
-              background: '#141414', 
-              border: '1px solid #1f1f1f',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 8
-            }}>
-              <div style={{ width: 16, height: 16, background: '#595959', borderRadius: 4 }}></div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{ 
+                width: 32, 
+                height: 32, 
+                background: '#141414', 
+                border: '1px solid #1f1f1f',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 8
+              }}>
+                <div style={{ width: 16, height: 16, background: '#595959', borderRadius: 4 }}></div>
+              </div>
+              <Link href="/" style={{ textDecoration: 'none' }}>
+                <Text strong style={{ fontSize: 16, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
+              </Link>
             </div>
           </Col>
-          <Col flex="none">
-            <Link href="/" style={{ textDecoration: 'none' }}>
-              <Text strong style={{ fontSize: 16, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
-            </Link>
-          </Col>
-          <Col flex="auto" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Col flex="none" style={{ display: 'flex', justifyContent: 'flex-end' }}>
             {/* Desktop Navigation */}
             <Space size="middle" style={{ display: isMobile ? 'none' : 'flex' }}>
               <Link href="/marketplace" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
