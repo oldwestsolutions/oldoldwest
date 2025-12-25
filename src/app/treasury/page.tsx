@@ -2,8 +2,11 @@
 
 import { Layout, Typography, Row, Col, Card, Button, Input, Space, Divider, Progress, Statistic } from 'antd'
 import Link from 'next/link'
-import { WalletOutlined, CreditCardOutlined, BankOutlined, CheckCircleOutlined, ArrowRightOutlined, PlusOutlined, FireOutlined, GiftOutlined } from '@ant-design/icons'
+import { WalletOutlined, CreditCardOutlined, BankOutlined, CheckCircleOutlined, ArrowRightOutlined, PlusOutlined, FireOutlined, DollarOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
+import dynamic from 'next/dynamic'
+
+const Coins3D = dynamic(() => import('@/components/Coins3D'), { ssr: false })
 
 const { Header, Content } = Layout
 const { Title, Text, Paragraph } = Typography
@@ -67,72 +70,38 @@ export default function Treasury() {
       </Header>
 
       <Content style={{ paddingTop: isHeaderVisible ? 120 : 60 }}>
-        {/* Wallet Section */}
+        {/* Hero Section with 3D Visualization */}
         <div style={{
           background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 100%)',
-          padding: '60px 48px',
+          padding: '80px 48px',
           borderBottom: '1px solid #1f1f1f'
         }}>
-          <Row justify="center">
-            <Col xs={24} lg={20}>
-              {/* Wallet Card */}
-              <Card
-                bordered
-                style={{
-                  background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-                  borderColor: '#1f1f1f',
-                  borderRadius: 20,
-                  marginBottom: 48,
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.5)'
-                }}
-                bodyStyle={{ padding: 48 }}
-              >
-                <div style={{ textAlign: 'center', marginBottom: 32 }}>
-                  <div style={{
-                    width: 80,
-                    height: 80,
-                    background: 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)',
-                    border: '2px solid #1f1f1f',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 24px'
-                  }}>
-                    <WalletOutlined style={{ fontSize: 40, color: '#d9d9d9' }} />
-                  </div>
-                  <Text style={{ color: '#8c8c8c', fontSize: 14, textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: 12 }}>
-                    Your Wallet Balance
-                  </Text>
-                  <Title level={1} style={{ color: '#ffffff', margin: 0, fontSize: 64, fontWeight: 700, fontFamily: 'monospace' }}>
-                    1,224 MIN
-                  </Title>
-                </div>
-                <div style={{
-                  background: '#0a0a0a',
-                  border: '1px solid #1f1f1f',
-                  borderRadius: 12,
-                  padding: '20px',
-                  textAlign: 'center'
-                }}>
-                  <Text style={{ color: '#595959', fontSize: 12 }}>
-                    Available for use in Virtual Machine Environment
-                  </Text>
-                </div>
-              </Card>
+          <Row justify="center" gutter={[48, 48]}>
+            <Col xs={24} lg={12}>
+              <div style={{ textAlign: 'center', marginBottom: 32 }}>
+                <Title level={1} style={{ color: '#ffffff', marginBottom: 16, fontSize: 56, fontWeight: 700 }}>
+                  Treasury
+                </Title>
+                <Paragraph style={{ color: '#8c8c8c', fontSize: 20, marginBottom: 0 }}>
+                  Purchase VM minutes to power your virtual environment
+                </Paragraph>
+              </div>
+            </Col>
+            <Col xs={24} lg={12}>
+              <Coins3D />
             </Col>
           </Row>
         </div>
 
         {/* Coin Packages - TikTok Style */}
-        <div style={{ padding: '60px 48px', background: '#000000' }}>
+        <div style={{ padding: '80px 48px', background: '#000000' }}>
           <Row justify="center">
             <Col xs={24} lg={22}>
-              <div style={{ textAlign: 'center', marginBottom: 48 }}>
-                <Title level={2} style={{ color: '#ffffff', marginBottom: 8, fontSize: 40, fontWeight: 700 }}>
+              <div style={{ textAlign: 'center', marginBottom: 64 }}>
+                <Title level={2} style={{ color: '#ffffff', marginBottom: 12, fontSize: 48, fontWeight: 700 }}>
                   Buy VM Minutes
                 </Title>
-                <Text style={{ color: '#8c8c8c', fontSize: 16 }}>
+                <Text style={{ color: '#8c8c8c', fontSize: 18 }}>
                   Choose a package to add minutes to your wallet
                 </Text>
               </div>
@@ -143,28 +112,25 @@ export default function Treasury() {
                       hoverable
                       bordered={false}
                       style={{
-                        background: `linear-gradient(135deg, ${pkg.color}15 0%, ${pkg.color}05 100%)`,
+                        background: `linear-gradient(135deg, ${pkg.color}20 0%, ${pkg.color}08 100%)`,
                         border: pkg.popular ? `2px solid ${pkg.color}` : '1px solid #1f1f1f',
-                        borderRadius: 16,
+                        borderRadius: 20,
                         height: '100%',
                         cursor: 'pointer',
                         position: 'relative',
                         transition: 'all 0.3s ease',
-                        boxShadow: pkg.popular ? `0 4px 16px ${pkg.color}30` : '0 2px 8px rgba(0, 0, 0, 0.3)'
+                        boxShadow: pkg.popular ? `0 8px 24px ${pkg.color}40` : '0 4px 12px rgba(0, 0, 0, 0.4)',
+                        overflow: 'visible'
                       }}
-                      bodyStyle={{ padding: 24 }}
+                      bodyStyle={{ padding: 32 }}
                       onClick={() => setSelectedPackage(pkg.id)}
                       onMouseEnter={(e) => {
-                        if (!pkg.popular) {
-                          e.currentTarget.style.transform = 'translateY(-4px)'
-                          e.currentTarget.style.boxShadow = `0 8px 24px ${pkg.color}40`
-                        }
+                        e.currentTarget.style.transform = 'translateY(-8px)'
+                        e.currentTarget.style.boxShadow = `0 12px 32px ${pkg.color}50`
                       }}
                       onMouseLeave={(e) => {
-                        if (!pkg.popular) {
-                          e.currentTarget.style.transform = 'translateY(0)'
-                          e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.3)'
-                        }
+                        e.currentTarget.style.transform = 'translateY(0)'
+                        e.currentTarget.style.boxShadow = pkg.popular ? `0 8px 24px ${pkg.color}40` : '0 4px 12px rgba(0, 0, 0, 0.4)'
                       }}
                     >
                       {pkg.popular && (
@@ -188,17 +154,18 @@ export default function Treasury() {
                       )}
                       <div style={{ textAlign: 'center', paddingTop: pkg.popular ? 8 : 0 }}>
                         <div style={{
-                          width: 64,
-                          height: 64,
+                          width: 80,
+                          height: 80,
                           background: `linear-gradient(135deg, ${pkg.color}30 0%, ${pkg.color}10 100%)`,
                           border: `2px solid ${pkg.color}40`,
                           borderRadius: '50%',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          margin: '0 auto 20px'
+                          margin: '0 auto 20px',
+                          boxShadow: `0 4px 16px ${pkg.color}30`
                         }}>
-                          <GiftOutlined style={{ fontSize: 32, color: pkg.color }} />
+                          <DollarOutlined style={{ fontSize: 40, color: pkg.color }} />
                         </div>
                         <Title level={2} style={{ 
                           color: '#ffffff', 
