@@ -532,7 +532,7 @@ export default function Home() {
         <section style={{
           minHeight: '100vh',
           borderBottom: '1px solid #1f1f1f',
-          background: '#141414',
+          background: '#0a0a0a',
           padding: '120px 48px',
           display: 'flex',
           alignItems: 'center'
