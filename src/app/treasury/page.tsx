@@ -68,43 +68,42 @@ export default function Treasury() {
       </Header>
 
       <Content style={{ paddingTop: isHeaderVisible ? 120 : 60 }}>
-        {/* Hero Section */}
+        {/* Hero and Buy Coins Side by Side */}
         <div style={{
           background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 100%)',
           padding: '80px 48px',
           borderBottom: '1px solid #1f1f1f'
         }}>
-          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
-            <Title level={1} style={{ color: '#ffffff', marginBottom: 16, fontSize: 56, fontWeight: 700 }}>
-              Treasury
-            </Title>
-            <Text style={{ color: '#8c8c8c', fontSize: 20 }}>
-              Buy coins to power your virtual environment
-            </Text>
-          </div>
-          <div style={{ marginTop: 48, maxWidth: '600px', margin: '48px auto 0' }}>
-            <Coins3D />
-          </div>
-        </div>
+          <Row gutter={[64, 48]} align="middle">
+            {/* Left: Hero Section */}
+            <Col xs={24} lg={12}>
+              <Title level={1} style={{ color: '#ffffff', marginBottom: 16, fontSize: 48, fontWeight: 700 }}>
+                Treasury
+              </Title>
+              <Text style={{ color: '#8c8c8c', fontSize: 18, display: 'block', marginBottom: 32 }}>
+                Buy coins to power your virtual environment
+              </Text>
+              <div style={{ maxWidth: '500px' }}>
+                <Coins3D />
+              </div>
+            </Col>
 
-        {/* Coin Packages - CSS Grid */}
-        <div style={{ padding: '80px 48px', background: '#000000' }}>
-          <div style={{ textAlign: 'center', marginBottom: 64 }}>
-            <Title level={2} style={{ color: '#ffffff', marginBottom: 12, fontSize: 48, fontWeight: 700 }}>
-              Buy Coins
-            </Title>
-            <Text style={{ color: '#8c8c8c', fontSize: 18 }}>
-              Choose a package to add coins to your wallet
-            </Text>
-          </div>
-          
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '24px',
-            maxWidth: '1200px',
-            margin: '0 auto'
-          }}>
+            {/* Right: Buy Coins Section */}
+            <Col xs={24} lg={12}>
+              <div style={{ marginBottom: 32 }}>
+                <Title level={2} style={{ color: '#ffffff', marginBottom: 12, fontSize: 36, fontWeight: 700 }}>
+                  Buy Coins
+                </Title>
+                <Text style={{ color: '#8c8c8c', fontSize: 16 }}>
+                  Choose a package to add coins to your wallet
+                </Text>
+              </div>
+              
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '20px'
+              }}>
             {coinPackages.map((pkg) => (
               <Card
                 key={pkg.id}
@@ -118,7 +117,7 @@ export default function Treasury() {
                   position: 'relative',
                   transition: 'all 0.3s ease'
                 }}
-                bodyStyle={{ padding: 32, textAlign: 'center' }}
+                bodyStyle={{ padding: 24, textAlign: 'center' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-4px)'
                   e.currentTarget.style.boxShadow = pkg.popular ? `0 8px 24px ${pkg.color}40` : '0 4px 16px rgba(0, 0, 0, 0.6)'
@@ -136,9 +135,9 @@ export default function Treasury() {
                     transform: 'translateX(-50%)',
                     background: pkg.color,
                     color: '#ffffff',
-                    padding: '6px 20px',
+                    padding: '4px 16px',
                     borderRadius: 20,
-                    fontSize: 11,
+                    fontSize: 10,
                     fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '0.5px',
@@ -148,22 +147,22 @@ export default function Treasury() {
                   </div>
                 )}
                 <div style={{
-                  width: 80,
-                  height: 80,
+                  width: 60,
+                  height: 60,
                   background: '#141414',
                   border: `2px solid ${pkg.color}`,
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  margin: `${pkg.popular ? 8 : 0} auto 20px`
+                  margin: `${pkg.popular ? 8 : 0} auto 16px`
                 }}>
-                  <DollarOutlined style={{ fontSize: 40, color: pkg.color }} />
+                  <DollarOutlined style={{ fontSize: 30, color: pkg.color }} />
                 </div>
                 <Title level={2} style={{ 
                   color: '#ffffff', 
                   marginBottom: 4, 
-                  fontSize: 32, 
+                  fontSize: 24, 
                   fontWeight: 700,
                   fontFamily: 'monospace'
                 }}>
@@ -171,10 +170,10 @@ export default function Treasury() {
                 </Title>
                 <Text style={{ 
                   color: pkg.color, 
-                  fontSize: 14, 
+                  fontSize: 12, 
                   fontWeight: 600,
                   display: 'block', 
-                  marginBottom: 12 
+                  marginBottom: 10 
                 }}>
                   COINS
                 </Text>
@@ -183,21 +182,21 @@ export default function Treasury() {
                     background: `${pkg.color}20`,
                     border: `1px solid ${pkg.color}40`,
                     borderRadius: 8,
-                    padding: '8px 12px',
-                    marginBottom: 16,
+                    padding: '6px 10px',
+                    marginBottom: 12,
                     display: 'inline-block'
                   }}>
-                    <Text style={{ color: pkg.color, fontSize: 12, fontWeight: 600 }}>
+                    <Text style={{ color: pkg.color, fontSize: 11, fontWeight: 600 }}>
                       +{pkg.bonus} Bonus
                     </Text>
                   </div>
                 )}
                 <div style={{ 
                   borderTop: '1px solid #1f1f1f', 
-                  margin: '16px 0',
-                  paddingTop: '16px'
+                  margin: '12px 0',
+                  paddingTop: '12px'
                 }}>
-                  <Text style={{ color: '#ffffff', fontSize: 28, fontWeight: 700, fontFamily: 'monospace' }}>
+                  <Text style={{ color: '#ffffff', fontSize: 22, fontWeight: 700, fontFamily: 'monospace' }}>
                     ${pkg.price.toFixed(2)}
                   </Text>
                 </div>
@@ -209,16 +208,19 @@ export default function Treasury() {
                     borderColor: pkg.popular ? pkg.color : '#1f1f1f',
                     color: '#ffffff',
                     borderRadius: 8,
-                    marginTop: 16,
-                    height: 44,
-                    fontWeight: 600
+                    marginTop: 12,
+                    height: 40,
+                    fontWeight: 600,
+                    boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
                   }}
                 >
                   Buy Now
                 </Button>
               </Card>
             ))}
-          </div>
+              </div>
+            </Col>
+          </Row>
         </div>
       </Content>
     </Layout>
