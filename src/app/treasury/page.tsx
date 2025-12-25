@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 
 const Coins3D = dynamic(() => import('@/components/Coins3D'), { ssr: false })
+const TokenomicsStatic = dynamic(() => import('@/components/Tokenomics3D'), { ssr: false })
 
 const { Header, Content } = Layout
 const { Title, Text, Paragraph } = Typography
@@ -93,6 +94,149 @@ export default function Treasury() {
           </Row>
         </div>
 
+        {/* Tokenomics Information */}
+        <div style={{ padding: '80px 48px', background: '#0a0a0a' }}>
+          <Row justify="center">
+            <Col xs={24} lg={20}>
+              <div style={{ marginBottom: 48 }}>
+                <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                  TOKENOMICS
+                </Text>
+                <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
+              </div>
+
+              <Title level={2} style={{ color: '#ffffff', marginBottom: 24, fontSize: 40, fontWeight: 600, textAlign: 'center' }}>
+                Platform Tokenomics
+              </Title>
+              <Paragraph style={{ color: '#8c8c8c', fontSize: 18, lineHeight: 1.8, marginBottom: 48, textAlign: 'center' }}>
+                Token = Merit + Compute + Access. Earn by creating and collaborating, spend to access tools and exposure, stake to amplify visibility.
+              </Paragraph>
+
+              <Card
+                bordered
+                style={{
+                  background: '#000000',
+                  borderColor: '#1f1f1f',
+                  borderRadius: 12
+                }}
+                bodyStyle={{ padding: 48 }}
+              >
+                <Row gutter={[32, 32]}>
+                  {/* Left: Visual Illustration */}
+                  <Col xs={24} lg={12}>
+                    <div style={{
+                      background: '#0a0a0a',
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 12,
+                      padding: '24px',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column'
+                    }}>
+                      <div style={{ marginBottom: 16, textAlign: 'center' }}>
+                        <Text style={{ color: '#8c8c8c', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
+                          Interactive Tokenomics Flow
+                        </Text>
+                      </div>
+                      <TokenomicsStatic />
+                      <div style={{ marginTop: 16, textAlign: 'center' }}>
+                        <div style={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          gap: 16,
+                          flexWrap: 'wrap',
+                          marginTop: 12
+                        }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <div style={{ width: 12, height: 12, background: '#ff6b35', borderRadius: '50%' }}></div>
+                            <Text style={{ color: '#8c8c8c', fontSize: 11 }}>Spend</Text>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <div style={{ width: 12, height: 12, background: '#4ecdc4', borderRadius: '50%' }}></div>
+                            <Text style={{ color: '#8c8c8c', fontSize: 11 }}>Stake</Text>
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                            <div style={{ width: 12, height: 12, background: '#95e1d3', borderRadius: '50%' }}></div>
+                            <Text style={{ color: '#8c8c8c', fontSize: 11 }}>Flow</Text>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Col>
+
+                  {/* Right: Text Content Sections */}
+                  <Col xs={24} lg={12}>
+                    <Space direction="vertical" size="large" style={{ width: '100%' }}>
+                      <div>
+                        <Row justify="space-between" style={{ marginBottom: 8 }}>
+                          <Col>
+                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Earning Tokens / Merit</Text>
+                          </Col>
+                        </Row>
+                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                          Users earn tokens based on measurable work and contributions: completing projects in music, design, coding, finance, or AI workloads; collaborating with other users in shared VMs; contributing high-quality output that passes verification or gains recognition; engaging in challenges, contests, or merit-based competitions. Tokens are non-speculative and represent platform influence, compute access, and earned merit.
+                        </Paragraph>
+                      </div>
+
+                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+
+                      <div>
+                        <Row justify="space-between" style={{ marginBottom: 8 }}>
+                          <Col>
+                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Spending / Using Tokens</Text>
+                          </Col>
+                        </Row>
+                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                          Tokens can be spent to: access premium VM features or specialized software; collaborate with other users in private sessions; purchase sponsored visibility for profiles or work in search/discovery features; unlock specialized tools, templates, or AI assistants.
+                        </Paragraph>
+                      </div>
+
+                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+
+                      <div>
+                        <Row justify="space-between" style={{ marginBottom: 8 }}>
+                          <Col>
+                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Staking & Exposure</Text>
+                          </Col>
+                        </Row>
+                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                          Users can stake tokens to promote their work or profiles in category searches (similar to sponsored content). Staking acts as both visibility leverage and merit investment, aligning effort with exposure.
+                        </Paragraph>
+                      </div>
+
+                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+
+                      <div>
+                        <Row justify="space-between" style={{ marginBottom: 8 }}>
+                          <Col>
+                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Supply & Flow</Text>
+                          </Col>
+                        </Row>
+                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                          Tokens are generated by the platform as users earn merit. They flow between users and the platform as: payments for collaboration or visibility; consumption of VM resources; rewards for contribution and output. The system is self-contained, ensuring the token's purpose is work-driven, not speculative.
+                        </Paragraph>
+                      </div>
+
+                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+
+                      <div>
+                        <Row justify="space-between" style={{ marginBottom: 8 }}>
+                          <Col>
+                            <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 600 }}>Summary</Text>
+                          </Col>
+                        </Row>
+                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                          Token = Merit + Compute + Access. Users earn by creating and collaborating, spend to access tools and exposure, and stake to amplify visibility. OldWest.net's tokenomics incentivizes skill, productivity, and contribution, not speculation.
+                        </Paragraph>
+                      </div>
+                    </Space>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+          </Row>
+        </div>
+
         {/* Coin Packages - TikTok Style */}
         <div style={{ padding: '80px 48px', background: '#000000' }}>
           <Row justify="center">
@@ -110,27 +254,27 @@ export default function Treasury() {
                   <Col xs={24} sm={12} md={8} lg={6} key={pkg.id}>
                     <Card
                       hoverable
-                      bordered={false}
+                      bordered
                       style={{
-                        background: `linear-gradient(135deg, ${pkg.color}20 0%, ${pkg.color}08 100%)`,
-                        border: pkg.popular ? `2px solid ${pkg.color}` : '1px solid #1f1f1f',
-                        borderRadius: 20,
+                        background: pkg.popular ? '#141414' : '#0a0a0a',
+                        borderColor: pkg.popular ? pkg.color : '#1f1f1f',
+                        borderWidth: pkg.popular ? 2 : 1,
+                        borderRadius: 16,
                         height: '100%',
                         cursor: 'pointer',
                         position: 'relative',
                         transition: 'all 0.3s ease',
-                        boxShadow: pkg.popular ? `0 8px 24px ${pkg.color}40` : '0 4px 12px rgba(0, 0, 0, 0.4)',
                         overflow: 'visible'
                       }}
                       bodyStyle={{ padding: 32 }}
                       onClick={() => setSelectedPackage(pkg.id)}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'translateY(-8px)'
-                        e.currentTarget.style.boxShadow = `0 12px 32px ${pkg.color}50`
+                        e.currentTarget.style.transform = 'translateY(-4px)'
+                        e.currentTarget.style.boxShadow = pkg.popular ? `0 8px 24px ${pkg.color}40` : '0 4px 16px rgba(0, 0, 0, 0.6)'
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.transform = 'translateY(0)'
-                        e.currentTarget.style.boxShadow = pkg.popular ? `0 8px 24px ${pkg.color}40` : '0 4px 12px rgba(0, 0, 0, 0.4)'
+                        e.currentTarget.style.boxShadow = 'none'
                       }}
                     >
                       {pkg.popular && (
@@ -156,14 +300,13 @@ export default function Treasury() {
                         <div style={{
                           width: 80,
                           height: 80,
-                          background: `linear-gradient(135deg, ${pkg.color}30 0%, ${pkg.color}10 100%)`,
-                          border: `2px solid ${pkg.color}40`,
+                          background: '#141414',
+                          border: `2px solid ${pkg.color}`,
                           borderRadius: '50%',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          margin: '0 auto 20px',
-                          boxShadow: `0 4px 16px ${pkg.color}30`
+                          margin: '0 auto 20px'
                         }}>
                           <DollarOutlined style={{ fontSize: 40, color: pkg.color }} />
                         </div>

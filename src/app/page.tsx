@@ -528,160 +528,11 @@ export default function Home() {
           </Row>
       </section>
 
-        {/* Tokenomics */}
-        <section style={{ 
-          minHeight: '100vh', 
-          borderBottom: '1px solid #1f1f1f', 
-          background: '#0a0a0a', 
-          padding: '120px 48px',
-          display: 'flex',
-          alignItems: 'center'
-        }}>
-          <Row justify="center" style={{ width: '100%' }}>
-            <Col xs={24} lg={20} xl={16}>
-              <div style={{ marginBottom: 64 }}>
-                <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                  TOKENOMICS
-                </Text>
-                <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
-                </div>
-
-              <Title level={2} style={{ color: '#ffffff', marginBottom: 24, fontSize: 40, fontWeight: 600, textAlign: 'center' }}>
-                Platform Tokenomics
-              </Title>
-              <Paragraph style={{ color: '#8c8c8c', fontSize: 18, lineHeight: 1.8, marginBottom: 48, textAlign: 'center' }}>
-                Token = Merit + Compute + Access. Earn by creating and collaborating, spend to access tools and exposure, stake to amplify visibility.
-              </Paragraph>
-
-              <Card 
-                bordered 
-                style={{ 
-                  background: '#000000', 
-                  borderColor: '#1f1f1f',
-                  borderRadius: 12
-                }}
-                bodyStyle={{ padding: 48 }}
-              >
-                <Row gutter={[32, 32]}>
-                  {/* Left: 3D Visual Illustration */}
-                  <Col xs={24} lg={12}>
-                    <div style={{ 
-                      background: '#0a0a0a',
-                      border: '1px solid #1f1f1f',
-                      borderRadius: 12,
-                      padding: '24px',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column'
-                    }}>
-                      <div style={{ marginBottom: 16, textAlign: 'center' }}>
-                        <Text style={{ color: '#8c8c8c', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
-                          Interactive Tokenomics Flow
-                        </Text>
-                      </div>
-                      <Tokenomics3D />
-                      <div style={{ marginTop: 16, textAlign: 'center' }}>
-                        <div style={{
-                          display: 'flex',
-                          justifyContent: 'center',
-                          gap: 16,
-                          flexWrap: 'wrap',
-                          marginTop: 12
-                        }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                            <div style={{ width: 12, height: 12, background: '#ff6b35', borderRadius: '50%' }}></div>
-                            <Text style={{ color: '#8c8c8c', fontSize: 11 }}>Spend</Text>
-                          </div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                            <div style={{ width: 12, height: 12, background: '#4ecdc4', borderRadius: '50%' }}></div>
-                            <Text style={{ color: '#8c8c8c', fontSize: 11 }}>Stake</Text>
-                          </div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                            <div style={{ width: 12, height: 12, background: '#95e1d3', borderRadius: '50%' }}></div>
-                            <Text style={{ color: '#8c8c8c', fontSize: 11 }}>Flow</Text>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Col>
-
-                  {/* Right: Text Content Sections */}
-                  <Col xs={24} lg={12}>
-                    <Space direction="vertical" size="large" style={{ width: '100%' }}>
-                      <div>
-                        <Row justify="space-between" style={{ marginBottom: 8 }}>
-                          <Col>
-                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Earning Tokens / Merit</Text>
-                          </Col>
-                        </Row>
-                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                          Users earn tokens based on measurable work and contributions: completing projects in music, design, coding, finance, or AI workloads; collaborating with other users in shared VMs; contributing high-quality output that passes verification or gains recognition; engaging in challenges, contests, or merit-based competitions. Tokens are non-speculative and represent platform influence, compute access, and earned merit.
-                        </Paragraph>
-                      </div>
-
-                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
-
-                      <div>
-                        <Row justify="space-between" style={{ marginBottom: 8 }}>
-                          <Col>
-                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Spending / Using Tokens</Text>
-                          </Col>
-                        </Row>
-                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                          Tokens can be spent to: access premium VM features or specialized software; collaborate with other users in private sessions; purchase sponsored visibility for profiles or work in search/discovery features; unlock specialized tools, templates, or AI assistants.
-                        </Paragraph>
-                      </div>
-
-                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
-
-                      <div>
-                        <Row justify="space-between" style={{ marginBottom: 8 }}>
-                          <Col>
-                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Staking & Exposure</Text>
-                          </Col>
-                        </Row>
-                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                          Users can stake tokens to promote their work or profiles in category searches (similar to sponsored content). Staking acts as both visibility leverage and merit investment, aligning effort with exposure.
-                        </Paragraph>
-                      </div>
-
-                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
-
-                      <div>
-                        <Row justify="space-between" style={{ marginBottom: 8 }}>
-                          <Col>
-                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Supply & Flow</Text>
-                          </Col>
-                        </Row>
-                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                          Tokens are generated by the platform as users earn merit. They flow between users and the platform as: payments for collaboration or visibility; consumption of VM resources; rewards for contribution and output. The system is self-contained, ensuring the token's purpose is work-driven, not speculative.
-                        </Paragraph>
-                      </div>
-
-                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
-
-                      <div>
-                        <Row justify="space-between" style={{ marginBottom: 8 }}>
-                          <Col>
-                            <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 600 }}>Summary</Text>
-                          </Col>
-                        </Row>
-                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                          Token = Merit + Compute + Access. Users earn by creating and collaborating, spend to access tools and exposure, and stake to amplify visibility. OldWest.net's tokenomics incentivizes skill, productivity, and contribution, not speculation.
-                        </Paragraph>
-                      </div>
-                    </Space>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-          </Row>
-        </section>
-
         {/* Verified Identity */}
-        <section style={{ 
-          minHeight: '100vh', 
-          borderBottom: '1px solid #1f1f1f', 
+        <section style={{
+          minHeight: '100vh',
+          borderBottom: '1px solid #1f1f1f',
+          background: '#141414',
           padding: '120px 48px',
           display: 'flex',
           alignItems: 'center'
@@ -695,10 +546,10 @@ export default function Home() {
                 <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
               </div>
 
-              <Card 
-                bordered 
-                style={{ 
-                  background: '#000000', 
+              <Card
+                bordered
+                style={{
+                  background: '#000000',
                   borderColor: '#1f1f1f',
                   borderRadius: 12
                 }}
@@ -731,8 +582,8 @@ export default function Home() {
                         marginTop: 16
                       }}>
                         <Text style={{ color: '#8c8c8c', fontSize: 14 }}>+1 (555) 123-4567</Text>
-            </div>
-          </div>
+                      </div>
+                    </div>
                   </Col>
                   <Col xs={24} md={12}>
                     <Title level={3} style={{ color: '#ffffff', marginBottom: 16, fontSize: 28, fontWeight: 600 }}>
@@ -744,7 +595,7 @@ export default function Home() {
                     <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
                       The phone number verification process establishes a single, accountable identity tied to all usage and settlement activities, preventing abuse and ensuring platform security.
                     </Paragraph>
-                    <Button 
+                    <Button
                       type="primary"
                       size="large"
                       style={{
@@ -765,10 +616,11 @@ export default function Home() {
           </Row>
       </section>
 
+
         {/* Integrated Platforms */}
-        <section style={{ 
-          minHeight: '100vh', 
-          background: '#0a0a0a', 
+        <section style={{
+          minHeight: '100vh',
+          background: '#000000',
           padding: '120px 48px',
           display: 'flex',
           alignItems: 'center'
