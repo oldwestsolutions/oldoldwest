@@ -524,6 +524,30 @@ export default function Home() {
                 </div>
                 </Space>
               </Card>
+              
+              {/* Small Wallet Illustration */}
+              <div style={{ 
+                marginTop: 24, 
+                display: 'flex', 
+                justifyContent: 'center',
+                opacity: 0.6
+              }}>
+                <svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Wallet Body */}
+                  <rect x="20" y="30" width="80" height="40" rx="4" fill="#1f1f1f" stroke="#595959" strokeWidth="1.5"/>
+                  {/* Wallet Flap */}
+                  <path d="M20 30 Q20 20 30 20 L90 20 Q100 20 100 30" stroke="#595959" strokeWidth="1.5" fill="#0a0a0a"/>
+                  {/* Coin 1 */}
+                  <circle cx="40" cy="50" r="8" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
+                  <text x="40" y="54" textAnchor="middle" fill="#0a0a0a" fontSize="8" fontWeight="600">$</text>
+                  {/* Coin 2 */}
+                  <circle cx="60" cy="50" r="8" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
+                  <text x="60" y="54" textAnchor="middle" fill="#0a0a0a" fontSize="8" fontWeight="600">$</text>
+                  {/* Coin 3 */}
+                  <circle cx="80" cy="50" r="8" fill="#595959" stroke="#8c8c8c" strokeWidth="1"/>
+                  <text x="80" y="54" textAnchor="middle" fill="#0a0a0a" fontSize="8" fontWeight="600">$</text>
+                </svg>
+              </div>
             </Col>
           </Row>
       </section>
