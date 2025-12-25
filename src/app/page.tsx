@@ -561,131 +561,101 @@ export default function Home() {
                 }}
                 bodyStyle={{ padding: 48 }}
               >
-                {/* Visual Tokenomics Flow Illustration - Horizontal Flow */}
-                <div style={{ 
-                  background: '#0a0a0a',
-                  border: '1px solid #1f1f1f',
-                  borderRadius: 12,
-                  padding: '48px 32px',
-                  marginBottom: 48,
-                  overflowX: 'auto'
-                }}>
-                  <Row gutter={[24, 24]} align="middle" justify="center" style={{ flexWrap: 'nowrap', minWidth: 'max-content' }}>
-                    {/* Left: Earning Section */}
-                    <Col flex="0 0 auto">
-                      <div style={{
-                        padding: '24px',
-                        background: 'linear-gradient(135deg, #141414 0%, #0f0f0f 100%)',
-                        border: '1px solid #1f1f1f',
-                        borderRadius: 12,
-                        minWidth: 200,
-                        textAlign: 'center'
-                      }}>
-                        <div style={{ marginBottom: 16 }}>
-                          <div style={{ 
+                <Row gutter={[32, 32]}>
+                  {/* Left: Visual Illustration */}
+                  <Col xs={24} lg={10}>
+                    <div style={{ 
+                      background: '#0a0a0a',
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 12,
+                      padding: '32px 24px',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center'
+                    }}>
+                      {/* Earning Section */}
+                      <div style={{ textAlign: 'center', marginBottom: 24 }}>
+                        <div style={{ 
+                          display: 'flex',
+                          justifyContent: 'center',
+                          gap: 8,
+                          marginBottom: 16,
+                          flexWrap: 'wrap'
+                        }}>
+                          <div style={{
+                            width: 48,
+                            height: 48,
+                            background: '#141414',
+                            border: '1px solid #1f1f1f',
+                            borderRadius: 10,
                             display: 'flex',
-                            justifyContent: 'center',
-                            gap: 8,
-                            marginBottom: 12,
-                            flexWrap: 'wrap'
+                            alignItems: 'center',
+                            justifyContent: 'center'
                           }}>
-                            <div style={{
-                              width: 40,
-                              height: 40,
-                              background: '#0a0a0a',
-                              border: '1px solid #1f1f1f',
-                              borderRadius: 8,
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                            }}>
-                              <CodeOutlined style={{ fontSize: 20, color: '#595959' }} />
-                            </div>
-                            <div style={{
-                              width: 40,
-                              height: 40,
-                              background: '#0a0a0a',
-                              border: '1px solid #1f1f1f',
-                              borderRadius: 8,
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                            }}>
-                              <TrophyOutlined style={{ fontSize: 20, color: '#595959' }} />
-                            </div>
-                            <div style={{
-                              width: 40,
-                              height: 40,
-                              background: '#0a0a0a',
-                              border: '1px solid #1f1f1f',
-                              borderRadius: 8,
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                            }}>
-                              <TeamOutlined style={{ fontSize: 20, color: '#595959' }} />
-                            </div>
-                            <div style={{
-                              width: 40,
-                              height: 40,
-                              background: '#0a0a0a',
-                              border: '1px solid #1f1f1f',
-                              borderRadius: 8,
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center'
-                            }}>
-                              <CheckCircleOutlined style={{ fontSize: 20, color: '#595959' }} />
-                            </div>
+                            <CodeOutlined style={{ fontSize: 24, color: '#595959' }} />
                           </div>
-                          <Text style={{ color: '#8c8c8c', fontSize: 13, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
-                            EARN
-                          </Text>
-                          <div style={{ marginTop: 8 }}>
-                            <Text style={{ color: '#595959', fontSize: 10, display: 'block' }}>Projects</Text>
-                            <Text style={{ color: '#595959', fontSize: 10, display: 'block' }}>Collaboration</Text>
-                            <Text style={{ color: '#595959', fontSize: 10, display: 'block' }}>Quality Output</Text>
-                            <Text style={{ color: '#595959', fontSize: 10, display: 'block' }}>Competitions</Text>
+                          <div style={{
+                            width: 48,
+                            height: 48,
+                            background: '#141414',
+                            border: '1px solid #1f1f1f',
+                            borderRadius: 10,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                          }}>
+                            <TrophyOutlined style={{ fontSize: 24, color: '#595959' }} />
+                          </div>
+                          <div style={{
+                            width: 48,
+                            height: 48,
+                            background: '#141414',
+                            border: '1px solid #1f1f1f',
+                            borderRadius: 10,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                          }}>
+                            <TeamOutlined style={{ fontSize: 24, color: '#595959' }} />
+                          </div>
+                          <div style={{
+                            width: 48,
+                            height: 48,
+                            background: '#141414',
+                            border: '1px solid #1f1f1f',
+                            borderRadius: 10,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                          }}>
+                            <CheckCircleOutlined style={{ fontSize: 24, color: '#595959' }} />
                           </div>
                         </div>
+                        <Text style={{ color: '#8c8c8c', fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>
+                          EARN TOKENS
+                        </Text>
                       </div>
-                    </Col>
 
-                    {/* Arrow Right */}
-                    <Col flex="0 0 auto">
-                      <ArrowRightOutlined style={{ fontSize: 32, color: '#595959' }} />
-                    </Col>
+                      {/* Arrow Down */}
+                      <div style={{ textAlign: 'center', marginBottom: 24 }}>
+                        <ArrowDownOutlined style={{ fontSize: 24, color: '#595959' }} />
+                      </div>
 
-                    {/* Center: Token Hub */}
-                    <Col flex="0 0 auto">
-                      <div style={{
-                        padding: '32px 40px',
-                        background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
-                        border: '2px solid #1f1f1f',
-                        borderRadius: 16,
-                        minWidth: 220,
-                        textAlign: 'center',
-                        position: 'relative',
-                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)'
-                      }}>
+                      {/* Token Hub */}
+                      <div style={{ textAlign: 'center', marginBottom: 24 }}>
                         <div style={{
-                          position: 'absolute',
-                          top: -8,
-                          left: '50%',
-                          transform: 'translateX(-50%)',
-                          width: 60,
-                          height: 60,
+                          display: 'inline-flex',
+                          flexDirection: 'column',
+                          alignItems: 'center',
+                          padding: '24px 32px',
                           background: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)',
                           border: '2px solid #1f1f1f',
-                          borderRadius: '50%',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center'
+                          borderRadius: 12,
+                          minWidth: 180
                         }}>
-                          <WalletOutlined style={{ fontSize: 32, color: '#d9d9d9' }} />
-                        </div>
-                        <div style={{ marginTop: 32 }}>
-                          <Text style={{ color: '#ffffff', fontSize: 24, fontWeight: 700, marginBottom: 8, display: 'block' }}>
+                          <WalletOutlined style={{ fontSize: 40, color: '#d9d9d9', marginBottom: 12 }} />
+                          <Text style={{ color: '#ffffff', fontSize: 20, fontWeight: 700, marginBottom: 8 }}>
                             TOKEN
                           </Text>
                           <div style={{
@@ -693,234 +663,129 @@ export default function Home() {
                             background: '#0a0a0a',
                             border: '1px solid #1f1f1f',
                             borderRadius: 6,
-                            marginTop: 12
+                            marginTop: 8
                           }}>
-                            <Text style={{ color: '#8c8c8c', fontSize: 11, display: 'block' }}>Merit</Text>
-                            <Text style={{ color: '#8c8c8c', fontSize: 11, display: 'block' }}>+ Compute</Text>
-                            <Text style={{ color: '#8c8c8c', fontSize: 11, display: 'block' }}>+ Access</Text>
+                            <Text style={{ color: '#8c8c8c', fontSize: 10, display: 'block' }}>Merit + Compute</Text>
+                            <Text style={{ color: '#8c8c8c', fontSize: 10, display: 'block' }}>+ Access</Text>
                           </div>
                         </div>
                       </div>
-                    </Col>
 
-                    {/* Arrow Right */}
-                    <Col flex="0 0 auto">
-                      <ArrowRightOutlined style={{ fontSize: 32, color: '#595959' }} />
-                    </Col>
+                      {/* Arrow Down */}
+                      <div style={{ textAlign: 'center', marginBottom: 24 }}>
+                        <ArrowDownOutlined style={{ fontSize: 24, color: '#595959' }} />
+                      </div>
 
-                    {/* Right: Three Paths */}
-                    <Col flex="1 1 auto">
-                      <Row gutter={[12, 12]} style={{ width: '100%' }}>
-                        <Col xs={24} sm={8}>
+                      {/* Three Paths */}
+                      <Row gutter={[8, 8]} justify="center">
+                        <Col xs={8}>
                           <div style={{
-                            padding: '20px 16px',
-                            background: 'linear-gradient(135deg, #141414 0%, #0f0f0f 100%)',
+                            padding: '16px 12px',
+                            background: '#141414',
                             border: '1px solid #1f1f1f',
-                            borderRadius: 10,
-                            textAlign: 'center',
-                            height: '100%',
-                            position: 'relative'
+                            borderRadius: 8,
+                            textAlign: 'center'
                           }}>
-                            <div style={{
-                              width: 48,
-                              height: 48,
-                              background: '#0a0a0a',
-                              border: '1px solid #1f1f1f',
-                              borderRadius: '50%',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              margin: '0 auto 12px'
-                            }}>
-                              <ThunderboltOutlined style={{ fontSize: 24, color: '#595959' }} />
-                            </div>
-                            <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
-                              SPEND
-                            </Text>
-                            <div style={{ marginTop: 8 }}>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>VM Features</Text>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Collaboration</Text>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Visibility</Text>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Tools</Text>
-                            </div>
+                            <ThunderboltOutlined style={{ fontSize: 24, color: '#595959', marginBottom: 8 }} />
+                            <Text style={{ color: '#8c8c8c', fontSize: 10, fontWeight: 600 }}>SPEND</Text>
                           </div>
                         </Col>
-                        <Col xs={24} sm={8}>
+                        <Col xs={8}>
                           <div style={{
-                            padding: '20px 16px',
-                            background: 'linear-gradient(135deg, #141414 0%, #0f0f0f 100%)',
+                            padding: '16px 12px',
+                            background: '#141414',
                             border: '1px solid #1f1f1f',
-                            borderRadius: 10,
-                            textAlign: 'center',
-                            height: '100%',
-                            position: 'relative'
+                            borderRadius: 8,
+                            textAlign: 'center'
                           }}>
-                            <div style={{
-                              width: 48,
-                              height: 48,
-                              background: '#0a0a0a',
-                              border: '1px solid #1f1f1f',
-                              borderRadius: '50%',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              margin: '0 auto 12px'
-                            }}>
-                              <StarOutlined style={{ fontSize: 24, color: '#595959' }} />
-                            </div>
-                            <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
-                              STAKE
-                            </Text>
-                            <div style={{ marginTop: 8 }}>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Promote Work</Text>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Category Search</Text>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Visibility</Text>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Leverage</Text>
-                            </div>
+                            <StarOutlined style={{ fontSize: 24, color: '#595959', marginBottom: 8 }} />
+                            <Text style={{ color: '#8c8c8c', fontSize: 10, fontWeight: 600 }}>STAKE</Text>
                           </div>
                         </Col>
-                        <Col xs={24} sm={8}>
+                        <Col xs={8}>
                           <div style={{
-                            padding: '20px 16px',
-                            background: 'linear-gradient(135deg, #141414 0%, #0f0f0f 100%)',
+                            padding: '16px 12px',
+                            background: '#141414',
                             border: '1px solid #1f1f1f',
-                            borderRadius: 10,
-                            textAlign: 'center',
-                            height: '100%',
-                            position: 'relative'
+                            borderRadius: 8,
+                            textAlign: 'center'
                           }}>
-                            <div style={{
-                              width: 48,
-                              height: 48,
-                              background: '#0a0a0a',
-                              border: '1px solid #1f1f1f',
-                              borderRadius: '50%',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              margin: '0 auto 12px'
-                            }}>
-                              <FireOutlined style={{ fontSize: 24, color: '#595959' }} />
-                            </div>
-                            <Text style={{ color: '#8c8c8c', fontSize: 12, display: 'block', marginBottom: 8, fontWeight: 600 }}>
-                              FLOW
-                            </Text>
-                            <div style={{ marginTop: 8 }}>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Platform Rewards</Text>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Resource Consumption</Text>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Self-Contained</Text>
-                              <Text style={{ color: '#595959', fontSize: 9, display: 'block', lineHeight: 1.5 }}>Ecosystem</Text>
-                            </div>
+                            <FireOutlined style={{ fontSize: 24, color: '#595959', marginBottom: 8 }} />
+                            <Text style={{ color: '#8c8c8c', fontSize: 10, fontWeight: 600 }}>FLOW</Text>
                           </div>
                         </Col>
                       </Row>
-                    </Col>
-                  </Row>
-
-                  {/* Flow Lines */}
-                  <div style={{
-                    position: 'relative',
-                    marginTop: 24,
-                    padding: '16px',
-                    background: '#0a0a0a',
-                    border: '1px solid #1f1f1f',
-                    borderRadius: 8
-                  }}>
-                    <div style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      flexWrap: 'wrap',
-                      gap: 16
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ width: 8, height: 8, background: '#595959', borderRadius: '50%' }}></div>
-                        <Text style={{ color: '#595959', fontSize: 10 }}>Work & Contribution</Text>
-                      </div>
-                      <ArrowRightOutlined style={{ fontSize: 16, color: '#595959' }} />
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ width: 8, height: 8, background: '#595959', borderRadius: '50%' }}></div>
-                        <Text style={{ color: '#595959', fontSize: 10 }}>Token Generation</Text>
-                      </div>
-                      <ArrowRightOutlined style={{ fontSize: 16, color: '#595959' }} />
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ width: 8, height: 8, background: '#595959', borderRadius: '50%' }}></div>
-                        <Text style={{ color: '#595959', fontSize: 10 }}>Utility & Circulation</Text>
-                      </div>
-                      <ArrowRightOutlined style={{ fontSize: 16, color: '#595959' }} />
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <div style={{ width: 8, height: 8, background: '#595959', borderRadius: '50%' }}></div>
-                        <Text style={{ color: '#595959', fontSize: 10 }}>Platform Rewards</Text>
-                      </div>
                     </div>
-                  </div>
-                </div>
+                  </Col>
 
-                {/* Detailed Text Sections */}
-                <Space direction="vertical" size="large" style={{ width: '100%' }}>
-                  <div>
-                    <Row justify="space-between" style={{ marginBottom: 8 }}>
-                      <Col>
-                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Earning Tokens / Merit</Text>
-                      </Col>
-                    </Row>
-                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Users earn tokens based on measurable work and contributions: completing projects in music, design, coding, finance, or AI workloads; collaborating with other users in shared VMs; contributing high-quality output that passes verification or gains recognition; engaging in challenges, contests, or merit-based competitions. Tokens are non-speculative and represent platform influence, compute access, and earned merit.
-                    </Paragraph>
-                  </div>
+                  {/* Right: Text Content Sections */}
+                  <Col xs={24} lg={14}>
+                    <Space direction="vertical" size="large" style={{ width: '100%' }}>
+                      <div>
+                        <Row justify="space-between" style={{ marginBottom: 8 }}>
+                          <Col>
+                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Earning Tokens / Merit</Text>
+                          </Col>
+                        </Row>
+                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                          Users earn tokens based on measurable work and contributions: completing projects in music, design, coding, finance, or AI workloads; collaborating with other users in shared VMs; contributing high-quality output that passes verification or gains recognition; engaging in challenges, contests, or merit-based competitions. Tokens are non-speculative and represent platform influence, compute access, and earned merit.
+                        </Paragraph>
+                      </div>
 
-                  <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
 
-                  <div>
-                    <Row justify="space-between" style={{ marginBottom: 8 }}>
-                      <Col>
-                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Spending / Using Tokens</Text>
-                      </Col>
-                    </Row>
-                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Tokens can be spent to: access premium VM features or specialized software; collaborate with other users in private sessions; purchase sponsored visibility for profiles or work in search/discovery features; unlock specialized tools, templates, or AI assistants.
-                    </Paragraph>
-                  </div>
+                      <div>
+                        <Row justify="space-between" style={{ marginBottom: 8 }}>
+                          <Col>
+                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Spending / Using Tokens</Text>
+                          </Col>
+                        </Row>
+                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                          Tokens can be spent to: access premium VM features or specialized software; collaborate with other users in private sessions; purchase sponsored visibility for profiles or work in search/discovery features; unlock specialized tools, templates, or AI assistants.
+                        </Paragraph>
+                      </div>
 
-                  <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
 
-                  <div>
-                    <Row justify="space-between" style={{ marginBottom: 8 }}>
-                      <Col>
-                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Staking & Exposure</Text>
-                      </Col>
-                    </Row>
-                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Users can stake tokens to promote their work or profiles in category searches (similar to sponsored content). Staking acts as both visibility leverage and merit investment, aligning effort with exposure.
-                    </Paragraph>
-                  </div>
+                      <div>
+                        <Row justify="space-between" style={{ marginBottom: 8 }}>
+                          <Col>
+                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Staking & Exposure</Text>
+                          </Col>
+                        </Row>
+                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                          Users can stake tokens to promote their work or profiles in category searches (similar to sponsored content). Staking acts as both visibility leverage and merit investment, aligning effort with exposure.
+                        </Paragraph>
+                      </div>
 
-                  <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
 
-                  <div>
-                    <Row justify="space-between" style={{ marginBottom: 8 }}>
-                      <Col>
-                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Supply & Flow</Text>
-                      </Col>
-                    </Row>
-                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Tokens are generated by the platform as users earn merit. They flow between users and the platform as: payments for collaboration or visibility; consumption of VM resources; rewards for contribution and output. The system is self-contained, ensuring the token's purpose is work-driven, not speculative.
-                    </Paragraph>
-                  </div>
+                      <div>
+                        <Row justify="space-between" style={{ marginBottom: 8 }}>
+                          <Col>
+                            <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Supply & Flow</Text>
+                          </Col>
+                        </Row>
+                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                          Tokens are generated by the platform as users earn merit. They flow between users and the platform as: payments for collaboration or visibility; consumption of VM resources; rewards for contribution and output. The system is self-contained, ensuring the token's purpose is work-driven, not speculative.
+                        </Paragraph>
+                      </div>
 
-                  <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
+                      <Divider style={{ borderColor: '#1f1f1f', margin: '24px 0' }} />
 
-                  <div>
-                    <Row justify="space-between" style={{ marginBottom: 8 }}>
-                      <Col>
-                        <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 600 }}>Summary</Text>
-                      </Col>
-                    </Row>
-                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Token = Merit + Compute + Access. Users earn by creating and collaborating, spend to access tools and exposure, and stake to amplify visibility. OldWest.net's tokenomics incentivizes skill, productivity, and contribution, not speculation.
-                    </Paragraph>
-                  </div>
-                </Space>
+                      <div>
+                        <Row justify="space-between" style={{ marginBottom: 8 }}>
+                          <Col>
+                            <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 600 }}>Summary</Text>
+                          </Col>
+                        </Row>
+                        <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                          Token = Merit + Compute + Access. Users earn by creating and collaborating, spend to access tools and exposure, and stake to amplify visibility. OldWest.net's tokenomics incentivizes skill, productivity, and contribution, not speculation.
+                        </Paragraph>
+                      </div>
+                    </Space>
+                  </Col>
+                </Row>
               </Card>
             </Col>
           </Row>
