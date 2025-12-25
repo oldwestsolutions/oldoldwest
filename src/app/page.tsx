@@ -167,7 +167,7 @@ export default function Home() {
                   Create Anything
                 </Title>
                 <Paragraph style={{ fontSize: 20, color: '#8c8c8c', lineHeight: 1.8, marginBottom: 40 }}>
-                  Your Virtual Environment. Secure. Sovereign. Limitless
+                  Your Virtual Environment. Sovereign. Limitless
                 </Paragraph>
                 <Space size="middle">
                   <Button 
@@ -377,7 +377,7 @@ export default function Home() {
           </Row>
         </section>
 
-        {/* VM Minutes Explanation */}
+        {/* Tokenomics */}
         <section style={{ 
           minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
@@ -388,44 +388,44 @@ export default function Home() {
           <Row justify="center" gutter={[64, 48]} style={{ width: '100%' }}>
             <Col xs={24} lg={12}>
               <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                VM MINUTES
+                TOKENOMICS
               </Text>
               <Divider style={{ margin: '8px 0 40px 0', borderColor: '#1f1f1f' }} />
               
               <Space direction="vertical" size="large" style={{ width: '100%' }}>
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    What Minutes Are
+                    What Are Coins?
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    VM minutes are compute credits that meter your usage of the platform. Each minute represents a unit of virtual machine runtime consumed during your session. Minutes function as a transparent, accountable currency for platform resources, ensuring every interaction has a defined cost.
+                    Coins are like money you use on OldWest. Think of them like tokens at an arcade! Every time you do something on the platform, like sending a message or using a virtual machine, it costs a few coins. You can see how many coins each action costs before you do it.
                   </Paragraph>
           </div>
 
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    Why They Exist
+                    Why Do We Use Coins?
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Minutes ensure accountable resource consumption. Every interaction requires compute resources—processing, storage, bandwidth. Minutes provide transparent, metered access to these resources, preventing abuse and ensuring fair usage across all users.
+                    Coins make sure everyone uses the platform fairly. Just like you need tickets to play games at an arcade, you need coins to use OldWest. This helps keep the platform running smoothly for everyone and makes sure no one uses too much at once.
                   </Paragraph>
           </div>
 
             <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    What Actions Consume Minutes
+                    What Uses Coins?
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Messaging, viewing content, establishing connections, and all platform interactions consume minutes at defined rates per action type. Rates are published and visible before execution, ensuring complete transparency in resource consumption.
+                    Almost everything you do uses coins! Sending messages, looking at content, connecting with other people, and using virtual machines all cost coins. The good news is you can always see how many coins something costs before you do it, so there are no surprises!
                   </Paragraph>
         </div>
 
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    How Users Acquire Minutes
+                    How Do You Get Coins?
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Minutes are purchased and added to your account balance. Usage is deducted from your balance in real-time as you interact with the platform. Balances can be replenished at any time, and usage history is available for complete transparency.
+                    You buy coins and they go into your wallet! When you do things on the platform, coins are taken out of your wallet right away. Don't worry - you can always buy more coins whenever you need them. You can also see exactly how many coins you've used, just like checking your piggy bank!
                   </Paragraph>
           </div>
               </Space>
@@ -464,17 +464,17 @@ export default function Home() {
                   <Row justify="space-between">
                     <Col>
                       <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 18, fontWeight: 600 }}>
-                        1,247 MIN
+                        1,247 COINS
                       </Text>
                     </Col>
                     <Col>
                       <Text style={{ color: '#8c8c8c', fontFamily: 'monospace', fontSize: 16 }}>
-                        0.5 MIN/MSG
+                        0.5 COINS/MSG
                       </Text>
                     </Col>
                   </Row>
                   <Paragraph style={{ color: '#595959', fontSize: 13, marginTop: 16, lineHeight: 1.6, marginBottom: 0 }}>
-                    Your current account balance shows 1,247 minutes available. The consumption rate for messaging is 0.5 minutes per message sent. This rate applies to all direct messages and is deducted immediately upon message delivery.
+                    You have 1,247 coins in your wallet right now! Each message you send costs 0.5 coins. When you send a message, the coins are taken out of your wallet right away.
                   </Paragraph>
                 </div>
 
@@ -491,35 +491,35 @@ export default function Home() {
                       </Col>
                     </Row>
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Total time elapsed in your current active session, measured from login to present moment.
+                      How long you've been on OldWest since you logged in today.
                     </Paragraph>
               </div>
                   
                   <div>
                     <Row justify="space-between" style={{ marginBottom: 8 }}>
                       <Col>
-                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Consumed This Session</Text>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Used This Session</Text>
                       </Col>
                       <Col>
-                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>23 MIN</Text>
+                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>23 COINS</Text>
                       </Col>
                     </Row>
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Total minutes consumed during the current session through all interactions, including messaging, content viewing, and connection establishment.
+                      You've used 23 coins since you logged in today! This includes all the messages you sent, things you looked at, and people you connected with.
                     </Paragraph>
           </div>
                   
                   <div>
                     <Row justify="space-between" style={{ marginBottom: 8 }}>
                       <Col>
-                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Remaining Balance</Text>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Coins Left</Text>
                       </Col>
                       <Col>
-                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>1,224 MIN</Text>
+                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>1,224 COINS</Text>
                       </Col>
                     </Row>
                     <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Available minutes remaining after deducting all session consumption. This balance will be used for future interactions until replenished.
+                      You still have 1,224 coins left in your wallet! You can use these coins for everything you want to do on OldWest. When you run low, just buy more coins!
                     </Paragraph>
         </div>
                 </Space>
