@@ -1,414 +1,992 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
-import { useState } from 'react'
-import HeroVideoBackground from '@/components/HeroVideoBackground'
+import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown, List } from 'antd'
+import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined, PhoneOutlined, WalletOutlined, TeamOutlined, FireOutlined, ThunderboltOutlined, StarOutlined, ArrowRightOutlined, ArrowDownOutlined, MenuOutlined, CloseOutlined } from '@ant-design/icons'
+import dynamic from 'next/dynamic'
+import { useState, useEffect } from 'react'
+import type { MenuProps } from 'antd'
 
-// VM Services data
-const vmServices = [
-  {
-    title: 'Music Production',
-    description: 'Professional audio production tools and services for music creation, mixing, mastering, and sound design.',
-    icon: 'music',
-    color: 'from-blue-500 to-purple-600'
-  },
-  {
-    title: 'Trading & Finance',
-    description: 'Financial modeling, trading analysis, portfolio management, and algorithmic trading services.',
-    icon: 'finance',
-    color: 'from-green-500 to-blue-600'
-  },
-  {
-    title: 'Game Development',
-    description: 'Game design, development, and production services for video games and interactive experiences.',
-    icon: 'gamepad',
-    color: 'from-purple-500 to-pink-600'
-  },
-  {
-    title: 'Software Engineering',
-    description: 'Full-stack development, coding, testing, and deployment services for web and software applications.',
-    icon: 'code',
-    color: 'from-orange-500 to-red-600'
-  },
-  {
-    title: 'Video Editing',
-    description: 'Professional video editing services including post-production, motion graphics, and visual content creation.',
-    icon: 'video',
-    color: 'from-indigo-500 to-purple-600'
-  },
-  {
-    title: 'Architecture',
-    description: 'Architectural design, 3D modeling, building information modeling (BIM), and architectural visualization services.',
-    icon: 'architecture',
-    color: 'from-teal-500 to-green-600'
-  }
-]
+const HeroScene = dynamic(() => import('@/components/HeroScene'), { ssr: false })
+const HeroVideoBackground = dynamic(() => import('@/components/HeroVideoBackground'), { ssr: false })
+const Tokenomics3D = dynamic(() => import('@/components/Tokenomics3D'), { ssr: false })
 
-const testimonials = [
-  {
-    name: 'Sarah Chen',
-    role: 'Gaming Community Leader',
-    content: 'Discord has transformed how our gaming community connects. The voice quality is incredible and the server organization is perfect.',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330'
-  },
-  {
-    name: 'Marcus Johnson',
-    role: 'Study Group Organizer',
-    content: 'We use Discord for our study sessions. The screen sharing and voice channels make remote learning so much better.',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d'
-  },
-  {
-    name: 'Alex Rivera',
-    role: 'Content Creator',
-    content: 'Discord is essential for my content creation workflow. The community features help me engage with my audience directly.',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e'
-  }
-]
+const { Header, Content, Footer } = Layout
+const { Title, Paragraph, Text } = Typography
 
 export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [showDropdown, setShowDropdown] = useState(false)
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
-  // Close dropdown when clicking outside
-  const handleClickOutside = (e: React.MouseEvent) => {
-    if (!(e.target as HTMLElement).closest('.profile-dropdown')) {
-      setShowDropdown(false)
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
     }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHeaderVisible(false)
+      } else {
+        setIsHeaderVisible(true)
+      }
+      
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
+
+  const launchMenuItems: MenuProps['items'] = [
+    {
+      key: 'host',
+      label: <Link href="/host-session" style={{ color: '#ffffff', textDecoration: 'none' }}>Host Session</Link>,
+    },
+    {
+      key: 'launch',
+      label: <Link href="/launch-session" style={{ color: '#ffffff', textDecoration: 'none' }}>Launch Session</Link>,
+    },
+  ]
+  return (
+    <Layout style={{ minHeight: '100vh', background: '#000000' }}>
+      {/* Navigation */}
+      <Header style={{ 
+        background: '#000000', 
+        borderBottom: '1px solid #1f1f1f',
+        padding: '0 24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        height: '72px',
+        position: 'fixed',
+        top: isHeaderVisible ? 0 : -72,
+        left: 0,
+        right: 0,
+        zIndex: 1000,
+        transition: 'top 0.3s ease-in-out'
+      }}>
+        <Row align="middle" justify="space-between" gutter={[12, 0]} style={{ width: '100%', flexWrap: 'nowrap' }}>
+          <Col flex="none">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{ 
+                width: 32, 
+                height: 32, 
+                background: '#141414', 
+                border: '1px solid #1f1f1f',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 8
+              }}>
+                <div style={{ width: 16, height: 16, background: '#595959', borderRadius: 4 }}></div>
+              </div>
+              <Link href="/" style={{ textDecoration: 'none' }}>
+                <Text strong style={{ fontSize: 16, color: '#ffffff', letterSpacing: '0.5px' }}>OLDWEST</Text>
+              </Link>
+              {/* Desktop Navigation - Left Side */}
+              <Space size="middle" style={{ display: isMobile ? 'none' : 'flex', marginLeft: 24 }}>
+                <Link href="/marketplace" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+                >
+                  Marketplace
+                </Link>
+                <Link href="/treasury" style={{ color: '#8c8c8c', fontSize: 14, textDecoration: 'none', transition: 'color 0.3s' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#8c8c8c'}
+                >
+                  Treasury
+                </Link>
+              </Space>
+            </div>
+          </Col>
+          <Col flex="none" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            {/* Desktop Navigation - Right Side */}
+            <Space size="middle" style={{ display: isMobile ? 'none' : 'flex' }}>
+              <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft">
+                <Button 
+                  type="text" 
+                  style={{ color: '#8c8c8c', borderRadius: 12, display: 'flex', alignItems: 'center', gap: 4, minHeight: 44 }}
+                >
+                  LAUNCH SESSION
+                  <DownOutlined style={{ fontSize: 10 }} />
+                </Button>
+              </Dropdown>
+              <Button 
+                type="primary" 
+                style={{ 
+                  background: '#141414', 
+                  borderColor: '#1f1f1f',
+                  color: '#ffffff',
+                  borderRadius: 12,
+                  fontWeight: 600,
+                  boxShadow: 'none',
+                  minHeight: 44
+                }}
+                href="/account"
+              >
+                ACCOUNT
+              </Button>
+            </Space>
+            {/* Mobile Menu Button */}
+            <Button 
+              type="text"
+              icon={mobileMenuOpen ? <CloseOutlined /> : <MenuOutlined />}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              style={{ 
+                color: '#ffffff', 
+                display: isMobile ? 'flex' : 'none',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minWidth: 44,
+                minHeight: 44
+              }}
+            />
+          </Col>
+        </Row>
+        {/* Mobile Menu */}
+        {mobileMenuOpen && isMobile && (
+          <div style={{
+            position: 'absolute',
+            top: '72px',
+            left: 0,
+            right: 0,
+            background: '#000000',
+            borderBottom: '1px solid #1f1f1f',
+            padding: '24px',
+            zIndex: 999
+          }}>
+            <Space direction="vertical" size="large" style={{ width: '100%' }}>
+              <Link href="/marketplace" style={{ color: '#8c8c8c', fontSize: 16, textDecoration: 'none', display: 'block', padding: '12px 0' }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Marketplace
+              </Link>
+              <Link href="/treasury" style={{ color: '#8c8c8c', fontSize: 16, textDecoration: 'none', display: 'block', padding: '12px 0' }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Treasury
+              </Link>
+              <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft" trigger={['click']}>
+                <Button 
+                  type="text" 
+                  block
+                  style={{ color: '#8c8c8c', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', minHeight: 44, textAlign: 'left' }}
+                >
+                  LAUNCH SESSION
+                  <DownOutlined style={{ fontSize: 10 }} />
+                </Button>
+              </Dropdown>
+              <Button 
+                type="primary" 
+                block
+                style={{ 
+                  background: '#141414', 
+                  borderColor: '#1f1f1f',
+                  color: '#ffffff',
+                  borderRadius: 12,
+                  fontWeight: 600,
+                  boxShadow: 'none',
+                  minHeight: 44
+                }}
+                href="/account"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                ACCOUNT
+              </Button>
+            </Space>
+          </div>
+        )}
+      </Header>
+
+      <Content style={{ marginTop: isHeaderVisible ? 0 : 0 }}>
+        {/* Hero Section - Two Column */}
+        <section style={{ 
+          minHeight: '100vh', 
+          borderBottom: '1px solid #1f1f1f', 
+          padding: '80px 24px',
+          display: 'flex',
+          alignItems: 'center',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
+          {/* Video Background */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 0,
+            opacity: 0.3
+          }}>
+            <HeroVideoBackground />
+          </div>
+          <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
+            <Row justify="center" align="middle" gutter={[64, 48]} style={{ width: '100%' }}>
+              <Col xs={24} lg={12}>
+                <Title 
+                  level={1} 
+                  style={{ 
+                    fontSize: isMobile ? 40 : 72, 
+                    fontWeight: 700, 
+                    color: '#ffffff',
+                    marginBottom: 24,
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.03em'
+                  }}
+                >
+                  Create Anything
+                </Title>
+                <Paragraph style={{ fontSize: isMobile ? 16 : 20, color: '#8c8c8c', lineHeight: 1.8, marginBottom: 32 }}>
+                  Your Virtual Environment. Sovereign. Limitless
+                </Paragraph>
+                <Space size="middle" direction={isMobile ? 'vertical' : 'horizontal'} style={{ width: isMobile ? '100%' : 'auto' }}>
+                  <Button 
+                    type="primary"
+                    size="large"
+                    block={isMobile}
+                    style={{ 
+                      background: '#000000', 
+                      borderColor: '#1f1f1f',
+                      color: '#ffffff',
+                      borderRadius: 12,
+                      fontWeight: 600,
+                      height: 52,
+                      paddingLeft: isMobile ? 24 : 40,
+                      paddingRight: isMobile ? 24 : 40,
+                      boxShadow: 'none',
+                      minHeight: 44
+                    }}
+                    href="/explore-platform"
+                  >
+                    EXPLORE PLATFORM
+                  </Button>
+                  <Button 
+                    size="large"
+                    block={isMobile}
+                    style={{ 
+                      background: '#141414', 
+                      borderColor: '#1f1f1f',
+                      color: '#d9d9d9',
+                      borderRadius: 12,
+                      fontWeight: 600,
+                      height: 52,
+                      paddingLeft: isMobile ? 24 : 40,
+                      paddingRight: isMobile ? 24 : 40,
+                      minHeight: 44
+                    }}
+                    href="/download-app"
+                  >
+                    DOWNLOAD APP
+                  </Button>
+                </Space>
+              </Col>
+              <Col xs={24} lg={12}>
+                <HeroScene />
+              </Col>
+            </Row>
+        </div>
+      </section>
+
+        {/* VM Services */}
+        <section style={{ 
+          minHeight: '100vh', 
+          borderBottom: '1px solid #1f1f1f', 
+          background: '#0a0a0a',
+          padding: isMobile ? '60px 24px' : '120px 48px',
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+          <Row justify="center" style={{ width: '100%' }}>
+            <Col xs={24} lg={20} xl={16}>
+              <div style={{ marginBottom: 64 }}>
+                <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                  VM SERVICES
+                </Text>
+                <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
+          </div>
+              
+              <Title level={2} style={{ color: '#ffffff', marginBottom: isMobile ? 32 : 48, fontSize: isMobile ? 28 : 40, fontWeight: 600, textAlign: 'center' }}>
+                Services Offered Through Virtual Machine Environment
+              </Title>
+
+              <Row gutter={[16, 24]}>
+                {[
+                  {
+                    title: 'Music',
+                    description: 'Audio production tools',
+                    items: [
+                      'Composing, arranging, and producing music',
+                      'Mixing and mastering tracks',
+                      'Audio synthesis and sound design',
+                      'Collaborative music sessions',
+                      'Practicing or performing with virtual instruments'
+                    ]
+                  },
+                  {
+                    title: 'Graphic Design',
+                    description: 'Design and video editing',
+                    items: [
+                      'Image creation and enhancement',
+                      'Video montage, editing, and post-production',
+                      'Animation and motion graphics',
+                      'AI-assisted content creation (photogenic pictures/videos)',
+                      'Collaborative creative projects'
+                    ]
+                  },
+                  {
+                    title: 'Coding',
+                    description: 'Development environments',
+                    items: [
+                      'Writing, testing, and deploying code',
+                      'Collaborative coding sessions',
+                      'Algorithm development and experimentation',
+                      'Running scripts, simulations, or software projects'
+                    ]
+                  },
+                  {
+                    title: 'Finance',
+                    description: 'Trading and analysis tools',
+                    items: [
+                      'Algorithmic trading simulations',
+                      'Data analysis for financial markets',
+                      'Portfolio modeling and risk assessment',
+                      'Backtesting trading strategies'
+                    ]
+                  },
+                  {
+                    title: 'Collaboration',
+                    description: 'Team workspaces',
+                    items: [
+                      'Multi-user sessions for joint projects',
+                      'Sharing VM resources for teamwork',
+                      'Merit and token rewards for contributions',
+                      'Project tracking and analytics'
+                    ]
+                  },
+                  {
+                    title: 'Education',
+                    description: 'Learning platforms',
+                    items: [
+                      'Skill-building exercises (coding, music, design)',
+                      'Virtual workshops or tutorials',
+                      'Mentorship and guided learning sessions'
+                    ]
+                  }
+                ].map((service, index) => {
+                  // Use Unsplash for professional stock images with service-specific keywords (fallback)
+                  const imageUrl = `https://source.unsplash.com/400x400/?${encodeURIComponent(
+                    service.title === 'Music' ? 'music,audio,studio' :
+                    service.title === 'Graphic Design' ? 'design,graphic,creative' :
+                    service.title === 'Coding' ? 'coding,programming,computer' :
+                    service.title === 'Finance' ? 'finance,business,data' :
+                    service.title === 'Collaboration' ? 'teamwork,collaboration,meeting' :
+                    'education,learning,study'
+                  )}`
+
+                  // Better stock images from Unsplash with specific dimensions (square)
+                  const stockImages: { [key: string]: string } = {
+                    'Music': 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop',
+                    'Graphic Design': 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=400&fit=crop',
+                    'Coding': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=400&fit=crop',
+                    'Finance': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop',
+                    'Collaboration': 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop',
+                    'Education': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=400&fit=crop'
+  }
+
+  const categorySlugMap: { [key: string]: string } = {
+    'Music': 'music',
+    'Graphic Design': 'graphic-design',
+    'Coding': 'coding',
+    'Finance': 'finance',
+    'Collaboration': 'collaboration',
+    'Education': 'education'
   }
 
   return (
-    <div className="min-h-screen bg-black" onClick={handleClickOutside}>
-      {/* Navigation */}
-      <nav className="flex items-center justify-between px-8 py-6 bg-black border-b border-blue-500">
-        <div className="flex items-center space-x-12">
-          <div className="flex items-center space-x-4">
-            <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center shadow-lg border-2 border-blue-400">
-              <span className="text-white font-bold text-xl">D</span>
-            </div>
-            <span className="text-3xl font-bold text-white tracking-tight">Discord</span>
-          </div>
-        </div>
-        <div className="flex items-center space-x-6">
-          <button className="bg-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 border border-blue-400">
-            Old West
-          </button>
-          <div className="relative profile-dropdown">
-            <button
-              onClick={() => setShowDropdown(!showDropdown)}
-              className="flex items-center space-x-2 focus:outline-none"
-            >
-              <div className="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center shadow-md border border-gray-500">
-                {isLoggedIn ? (
-                  <span className="text-white font-semibold">U</span>
-                ) : (
-                  <svg
-                    className="w-5 h-5 text-gray-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                )}
+                    <Col xs={24} sm={12} md={8} lg={4} xl={4} key={index}>
+                      <Link href={`/category/${categorySlugMap[service.title] || service.title.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                          <Card
+                            bordered
+                            hoverable
+                            style={{
+                              background: '#000000',
+                              borderColor: '#1f1f1f',
+                              borderRadius: 12,
+                              overflow: 'hidden',
+                              aspectRatio: '1',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              marginBottom: 12,
+                              cursor: 'pointer',
+                              transition: 'all 0.3s ease',
+                              boxShadow: 'none'
+                            }}
+                            bodyStyle={{ padding: 0, display: 'flex', flexDirection: 'column', flex: 1 }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.borderColor = '#595959'
+                              e.currentTarget.style.boxShadow = '0 0 20px rgba(89, 89, 89, 0.5), 0 0 40px rgba(89, 89, 89, 0.3)'
+                              e.currentTarget.style.transform = 'translateY(-4px)'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.borderColor = '#1f1f1f'
+                              e.currentTarget.style.boxShadow = 'none'
+                              e.currentTarget.style.transform = 'translateY(0)'
+                            }}
+                          >
+                          <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: '#141414' }}>
+                            <img
+                              src={stockImages[service.title] || imageUrl}
+                              alt={service.title}
+                              draggable="false"
+                              style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                                opacity: 0.9,
+                                pointerEvents: 'none',
+                                userSelect: 'none'
+                              } as any}
+                              onDragStart={(e) => e.preventDefault()}
+                              onContextMenu={(e) => e.preventDefault()}
+                              onError={(e) => {
+                                // Fallback to gradient if image fails to load
+                                const target = e.target as HTMLImageElement
+                                target.style.display = 'none'
+                                if (target.parentElement) {
+                                  target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
+                                }
+                              }}
+                            />
               </div>
-            </button>
-            {showDropdown && (
-              <div className="absolute right-0 mt-3 w-56 bg-gray-900 rounded-lg shadow-2xl py-2 z-10 border border-gray-700">
-                {isLoggedIn ? (
-                  <>
-                    <Link
-                      href="/account"
-                      className="block px-6 py-3 text-sm text-gray-300 hover:bg-blue-500/20 hover:text-blue-400 transition-colors duration-200"
-                    >
-                      Account
-                    </Link>
-                    <Link
-                      href="/settings"
-                      className="block px-6 py-3 text-sm text-gray-300 hover:bg-blue-500/20 hover:text-blue-400 transition-colors duration-200"
-                    >
-                      Settings
-                    </Link>
-                    <button
-                      onClick={() => setIsLoggedIn(false)}
-                      className="block w-full text-left px-6 py-3 text-sm text-gray-300 hover:bg-red-500/20 hover:text-red-400 transition-colors duration-200"
-                    >
-                      Logout
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <Link
-                      href="/login"
-                      className="block px-6 py-3 text-sm text-gray-300 hover:bg-blue-500/20 hover:text-blue-400 transition-colors duration-200"
-                    >
-                      Login
-                    </Link>
-                    <Link
-                      href="/signup"
-                      className="block px-6 py-3 text-sm text-gray-300 hover:bg-blue-500/20 hover:text-blue-400 transition-colors duration-200"
-                    >
-                      Create Account
-                    </Link>
-                  </>
-                )}
-              </div>
-            )}
+                          </Card>
+                          <div style={{ textAlign: 'center', paddingTop: 8 }}>
+                            <Title level={4} style={{ color: '#ffffff', margin: '0 0 4px 0', fontSize: 16, fontWeight: 600, lineHeight: 1.4 }}>
+                              {service.title}
+                            </Title>
+                            <p style={{ color: '#999999', margin: 0, fontSize: 12, lineHeight: 1.4 }}>
+                              {service.description}
+                            </p>
           </div>
         </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="relative bg-black py-32 px-6 overflow-hidden">
-        <div className="absolute inset-0">
-          <HeroVideoBackground />
-        </div>
-        <div className="absolute inset-0 bg-black/60"></div>
-        
-        <div className="relative max-w-7xl mx-auto text-center z-10">
-          <div className="mb-8">
-            <span className="inline-block px-6 py-3 bg-blue-500/20 backdrop-blur-sm rounded-lg text-blue-400 font-bold text-sm tracking-wide uppercase border border-blue-500/30">
-              Where conversations come alive
-            </span>
-          </div>
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 tracking-tight leading-tight">
-            Your place to
-            <span className="block text-blue-500">
-              talk
-            </span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Whether you're part of a school club, gaming group, worldwide art community, or just a handful of friends that want to spend time together, Discord makes it easy to talk every day and hang out more often.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <button className="group bg-blue-500 text-white px-10 py-5 rounded-lg font-bold text-lg hover:bg-blue-600 transition-all duration-300 shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-1 flex items-center justify-center border-2 border-blue-400">
-              Download for Windows
-            </button>
-            <button className="bg-gray-800 text-white px-10 py-5 rounded-lg font-bold text-lg hover:bg-gray-700 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-600">
-              Open Discord in your browser
-            </button>
-          </div>
-        </div>
+                      </Link>
+                    </Col>
+                  )
+                })}
+              </Row>
+            </Col>
+          </Row>
       </section>
 
-      {/* VM Services Section */}
-      <section className="py-32 px-6 bg-gray-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <span className="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg text-sm font-bold mb-6 border border-blue-500/30">
-              VM Services
-            </span>
-            <h2 className="text-5xl font-bold text-white mb-8 tracking-tight">
-              Professional virtual machine services
-              <span className="block text-gray-300 font-normal">for your creative and technical needs</span>
-            </h2>
+        {/* Tokenomics */}
+        <section style={{ 
+          minHeight: '100vh', 
+          borderBottom: '1px solid #1f1f1f', 
+          padding: isMobile ? '60px 24px' : '120px 48px',
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+          <Row justify="center" gutter={[64, 48]} style={{ width: '100%' }}>
+            <Col xs={24} lg={12}>
+              <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                TOKENOMICS
+              </Text>
+              <Divider style={{ margin: '8px 0 40px 0', borderColor: '#1f1f1f' }} />
+              
+              <Space direction="vertical" size="large" style={{ width: '100%' }}>
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                    Platform Currency
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Coins are the primary currency for all platform interactions. Each action—messaging, content access, and VM utilization—is metered through a transparent system with rates displayed before execution.
+                  </Paragraph>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {vmServices.map((service, index) => {
-              const serviceSlugMap: { [key: string]: string } = {
-                'Music Production': 'music',
-                'Trading & Finance': 'finance',
-                'Game Development': 'game-development',
-                'Software Engineering': 'software-engineering',
-                'Video Editing': 'video-editing',
-                'Architecture': 'architecture'
-              }
-              const serviceSlug = serviceSlugMap[service.title] || service.title.toLowerCase().replace(/\s+/g, '-')
-              return (
-              <Link key={index} href={`/services/${serviceSlug}`} className="group bg-gray-800 rounded-2xl p-10 hover:shadow-2xl transition-all duration-500 border border-gray-700 hover:border-blue-500/50 hover:-translate-y-2">
-                <div className={`w-20 h-20 rounded-xl bg-blue-500 flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-white/20`}>
-                  {service.icon === 'music' && (
-                    <span className="text-white text-3xl">🎵</span>
-                  )}
-                  {service.icon === 'finance' && (
-                    <span className="text-white text-3xl">💰</span>
-                  )}
-                  {service.icon === 'gamepad' && (
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  )}
-                  {service.icon === 'code' && (
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                  )}
-                  {service.icon === 'video' && (
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                  )}
-                  {service.icon === 'architecture' && (
-                    <span className="text-white text-3xl">🏗️</span>
-                  )}
+
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                    Resource Management
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    The metered consumption model ensures equitable resource distribution, maintains platform stability, and prevents resource abuse while guaranteeing fair access for all users.
+                  </Paragraph>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-6 group-hover:text-blue-400 transition-colors duration-300">{service.title}</h3>
-                <p className="text-gray-300 leading-relaxed text-lg">{service.description}</p>
-              </Link>
-              )
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Community Section */}
-      <section className="py-32 px-6 bg-gray-900">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="inline-block px-4 py-2 bg-green-500/20 text-green-400 rounded-lg text-sm font-bold mb-6 border border-green-500/30">
-                Community
-              </span>
-              <h2 className="text-5xl font-bold text-white mb-8 tracking-tight">
-                From a few friends
-                <span className="block text-gray-300 font-normal">to a whole community</span>
-              </h2>
-              <p className="text-xl text-gray-300 mb-10 leading-relaxed">
-                Discord servers are organized into topic-based channels where you can collaborate, share, and just talk about your day without clogging up a group chat.
-              </p>
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                  <span className="text-white text-lg font-semibold">Voice channels for crystal-clear conversations</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                  <span className="text-white text-lg font-semibold">Text channels for organized discussions</span>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                  <span className="text-white text-lg font-semibold">Screen sharing for collaboration</span>
-                </div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                    Consumption Model
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    All platform interactions consume coins at predefined, published rates. Consumption rates are visible before execution, ensuring complete transparency in resource utilization.
+                  </Paragraph>
               </div>
-            </div>
-            <div className="bg-gray-800 rounded-2xl p-10 shadow-2xl border border-gray-700">
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg border-2 border-blue-400">
-                    <span className="text-white font-bold text-lg">D</span>
-                  </div>
-                  <span className="text-white font-bold text-xl">Discord</span>
-                </div>
-                <div className="bg-gray-900 rounded-xl p-6 border border-gray-600">
-                  <div className="text-sm text-gray-400 mb-4 font-bold"># general</div>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center border border-blue-400">
-                        <span className="text-white text-sm font-bold">A</span>
-                      </div>
-                      <span className="text-white">Alex: Hey everyone!</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center border border-green-400">
-                        <span className="text-white text-sm font-bold">S</span>
-                      </div>
-                      <span className="text-white">Sarah: Welcome Alex!</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center border border-blue-400">
-                        <span className="text-white text-sm font-bold">M</span>
-                      </div>
-                      <span className="text-white">Mike: Great to have you here!</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Testimonials Section */}
-      <section className="py-32 px-6 bg-gray-800">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <span className="inline-block px-4 py-2 bg-green-500/20 text-green-400 rounded-lg text-sm font-bold mb-6 border border-green-500/30">
-              Testimonials
-            </span>
-            <h2 className="text-5xl font-bold text-white mb-8 tracking-tight">
-              Trusted by millions of users
-              <span className="block text-gray-300 font-normal">worldwide</span>
-            </h2>
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                    Acquisition & Balance Management
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Coins are purchased and deposited into your account wallet. Consumption is deducted in real-time, and balances can be replenished through the treasury with complete usage history available.
+                  </Paragraph>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="group bg-gray-900 rounded-2xl p-10 hover:shadow-2xl transition-all duration-500 border border-gray-700 hover:border-green-500/50 hover:-translate-y-2">
-                <div className="flex items-center space-x-6 mb-8">
-                  <Image
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    width={60}
-                    height={60}
-                    className="rounded-xl shadow-lg border-2 border-gray-600"
+              </Space>
+            </Col>
+
+            <Col xs={24} lg={12} style={{ marginTop: 80 }}>
+              <Card 
+                bordered 
+                style={{ 
+                  background: '#0a0a0a', 
+                  borderColor: '#1f1f1f',
+                  borderRadius: 12
+                }}
+                bodyStyle={{ padding: 40 }}
+              >
+                <div style={{ marginBottom: 32 }}>
+                  <Row justify="space-between" style={{ marginBottom: 12 }}>
+                    <Col>
+                      <Text style={{ fontSize: 11, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                        BALANCE
+                      </Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ fontSize: 11, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                        RATE
+                      </Text>
+                    </Col>
+                  </Row>
+                  <Progress 
+                    percent={65} 
+                    strokeColor="#595959"
+                    trailColor="#141414"
+                    showInfo={false}
+                    style={{ marginBottom: 12 }}
                   />
+                  <Row justify="space-between">
+                    <Col>
+                      <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 18, fontWeight: 600 }}>
+                        1,247 COINS
+                      </Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ color: '#8c8c8c', fontFamily: 'monospace', fontSize: 16 }}>
+                        0.5 COINS/MSG
+                      </Text>
+                    </Col>
+                  </Row>
+                  <Paragraph style={{ color: '#595959', fontSize: 13, marginTop: 16, lineHeight: 1.6, marginBottom: 0 }}>
+                    Current balance: 1,247 coins. Messaging rate: 0.5 coins per message, deducted immediately upon delivery.
+                  </Paragraph>
+        </div>
+
+                <Divider style={{ borderColor: '#1f1f1f', margin: '32px 0' }} />
+
+                <Space direction="vertical" size="large" style={{ width: '100%' }}>
+            <div>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Session Duration</Text>
+                      </Col>
+                      <Col>
+                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>12:34</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Total time elapsed in current active session.
+                    </Paragraph>
+                </div>
+                  
                   <div>
-                    <h4 className="text-white font-bold text-lg">{testimonial.name}</h4>
-                    <p className="text-gray-400 text-sm font-semibold">{testimonial.role}</p>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Used This Session</Text>
+                      </Col>
+                      <Col>
+                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>23 COINS</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Total coins consumed this session through all platform interactions.
+                    </Paragraph>
+                </div>
+                  
+                  <div>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Coins Left</Text>
+                      </Col>
+                      <Col>
+                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>1,224 COINS</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Available coins remaining after session consumption. Replenish through the treasury as needed.
+                    </Paragraph>
+                </div>
+                </Space>
+              </Card>
+            </Col>
+          </Row>
+      </section>
+
+        {/* Verified Identity */}
+        <section style={{
+          minHeight: '100vh',
+          borderBottom: '1px solid #1f1f1f',
+          background: '#0a0a0a',
+          padding: isMobile ? '60px 24px' : '120px 48px',
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+          <Row justify="center" style={{ width: '100%' }}>
+            <Col xs={24} lg={20} xl={16}>
+              <div style={{ marginBottom: 64 }}>
+                <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                  VERIFIED IDENTITY
+                </Text>
+                <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
+          </div>
+
+              <Card
+                bordered
+                style={{
+                  background: '#000000',
+                  borderColor: '#1f1f1f',
+                  borderRadius: 12
+                }}
+                bodyStyle={{ padding: 48 }}
+              >
+                <Row gutter={[48, 48]} align="middle">
+                  <Col xs={24} md={12}>
+                    <div style={{
+                      width: '100%',
+                      height: 300,
+                      background: '#141414',
+                      border: '1px solid #1f1f1f',
+                      borderRadius: 12,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexDirection: 'column',
+                      gap: 16
+                    }}>
+                      <PhoneOutlined style={{ fontSize: 64, color: '#595959' }} />
+                      <div style={{
+                        background: '#0a0a0a',
+                        border: '1px solid #1f1f1f',
+                        borderRadius: 8,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginTop: 16,
+                        padding: '8px 12px'
+                      }}>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>+1 (555) 123-4567</Text>
                   </div>
                 </div>
-                <p className="text-gray-300 italic text-lg leading-relaxed">"{testimonial.content}"</p>
-              </div>
-            ))}
-          </div>
-        </div>
+                  </Col>
+                  <Col xs={24} md={12}>
+                    <Title level={3} style={{ color: '#ffffff', marginBottom: 16, fontSize: 28, fontWeight: 600 }}>
+                      Phone Number Verification
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
+                      All users sign up with a verified phone number, ensuring every account is tied to a real, verifiable identity. This telecom-verified secure system connects you only with verified individuals.
+                    </Paragraph>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 24 }}>
+                      The phone number verification process establishes a single, accountable identity tied to all usage and settlement activities, preventing abuse and ensuring platform security.
+                    </Paragraph>
+                    <Button
+                      type="primary"
+                      size="large"
+                      style={{
+                        background: '#141414',
+                        borderColor: '#1f1f1f',
+                        color: '#ffffff',
+                        borderRadius: 12,
+                        boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
+                      }}
+                      href="/create-account"
+                    >
+                      Sign Up with Phone Number
+                    </Button>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+          </Row>
       </section>
 
 
-      {/* Footer */}
-      <footer className="bg-black py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div>
-              <h3 className="text-white font-bold text-lg mb-6">Product</h3>
-              <div className="space-y-4">
-                <Link href="/download" className="block text-gray-400 hover:text-blue-400 transition-colors duration-300 font-semibold">Download</Link>
-                <Link href="/nitro" className="block text-gray-400 hover:text-blue-400 transition-colors duration-300 font-semibold">Nitro</Link>
-                <Link href="/status" className="block text-gray-400 hover:text-blue-400 transition-colors duration-300 font-semibold">Status</Link>
+        {/* Integrated Platforms */}
+        <section style={{
+          minHeight: '100vh',
+          background: '#000000',
+          padding: isMobile ? '60px 24px' : '120px 48px',
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+          <Row justify="center" style={{ width: '100%' }}>
+            <Col xs={24} lg={20} xl={16}>
+              <div style={{ marginBottom: 64 }}>
+                <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                  INTEGRATED PLATFORMS
+                </Text>
+                <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
               </div>
+              <Row gutter={[24, 24]}>
+                {[
+                  { name: 'Coursera', logo: 'https://cdn.simpleicons.org/coursera/0056D2' },
+                  { name: 'YouTube', logo: 'https://cdn.simpleicons.org/youtube/FF0000' },
+                  { name: 'TikTok', logo: 'https://cdn.simpleicons.org/tiktok/000000' },
+                  { name: 'Instagram', logo: 'https://cdn.simpleicons.org/instagram/E4405F' },
+                  { name: 'LinkedIn', logo: 'https://cdn.simpleicons.org/linkedin/0A66C2' },
+                  { name: 'GitHub', logo: 'https://cdn.simpleicons.org/github/181717' }
+                ].map((platform) => (
+                  <Col xs={24} sm={12} md={8} lg={4} key={platform.name}>
+                    <Card
+                      bordered
+                      style={{
+                        background: '#000000',
+                        borderColor: '#1f1f1f',
+                        borderRadius: 12,
+                        height: 200,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                      bodyStyle={{ padding: 32, textAlign: 'center' }}
+                    >
+                      <img
+                        src={platform.logo}
+                        alt={platform.name}
+                        style={{
+                          maxWidth: '120px',
+                          maxHeight: '120px',
+                          width: 'auto',
+                          height: 'auto',
+                          objectFit: 'contain'
+                        }}
+                        onError={(e) => {
+                          // Fallback to text if logo fails to load
+                          const target = e.target as HTMLImageElement
+                          target.style.display = 'none'
+                          const parent = target.parentElement
+                          if (parent) {
+                            const title = document.createElement('h3')
+                            title.textContent = platform.name
+                            title.style.color = '#ffffff'
+                            title.style.fontSize = '32px'
+                            title.style.fontWeight = '600'
+                            title.style.margin = '0'
+                            parent.appendChild(title)
+                          }
+                        }}
+                      />
+                    </Card>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          </Row>
+        </section>
+      </Content>
+
+      {/* Comprehensive Footer */}
+      <Footer style={{ 
+        background: '#000000', 
+        borderTop: '1px solid #1f1f1f',
+        padding: isMobile ? '40px 24px 20px 24px' : '80px 48px 40px 48px'
+      }}>
+        <Row gutter={[48, 48]}>
+          <Col xs={24} sm={12} md={6}>
+            <Row align="middle" gutter={12} style={{ marginBottom: 32 }}>
+              <Col>
+                <div style={{ 
+                  width: 40, 
+                  height: 40, 
+                  background: '#141414', 
+                  border: '1px solid #1f1f1f',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: 8
+                }}>
+                  <div style={{ width: 20, height: 20, background: '#595959', borderRadius: 4 }}></div>
             </div>
-            <div>
-              <h3 className="text-white font-bold text-lg mb-6">Company</h3>
-              <div className="space-y-4">
-                <Link href="/about" className="block text-gray-400 hover:text-blue-400 transition-colors duration-300 font-semibold">About</Link>
-                <Link href="/jobs" className="block text-gray-400 hover:text-blue-400 transition-colors duration-300 font-semibold">Jobs</Link>
-                <Link href="/branding" className="block text-gray-400 hover:text-blue-400 transition-colors duration-300 font-semibold">Branding</Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-white font-bold text-lg mb-6">Resources</h3>
-              <div className="space-y-4">
-                <Link href="/college" className="block text-gray-400 hover:text-green-400 transition-colors duration-300 font-semibold">College</Link>
-                <Link href="/support" className="block text-gray-400 hover:text-green-400 transition-colors duration-300 font-semibold">Support</Link>
-                <Link href="/safety" className="block text-gray-400 hover:text-green-400 transition-colors duration-300 font-semibold">Safety</Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-white font-bold text-lg mb-6">Policies</h3>
-              <div className="space-y-4">
-                <Link href="/privacy" className="block text-gray-400 hover:text-white transition-colors duration-300 font-semibold">Privacy</Link>
-                <Link href="/terms" className="block text-gray-400 hover:text-white transition-colors duration-300 font-semibold">Terms</Link>
-                <Link href="/guidelines" className="block text-gray-400 hover:text-white transition-colors duration-300 font-semibold">Guidelines</Link>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-16 pt-12 flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-4 mb-6 md:mb-0">
-              <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg border-2 border-blue-400">
-                <span className="text-white font-bold text-xl">D</span>
-              </div>
-              <span className="text-white font-bold text-2xl tracking-tight">Discord</span>
-            </div>
-            <button className="bg-blue-500 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 border-2 border-blue-400">
-              Sign up
-            </button>
-          </div>
-        </div>
-      </footer>
-    </div>
+              </Col>
+              <Col>
+                <Text style={{ fontSize: 18, color: '#ffffff', fontWeight: 600, letterSpacing: '0.5px' }}>OLDWEST</Text>
+              </Col>
+            </Row>
+            <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.6, marginBottom: 0 }}>
+              Social infrastructure metered by design. Utility-grade platform for accountable digital interaction.
+            </Paragraph>
+          </Col>
+          
+          <Col xs={24} sm={12} md={6}>
+            <Title level={5} style={{ color: '#ffffff', marginBottom: 24, fontSize: 14, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              Platform
+            </Title>
+            <Space direction="vertical" size="small" style={{ width: '100%' }}>
+              <Link href="/access-network" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Access Network</Link>
+              <Link href="/create-account" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Create Account</Link>
+              <Link href="/usage-model" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Usage Model</Link>
+            </Space>
+          </Col>
+          
+          <Col xs={24} sm={12} md={6}>
+            <Title level={5} style={{ color: '#ffffff', marginBottom: 24, fontSize: 14, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              Documentation
+            </Title>
+            <Space direction="vertical" size="small" style={{ width: '100%' }}>
+              <Link href="/documentation/api" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>API Reference</Link>
+              <Link href="/documentation/developer-guide" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Developer Guide</Link>
+              <Link href="/documentation/integration" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Integration Guide</Link>
+              <Link href="/documentation/sdk" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>SDK Documentation</Link>
+            </Space>
+          </Col>
+          
+          <Col xs={24} sm={12} md={6}>
+            <Title level={5} style={{ color: '#ffffff', marginBottom: 24, fontSize: 14, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              Support
+            </Title>
+            <Space direction="vertical" size="small" style={{ width: '100%' }}>
+              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Help Center</Link>
+              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Contact Support</Link>
+              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Status Page</Link>
+              <Link href="#" style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>FAQ</Link>
+            </Space>
+          </Col>
+        </Row>
+        
+        <Divider style={{ borderColor: '#1f1f1f', margin: '48px 0 32px 0' }} />
+        
+        <Row justify="space-between" align="middle">
+          <Col>
+            <Text style={{ color: '#595959', fontSize: 12 }}>
+              © 2025 OldWest. All rights reserved.
+            </Text>
+          </Col>
+          <Col>
+            <Space size="large">
+              <Link 
+                href="/privacy-policy" 
+                style={{ 
+                  color: '#595959', 
+                  fontSize: 12,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  textShadow: '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff'
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#595959'
+                  e.currentTarget.style.textShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                href="/terms-of-service" 
+                style={{ 
+                  color: '#595959', 
+                  fontSize: 12,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  textShadow: '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff'
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#595959'
+                  e.currentTarget.style.textShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+              >
+                Terms of Service
+              </Link>
+              <Link 
+                href="/security" 
+                style={{ 
+                  color: '#595959', 
+                  fontSize: 12,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  textShadow: '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff'
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#595959'
+                  e.currentTarget.style.textShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+              >
+                Security
+              </Link>
+              <Link 
+                href="/compliance" 
+                style={{ 
+                  color: '#595959', 
+                  fontSize: 12,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  textShadow: '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff'
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#595959'
+                  e.currentTarget.style.textShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+              >
+                Compliance
+              </Link>
+              <Link 
+                href="/whitepaper" 
+                style={{ 
+                  color: '#595959', 
+                  fontSize: 12,
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  textShadow: '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff'
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#595959'
+                  e.currentTarget.style.textShadow = '0 0 0px rgba(255, 255, 255, 0)'
+                }}
+              >
+                White Paper
+              </Link>
+            </Space>
+          </Col>
+        </Row>
+      </Footer>
+    </Layout>
   )
-} 
+}
