@@ -17,36 +17,48 @@ const mockServices = [
     reviews: 127,
     price: 50,
     image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400',
-    category: 'Music & Audio',
+    category: 'Music Production',
     delivery: '3 days',
     featured: true
   },
   {
     id: 2,
-    title: 'Custom Logo Design Package',
-    seller: 'Design Studio X',
-    rating: 4.8,
-    reviews: 89,
-    price: 75,
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400',
-    category: 'Graphic Design',
-    delivery: '2 days',
-    featured: false
+    title: 'Trading & Finance Analysis',
+    seller: 'Finance Experts',
+    rating: 4.9,
+    reviews: 94,
+    price: 120,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400',
+    category: 'Trading & Finance',
+    delivery: '4 days',
+    featured: true
   },
   {
     id: 3,
-    title: 'Full-Stack Web Development',
-    seller: 'CodeCrafters',
+    title: 'Game Development Services',
+    seller: 'GameDev Studio',
     rating: 5.0,
     reviews: 203,
     price: 150,
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400',
-    category: 'Development',
+    category: 'Game Development',
     delivery: '7 days',
     featured: true
   },
   {
     id: 4,
+    title: 'Software Engineering Solutions',
+    seller: 'CodeCrafters',
+    rating: 5.0,
+    reviews: 180,
+    price: 200,
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400',
+    category: 'Software Engineering',
+    delivery: '5 days',
+    featured: false
+  },
+  {
+    id: 5,
     title: 'Video Editing & Post-Production',
     seller: 'Cinema Edit Pro',
     rating: 4.7,
@@ -55,30 +67,18 @@ const mockServices = [
     image: 'https://images.unsplash.com/photo-1533158326339-7f3cf2404354?w=400',
     category: 'Video Editing',
     delivery: '5 days',
-    featured: false
-  },
-  {
-    id: 5,
-    title: 'Financial Analysis & Reporting',
-    seller: 'Finance Experts',
-    rating: 4.9,
-    reviews: 94,
-    price: 120,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400',
-    category: 'Finance',
-    delivery: '4 days',
     featured: true
   },
   {
     id: 6,
-    title: 'Team Collaboration Setup',
-    seller: 'Workflow Solutions',
+    title: 'Architecture & Design Services',
+    seller: 'ArchDesign Pro',
     rating: 4.8,
     reviews: 78,
-    price: 80,
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400',
-    category: 'Collaboration',
-    delivery: '2 days',
+    price: 180,
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400',
+    category: 'Architecture',
+    delivery: '6 days',
     featured: false
   }
 ]
@@ -204,13 +204,12 @@ export default function Marketplace() {
             </Col>
             {filteredServices.filter(s => s.featured).map((service) => {
               const categorySlugMap: { [key: string]: string } = {
-                'Music & Audio': 'music',
-                'Graphic Design': 'graphic-design',
-                'Development': 'coding',
-                'Finance': 'finance',
-                'Collaboration': 'collaboration',
-                'Education': 'education',
-                'Video Editing': 'graphic-design'
+                'Music Production': 'music',
+                'Trading & Finance': 'finance',
+                'Game Development': 'game-development',
+                'Software Engineering': 'software-engineering',
+                'Video Editing': 'video-editing',
+                'Architecture': 'architecture'
               }
               const categorySlug = categorySlugMap[service.category] || service.category.toLowerCase().replace(/\s+/g, '-').replace('&', '')
               return (
@@ -315,13 +314,12 @@ export default function Marketplace() {
           <Row gutter={[24, 24]}>
             {filteredServices.map((service) => {
               const categorySlugMap: { [key: string]: string } = {
-                'Music & Audio': 'music',
-                'Graphic Design': 'graphic-design',
-                'Development': 'coding',
-                'Finance': 'finance',
-                'Collaboration': 'collaboration',
-                'Education': 'education',
-                'Video Editing': 'graphic-design'
+                'Music Production': 'music',
+                'Trading & Finance': 'finance',
+                'Game Development': 'game-development',
+                'Software Engineering': 'software-engineering',
+                'Video Editing': 'video-editing',
+                'Architecture': 'architecture'
               }
               const categorySlug = categorySlugMap[service.category] || service.category.toLowerCase().replace(/\s+/g, '-').replace('&', '')
               return (

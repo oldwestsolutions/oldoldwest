@@ -2,11 +2,15 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-// Cloudinary video URLs - will be provided by user
-// Format: https://res.cloudinary.com/{cloud_name}/video/upload/{public_id}.mp4
+// Cloudinary video URLs
 const videoUrls: string[] = [
-  // Add Cloudinary video URLs here
-  // Example: 'https://res.cloudinary.com/your-cloud-name/video/upload/v1234567890/video1.mp4'
+  'https://res.cloudinary.com/dqvch1kjr/video/upload/v1766687667/Studio_Collab_v8uu2r.mp4',
+  'https://res.cloudinary.com/dqvch1kjr/video/upload/v1766687659/Trading_iux0tz.mp4',
+  'https://res.cloudinary.com/dqvch1kjr/video/upload/v1766687657/Recording_tob2tw.mp4',
+  'https://res.cloudinary.com/dqvch1kjr/video/upload/v1766687656/Coding_c1vb3r.mp4',
+  'https://res.cloudinary.com/dqvch1kjr/video/upload/v1766687655/AI_Finance_wgn51s.mp4',
+  'https://res.cloudinary.com/dqvch1kjr/video/upload/v1766687654/Home_Studio_ohhnxc.mp4',
+  'https://res.cloudinary.com/dqvch1kjr/video/upload/v1766687657/Guitar_a5hbph.mp4'
 ]
 
 export default function HeroVideoBackground() {
@@ -25,7 +29,7 @@ export default function HeroVideoBackground() {
 
       const interval = setInterval(() => {
         setCurrentVideoIndex((prev) => (prev + 1) % videoUrls.length)
-      }, 1000) // Change video every 1 second
+      }, 2000) // Change video every 2 seconds
 
       return () => clearInterval(interval)
     } else {

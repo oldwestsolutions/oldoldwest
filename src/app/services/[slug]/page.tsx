@@ -13,7 +13,7 @@ const { Option } = Select
 
 const serviceData: { [key: string]: any } = {
   'music': {
-    title: 'Music & Audio Production',
+    title: 'Music Production',
     description: 'Professional audio production tools and services for music creation, mixing, mastering, and sound design.',
     image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=600&fit=crop',
     features: [
@@ -46,42 +46,42 @@ const serviceData: { [key: string]: any } = {
       }
     ]
   },
-  'graphic-design': {
-    title: 'Graphic Design & Video Editing',
-    description: 'Creative design services including logo design, video editing, motion graphics, and visual content creation.',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop',
+  'video-editing': {
+    title: 'Video Editing',
+    description: 'Professional video editing services including post-production, motion graphics, and visual content creation.',
+    image: 'https://images.unsplash.com/photo-1533158326339-7f3cf2404354?w=1200&h=600&fit=crop',
     features: [
-      'Image creation and enhancement',
       'Video montage, editing, and post-production',
+      'Color grading and visual effects',
       'Animation and motion graphics',
-      'Brand identity and logo design'
+      'Professional video finishing'
     ],
     packages: [
       {
-        name: 'Basic Design',
+        name: 'Basic Editing',
         price: 75,
         delivery: '2 days',
         revisions: 2,
-        features: ['Simple design', '1 revision', 'Basic formats']
+        features: ['Basic video editing', '1 revision', 'Standard formats']
       },
       {
-        name: 'Standard Design',
+        name: 'Standard Editing',
         price: 200,
         delivery: '4 days',
         revisions: 3,
-        features: ['Professional design', '3 revisions', 'All formats', 'Source files']
+        features: ['Professional editing', '3 revisions', 'All formats', 'Color grading']
       },
       {
-        name: 'Premium Design',
+        name: 'Premium Editing',
         price: 500,
         delivery: '7 days',
         revisions: 5,
-        features: ['Premium design package', 'Unlimited revisions', 'All formats', 'Brand guidelines']
+        features: ['Premium editing package', 'Unlimited revisions', 'All formats', 'Motion graphics']
       }
     ]
   },
-  'coding': {
-    title: 'Development & Coding Services',
+  'software-engineering': {
+    title: 'Software Engineering',
     description: 'Full-stack development, coding, testing, and deployment services for web and software applications.',
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop',
     features: [
@@ -115,7 +115,7 @@ const serviceData: { [key: string]: any } = {
     ]
   },
   'finance': {
-    title: 'Finance & Trading Analysis',
+    title: 'Trading & Finance',
     description: 'Financial modeling, trading analysis, portfolio management, and algorithmic trading services.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop',
     features: [
@@ -148,71 +148,71 @@ const serviceData: { [key: string]: any } = {
       }
     ]
   },
-  'collaboration': {
-    title: 'Team Collaboration & Workspaces',
-    description: 'Multi-user virtual workspaces, team collaboration tools, and shared project environments.',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop',
+  'game-development': {
+    title: 'Game Development',
+    description: 'Game design, development, and production services for video games and interactive experiences.',
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=600&fit=crop',
     features: [
-      'Multi-user sessions for joint projects',
-      'Sharing VM resources for teamwork',
-      'Merit and token rewards for contributions',
-      'Real-time collaboration tools'
+      'Game design and prototyping',
+      'Game engine development',
+      'Character and asset creation',
+      'Game testing and optimization'
     ],
     packages: [
       {
-        name: 'Basic Team',
-        price: 80,
-        delivery: '1 day',
-        revisions: 0,
-        features: ['Up to 3 users', 'Basic workspace', 'Standard resources']
+        name: 'Basic Development',
+        price: 150,
+        delivery: '5 days',
+        revisions: 2,
+        features: ['Basic game mechanics', 'Simple gameplay', '1 revision']
       },
       {
-        name: 'Standard Team',
-        price: 200,
-        delivery: '1 day',
-        revisions: 0,
-        features: ['Up to 10 users', 'Advanced workspace', 'Premium resources', 'Priority support']
+        name: 'Standard Development',
+        price: 400,
+        delivery: '10 days',
+        revisions: 3,
+        features: ['Full game features', 'Character design', '3 revisions', 'Testing included']
       },
       {
-        name: 'Premium Team',
-        price: 500,
-        delivery: '1 day',
-        revisions: 0,
-        features: ['Unlimited users', 'Enterprise workspace', 'Dedicated resources', '24/7 support']
+        name: 'Premium Development',
+        price: 800,
+        delivery: '14 days',
+        revisions: 5,
+        features: ['Complete game package', 'Full asset creation', 'Unlimited revisions', 'Ongoing support']
       }
     ]
   },
-  'education': {
-    title: 'Education & Learning Platforms',
-    description: 'Virtual learning environments, educational content creation, workshops, and mentorship programs.',
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=600&fit=crop',
+  'architecture': {
+    title: 'Architecture',
+    description: 'Architectural design, 3D modeling, building information modeling (BIM), and architectural visualization services.',
+    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=600&fit=crop',
     features: [
-      'Interactive learning modules',
-      'Virtual workshops or tutorials',
-      'Mentorship and guided learning sessions',
-      'Educational content development'
+      'Architectural design and planning',
+      '3D modeling and visualization',
+      'Building information modeling (BIM)',
+      'Architectural rendering and presentation'
     ],
     packages: [
       {
-        name: 'Basic Learning',
-        price: 60,
-        delivery: '2 days',
-        revisions: 1,
-        features: ['Basic course', '1 session', 'Standard materials']
-      },
-      {
-        name: 'Standard Learning',
-        price: 150,
-        delivery: '3 days',
+        name: 'Basic Design',
+        price: 180,
+        delivery: '4 days',
         revisions: 2,
-        features: ['Full course', '3 sessions', 'Premium materials', 'Certification']
+        features: ['Basic architectural design', 'Simple 3D model', '1 revision']
       },
       {
-        name: 'Premium Learning',
-        price: 350,
-        delivery: '5 days',
+        name: 'Standard Design',
+        price: 400,
+        delivery: '7 days',
         revisions: 3,
-        features: ['Complete program', 'Unlimited sessions', 'All materials', '1-on-1 mentorship']
+        features: ['Full architectural design', 'Detailed 3D model', '3 revisions', 'BIM included']
+      },
+      {
+        name: 'Premium Design',
+        price: 800,
+        delivery: '14 days',
+        revisions: 5,
+        features: ['Complete architectural package', 'Full visualization', 'Unlimited revisions', 'Presentation materials']
       }
     ]
   }

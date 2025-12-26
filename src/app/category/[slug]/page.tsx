@@ -12,34 +12,34 @@ const { Option } = Select
 
 const categoryData: { [key: string]: any } = {
   'music': {
-    title: 'Music & Audio Production',
+    title: 'Music Production',
     description: 'Create or improve your music with professional audio production services.',
     icon: '🎵'
   },
-  'graphic-design': {
-    title: 'Graphic Design & Video Editing',
-    description: 'Create stunning visuals with professional design and video editing services.',
-    icon: '🎨'
+  'video-editing': {
+    title: 'Video Editing',
+    description: 'Create stunning videos with professional video editing and post-production services.',
+    icon: '🎬'
   },
-  'coding': {
-    title: 'Development & Coding',
-    description: 'Build and deploy applications with expert development services.',
+  'software-engineering': {
+    title: 'Software Engineering',
+    description: 'Build and deploy applications with expert software engineering services.',
     icon: '💻'
   },
   'finance': {
-    title: 'Finance & Trading Analysis',
+    title: 'Trading & Finance',
     description: 'Get professional financial analysis and trading strategy services.',
     icon: '💰'
   },
-  'collaboration': {
-    title: 'Team Collaboration',
-    description: 'Set up team workspaces and collaboration tools.',
-    icon: '👥'
+  'game-development': {
+    title: 'Game Development',
+    description: 'Develop games and interactive experiences with expert game development services.',
+    icon: '🎮'
   },
-  'education': {
-    title: 'Education & Learning',
-    description: 'Access learning platforms and educational content.',
-    icon: '📚'
+  'architecture': {
+    title: 'Architecture',
+    description: 'Get professional architectural design, 3D modeling, and visualization services.',
+    icon: '🏗️'
   }
 }
 
@@ -54,7 +54,7 @@ const mockListings = [
     price: 40,
     delivery: '3 days',
     image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop',
-    category: 'Music & Audio',
+    category: 'Music Production',
     isPro: false,
     instantResponse: false
   },
@@ -68,7 +68,7 @@ const mockListings = [
     price: 250,
     delivery: '2 days',
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
-    category: 'Graphic Design',
+    category: 'Architecture',
     isPro: true,
     instantResponse: true,
     consultations: true
@@ -140,7 +140,7 @@ const mockListings = [
     price: 50,
     delivery: '3 days',
     image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop',
-    category: 'Music & Audio',
+    category: 'Music Production',
     isPro: true,
     instantResponse: false
   },
@@ -154,7 +154,7 @@ const mockListings = [
     price: 75,
     delivery: '2 days',
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop',
-    category: 'Graphic Design',
+    category: 'Architecture',
     isPro: false,
     instantResponse: false
   },
@@ -168,7 +168,7 @@ const mockListings = [
     price: 150,
     delivery: '7 days',
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop',
-    category: 'Development',
+    category: 'Software Engineering',
     isPro: true,
     instantResponse: true
   },
@@ -182,35 +182,35 @@ const mockListings = [
     price: 120,
     delivery: '4 days',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
-    category: 'Finance',
+    category: 'Trading & Finance',
     isPro: false,
     instantResponse: false
   },
   {
     id: 11,
-    title: 'I will set up team collaboration workspaces',
-    seller: 'Workflow Solutions',
-    sellerLevel: 'Level 1',
+    title: 'I will develop custom game mechanics and systems',
+    seller: 'GameDev Studio',
+    sellerLevel: 'Top Rated',
     rating: 4.8,
     reviews: 78,
-    price: 80,
-    delivery: '2 days',
+    price: 150,
+    delivery: '5 days',
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop',
-    category: 'Collaboration',
+    category: 'Game Development',
     isPro: false,
     instantResponse: false
   },
   {
     id: 12,
-    title: 'I will create interactive learning modules',
-    seller: 'EduPlatform',
-    sellerLevel: 'Level 2',
+    title: 'I will create architectural designs and 3D models',
+    seller: 'ArchDesign Pro',
+    sellerLevel: 'Top Rated',
     rating: 4.7,
     reviews: 112,
-    price: 60,
-    delivery: '3 days',
+    price: 180,
+    delivery: '6 days',
     image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop',
-    category: 'Education',
+    category: 'Architecture',
     isPro: false,
     instantResponse: false
   }
@@ -229,12 +229,12 @@ export default function CategoryPage() {
 
   const category = categoryData[slug] || categoryData['music']
   const categoryMap: { [key: string]: string[] } = {
-    'music': ['Music & Audio'],
-    'graphic-design': ['Graphic Design', 'Video Editing'],
-    'coding': ['Development'],
-    'finance': ['Finance'],
-    'collaboration': ['Collaboration'],
-    'education': ['Education']
+    'music': ['Music Production'],
+    'video-editing': ['Video Editing'],
+    'software-engineering': ['Software Engineering'],
+    'finance': ['Trading & Finance'],
+    'game-development': ['Game Development'],
+    'architecture': ['Architecture']
   }
 
   useEffect(() => {

@@ -21,7 +21,7 @@ const sellerData: { [key: string]: any } = {
     deliveryTime: '3 days',
     location: 'United States',
     memberSince: '2022',
-    category: 'Music & Audio',
+    category: 'Music Production',
     description: 'Professional audio production specialist with 5+ years of experience in music production, mixing, and mastering.',
     services: [
       {
@@ -65,7 +65,7 @@ const sellerData: { [key: string]: any } = {
     deliveryTime: '2 days',
     location: 'United Kingdom',
     memberSince: '2021',
-    category: 'Graphic Design',
+    category: 'Architecture',
     description: 'Award-winning design studio specializing in logo design, branding, and visual identity.',
     services: [
       {
@@ -89,7 +89,7 @@ const sellerData: { [key: string]: any } = {
     deliveryTime: '7 days',
     location: 'Canada',
     memberSince: '2020',
-    category: 'Development',
+    category: 'Software Engineering',
     description: 'Full-stack development team with expertise in modern web technologies and cloud solutions.',
     services: [
       {
@@ -113,7 +113,7 @@ const sellerData: { [key: string]: any } = {
     deliveryTime: '4 days',
     location: 'United States',
     memberSince: '2023',
-    category: 'Finance',
+    category: 'Trading & Finance',
     description: 'Financial analysis and trading strategy experts with deep market knowledge.',
     services: [
       {
@@ -161,7 +161,7 @@ const sellerData: { [key: string]: any } = {
     deliveryTime: '2 days',
     location: 'Germany',
     memberSince: '2023',
-    category: 'Collaboration',
+    category: 'Game Development',
     description: 'Team collaboration and workflow optimization specialists.',
     services: [
       {
