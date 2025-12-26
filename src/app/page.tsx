@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
 import type { MenuProps } from 'antd'
 
-const HeroScene = dynamic(() => import('@/components/HeroScene'), { ssr: false })
 const HeroVideoBackground = dynamic(() => import('@/components/HeroVideoBackground'), { ssr: false })
 const Tokenomics3D = dynamic(() => import('@/components/Tokenomics3D'), { ssr: false })
 
@@ -231,9 +230,9 @@ export default function Home() {
           }}>
             <HeroVideoBackground />
           </div>
-          <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
-            <Row justify="center" align="middle" gutter={[64, 48]} style={{ width: '100%' }}>
-              <Col xs={24} lg={12}>
+          <div style={{ position: 'relative', zIndex: 1, width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Row justify="center" align="middle" style={{ width: '100%', textAlign: 'center' }}>
+              <Col xs={24} lg={16} xl={12}>
                 <Title 
                   level={1} 
                   style={{ 
@@ -242,15 +241,16 @@ export default function Home() {
                     color: '#ffffff',
                     marginBottom: 24,
                     lineHeight: 1.1,
-                    letterSpacing: '-0.03em'
+                    letterSpacing: '-0.03em',
+                    textAlign: 'center'
                   }}
                 >
                   Create Anything
                 </Title>
-                <Paragraph style={{ fontSize: isMobile ? 16 : 20, color: '#8c8c8c', lineHeight: 1.8, marginBottom: 32 }}>
+                <Paragraph style={{ fontSize: isMobile ? 16 : 20, color: '#8c8c8c', lineHeight: 1.8, marginBottom: 32, textAlign: 'center' }}>
                   Your Virtual Environment. Sovereign. Limitless
                 </Paragraph>
-                <Space size="middle" direction={isMobile ? 'vertical' : 'horizontal'} style={{ width: isMobile ? '100%' : 'auto' }}>
+                <Space size="middle" direction={isMobile ? 'vertical' : 'horizontal'} style={{ width: isMobile ? '100%' : 'auto', justifyContent: 'center' }}>
                   <Button 
                     type="primary"
                     size="large"
@@ -290,9 +290,6 @@ export default function Home() {
                     DOWNLOAD APP
                   </Button>
                 </Space>
-              </Col>
-              <Col xs={24} lg={12}>
-                <HeroScene />
               </Col>
             </Row>
         </div>

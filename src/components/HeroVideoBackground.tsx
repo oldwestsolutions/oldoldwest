@@ -157,7 +157,7 @@ export default function HeroVideoBackground() {
             top: 0,
             left: 0,
             opacity: index === currentVideoIndex ? 1 : 0,
-            transition: 'opacity 0.5s ease-in-out',
+            transition: 'opacity 0.15s ease-in-out',
             zIndex: index === currentVideoIndex ? 1 : 0
           }}
           onError={() => {
