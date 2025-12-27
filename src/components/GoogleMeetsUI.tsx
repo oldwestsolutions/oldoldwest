@@ -28,7 +28,7 @@ export default function GoogleMeetsUI({
       borderRadius: 16,
       overflow: 'hidden',
       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-      height: variant === 'communication' ? '700px' : '100%',
+      height: variant === 'communication' ? '850px' : '100%',
       width: '100%',
       display: 'flex',
       flexDirection: 'column'
