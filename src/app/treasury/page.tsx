@@ -2,7 +2,7 @@
 
 import { Layout, Typography, Row, Col, Card, Divider, Space, Tag } from 'antd'
 import Link from 'next/link'
-import { SafetyOutlined, EyeOutlined, TrophyOutlined, ShieldOutlined, CheckCircleOutlined, WarningOutlined, DollarOutlined, LockOutlined } from '@ant-design/icons'
+import { SafetyOutlined, EyeOutlined, TrophyOutlined, CheckCircleOutlined, WarningOutlined, DollarOutlined, LockOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 
 const { Header, Content } = Layout
@@ -353,7 +353,7 @@ export default function Treasury() {
             <Col xs={24} lg={20} xl={16}>
               <div style={{ marginBottom: 48 }}>
                 <Space align="center" style={{ marginBottom: 16 }}>
-                  <ShieldOutlined style={{ fontSize: 24, color: '#595959' }} />
+                  <SafetyOutlined style={{ fontSize: 24, color: '#595959' }} />
                   <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
                     INDEMNITY
                   </Text>
@@ -598,7 +598,7 @@ export default function Treasury() {
 
                 <Col xs={24} sm={12} md={6}>
                   <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, height: '100%', textAlign: 'center' }} bodyStyle={{ padding: 32 }}>
-                    <ShieldOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 16 }} />
+                    <SafetyOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 16 }} />
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
                       Indemnity
                     </Title>
