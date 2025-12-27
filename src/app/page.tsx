@@ -731,11 +731,15 @@ export default function Home() {
                           maxHeight: '100%',
                           width: 'auto',
                           height: 'auto',
-                          objectFit: 'contain'
+                          objectFit: 'contain',
+                          display: 'block'
                         }}
                         draggable="false"
                         onContextMenu={(e) => e.preventDefault()}
                         onDragStart={(e) => e.preventDefault()}
+                        onError={(e) => {
+                          console.error('Failed to load image:', platform.logo)
+                        }}
                       />
                     </div>
                   </Col>
