@@ -28,7 +28,7 @@ export default function GoogleMeetsUI({
       borderRadius: 16,
       overflow: 'hidden',
       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-      height: variant === 'communication' ? '400px' : '100%',
+      height: variant === 'communication' ? '600px' : '100%',
       width: '100%',
       display: 'flex',
       flexDirection: 'column'
@@ -37,7 +37,7 @@ export default function GoogleMeetsUI({
       <div style={{
         background: '#141414',
         borderBottom: '1px solid #1f1f1f',
-        padding: '8px 16px',
+        padding: '12px 16px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -74,10 +74,10 @@ export default function GoogleMeetsUI({
       <div style={{
         flex: 1,
         background: '#000000',
-        padding: variant === 'workspace' ? '16px' : '12px',
+        padding: variant === 'workspace' ? '16px' : '20px',
         display: 'flex',
         flexDirection: 'column',
-        gap: variant === 'workspace' ? '12px' : '8px',
+        gap: variant === 'workspace' ? '12px' : '16px',
         overflow: 'hidden',
         minHeight: 0
       }}>
@@ -232,7 +232,7 @@ export default function GoogleMeetsUI({
               flex: 1,
               display: 'grid',
               gridTemplateColumns: participants <= 2 ? '1fr' : 'repeat(2, 1fr)',
-              gap: '8px',
+              gap: '12px',
               minHeight: 0,
               overflow: 'hidden'
             }}>
@@ -342,7 +342,7 @@ export default function GoogleMeetsUI({
         <div style={{
           background: '#141414',
           borderTop: '1px solid #1f1f1f',
-          padding: '12px',
+          padding: '16px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',

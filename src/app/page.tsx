@@ -376,20 +376,20 @@ export default function Home() {
           {/* Content below illustration */}
           <Row justify="center" style={{ width: '100%' }}>
             <Col xs={24} lg={20} xl={16}>
-              <Title level={2} style={{ color: '#ffffff', marginBottom: 16, fontSize: isMobile ? 24 : 28, fontWeight: 600 }}>
+              <Title level={2} style={{ color: '#ffffff', marginBottom: 8, fontSize: isMobile ? 18 : 20, fontWeight: 600 }}>
                 Real-Time Communication
               </Title>
-              <Paragraph style={{ color: '#8c8c8c', fontSize: 14, lineHeight: 1.6, marginBottom: 24 }}>
+              <Paragraph style={{ color: '#8c8c8c', fontSize: 11, lineHeight: 1.4, marginBottom: 16 }}>
                 Essential for collaboration, meetings, and live interaction.
               </Paragraph>
               
-              <Row gutter={[16, 16]}>
+              <Row gutter={[12, 12]}>
                 <Col xs={24} sm={12} md={8} lg={8}>
                   <div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 4, fontSize: 14, fontWeight: 600 }}>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 2, fontSize: 11, fontWeight: 600 }}>
                       Audio In / Out
                     </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 13, lineHeight: 1.5, margin: 0 }}>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 10, lineHeight: 1.4, margin: 0 }}>
                       Full-duplex voice
                     </Paragraph>
                   </div>
@@ -397,10 +397,10 @@ export default function Home() {
 
                 <Col xs={24} sm={12} md={8} lg={8}>
                   <div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 4, fontSize: 14, fontWeight: 600 }}>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 2, fontSize: 11, fontWeight: 600 }}>
                       Video Streams
                     </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 13, lineHeight: 1.5, margin: 0 }}>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 10, lineHeight: 1.4, margin: 0 }}>
                       Grid or speaker view
                     </Paragraph>
                   </div>
@@ -408,10 +408,10 @@ export default function Home() {
 
                 <Col xs={24} sm={12} md={8} lg={8}>
                   <div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 4, fontSize: 14, fontWeight: 600 }}>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 2, fontSize: 11, fontWeight: 600 }}>
                       Screen Sharing
                     </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 13, lineHeight: 1.5, margin: 0 }}>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 10, lineHeight: 1.4, margin: 0 }}>
                       Share your workspace, code, or app
                     </Paragraph>
                   </div>
@@ -419,10 +419,10 @@ export default function Home() {
 
                 <Col xs={24} sm={12} md={8} lg={8}>
                   <div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 4, fontSize: 14, fontWeight: 600 }}>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 2, fontSize: 11, fontWeight: 600 }}>
                       Chat / Messaging
                     </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 13, lineHeight: 1.5, margin: 0 }}>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 10, lineHeight: 1.4, margin: 0 }}>
                       Text + reactions + links
                     </Paragraph>
                   </div>
@@ -430,10 +430,10 @@ export default function Home() {
 
                 <Col xs={24} sm={12} md={8} lg={8}>
                   <div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 4, fontSize: 14, fontWeight: 600 }}>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 2, fontSize: 11, fontWeight: 600 }}>
                       Notifications / Alerts
                     </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 13, lineHeight: 1.5, margin: 0 }}>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 10, lineHeight: 1.4, margin: 0 }}>
                       For actions, invites, or workflow events
                     </Paragraph>
                   </div>
