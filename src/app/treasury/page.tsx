@@ -4,7 +4,7 @@ import { Layout, Typography, Row, Col, Card, Divider, Space } from 'antd'
 import Link from 'next/link'
 import { SafetyOutlined, EyeOutlined, TrophyOutlined, CheckCircleOutlined, WarningOutlined, LockOutlined, CloudOutlined, RocketOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
-import TerminalWindow from '@/components/TerminalWindow'
+import BankingModal from '@/components/BankingModal'
 
 const { Header, Content } = Layout
 const { Title, Paragraph, Text } = Typography
@@ -148,17 +148,18 @@ export default function Treasury() {
             </Col>
 
             <Col xs={24} lg={12}>
-              <TerminalWindow
-                title="placement.oldwest"
-                command="oldwest placement --activate --profile"
-                outputs={[
-                  { icon: '✓', text: 'Profile visibility: Enabled', color: '#27c93f' },
-                  { icon: '✓', text: 'Reputation check: Passed (min: 50)', color: '#27c93f' },
-                  { icon: '✓', text: 'Payment processed: 1,000 coins', color: '#27c93f' },
-                  { icon: '✓', text: 'Placement duration: 30 days', color: '#27c93f' },
-                  { icon: '✓', text: 'Label status: [PAID] visible', color: '#27c93f' }
+              <BankingModal
+                title="Placement Activation"
+                subtitle="Paid Placement Service"
+                status="Placement Active"
+                statusColor="#27c93f"
+                items={[
+                  { label: 'Profile Visibility', value: 'Enabled' },
+                  { label: 'Reputation Check', value: 'Passed (min: 50)' },
+                  { label: 'Payment Processed', value: '1,000 coins' },
+                  { label: 'Placement Duration', value: '30 days' },
+                  { label: 'Label Status', value: '[PAID] visible' }
                 ]}
-                status={{ icon: '🚀', text: 'Placement active', bold: true }}
               />
             </Col>
           </Row>
@@ -221,17 +222,18 @@ export default function Treasury() {
             </Col>
 
             <Col xs={24} lg={12}>
-              <TerminalWindow
-                title="escrow.oldwest"
-                command="oldwest escrow --create --work-agreement"
-                outputs={[
-                  { icon: '✓', text: 'Escrow initialized: 5,000 coins', color: '#27c93f' },
-                  { icon: '✓', text: 'Agreement terms: Verified', color: '#27c93f' },
-                  { icon: '✓', text: 'Milestone tracking: Active', color: '#27c93f' },
-                  { icon: '✓', text: 'Mediation layer: Ready', color: '#27c93f' },
-                  { icon: '✓', text: 'Evidence storage: IPFS linked', color: '#27c93f' }
+              <BankingModal
+                title="Escrow Account"
+                subtitle="Transaction Safety"
+                status="Funds Secured in Escrow"
+                statusColor="#27c93f"
+                items={[
+                  { label: 'Escrow Amount', value: '5,000 coins' },
+                  { label: 'Agreement Terms', value: 'Verified' },
+                  { label: 'Milestone Tracking', value: 'Active' },
+                  { label: 'Mediation Layer', value: 'Ready' },
+                  { label: 'Evidence Storage', value: 'IPFS linked' }
                 ]}
-                status={{ icon: '🔒', text: 'Funds secured in escrow', bold: true }}
               />
             </Col>
           </Row>
@@ -296,17 +298,18 @@ export default function Treasury() {
             </Col>
 
             <Col xs={24} lg={12}>
-              <TerminalWindow
-                title="reputation.oldwest"
-                command="oldwest reputation --check --user"
-                outputs={[
-                  { icon: '✓', text: 'Reputation score: 847/1000', color: '#27c93f' },
-                  { icon: '✓', text: 'Completed transactions: 124', color: '#27c93f' },
-                  { icon: '✓', text: 'Dispute rate: 0.8% (excellent)', color: '#27c93f' },
-                  { icon: '✓', text: 'Fee discount: 15% active', color: '#27c93f' },
-                  { icon: '✓', text: 'Placement eligible: Yes', color: '#27c93f' }
+              <BankingModal
+                title="Reputation Profile"
+                subtitle="Economic Signal"
+                status="Cost-Reducing Capital"
+                statusColor="#ffd700"
+                items={[
+                  { label: 'Reputation Score', value: '847 / 1000' },
+                  { label: 'Completed Transactions', value: '124' },
+                  { label: 'Dispute Rate', value: '0.8% (excellent)' },
+                  { label: 'Fee Discount', value: '15% active' },
+                  { label: 'Placement Eligible', value: 'Yes' }
                 ]}
-                status={{ icon: '🏆', text: 'Reputation: Cost-reducing capital', bold: true }}
               />
             </Col>
           </Row>
@@ -363,17 +366,18 @@ export default function Treasury() {
             </Col>
 
             <Col xs={24} lg={12}>
-              <TerminalWindow
-                title="indemnity.oldwest"
-                command="oldwest indemnity --purchase --coverage"
-                outputs={[
-                  { icon: '✓', text: 'Risk assessment: Low risk profile', color: '#27c93f' },
-                  { icon: '✓', text: 'Coverage amount: 10,000 coins', color: '#27c93f' },
-                  { icon: '✓', text: 'Premium: 500 coins (5%)', color: '#27c93f' },
-                  { icon: '✓', text: 'Reputation requirement: Met (847)', color: '#27c93f' },
-                  { icon: '✓', text: 'Coverage active: 90 days', color: '#27c93f' }
+              <BankingModal
+                title="Indemnity Coverage"
+                subtitle="Risk Transfer Policy"
+                status="Coverage Active"
+                statusColor="#4ecdc4"
+                items={[
+                  { label: 'Risk Assessment', value: 'Low risk profile' },
+                  { label: 'Coverage Amount', value: '10,000 coins' },
+                  { label: 'Premium', value: '500 coins (5%)' },
+                  { label: 'Reputation Requirement', value: 'Met (847)' },
+                  { label: 'Coverage Period', value: '90 days' }
                 ]}
-                status={{ icon: '🛡️', text: 'Indemnity coverage: Active', bold: true }}
               />
             </Col>
           </Row>
@@ -456,17 +460,18 @@ export default function Treasury() {
             </Col>
 
             <Col xs={24} lg={12}>
-              <TerminalWindow
-                title="subrogation.oldwest"
-                command="oldwest subrogation --claim --recover"
-                outputs={[
-                  { icon: '✓', text: 'Claim processed: 5,000 coins paid', color: '#27c93f' },
-                  { icon: '✓', text: 'Subrogation rights: Acquired', color: '#27c93f' },
-                  { icon: '✓', text: 'At-fault party: Identified', color: '#27c93f' },
-                  { icon: '✓', text: 'Bond slashing: 3,000 coins', color: '#27c93f' },
-                  { icon: '✓', text: 'Reputation penalty: -150 points', color: '#27c93f' }
+              <BankingModal
+                title="Subrogation Claim"
+                subtitle="Accountability Enforcement"
+                status="Accountability Enforced"
+                statusColor="#ff6b35"
+                items={[
+                  { label: 'Claim Processed', value: '5,000 coins paid' },
+                  { label: 'Subrogation Rights', value: 'Acquired' },
+                  { label: 'At-Fault Party', value: 'Identified' },
+                  { label: 'Bond Slashing', value: '3,000 coins' },
+                  { label: 'Reputation Penalty', value: '-150 points' }
                 ]}
-                status={{ icon: '⚖️', text: 'Accountability enforced', bold: true }}
               />
             </Col>
           </Row>
@@ -488,17 +493,18 @@ export default function Treasury() {
                 </Text>
               </div>
 
-              <TerminalWindow
-                title="treasury.oldwest"
-                command="oldwest treasury --status --all-systems"
-                outputs={[
-                  { icon: '✓', text: 'Paid Placement: 1,247 active placements', color: '#27c93f' },
-                  { icon: '✓', text: 'Escrow: 8,432 coins in escrow', color: '#27c93f' },
-                  { icon: '✓', text: 'Reputation: 12,847 users tracked', color: '#27c93f' },
-                  { icon: '✓', text: 'Indemnity: 156 active policies', color: '#27c93f' },
-                  { icon: '✓', text: 'Subrogation: 23 recoveries this month', color: '#27c93f' }
+              <BankingModal
+                title="Treasury Dashboard"
+                subtitle="System Status Overview"
+                status="All Systems Operational"
+                statusColor="#27c93f"
+                items={[
+                  { label: 'Paid Placement', value: '1,247 active' },
+                  { label: 'Escrow', value: '8,432 coins' },
+                  { label: 'Reputation', value: '12,847 users' },
+                  { label: 'Indemnity', value: '156 policies' },
+                  { label: 'Subrogation', value: '23 recoveries' }
                 ]}
-                status={{ icon: '🚀', text: 'All systems operational', bold: true }}
               >
                 <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1f1f1f' }}>
                   <Row gutter={[16, 16]}>
@@ -537,7 +543,7 @@ export default function Treasury() {
                     <Text style={{ color: '#d9d9d9', fontSize: 14, display: 'block', marginTop: 4 }}>→ Enforcement</Text>
                   </div>
                 </div>
-              </TerminalWindow>
+              </BankingModal>
             </Col>
           </Row>
         </section>
