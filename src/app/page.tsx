@@ -704,9 +704,9 @@ export default function Home() {
               </div>
               <Row gutter={[24, 24]}>
                 {[
-                  { name: 'GitHub', logo: '/images/githublogo.png' },
+                  { name: 'GitHub', logo: '/images/gtihubwhitelogo.png' },
                   { name: 'Instagram', logo: '/images/instagramlogo.png' },
-                  { name: 'LinkedIn', logo: '/images/linkedinlogo.png' },
+                  { name: 'LinkedIn', logo: '/images/Linkedin-Logo.png' },
                   { name: 'TikTok', logo: '/images/tiktoklogo.png' }
                 ].map((platform) => (
                   <Col xs={24} sm={12} md={6} lg={6} key={platform.name}>
