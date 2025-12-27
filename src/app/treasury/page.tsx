@@ -298,92 +298,217 @@ export default function Treasury() {
             </Col>
 
             <Col xs={24} lg={12}>
-              <BankingModal
-                title="Reputation Profile"
-                subtitle="Economic Signal"
-                status="Cost-Reducing Capital"
-                statusColor="#ffd700"
-                items={[
-                  { label: 'Reputation Score', value: '847 / 1000' },
-                  { label: 'Completed Transactions', value: '124' },
-                  { label: 'Dispute Rate', value: '0.8% (excellent)' },
-                  { label: 'Fee Discount', value: '15% active' },
-                  { label: 'Placement Eligible', value: 'Yes' }
-                ]}
-              />
-            </Col>
-          </Row>
-        </section>
-
-        {/* 4. Indemnity */}
-        <section style={{
-          padding: isMobile ? '60px 24px' : '120px 48px',
-          borderBottom: '1px solid #1f1f1f',
-          background: '#0a0a0a'
-        }}>
-          <Row justify="center" gutter={[48, 48]}>
-            <Col xs={24} lg={12}>
-              <div style={{ marginBottom: 32 }}>
-                <Space align="center" style={{ marginBottom: 16 }}>
-                  <SafetyOutlined style={{ fontSize: 24, color: '#595959' }} />
-                  <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                    INDEMNITY
-                  </Text>
-                </Space>
-                <Title level={2} style={{ color: '#ffffff', marginBottom: 8, fontSize: isMobile ? 28 : 36, fontWeight: 600 }}>
-                  Risk transfer
-                </Title>
-                <Text style={{ color: '#8c8c8c', fontSize: 16, fontStyle: 'italic' }}>
-                  "Pay to cap downside risk."
-                </Text>
-              </div>
-
-              <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 24 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  What indemnity means here
-                </Title>
-                <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 16 }}>
-                  OldWest provides limited financial coverage against:
-                </Paragraph>
-                <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Non-delivery</Text>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Fraud</Text>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Breach of contract (within platform rules)</Text>
-                </Space>
-              </Card>
-
-              <Card bordered style={{ background: '#1a1a1a', borderColor: '#ff6b35', borderRadius: 12 }} bodyStyle={{ padding: 32 }}>
-                <Space align="start" style={{ width: '100%' }}>
-                  <WarningOutlined style={{ fontSize: 20, color: '#ff6b35', marginTop: 2 }} />
-                  <div>
-                    <Text style={{ color: '#ff6b35', fontSize: 14, fontWeight: 600 }}>⚠️ Note:</Text>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 14, marginTop: 8, marginBottom: 0 }}>
-                      This must be framed as contractual indemnity, not insurance (unless licensed).
-                    </Paragraph>
+              <div style={{
+                background: '#0a0a0a',
+                border: '1px solid #1f1f1f',
+                borderRadius: 16,
+                overflow: 'hidden',
+                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)'
+              }}>
+                {/* Profile Header */}
+                <div style={{
+                  background: 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)',
+                  borderBottom: '1px solid #1f1f1f',
+                  padding: '32px',
+                  textAlign: 'center'
+                }}>
+                  <div style={{
+                    width: 80,
+                    height: 80,
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)',
+                    margin: '0 auto 16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '3px solid #1f1f1f',
+                    boxShadow: '0 4px 16px rgba(255, 215, 0, 0.3)'
+                  }}>
+                    <TrophyOutlined style={{ fontSize: 40, color: '#000000' }} />
                   </div>
-                </Space>
-              </Card>
-            </Col>
+                  <Text style={{ 
+                    color: '#ffffff', 
+                    fontSize: 20, 
+                    fontWeight: 600,
+                    display: 'block',
+                    marginBottom: 4
+                  }}>
+                    Reputation Profile
+                  </Text>
+                  <Text style={{ 
+                    color: '#8c8c8c', 
+                    fontSize: 14,
+                    display: 'block'
+                  }}>
+                    Economic Signal
+                  </Text>
+                </div>
 
-            <Col xs={24} lg={12}>
-              <BankingModal
-                title="Indemnity Coverage"
-                subtitle="Risk Transfer Policy"
-                status="Coverage Active"
-                statusColor="#4ecdc4"
-                items={[
-                  { label: 'Risk Assessment', value: 'Low risk profile' },
-                  { label: 'Coverage Amount', value: '10,000 coins' },
-                  { label: 'Premium', value: '500 coins (5%)' },
-                  { label: 'Reputation Requirement', value: 'Met (847)' },
-                  { label: 'Coverage Period', value: '90 days' }
-                ]}
-              />
+                {/* Profile Content */}
+                <div style={{
+                  padding: '32px',
+                  background: '#000000'
+                }}>
+                  {/* Reputation Score Badge */}
+                  <div style={{
+                    background: '#0a0a0a',
+                    border: '1px solid #ffd70040',
+                    borderRadius: 12,
+                    padding: '20px',
+                    marginBottom: 24,
+                    textAlign: 'center'
+                  }}>
+                    <Text style={{ 
+                      color: '#8c8c8c', 
+                      fontSize: 12,
+                      display: 'block',
+                      marginBottom: 8
+                    }}>
+                      Reputation Score
+                    </Text>
+                    <Text style={{ 
+                      color: '#ffd700', 
+                      fontSize: 36, 
+                      fontWeight: 700,
+                      fontFamily: 'monospace',
+                      display: 'block'
+                    }}>
+                      847
+                    </Text>
+                    <Text style={{ 
+                      color: '#595959', 
+                      fontSize: 14,
+                      display: 'block',
+                      marginTop: 4
+                    }}>
+                      / 1000
+                    </Text>
+                  </div>
+
+                  {/* Profile Stats */}
+                  <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      padding: '12px 0',
+                      borderBottom: '1px solid #1f1f1f'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <CheckCircleOutlined style={{ color: '#27c93f', fontSize: 16 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>
+                          Completed Transactions
+                        </Text>
+                      </div>
+                      <Text style={{ 
+                        color: '#ffffff', 
+                        fontSize: 14, 
+                        fontWeight: 500,
+                        fontFamily: 'monospace'
+                      }}>
+                        124
+                      </Text>
+                    </div>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      padding: '12px 0',
+                      borderBottom: '1px solid #1f1f1f'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <CheckCircleOutlined style={{ color: '#27c93f', fontSize: 16 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>
+                          Dispute Rate
+                        </Text>
+                      </div>
+                      <Text style={{ 
+                        color: '#27c93f', 
+                        fontSize: 14, 
+                        fontWeight: 500,
+                        fontFamily: 'monospace'
+                      }}>
+                        0.8% (excellent)
+                      </Text>
+                    </div>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      padding: '12px 0',
+                      borderBottom: '1px solid #1f1f1f'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <CheckCircleOutlined style={{ color: '#27c93f', fontSize: 16 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>
+                          Fee Discount
+                        </Text>
+                      </div>
+                      <Text style={{ 
+                        color: '#ffd700', 
+                        fontSize: 14, 
+                        fontWeight: 500,
+                        fontFamily: 'monospace'
+                      }}>
+                        15% active
+                      </Text>
+                    </div>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      padding: '12px 0'
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <CheckCircleOutlined style={{ color: '#27c93f', fontSize: 16 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>
+                          Placement Eligible
+                        </Text>
+                      </div>
+                      <Text style={{ 
+                        color: '#27c93f', 
+                        fontSize: 14, 
+                        fontWeight: 500,
+                        fontFamily: 'monospace'
+                      }}>
+                        Yes
+                      </Text>
+                    </div>
+                  </Space>
+
+                  {/* Status Badge */}
+                  <div style={{
+                    background: '#0a0a0a',
+                    border: '1px solid #ffd70040',
+                    borderRadius: 12,
+                    padding: '16px 20px',
+                    marginTop: 24,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 12
+                  }}>
+                    <div style={{
+                      width: 8,
+                      height: 8,
+                      borderRadius: '50%',
+                      background: '#ffd700',
+                      boxShadow: '0 0 12px #ffd70060'
+                    }}></div>
+                    <Text style={{ 
+                      color: '#ffd700', 
+                      fontSize: 14, 
+                      fontWeight: 500 
+                    }}>
+                      Cost-Reducing Capital
+                    </Text>
+                  </div>
+                </div>
+              </div>
             </Col>
           </Row>
         </section>
 
-        {/* 5. Subrogation */}
+        {/* 4. Subrogation */}
         <section style={{
           padding: isMobile ? '60px 24px' : '120px 48px',
           borderBottom: '1px solid #1f1f1f',
