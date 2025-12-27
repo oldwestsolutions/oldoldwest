@@ -28,7 +28,7 @@ export default function GoogleMeetsUI({
       borderRadius: 16,
       overflow: 'hidden',
       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-      height: variant === 'communication' ? '850px' : '100%',
+      height: variant === 'communication' ? '500px' : '100%',
       width: '100%',
       display: 'flex',
       flexDirection: 'column'
@@ -37,7 +37,7 @@ export default function GoogleMeetsUI({
       <div style={{
         background: '#141414',
         borderBottom: '1px solid #1f1f1f',
-        padding: '12px 16px',
+        padding: '8px 12px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -51,7 +51,7 @@ export default function GoogleMeetsUI({
             background: '#ef4444',
             boxShadow: '0 0 8px #ef4444'
           }}></div>
-          <Text style={{ color: '#8c8c8c', fontSize: 12 }}>
+          <Text style={{ color: '#8c8c8c', fontSize: 10 }}>
             {variant === 'workspace' ? 'Remote Desktop Session' : 'Meeting in progress'}
           </Text>
         </div>
@@ -74,10 +74,10 @@ export default function GoogleMeetsUI({
       <div style={{
         flex: 1,
         background: '#000000',
-        padding: variant === 'workspace' ? '16px' : '20px',
+        padding: variant === 'workspace' ? '16px' : '10px',
         display: 'flex',
         flexDirection: 'column',
-        gap: variant === 'workspace' ? '12px' : '16px',
+        gap: variant === 'workspace' ? '12px' : '8px',
         overflow: 'hidden',
         minHeight: 0
       }}>
@@ -233,7 +233,7 @@ export default function GoogleMeetsUI({
               display: 'grid',
               gridTemplateColumns: participants <= 2 ? '1fr' : 'repeat(2, 1fr)',
               gridTemplateRows: participants === 3 ? '1fr 1fr' : participants <= 2 ? '1fr' : 'repeat(2, 1fr)',
-              gap: '12px',
+              gap: '6px',
               minHeight: 0,
               overflow: 'hidden',
               justifyItems: 'stretch',
@@ -254,38 +254,38 @@ export default function GoogleMeetsUI({
                   minHeight: 0
                 }}>
                   <div style={{
-                    width: 40,
-                    height: 40,
+                    width: 28,
+                    height: 28,
                     borderRadius: '50%',
                     background: 'linear-gradient(135deg, #595959 0%, #8c8c8c 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                    <UserOutlined style={{ fontSize: 18, color: '#d9d9d9' }} />
+                    <UserOutlined style={{ fontSize: 14, color: '#d9d9d9' }} />
                   </div>
                   <div style={{
                     position: 'absolute',
-                    bottom: 6,
-                    left: 6,
+                    bottom: 4,
+                    left: 4,
                     background: 'rgba(0, 0, 0, 0.6)',
-                    padding: '3px 6px',
-                    borderRadius: 4
+                    padding: '2px 4px',
+                    borderRadius: 3
                   }}>
-                    <Text style={{ color: '#ffffff', fontSize: 9 }}>
+                    <Text style={{ color: '#ffffff', fontSize: 8 }}>
                       Participant {idx + 1}
                     </Text>
                   </div>
                   {idx === 0 && (
                     <div style={{
                       position: 'absolute',
-                      top: 6,
-                      right: 6,
+                      top: 4,
+                      right: 4,
                       background: '#ef4444',
                       borderRadius: '50%',
-                      width: 10,
-                      height: 10,
-                      boxShadow: '0 0 6px #ef4444'
+                      width: 8,
+                      height: 8,
+                      boxShadow: '0 0 4px #ef4444'
                     }}></div>
                   )}
                 </div>
@@ -348,16 +348,16 @@ export default function GoogleMeetsUI({
         <div style={{
           background: '#141414',
           borderTop: '1px solid #1f1f1f',
-          padding: '16px',
+          padding: '10px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          gap: 12,
+          gap: 8,
           flexShrink: 0
         }}>
           <div style={{
-            width: 40,
-            height: 40,
+            width: 32,
+            height: 32,
             borderRadius: '50%',
             background: '#1f1f1f',
             display: 'flex',
@@ -366,11 +366,11 @@ export default function GoogleMeetsUI({
             cursor: 'pointer',
             border: '1px solid #1f1f1f'
           }}>
-            <AudioOutlined style={{ color: '#8c8c8c', fontSize: 18 }} />
+            <AudioOutlined style={{ color: '#8c8c8c', fontSize: 14 }} />
           </div>
           <div style={{
-            width: 40,
-            height: 40,
+            width: 32,
+            height: 32,
             borderRadius: '50%',
             background: '#1f1f1f',
             display: 'flex',
@@ -379,11 +379,11 @@ export default function GoogleMeetsUI({
             cursor: 'pointer',
             border: '1px solid #1f1f1f'
           }}>
-            <VideoCameraOutlined style={{ color: '#8c8c8c', fontSize: 18 }} />
+            <VideoCameraOutlined style={{ color: '#8c8c8c', fontSize: 14 }} />
           </div>
           <div style={{
-            width: 40,
-            height: 40,
+            width: 32,
+            height: 32,
             borderRadius: '50%',
             background: '#1f1f1f',
             display: 'flex',
@@ -392,11 +392,11 @@ export default function GoogleMeetsUI({
             cursor: 'pointer',
             border: '1px solid #1f1f1f'
           }}>
-            <ShareAltOutlined style={{ color: '#8c8c8c', fontSize: 18 }} />
+            <ShareAltOutlined style={{ color: '#8c8c8c', fontSize: 14 }} />
           </div>
           <div style={{
-            width: 40,
-            height: 40,
+            width: 32,
+            height: 32,
             borderRadius: '50%',
             background: '#1f1f1f',
             display: 'flex',
@@ -405,20 +405,20 @@ export default function GoogleMeetsUI({
             cursor: 'pointer',
             border: '1px solid #1f1f1f'
           }}>
-            <MessageOutlined style={{ color: '#8c8c8c', fontSize: 18 }} />
+            <MessageOutlined style={{ color: '#8c8c8c', fontSize: 14 }} />
           </div>
           <div style={{
-            width: 48,
-            height: 40,
-            borderRadius: 20,
+            width: 36,
+            height: 32,
+            borderRadius: 16,
             background: '#ef4444',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            marginLeft: 8
+            marginLeft: 6
           }}>
-            <PhoneOutlined style={{ color: '#ffffff', fontSize: 18, transform: 'rotate(135deg)' }} />
+            <PhoneOutlined style={{ color: '#ffffff', fontSize: 14, transform: 'rotate(135deg)' }} />
           </div>
         </div>
       )}
