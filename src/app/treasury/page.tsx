@@ -172,21 +172,6 @@ export default function Treasury() {
         }}>
           <Row justify="center" gutter={[48, 48]}>
             <Col xs={24} lg={12}>
-              <TerminalWindow
-                title="escrow.oldwest"
-                command="oldwest escrow --create --work-agreement"
-                outputs={[
-                  { icon: '✓', text: 'Escrow initialized: 5,000 coins', color: '#27c93f' },
-                  { icon: '✓', text: 'Agreement terms: Verified', color: '#27c93f' },
-                  { icon: '✓', text: 'Milestone tracking: Active', color: '#27c93f' },
-                  { icon: '✓', text: 'Mediation layer: Ready', color: '#27c93f' },
-                  { icon: '✓', text: 'Evidence storage: IPFS linked', color: '#27c93f' }
-                ]}
-                status={{ icon: '🔒', text: 'Funds secured in escrow', bold: true }}
-              />
-            </Col>
-
-            <Col xs={24} lg={12}>
               <div style={{ marginBottom: 32 }}>
                 <Space align="center" style={{ marginBottom: 16 }}>
                   <LockOutlined style={{ fontSize: 24, color: '#595959' }} />
@@ -233,6 +218,21 @@ export default function Treasury() {
                   OldWest does not decide winners — it enforces pre-agreed rules.
                 </Paragraph>
               </Card>
+            </Col>
+
+            <Col xs={24} lg={12}>
+              <TerminalWindow
+                title="escrow.oldwest"
+                command="oldwest escrow --create --work-agreement"
+                outputs={[
+                  { icon: '✓', text: 'Escrow initialized: 5,000 coins', color: '#27c93f' },
+                  { icon: '✓', text: 'Agreement terms: Verified', color: '#27c93f' },
+                  { icon: '✓', text: 'Milestone tracking: Active', color: '#27c93f' },
+                  { icon: '✓', text: 'Mediation layer: Ready', color: '#27c93f' },
+                  { icon: '✓', text: 'Evidence storage: IPFS linked', color: '#27c93f' }
+                ]}
+                status={{ icon: '🔒', text: 'Funds secured in escrow', bold: true }}
+              />
             </Col>
           </Row>
         </section>
@@ -320,21 +320,6 @@ export default function Treasury() {
         }}>
           <Row justify="center" gutter={[48, 48]}>
             <Col xs={24} lg={12}>
-              <TerminalWindow
-                title="indemnity.oldwest"
-                command="oldwest indemnity --purchase --coverage"
-                outputs={[
-                  { icon: '✓', text: 'Risk assessment: Low risk profile', color: '#27c93f' },
-                  { icon: '✓', text: 'Coverage amount: 10,000 coins', color: '#27c93f' },
-                  { icon: '✓', text: 'Premium: 500 coins (5%)', color: '#27c93f' },
-                  { icon: '✓', text: 'Reputation requirement: Met (847)', color: '#27c93f' },
-                  { icon: '✓', text: 'Coverage active: 90 days', color: '#27c93f' }
-                ]}
-                status={{ icon: '🛡️', text: 'Indemnity coverage: Active', bold: true }}
-              />
-            </Col>
-
-            <Col xs={24} lg={12}>
               <div style={{ marginBottom: 32 }}>
                 <Space align="center" style={{ marginBottom: 16 }}>
                   <SafetyOutlined style={{ fontSize: 24, color: '#595959' }} />
@@ -375,6 +360,21 @@ export default function Treasury() {
                   </div>
                 </Space>
               </Card>
+            </Col>
+
+            <Col xs={24} lg={12}>
+              <TerminalWindow
+                title="indemnity.oldwest"
+                command="oldwest indemnity --purchase --coverage"
+                outputs={[
+                  { icon: '✓', text: 'Risk assessment: Low risk profile', color: '#27c93f' },
+                  { icon: '✓', text: 'Coverage amount: 10,000 coins', color: '#27c93f' },
+                  { icon: '✓', text: 'Premium: 500 coins (5%)', color: '#27c93f' },
+                  { icon: '✓', text: 'Reputation requirement: Met (847)', color: '#27c93f' },
+                  { icon: '✓', text: 'Coverage active: 90 days', color: '#27c93f' }
+                ]}
+                status={{ icon: '🛡️', text: 'Indemnity coverage: Active', bold: true }}
+              />
             </Col>
           </Row>
         </section>
