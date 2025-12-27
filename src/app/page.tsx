@@ -295,7 +295,7 @@ export default function Home() {
         </div>
       </section>
 
-        {/* VM Services */}
+        {/* Workspace */}
         <section style={{ 
           minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
@@ -307,7 +307,7 @@ export default function Home() {
           <Row justify="center" gutter={[64, 48]} style={{ width: '100%' }}>
             <Col xs={24} lg={12}>
               <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                TOKENOMICS
+                WORKSPACE
               </Text>
               <Divider style={{ margin: '8px 0 40px 0', borderColor: '#1f1f1f' }} />
               
@@ -465,37 +465,37 @@ export default function Home() {
               <Space direction="vertical" size="large" style={{ width: '100%' }}>
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    Platform Currency
+                    Merit System
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Coins are the primary currency for all platform interactions. Each action—messaging, content access, and VM utilization—is metered through a transparent system with rates displayed before execution.
+                    The merit system recognizes and rewards valuable contributions across the platform. Users earn merit points through quality interactions, successful collaborations, and meaningful content creation. Merit serves as a reputation indicator and unlocks enhanced platform capabilities.
                   </Paragraph>
           </div>
 
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    Resource Management
+                    Escrow System
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    The metered consumption model ensures equitable resource distribution, maintains platform stability, and prevents resource abuse while guaranteeing fair access for all users.
+                    All transactions and agreements are secured through an automated escrow system. Funds and commitments are held in escrow until conditions are met, ensuring both parties fulfill their obligations before settlement. This protects users and maintains trust in all platform interactions.
                   </Paragraph>
                 </div>
 
             <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    Consumption Model
+                    Secure Transactions
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    All platform interactions consume coins at predefined, published rates. Consumption rates are visible before execution, ensuring complete transparency in resource utilization.
+                    The escrow system automatically manages payment flows, releasing funds only when work is completed and verified. Disputes are handled through transparent resolution processes, with all transaction history permanently recorded on the platform.
                   </Paragraph>
               </div>
 
                 <div>
                   <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    Acquisition & Balance Management
+                    Merit & Escrow Integration
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Coins are purchased and deposited into your account wallet. Consumption is deducted in real-time, and balances can be replenished through the treasury with complete usage history available.
+                    High-merit users benefit from reduced escrow hold times and enhanced transaction privileges. The combined merit and escrow system creates a secure, accountable environment where reputation and financial security work together to facilitate trusted platform interactions.
                   </Paragraph>
           </div>
               </Space>
