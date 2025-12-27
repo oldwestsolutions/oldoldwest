@@ -4,6 +4,7 @@ import { Layout, Typography, Row, Col, Card, Input, Button, Space, Tag, Avatar, 
 import Link from 'next/link'
 import { SearchOutlined, StarFilled, FireOutlined, ClockCircleOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
+import StarryBackground from '@/components/StarryBackground'
 
 const { Header, Content } = Layout
 const { Title, Text, Paragraph } = Typography
@@ -160,11 +161,14 @@ export default function Marketplace() {
       <Content style={{ paddingTop: isHeaderVisible ? 120 : 60 }}>
         {/* Hero Section */}
         <div style={{
-          background: 'linear-gradient(135deg, #0a0a0a 0%, #141414 100%)',
+          background: '#000000',
           padding: isMobile ? '60px 24px' : '80px 48px',
-          borderBottom: '1px solid #1f1f1f'
+          borderBottom: '1px solid #1f1f1f',
+          position: 'relative',
+          overflow: 'hidden'
         }}>
-          <Row justify="center">
+          <StarryBackground />
+          <Row justify="center" style={{ position: 'relative', zIndex: 1 }}>
             <Col xs={24} lg={18}>
               <Title level={1} style={{ color: '#ffffff', marginBottom: 16, fontSize: isMobile ? 32 : 56, fontWeight: 700, textAlign: 'center' }}>
                 Marketplace
