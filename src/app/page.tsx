@@ -358,13 +358,8 @@ export default function Home() {
           background: '#000000',
           padding: isMobile ? '60px 24px' : '120px 48px'
         }}>
-          {/* Full-width illustration */}
-          <div style={{ marginBottom: isMobile ? '60px' : '120px' }}>
-            <GoogleMeetsUI variant="communication" participants={4} showChat={true} showControls={true} />
-          </div>
-
-          {/* Content below illustration */}
-          <Row justify="center" style={{ width: '100%' }}>
+          {/* Content above illustration */}
+          <Row justify="center" style={{ width: '100%', marginBottom: isMobile ? '40px' : '60px' }}>
             <Col xs={24} lg={20} xl={16}>
               <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
                 REAL-TIME COMMUNICATION
@@ -378,54 +373,69 @@ export default function Home() {
                 Essential for collaboration, meetings, and live interaction.
               </Paragraph>
               
-              <Space direction="vertical" size="large" style={{ width: '100%' }}>
-                <div>
-                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
-                    Audio In / Out
-                  </Title>
-                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Full-duplex voice
-                  </Paragraph>
-                </div>
+              <Row gutter={[24, 24]}>
+                <Col xs={24} sm={12} md={8} lg={8}>
+                  <div>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                      Audio In / Out
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                      Full-duplex voice
+                    </Paragraph>
+                  </div>
+                </Col>
 
-                <div>
-                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
-                    Video Streams
-                  </Title>
-                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Grid or speaker view
-                  </Paragraph>
-                </div>
+                <Col xs={24} sm={12} md={8} lg={8}>
+                  <div>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                      Video Streams
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                      Grid or speaker view
+                    </Paragraph>
+                  </div>
+                </Col>
 
-                <div>
-                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
-                    Screen Sharing
-                  </Title>
-                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Share your workspace, code, or app
-                  </Paragraph>
-                </div>
+                <Col xs={24} sm={12} md={8} lg={8}>
+                  <div>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                      Screen Sharing
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                      Share your workspace, code, or app
+                    </Paragraph>
+                  </div>
+                </Col>
 
-                <div>
-                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
-                    Chat / Messaging
-                  </Title>
-                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Text + reactions + links
-                  </Paragraph>
-                </div>
+                <Col xs={24} sm={12} md={8} lg={8}>
+                  <div>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                      Chat / Messaging
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                      Text + reactions + links
+                    </Paragraph>
+                  </div>
+                </Col>
 
-                <div>
-                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
-                    Notifications / Alerts
-                  </Title>
-                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    For actions, invites, or workflow events
-                  </Paragraph>
-                </div>
-              </Space>
+                <Col xs={24} sm={12} md={8} lg={8}>
+                  <div>
+                    <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                      Notifications / Alerts
+                    </Title>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                      For actions, invites, or workflow events
+                    </Paragraph>
+                  </div>
+                </Col>
+              </Row>
             </Col>
           </Row>
+
+          {/* Full-width illustration */}
+          <div>
+            <GoogleMeetsUI variant="communication" participants={4} showChat={true} showControls={true} />
+          </div>
         </section>
 
         {/* Verified Identity */}

@@ -245,38 +245,38 @@ export default function GoogleMeetsUI({
                   aspectRatio: '16/9'
                 }}>
                   <div style={{
-                    width: 60,
-                    height: 60,
+                    width: 40,
+                    height: 40,
                     borderRadius: '50%',
                     background: 'linear-gradient(135deg, #595959 0%, #8c8c8c 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
-                    <UserOutlined style={{ fontSize: 28, color: '#d9d9d9' }} />
+                    <UserOutlined style={{ fontSize: 18, color: '#d9d9d9' }} />
                   </div>
                   <div style={{
                     position: 'absolute',
-                    bottom: 8,
-                    left: 8,
+                    bottom: 6,
+                    left: 6,
                     background: 'rgba(0, 0, 0, 0.6)',
-                    padding: '4px 8px',
+                    padding: '3px 6px',
                     borderRadius: 4
                   }}>
-                    <Text style={{ color: '#ffffff', fontSize: 10 }}>
+                    <Text style={{ color: '#ffffff', fontSize: 9 }}>
                       Participant {idx + 1}
                     </Text>
                   </div>
                   {idx === 0 && (
                     <div style={{
                       position: 'absolute',
-                      top: 8,
-                      right: 8,
+                      top: 6,
+                      right: 6,
                       background: '#ef4444',
                       borderRadius: '50%',
-                      width: 12,
-                      height: 12,
-                      boxShadow: '0 0 8px #ef4444'
+                      width: 10,
+                      height: 10,
+                      boxShadow: '0 0 6px #ef4444'
                     }}></div>
                   )}
                 </div>
