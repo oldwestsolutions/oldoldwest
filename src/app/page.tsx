@@ -2,10 +2,9 @@
 
 import Link from 'next/link'
 import { Layout, Row, Col, Card, Typography, Divider, Button, Progress, Space, Dropdown, List } from 'antd'
-import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, DownOutlined, GiftOutlined, RocketOutlined, PhoneOutlined, WalletOutlined, TeamOutlined, FireOutlined, ThunderboltOutlined, StarOutlined, ArrowRightOutlined, ArrowDownOutlined, MenuOutlined, CloseOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, DatabaseOutlined, ClockCircleOutlined, CheckCircleOutlined, SafetyOutlined, FileTextOutlined, ApiOutlined, GlobalOutlined, InfoCircleOutlined, QuestionCircleOutlined, BookOutlined, CodeOutlined, TrophyOutlined, CheckCircleFilled, FileProtectOutlined, GiftOutlined, RocketOutlined, PhoneOutlined, WalletOutlined, TeamOutlined, FireOutlined, ThunderboltOutlined, StarOutlined, ArrowRightOutlined, ArrowDownOutlined, MenuOutlined, CloseOutlined } from '@ant-design/icons'
 import dynamic from 'next/dynamic'
 import { useState, useEffect } from 'react'
-import type { MenuProps } from 'antd'
 
 const HeroVideoBackground = dynamic(() => import('@/components/HeroVideoBackground'), { ssr: false })
 const Tokenomics3D = dynamic(() => import('@/components/Tokenomics3D'), { ssr: false })
@@ -45,16 +44,6 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [lastScrollY])
 
-  const launchMenuItems: MenuProps['items'] = [
-    {
-      key: 'host',
-      label: <Link href="/host-session" style={{ color: '#ffffff', textDecoration: 'none' }}>Host Session</Link>,
-    },
-    {
-      key: 'launch',
-      label: <Link href="/launch-session" style={{ color: '#ffffff', textDecoration: 'none' }}>Launch Session</Link>,
-    },
-  ]
   return (
     <Layout style={{ minHeight: '100vh', background: '#000000' }}>
       {/* Navigation */}
@@ -111,15 +100,6 @@ export default function Home() {
           <Col flex="none" style={{ display: 'flex', justifyContent: 'flex-end' }}>
             {/* Desktop Navigation - Right Side */}
             <Space size="middle" style={{ display: isMobile ? 'none' : 'flex' }}>
-              <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft">
-                <Button 
-                  type="text" 
-                  style={{ color: '#8c8c8c', borderRadius: 12, display: 'flex', alignItems: 'center', gap: 4, minHeight: 44 }}
-                >
-                  LAUNCH SESSION
-                  <DownOutlined style={{ fontSize: 10 }} />
-                </Button>
-              </Dropdown>
               <Button 
                 type="primary" 
                 style={{ 
@@ -175,16 +155,6 @@ export default function Home() {
               >
                 Treasury
               </Link>
-              <Dropdown menu={{ items: launchMenuItems }} placement="bottomLeft" trigger={['click']}>
-                <Button 
-                  type="text" 
-                  block
-                  style={{ color: '#8c8c8c', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between', minHeight: 44, textAlign: 'left' }}
-                >
-                  LAUNCH SESSION
-                  <DownOutlined style={{ fontSize: 10 }} />
-                </Button>
-              </Dropdown>
               <Button 
                 type="primary" 
                 block
@@ -269,7 +239,7 @@ export default function Home() {
                     }}
                     href="/explore-platform"
                   >
-                    EXPLORE PLATFORM
+                    DISCOVER
                   </Button>
                   <Button 
                     size="large"
@@ -285,9 +255,9 @@ export default function Home() {
                       paddingRight: isMobile ? 24 : 40,
                       minHeight: 44
                     }}
-                    href="/download-app"
+                    href="/launch-session"
                   >
-                    DOWNLOAD APP
+                    LAUNCH SESSION
                   </Button>
                 </Space>
               </Col>

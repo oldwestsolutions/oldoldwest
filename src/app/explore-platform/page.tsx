@@ -20,7 +20,7 @@ export default function ExplorePlatform() {
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <RocketOutlined style={{ fontSize: 64, color: '#595959', marginBottom: 24 }} />
           <Title level={1} style={{ color: '#ffffff', marginBottom: 24, fontSize: 56, fontWeight: 700 }}>
-            Explore Platform
+            Discover
           </Title>
           <Paragraph style={{ color: '#8c8c8c', fontSize: 20, lineHeight: 1.8, maxWidth: 700, margin: '0 auto 40px' }}>
             Discover how OldWest operates as infrastructure for digital interaction. Explore features, understand the platform architecture, and learn about usage and settlement.
