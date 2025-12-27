@@ -28,7 +28,7 @@ export default function GoogleMeetsUI({
       borderRadius: 16,
       overflow: 'hidden',
       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
-      height: variant === 'communication' ? '600px' : '100%',
+      height: variant === 'communication' ? '400px' : '100%',
       width: '100%',
       display: 'flex',
       flexDirection: 'column'
@@ -37,10 +37,11 @@ export default function GoogleMeetsUI({
       <div style={{
         background: '#141414',
         borderBottom: '1px solid #1f1f1f',
-        padding: '12px 16px',
+        padding: '8px 16px',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexShrink: 0
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{
@@ -73,11 +74,12 @@ export default function GoogleMeetsUI({
       <div style={{
         flex: 1,
         background: '#000000',
-        padding: variant === 'workspace' ? '16px' : '20px',
+        padding: variant === 'workspace' ? '16px' : '12px',
         display: 'flex',
         flexDirection: 'column',
-        gap: variant === 'workspace' ? '12px' : '16px',
-        overflow: 'hidden'
+        gap: variant === 'workspace' ? '12px' : '8px',
+        overflow: 'hidden',
+        minHeight: 0
       }}>
         {variant === 'workspace' ? (
           // Workspace View - Desktop Environment
@@ -230,8 +232,9 @@ export default function GoogleMeetsUI({
               flex: 1,
               display: 'grid',
               gridTemplateColumns: participants <= 2 ? '1fr' : 'repeat(2, 1fr)',
-              gap: '12px',
-              minHeight: 0
+              gap: '8px',
+              minHeight: 0,
+              overflow: 'hidden'
             }}>
               {Array.from({ length: Math.min(participants, 4) }).map((_, idx) => (
                 <div key={idx} style={{
@@ -339,11 +342,12 @@ export default function GoogleMeetsUI({
         <div style={{
           background: '#141414',
           borderTop: '1px solid #1f1f1f',
-          padding: '16px',
+          padding: '12px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          gap: 12
+          gap: 12,
+          flexShrink: 0
         }}>
           <div style={{
             width: 40,
