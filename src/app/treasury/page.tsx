@@ -2,7 +2,7 @@
 
 import { Layout, Typography, Row, Col, Card, Divider, Space } from 'antd'
 import Link from 'next/link'
-import { SafetyOutlined, EyeOutlined, TrophyOutlined, CheckCircleOutlined, WarningOutlined, LockOutlined, CloudOutlined, RocketOutlined } from '@ant-design/icons'
+import { SafetyOutlined, EyeOutlined, TrophyOutlined, CheckCircleOutlined, WarningOutlined, LockOutlined, CloudOutlined, RocketOutlined, UserOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 import BankingModal from '@/components/BankingModal'
 
@@ -316,15 +316,15 @@ export default function Treasury() {
                     width: 80,
                     height: 80,
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)',
+                    background: 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)',
                     margin: '0 auto 16px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    border: '3px solid #1f1f1f',
-                    boxShadow: '0 4px 16px rgba(255, 215, 0, 0.3)'
+                    border: '2px solid #1f1f1f',
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.4)'
                   }}>
-                    <TrophyOutlined style={{ fontSize: 40, color: '#000000' }} />
+                    <UserOutlined style={{ fontSize: 40, color: '#8c8c8c' }} />
                   </div>
                   <Text style={{ 
                     color: '#ffffff', 
@@ -349,40 +349,72 @@ export default function Treasury() {
                   padding: '32px',
                   background: '#000000'
                 }}>
-                  {/* Reputation Score Badge */}
+                  {/* Level System */}
                   <div style={{
                     background: '#0a0a0a',
-                    border: '1px solid #ffd70040',
+                    border: '1px solid #1f1f1f',
                     borderRadius: 12,
                     padding: '20px',
-                    marginBottom: 24,
-                    textAlign: 'center'
+                    marginBottom: 24
                   }}>
-                    <Text style={{ 
-                      color: '#8c8c8c', 
-                      fontSize: 12,
-                      display: 'block',
-                      marginBottom: 8
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      marginBottom: 12
                     }}>
-                      Reputation Score
-                    </Text>
-                    <Text style={{ 
-                      color: '#ffd700', 
-                      fontSize: 36, 
-                      fontWeight: 700,
-                      fontFamily: 'monospace',
-                      display: 'block'
+                      <Text style={{ 
+                        color: '#8c8c8c', 
+                        fontSize: 12,
+                        display: 'block'
+                      }}>
+                        Level 84
+                      </Text>
+                      <Text style={{ 
+                        color: '#8c8c8c', 
+                        fontSize: 12,
+                        display: 'block'
+                      }}>
+                        Level 85
+                      </Text>
+                    </div>
+                    <div style={{
+                      width: '100%',
+                      height: 12,
+                      background: '#141414',
+                      borderRadius: 6,
+                      overflow: 'hidden',
+                      marginBottom: 8,
+                      position: 'relative'
                     }}>
-                      847
-                    </Text>
-                    <Text style={{ 
-                      color: '#595959', 
-                      fontSize: 14,
-                      display: 'block',
-                      marginTop: 4
+                      <div style={{
+                        width: '84.7%',
+                        height: '100%',
+                        background: 'linear-gradient(90deg, #ffd700 0%, #ffed4e 100%)',
+                        borderRadius: 6,
+                        transition: 'width 0.3s ease'
+                      }}></div>
+                    </div>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center'
                     }}>
-                      / 1000
-                    </Text>
+                      <Text style={{ 
+                        color: '#8c8c8c', 
+                        fontSize: 11,
+                        fontFamily: 'monospace'
+                      }}>
+                        847 XP
+                      </Text>
+                      <Text style={{ 
+                        color: '#8c8c8c', 
+                        fontSize: 11,
+                        fontFamily: 'monospace'
+                      }}>
+                        1,000 XP
+                      </Text>
+                    </div>
                   </div>
 
                   {/* Profile Stats */}
@@ -508,100 +540,6 @@ export default function Treasury() {
           </Row>
         </section>
 
-        {/* 4. Subrogation */}
-        <section style={{
-          padding: isMobile ? '60px 24px' : '120px 48px',
-          borderBottom: '1px solid #1f1f1f',
-          background: '#000000'
-        }}>
-          <Row justify="center" gutter={[48, 48]}>
-            <Col xs={24} lg={12}>
-              <div style={{ marginBottom: 32 }}>
-                <Space align="center" style={{ marginBottom: 16 }}>
-                  <SafetyOutlined style={{ fontSize: 24, color: '#595959' }} />
-                  <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                    SUBROGATION
-                  </Text>
-                </Space>
-                <Title level={2} style={{ color: '#ffffff', marginBottom: 8, fontSize: isMobile ? 28 : 36, fontWeight: 600 }}>
-                  Accountability enforcement
-                </Title>
-                <Text style={{ color: '#8c8c8c', fontSize: 16, fontStyle: 'italic' }}>
-                  "If we cover you, we inherit enforcement rights."
-                </Text>
-              </div>
-
-              <Paragraph style={{ color: '#d9d9d9', fontSize: 18, fontWeight: 500, marginBottom: 32, textAlign: 'center' }}>
-                This is the backbone that makes indemnity real.
-              </Paragraph>
-
-              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 24 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  What subrogation means on OldWest
-                </Title>
-                <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 16 }}>
-                  If OldWest pays a claim:
-                </Paragraph>
-                <Space direction="vertical" size="middle" style={{ width: '100%', marginBottom: 16 }}>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• It acquires the right to recover funds</Text>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• From the at-fault party</Text>
-                </Space>
-                <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginTop: 16, marginBottom: 8 }}>
-                  Via:
-                </Paragraph>
-                <Space direction="vertical" size="small" style={{ width: '100%' }}>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Bond slashing</Text>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Withheld payouts</Text>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Reputation damage</Text>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Access revocation</Text>
-                </Space>
-              </Card>
-
-              <Row gutter={[24, 24]}>
-                <Col xs={24} md={12}>
-                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#ff6b35', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                      Without subrogation
-                    </Title>
-                    <Space direction="vertical" size="small" style={{ width: '100%' }}>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15 }}>• Indemnity becomes charity</Text>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15 }}>• Bad actors extract value</Text>
-                    </Space>
-                  </Card>
-                </Col>
-
-                <Col xs={24} md={12}>
-                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#4ecdc4', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                      With subrogation
-                    </Title>
-                    <Space direction="vertical" size="small" style={{ width: '100%' }}>
-                      <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Risk is internalized</Text>
-                      <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Behavior improves</Text>
-                    </Space>
-                  </Card>
-                </Col>
-              </Row>
-            </Col>
-
-            <Col xs={24} lg={12}>
-              <BankingModal
-                title="Subrogation Claim"
-                subtitle="Accountability Enforcement"
-                status="Accountability Enforced"
-                statusColor="#ff6b35"
-                items={[
-                  { label: 'Claim Processed', value: '5,000 coins paid' },
-                  { label: 'Subrogation Rights', value: 'Acquired' },
-                  { label: 'At-Fault Party', value: 'Identified' },
-                  { label: 'Bond Slashing', value: '3,000 coins' },
-                  { label: 'Reputation Penalty', value: '-150 points' }
-                ]}
-              />
-            </Col>
-          </Row>
-        </section>
-
         {/* How it all connects */}
         <section style={{
           padding: isMobile ? '60px 24px' : '120px 48px',
@@ -626,9 +564,7 @@ export default function Treasury() {
                 items={[
                   { label: 'Paid Placement', value: '1,247 active' },
                   { label: 'Escrow', value: '8,432 coins' },
-                  { label: 'Reputation', value: '12,847 users' },
-                  { label: 'Indemnity', value: '156 policies' },
-                  { label: 'Subrogation', value: '23 recoveries' }
+                  { label: 'Reputation', value: '12,847 users' }
                 ]}
               >
                 <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1f1f1f' }}>
