@@ -1,9 +1,10 @@
 'use client'
 
-import { Layout, Typography, Row, Col, Card, Divider, Space, Tag } from 'antd'
+import { Layout, Typography, Row, Col, Card, Divider, Space } from 'antd'
 import Link from 'next/link'
-import { SafetyOutlined, EyeOutlined, TrophyOutlined, CheckCircleOutlined, WarningOutlined, DollarOutlined, LockOutlined } from '@ant-design/icons'
+import { SafetyOutlined, EyeOutlined, TrophyOutlined, CheckCircleOutlined, WarningOutlined, LockOutlined, CloudOutlined, RocketOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
+import TerminalWindow from '@/components/TerminalWindow'
 
 const { Header, Content } = Layout
 const { Title, Paragraph, Text } = Typography
@@ -85,11 +86,11 @@ export default function Treasury() {
         <section style={{
           padding: isMobile ? '60px 24px' : '120px 48px',
           borderBottom: '1px solid #1f1f1f',
-          background: '#0a0a0a'
+          background: '#000000'
         }}>
-          <Row justify="center">
-            <Col xs={24} lg={20} xl={16}>
-              <div style={{ marginBottom: 48 }}>
+          <Row justify="center" gutter={[48, 48]}>
+            <Col xs={24} lg={12}>
+              <div style={{ marginBottom: 32 }}>
                 <Space align="center" style={{ marginBottom: 16 }}>
                   <EyeOutlined style={{ fontSize: 24, color: '#595959' }} />
                   <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
@@ -104,39 +105,22 @@ export default function Treasury() {
                 </Text>
               </div>
 
-              <Row gutter={[32, 32]}>
-                <Col xs={24} md={12}>
-                  <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                      What it is
-                    </Title>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 16 }}>
-                      Users or organizations pay to surface:
-                    </Paragraph>
-                    <Space direction="vertical" size="small" style={{ width: '100%' }}>
-                      <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Profiles</Text>
-                      <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Rooms</Text>
-                      <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Offers</Text>
-                      <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Tools</Text>
-                    </Space>
-                  </Card>
-                </Col>
+              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 24 }} bodyStyle={{ padding: 32 }}>
+                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                  What it is
+                </Title>
+                <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 16 }}>
+                  Users or organizations pay to surface:
+                </Paragraph>
+                <Space direction="vertical" size="small" style={{ width: '100%' }}>
+                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Profiles</Text>
+                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Rooms</Text>
+                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Offers</Text>
+                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Tools</Text>
+                </Space>
+              </Card>
 
-                <Col xs={24} md={12}>
-                  <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                      What it is NOT
-                    </Title>
-                    <Space direction="vertical" size="small" style={{ width: '100%' }}>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15 }}>• Not rank boosting</Text>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15 }}>• Not merit manipulation</Text>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15 }}>• Not endorsement</Text>
-                    </Space>
-                  </Card>
-                </Col>
-              </Row>
-
-              <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12, marginTop: 32 }} bodyStyle={{ padding: 32 }}>
+              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12 }} bodyStyle={{ padding: 32 }}>
                 <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                   How it works
                 </Title>
@@ -161,23 +145,21 @@ export default function Treasury() {
                   </div>
                 </Space>
               </Card>
+            </Col>
 
-              <Card bordered style={{ background: '#141414', borderColor: '#595959', borderRadius: 12, marginTop: 32 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  Why this fits OldWest
-                </Title>
-                <Row gutter={[16, 16]}>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Attention is scarce</Text>
-                  </Col>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Trust is preserved</Text>
-                  </Col>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Money doesn't override merit</Text>
-                  </Col>
-                </Row>
-              </Card>
+            <Col xs={24} lg={12}>
+              <TerminalWindow
+                title="placement.oldwest"
+                command="oldwest placement --activate --profile"
+                outputs={[
+                  { icon: '✓', text: 'Profile visibility: Enabled', color: '#27c93f' },
+                  { icon: '✓', text: 'Reputation check: Passed (min: 50)', color: '#27c93f' },
+                  { icon: '✓', text: 'Payment processed: 1,000 coins', color: '#27c93f' },
+                  { icon: '✓', text: 'Placement duration: 30 days', color: '#27c93f' },
+                  { icon: '✓', text: 'Label status: [PAID] visible', color: '#27c93f' }
+                ]}
+                status={{ icon: '🚀', text: 'Placement active', bold: true }}
+              />
             </Col>
           </Row>
         </section>
@@ -186,11 +168,26 @@ export default function Treasury() {
         <section style={{
           padding: isMobile ? '60px 24px' : '120px 48px',
           borderBottom: '1px solid #1f1f1f',
-          background: '#000000'
+          background: '#0a0a0a'
         }}>
-          <Row justify="center">
-            <Col xs={24} lg={20} xl={16}>
-              <div style={{ marginBottom: 48 }}>
+          <Row justify="center" gutter={[48, 48]}>
+            <Col xs={24} lg={12}>
+              <TerminalWindow
+                title="escrow.oldwest"
+                command="oldwest escrow --create --work-agreement"
+                outputs={[
+                  { icon: '✓', text: 'Escrow initialized: 5,000 coins', color: '#27c93f' },
+                  { icon: '✓', text: 'Agreement terms: Verified', color: '#27c93f' },
+                  { icon: '✓', text: 'Milestone tracking: Active', color: '#27c93f' },
+                  { icon: '✓', text: 'Mediation layer: Ready', color: '#27c93f' },
+                  { icon: '✓', text: 'Evidence storage: IPFS linked', color: '#27c93f' }
+                ]}
+                status={{ icon: '🔒', text: 'Funds secured in escrow', bold: true }}
+              />
+            </Col>
+
+            <Col xs={24} lg={12}>
+              <div style={{ marginBottom: 32 }}>
                 <Space align="center" style={{ marginBottom: 16 }}>
                   <LockOutlined style={{ fontSize: 24, color: '#595959' }} />
                   <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
@@ -205,7 +202,7 @@ export default function Treasury() {
                 </Text>
               </div>
 
-              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 32 }} bodyStyle={{ padding: 32 }}>
+              <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 24 }} bodyStyle={{ padding: 32 }}>
                 <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                   What it is
                 </Title>
@@ -228,47 +225,13 @@ export default function Treasury() {
                 </Row>
               </Card>
 
-              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 32 }} bodyStyle={{ padding: 32 }}>
+              <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12 }} bodyStyle={{ padding: 32 }}>
                 <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                   Key distinction
                 </Title>
-                <Paragraph style={{ color: '#d9d9d9', fontSize: 18, fontWeight: 500, marginBottom: 8 }}>
+                <Paragraph style={{ color: '#d9d9d9', fontSize: 18, fontWeight: 500, margin: 0 }}>
                   OldWest does not decide winners — it enforces pre-agreed rules.
                 </Paragraph>
-              </Card>
-
-              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 32 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  Mediation layer
-                </Title>
-                <Row gutter={[16, 16]}>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Evidence-based</Text>
-                  </Col>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Time-bounded</Text>
-                  </Col>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Reputation-impacting</Text>
-                  </Col>
-                </Row>
-              </Card>
-
-              <Card bordered style={{ background: '#141414', borderColor: '#595959', borderRadius: 12 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  Why this fits OldWest
-                </Title>
-                <Row gutter={[16, 16]}>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Trustless execution</Text>
-                  </Col>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Lowers counterparty risk</Text>
-                  </Col>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Encourages professionalism</Text>
-                  </Col>
-                </Row>
               </Card>
             </Col>
           </Row>
@@ -278,11 +241,11 @@ export default function Treasury() {
         <section style={{
           padding: isMobile ? '60px 24px' : '120px 48px',
           borderBottom: '1px solid #1f1f1f',
-          background: '#0a0a0a'
+          background: '#000000'
         }}>
-          <Row justify="center">
-            <Col xs={24} lg={20} xl={16}>
-              <div style={{ marginBottom: 48 }}>
+          <Row justify="center" gutter={[48, 48]}>
+            <Col xs={24} lg={12}>
+              <div style={{ marginBottom: 32 }}>
                 <Space align="center" style={{ marginBottom: 16 }}>
                   <TrophyOutlined style={{ fontSize: 24, color: '#595959' }} />
                   <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
@@ -301,9 +264,9 @@ export default function Treasury() {
                 Reputation is financially coupled.
               </Paragraph>
 
-              <Row gutter={[32, 32]}>
+              <Row gutter={[24, 24]}>
                 <Col xs={24} md={12}>
-                  <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
+                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       How reputation is earned
                     </Title>
@@ -317,7 +280,7 @@ export default function Treasury() {
                 </Col>
 
                 <Col xs={24} md={12}>
-                  <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
+                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       How reputation is used
                     </Title>
@@ -330,15 +293,21 @@ export default function Treasury() {
                   </Card>
                 </Col>
               </Row>
+            </Col>
 
-              <Card bordered style={{ background: '#141414', borderColor: '#595959', borderRadius: 12, marginTop: 32 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  Why this matters
-                </Title>
-                <Paragraph style={{ color: '#d9d9d9', fontSize: 18, fontWeight: 500, margin: 0 }}>
-                  Reputation becomes cost-reducing capital, not a badge.
-                </Paragraph>
-              </Card>
+            <Col xs={24} lg={12}>
+              <TerminalWindow
+                title="reputation.oldwest"
+                command="oldwest reputation --check --user"
+                outputs={[
+                  { icon: '✓', text: 'Reputation score: 847/1000', color: '#27c93f' },
+                  { icon: '✓', text: 'Completed transactions: 124', color: '#27c93f' },
+                  { icon: '✓', text: 'Dispute rate: 0.8% (excellent)', color: '#27c93f' },
+                  { icon: '✓', text: 'Fee discount: 15% active', color: '#27c93f' },
+                  { icon: '✓', text: 'Placement eligible: Yes', color: '#27c93f' }
+                ]}
+                status={{ icon: '🏆', text: 'Reputation: Cost-reducing capital', bold: true }}
+              />
             </Col>
           </Row>
         </section>
@@ -347,11 +316,26 @@ export default function Treasury() {
         <section style={{
           padding: isMobile ? '60px 24px' : '120px 48px',
           borderBottom: '1px solid #1f1f1f',
-          background: '#000000'
+          background: '#0a0a0a'
         }}>
-          <Row justify="center">
-            <Col xs={24} lg={20} xl={16}>
-              <div style={{ marginBottom: 48 }}>
+          <Row justify="center" gutter={[48, 48]}>
+            <Col xs={24} lg={12}>
+              <TerminalWindow
+                title="indemnity.oldwest"
+                command="oldwest indemnity --purchase --coverage"
+                outputs={[
+                  { icon: '✓', text: 'Risk assessment: Low risk profile', color: '#27c93f' },
+                  { icon: '✓', text: 'Coverage amount: 10,000 coins', color: '#27c93f' },
+                  { icon: '✓', text: 'Premium: 500 coins (5%)', color: '#27c93f' },
+                  { icon: '✓', text: 'Reputation requirement: Met (847)', color: '#27c93f' },
+                  { icon: '✓', text: 'Coverage active: 90 days', color: '#27c93f' }
+                ]}
+                status={{ icon: '🛡️', text: 'Indemnity coverage: Active', bold: true }}
+              />
+            </Col>
+
+            <Col xs={24} lg={12}>
+              <div style={{ marginBottom: 32 }}>
                 <Space align="center" style={{ marginBottom: 16 }}>
                   <SafetyOutlined style={{ fontSize: 24, color: '#595959' }} />
                   <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
@@ -366,7 +350,7 @@ export default function Treasury() {
                 </Text>
               </div>
 
-              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 32 }} bodyStyle={{ padding: 32 }}>
+              <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 24 }} bodyStyle={{ padding: 32 }}>
                 <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                   What indemnity means here
                 </Title>
@@ -378,67 +362,6 @@ export default function Treasury() {
                   <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Fraud</Text>
                   <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Breach of contract (within platform rules)</Text>
                 </Space>
-              </Card>
-
-              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 32 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  How it works
-                </Title>
-                <Space direction="vertical" size="large" style={{ width: '100%' }}>
-                  <div>
-                    <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 500 }}>Coverage is optional</Text>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, marginTop: 4, marginBottom: 0 }}>
-                      Users choose whether to purchase indemnity coverage for their transactions.
-                    </Paragraph>
-                  </div>
-                  <div>
-                    <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 500 }}>Coverage is capped</Text>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, marginTop: 4, marginBottom: 0 }}>
-                      Maximum coverage amounts are clearly defined per transaction type.
-                    </Paragraph>
-                  </div>
-                  <div>
-                    <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 500 }}>Coverage requires:</Text>
-                    <Space direction="vertical" size="small" style={{ marginTop: 8 }}>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15 }}>• Reputation minimums</Text>
-                      <Text style={{ color: '#8c8c8c', fontSize: 15 }}>• Bonding or premiums</Text>
-                    </Space>
-                  </div>
-                </Space>
-              </Card>
-
-              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 32 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  Who pays
-                </Title>
-                <Row gutter={[16, 16]}>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15 }}>Either party</Text>
-                  </Col>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15 }}>Or split</Text>
-                  </Col>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15 }}>Priced by risk profile</Text>
-                  </Col>
-                </Row>
-              </Card>
-
-              <Card bordered style={{ background: '#141414', borderColor: '#595959', borderRadius: 12, marginBottom: 32 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  Why this fits OldWest
-                </Title>
-                <Row gutter={[16, 16]}>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Converts trust into math</Text>
-                  </Col>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Attracts serious users</Text>
-                  </Col>
-                  <Col xs={24} sm={8}>
-                    <Text style={{ color: '#d9d9d9', fontSize: 15, fontWeight: 500 }}>Discourages bad actors</Text>
-                  </Col>
-                </Row>
               </Card>
 
               <Card bordered style={{ background: '#1a1a1a', borderColor: '#ff6b35', borderRadius: 12 }} bodyStyle={{ padding: 32 }}>
@@ -460,11 +383,11 @@ export default function Treasury() {
         <section style={{
           padding: isMobile ? '60px 24px' : '120px 48px',
           borderBottom: '1px solid #1f1f1f',
-          background: '#0a0a0a'
+          background: '#000000'
         }}>
-          <Row justify="center">
-            <Col xs={24} lg={20} xl={16}>
-              <div style={{ marginBottom: 48 }}>
+          <Row justify="center" gutter={[48, 48]}>
+            <Col xs={24} lg={12}>
+              <div style={{ marginBottom: 32 }}>
                 <Space align="center" style={{ marginBottom: 16 }}>
                   <SafetyOutlined style={{ fontSize: 24, color: '#595959' }} />
                   <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
@@ -483,7 +406,7 @@ export default function Treasury() {
                 This is the backbone that makes indemnity real.
               </Paragraph>
 
-              <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 32 }} bodyStyle={{ padding: 32 }}>
+              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 24 }} bodyStyle={{ padding: 32 }}>
                 <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                   What subrogation means on OldWest
                 </Title>
@@ -505,9 +428,9 @@ export default function Treasury() {
                 </Space>
               </Card>
 
-              <Row gutter={[32, 32]}>
+              <Row gutter={[24, 24]}>
                 <Col xs={24} md={12}>
-                  <Card bordered style={{ background: '#000000', borderColor: '#ff6b35', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
+                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#ff6b35', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       Without subrogation
                     </Title>
@@ -519,7 +442,7 @@ export default function Treasury() {
                 </Col>
 
                 <Col xs={24} md={12}>
-                  <Card bordered style={{ background: '#000000', borderColor: '#4ecdc4', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
+                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#4ecdc4', borderRadius: 12, height: '100%' }} bodyStyle={{ padding: 32 }}>
                     <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
                       With subrogation
                     </Title>
@@ -530,15 +453,21 @@ export default function Treasury() {
                   </Card>
                 </Col>
               </Row>
+            </Col>
 
-              <Card bordered style={{ background: '#141414', borderColor: '#595959', borderRadius: 12, marginTop: 32 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  Why this is critical
-                </Title>
-                <Paragraph style={{ color: '#d9d9d9', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                  Subrogation ensures that when OldWest covers a loss, it has the authority to recover from responsible parties, creating accountability and preventing abuse of the indemnity system.
-                </Paragraph>
-              </Card>
+            <Col xs={24} lg={12}>
+              <TerminalWindow
+                title="subrogation.oldwest"
+                command="oldwest subrogation --claim --recover"
+                outputs={[
+                  { icon: '✓', text: 'Claim processed: 5,000 coins paid', color: '#27c93f' },
+                  { icon: '✓', text: 'Subrogation rights: Acquired', color: '#27c93f' },
+                  { icon: '✓', text: 'At-fault party: Identified', color: '#27c93f' },
+                  { icon: '✓', text: 'Bond slashing: 3,000 coins', color: '#27c93f' },
+                  { icon: '✓', text: 'Reputation penalty: -150 points', color: '#27c93f' }
+                ]}
+                status={{ icon: '⚖️', text: 'Accountability enforced', bold: true }}
+              />
             </Col>
           </Row>
         </section>
@@ -546,7 +475,7 @@ export default function Treasury() {
         {/* How it all connects */}
         <section style={{
           padding: isMobile ? '60px 24px' : '120px 48px',
-          background: '#000000'
+          background: '#0a0a0a'
         }}>
           <Row justify="center">
             <Col xs={24} lg={20} xl={16}>
@@ -559,65 +488,56 @@ export default function Treasury() {
                 </Text>
               </div>
 
-              <Row gutter={[24, 24]}>
-                <Col xs={24} sm={12} md={6}>
-                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, height: '100%', textAlign: 'center' }} bodyStyle={{ padding: 32 }}>
-                    <EyeOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 16 }} />
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
-                      Paid Placement
-                    </Title>
-                    <Text style={{ color: '#8c8c8c', fontSize: 14 }}>
-                      → Visibility
-                    </Text>
-                  </Card>
-                </Col>
-
-                <Col xs={24} sm={12} md={6}>
-                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, height: '100%', textAlign: 'center' }} bodyStyle={{ padding: 32 }}>
-                    <LockOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 16 }} />
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
-                      Escrow
-                    </Title>
-                    <Text style={{ color: '#8c8c8c', fontSize: 14 }}>
-                      → Execution safety
-                    </Text>
-                  </Card>
-                </Col>
-
-                <Col xs={24} sm={12} md={6}>
-                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, height: '100%', textAlign: 'center' }} bodyStyle={{ padding: 32 }}>
-                    <TrophyOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 16 }} />
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
-                      Reputation
-                    </Title>
-                    <Text style={{ color: '#8c8c8c', fontSize: 14 }}>
-                      → Cost & access
-                    </Text>
-                  </Card>
-                </Col>
-
-                <Col xs={24} sm={12} md={6}>
-                  <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, height: '100%', textAlign: 'center' }} bodyStyle={{ padding: 32 }}>
-                    <SafetyOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 16 }} />
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
-                      Indemnity
-                    </Title>
-                    <Text style={{ color: '#8c8c8c', fontSize: 14 }}>
-                      → Risk ceiling
-                    </Text>
-                  </Card>
-                </Col>
-              </Row>
-
-              <Card bordered style={{ background: '#141414', borderColor: '#595959', borderRadius: 12, marginTop: 32, textAlign: 'center' }} bodyStyle={{ padding: 40 }}>
-                <SafetyOutlined style={{ fontSize: 48, color: '#595959', marginBottom: 16 }} />
-                <Title level={3} style={{ color: '#ffffff', marginBottom: 8, fontSize: 24, fontWeight: 600 }}>
-                  Subrogation
-                </Title>
-                <Text style={{ color: '#8c8c8c', fontSize: 16 }}>
-                  → Enforcement
-                </Text>
-              </Card>
+              <TerminalWindow
+                title="treasury.oldwest"
+                command="oldwest treasury --status --all-systems"
+                outputs={[
+                  { icon: '✓', text: 'Paid Placement: 1,247 active placements', color: '#27c93f' },
+                  { icon: '✓', text: 'Escrow: 8,432 coins in escrow', color: '#27c93f' },
+                  { icon: '✓', text: 'Reputation: 12,847 users tracked', color: '#27c93f' },
+                  { icon: '✓', text: 'Indemnity: 156 active policies', color: '#27c93f' },
+                  { icon: '✓', text: 'Subrogation: 23 recoveries this month', color: '#27c93f' }
+                ]}
+                status={{ icon: '🚀', text: 'All systems operational', bold: true }}
+              >
+                <div style={{ marginTop: 32, paddingTop: 24, borderTop: '1px solid #1f1f1f' }}>
+                  <Row gutter={[16, 16]}>
+                    <Col xs={24} sm={12} md={6}>
+                      <div style={{ textAlign: 'center', padding: 16 }}>
+                        <EyeOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 8 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Paid Placement</Text>
+                        <Text style={{ color: '#d9d9d9', fontSize: 12, display: 'block', marginTop: 4 }}>→ Visibility</Text>
+                      </div>
+                    </Col>
+                    <Col xs={24} sm={12} md={6}>
+                      <div style={{ textAlign: 'center', padding: 16 }}>
+                        <LockOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 8 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Escrow</Text>
+                        <Text style={{ color: '#d9d9d9', fontSize: 12, display: 'block', marginTop: 4 }}>→ Execution safety</Text>
+                      </div>
+                    </Col>
+                    <Col xs={24} sm={12} md={6}>
+                      <div style={{ textAlign: 'center', padding: 16 }}>
+                        <TrophyOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 8 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Reputation</Text>
+                        <Text style={{ color: '#d9d9d9', fontSize: 12, display: 'block', marginTop: 4 }}>→ Cost & access</Text>
+                      </div>
+                    </Col>
+                    <Col xs={24} sm={12} md={6}>
+                      <div style={{ textAlign: 'center', padding: 16 }}>
+                        <SafetyOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 8 }} />
+                        <Text style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Indemnity</Text>
+                        <Text style={{ color: '#d9d9d9', fontSize: 12, display: 'block', marginTop: 4 }}>→ Risk ceiling</Text>
+                      </div>
+                    </Col>
+                  </Row>
+                  <div style={{ textAlign: 'center', marginTop: 24, padding: 16 }}>
+                    <SafetyOutlined style={{ fontSize: 48, color: '#595959', marginBottom: 8 }} />
+                    <Text style={{ color: '#8c8c8c', fontSize: 16, display: 'block' }}>Subrogation</Text>
+                    <Text style={{ color: '#d9d9d9', fontSize: 14, display: 'block', marginTop: 4 }}>→ Enforcement</Text>
+                  </div>
+                </div>
+              </TerminalWindow>
             </Col>
           </Row>
         </section>
