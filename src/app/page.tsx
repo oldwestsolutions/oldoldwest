@@ -222,6 +222,24 @@ export default function Home() {
                 </Paragraph>
                 <Space size="middle" direction={isMobile ? 'vertical' : 'horizontal'} style={{ width: isMobile ? '100%' : 'auto', justifyContent: 'center' }}>
                   <Button 
+                    size="large"
+                    block={isMobile}
+                    style={{ 
+                      background: '#141414', 
+                      borderColor: '#1f1f1f',
+                      color: '#d9d9d9',
+                      borderRadius: 12,
+                      fontWeight: 600,
+                      height: 52,
+                      paddingLeft: isMobile ? 24 : 40,
+                      paddingRight: isMobile ? 24 : 40,
+                      minHeight: 44
+                    }}
+                    href="/launch-session"
+                  >
+                    LAUNCH SESSION
+                  </Button>
+                  <Button 
                     type="primary"
                     size="large"
                     block={isMobile}
@@ -240,24 +258,6 @@ export default function Home() {
                     href="/explore-platform"
                   >
                     DISCOVER
-                  </Button>
-                  <Button 
-                    size="large"
-                    block={isMobile}
-                    style={{ 
-                      background: '#141414', 
-                      borderColor: '#1f1f1f',
-                      color: '#d9d9d9',
-                      borderRadius: 12,
-                      fontWeight: 600,
-                      height: 52,
-                      paddingLeft: isMobile ? 24 : 40,
-                      paddingRight: isMobile ? 24 : 40,
-                      minHeight: 44
-                    }}
-                    href="/launch-session"
-                  >
-                    LAUNCH SESSION
                   </Button>
                 </Space>
               </Col>
