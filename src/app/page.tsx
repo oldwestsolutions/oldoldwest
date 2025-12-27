@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react'
 
 const HeroVideoBackground = dynamic(() => import('@/components/HeroVideoBackground'), { ssr: false })
 const Tokenomics3D = dynamic(() => import('@/components/Tokenomics3D'), { ssr: false })
+const GoogleMeetsUI = dynamic(() => import('@/components/GoogleMeetsUI'), { ssr: false })
 
 const { Header, Content, Footer } = Layout
 const { Title, Paragraph, Text } = Typography
@@ -281,141 +282,152 @@ export default function Home() {
               </Text>
               <Divider style={{ margin: '8px 0 40px 0', borderColor: '#1f1f1f' }} />
               
+              <Title level={2} style={{ color: '#ffffff', marginBottom: 24, fontSize: isMobile ? 28 : 36, fontWeight: 600 }}>
+                Workspace / Remote Desktop Features
+              </Title>
+              <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 32 }}>
+                These make it feel like a VM environment.
+              </Paragraph>
+              
               <Space direction="vertical" size="large" style={{ width: '100%' }}>
                 <div>
-                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    Platform Currency
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    Remote Desktop Access
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Coins are the primary currency for all platform interactions. Each action—messaging, content access, and VM utilization—is metered through a transparent system with rates displayed before execution.
-                  </Paragraph>
-          </div>
-
-                <div>
-                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    Resource Management
-                  </Title>
-                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    The metered consumption model ensures equitable resource distribution, maintains platform stability, and prevents resource abuse while guaranteeing fair access for all users.
+                    Full OS-like experience in browser
                   </Paragraph>
                 </div>
 
-            <div>
-                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    Consumption Model
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    File System Explorer
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    All platform interactions consume coins at predefined, published rates. Consumption rates are visible before execution, ensuring complete transparency in resource utilization.
+                    Upload, download, open, organize files
                   </Paragraph>
-              </div>
+                </div>
 
                 <div>
-                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                    Acquisition & Balance Management
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    Drag & Drop
                   </Title>
                   <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
-                    Coins are purchased and deposited into your account wallet. Consumption is deducted in real-time, and balances can be replenished through the treasury with complete usage history available.
+                    Move files between local and remote workspace
                   </Paragraph>
-          </div>
+                </div>
+
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    Resizable Panes
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Editor, terminal, output, participants
+                  </Paragraph>
+                </div>
+
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    Multi-tab Workspace
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Allow multiple sessions/projects open at once
+                  </Paragraph>
+                </div>
+
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    Persistent State
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Files and workspace survive session restarts
+                  </Paragraph>
+                </div>
               </Space>
             </Col>
 
-            <Col xs={24} lg={12} style={{ marginTop: 80 }}>
-              <Card 
-                bordered 
-                style={{ 
-                  background: '#0a0a0a', 
-                  borderColor: '#1f1f1f',
-                  borderRadius: 12
-                }}
-                bodyStyle={{ padding: 40 }}
-              >
-                <div style={{ marginBottom: 32 }}>
-                  <Row justify="space-between" style={{ marginBottom: 12 }}>
-                    <Col>
-                      <Text style={{ fontSize: 11, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                        BALANCE
-                      </Text>
-                    </Col>
-                    <Col>
-                      <Text style={{ fontSize: 11, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                        RATE
-                      </Text>
-                    </Col>
-                  </Row>
-                  <Progress 
-                    percent={65} 
-                    strokeColor="#595959"
-                    trailColor="#141414"
-                    showInfo={false}
-                    style={{ marginBottom: 12 }}
-                  />
-                  <Row justify="space-between">
-                    <Col>
-                      <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 18, fontWeight: 600 }}>
-                        1,247 COINS
-                      </Text>
-                    </Col>
-                    <Col>
-                      <Text style={{ color: '#8c8c8c', fontFamily: 'monospace', fontSize: 16 }}>
-                        0.5 COINS/MSG
-                      </Text>
-                    </Col>
-                  </Row>
-                  <Paragraph style={{ color: '#595959', fontSize: 13, marginTop: 16, lineHeight: 1.6, marginBottom: 0 }}>
-                    Current balance: 1,247 coins. Messaging rate: 0.5 coins per message, deducted immediately upon delivery.
-                  </Paragraph>
-        </div>
-
-                <Divider style={{ borderColor: '#1f1f1f', margin: '32px 0' }} />
-
-                <Space direction="vertical" size="large" style={{ width: '100%' }}>
-            <div>
-                    <Row justify="space-between" style={{ marginBottom: 8 }}>
-                      <Col>
-                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Session Duration</Text>
-                      </Col>
-                      <Col>
-                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>12:34</Text>
-                      </Col>
-                    </Row>
-                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Total time elapsed in current active session.
-                    </Paragraph>
-                </div>
-                  
-                  <div>
-                    <Row justify="space-between" style={{ marginBottom: 8 }}>
-                      <Col>
-                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Used This Session</Text>
-                      </Col>
-                      <Col>
-                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>23 COINS</Text>
-                      </Col>
-                    </Row>
-                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Total coins consumed this session through all platform interactions.
-                    </Paragraph>
-                </div>
-                  
-                  <div>
-                    <Row justify="space-between" style={{ marginBottom: 8 }}>
-                      <Col>
-                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Coins Left</Text>
-                      </Col>
-                      <Col>
-                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>1,224 COINS</Text>
-                      </Col>
-                    </Row>
-                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
-                      Available coins remaining after session consumption. Replenish through the treasury as needed.
-                    </Paragraph>
-                </div>
-                </Space>
-              </Card>
+            <Col xs={24} lg={12} style={{ height: '600px' }}>
+              <GoogleMeetsUI variant="workspace" showControls={false} />
             </Col>
           </Row>
-      </section>
+        </section>
+
+        {/* Real-Time Communication */}
+        <section style={{ 
+          minHeight: '100vh', 
+          borderBottom: '1px solid #1f1f1f', 
+          background: '#000000',
+          padding: isMobile ? '60px 24px' : '120px 48px',
+          display: 'flex',
+          alignItems: 'center'
+        }}>
+          <Row justify="center" gutter={[64, 48]} style={{ width: '100%' }}>
+            <Col xs={24} lg={12} style={{ height: '600px' }}>
+              <GoogleMeetsUI variant="communication" participants={4} showChat={true} showControls={true} />
+            </Col>
+
+            <Col xs={24} lg={12}>
+              <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                REAL-TIME COMMUNICATION
+              </Text>
+              <Divider style={{ margin: '8px 0 40px 0', borderColor: '#1f1f1f' }} />
+              
+              <Title level={2} style={{ color: '#ffffff', marginBottom: 24, fontSize: isMobile ? 28 : 36, fontWeight: 600 }}>
+                Real-Time Communication
+              </Title>
+              <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 32 }}>
+                Essential for collaboration, meetings, and live interaction.
+              </Paragraph>
+              
+              <Space direction="vertical" size="large" style={{ width: '100%' }}>
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    Audio In / Out
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Full-duplex voice
+                  </Paragraph>
+                </div>
+
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    Video Streams
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Grid or speaker view
+                  </Paragraph>
+                </div>
+
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    Screen Sharing
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Share your workspace, code, or app
+                  </Paragraph>
+                </div>
+
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    Chat / Messaging
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Text + reactions + links
+                  </Paragraph>
+                </div>
+
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 8, fontSize: 18, fontWeight: 600 }}>
+                    Notifications / Alerts
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    For actions, invites, or workflow events
+                  </Paragraph>
+                </div>
+              </Space>
+            </Col>
+          </Row>
+        </section>
 
         {/* Verified Identity */}
         <section style={{
