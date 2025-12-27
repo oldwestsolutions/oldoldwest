@@ -590,19 +590,7 @@ export default function Treasury() {
                         <Text style={{ color: '#d9d9d9', fontSize: 12, display: 'block', marginTop: 4 }}>→ Cost & access</Text>
                       </div>
                     </Col>
-                    <Col xs={24} sm={12} md={6}>
-                      <div style={{ textAlign: 'center', padding: 16 }}>
-                        <SafetyOutlined style={{ fontSize: 32, color: '#595959', marginBottom: 8 }} />
-                        <Text style={{ color: '#8c8c8c', fontSize: 14, display: 'block' }}>Indemnity</Text>
-                        <Text style={{ color: '#d9d9d9', fontSize: 12, display: 'block', marginTop: 4 }}>→ Risk ceiling</Text>
-                      </div>
-                    </Col>
                   </Row>
-                  <div style={{ textAlign: 'center', marginTop: 24, padding: 16 }}>
-                    <SafetyOutlined style={{ fontSize: 48, color: '#595959', marginBottom: 8 }} />
-                    <Text style={{ color: '#8c8c8c', fontSize: 16, display: 'block' }}>Subrogation</Text>
-                    <Text style={{ color: '#d9d9d9', fontSize: 14, display: 'block', marginTop: 4 }}>→ Enforcement</Text>
-                  </div>
                 </div>
               </BankingModal>
             </Col>
