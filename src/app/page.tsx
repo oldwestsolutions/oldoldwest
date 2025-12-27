@@ -101,15 +101,17 @@ export default function Home() {
             {/* Desktop Navigation - Right Side */}
             <Space size="middle" style={{ display: isMobile ? 'none' : 'flex' }}>
               <Button 
-                type="primary" 
                 style={{ 
                   background: '#141414', 
+                  border: '1px solid #1f1f1f',
                   borderColor: '#1f1f1f',
                   color: '#ffffff',
                   borderRadius: 12,
                   fontWeight: 600,
                   boxShadow: 'none',
-                  minHeight: 44
+                  minHeight: 44,
+                  paddingLeft: 24,
+                  paddingRight: 24
                 }}
                 href="/account"
               >
@@ -156,10 +158,10 @@ export default function Home() {
                 Treasury
               </Link>
               <Button 
-                type="primary" 
                 block
                 style={{ 
                   background: '#141414', 
+                  border: '1px solid #1f1f1f',
                   borderColor: '#1f1f1f',
                   color: '#ffffff',
                   borderRadius: 12,
