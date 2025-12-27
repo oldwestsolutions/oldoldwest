@@ -704,54 +704,40 @@ export default function Home() {
               </div>
               <Row gutter={[24, 24]}>
                 {[
-                  { name: 'Coursera', logo: 'https://cdn.simpleicons.org/coursera/0056D2' },
-                  { name: 'YouTube', logo: 'https://cdn.simpleicons.org/youtube/FF0000' },
-                  { name: 'TikTok', logo: 'https://cdn.simpleicons.org/tiktok/000000' },
-                  { name: 'Instagram', logo: 'https://cdn.simpleicons.org/instagram/E4405F' },
-                  { name: 'LinkedIn', logo: 'https://cdn.simpleicons.org/linkedin/0A66C2' },
-                  { name: 'GitHub', logo: 'https://cdn.simpleicons.org/github/181717' }
+                  { name: 'GitHub', logo: '/images/githublogo.png' },
+                  { name: 'Instagram', logo: '/images/instagramlogo.png' },
+                  { name: 'LinkedIn', logo: '/images/linkedinlogo.png' },
+                  { name: 'TikTok', logo: '/images/tiktoklogo.png' }
                 ].map((platform) => (
-                  <Col xs={24} sm={12} md={8} lg={4} key={platform.name}>
-                    <Card
-                      bordered
+                  <Col xs={24} sm={12} md={6} lg={6} key={platform.name}>
+                    <div
                       style={{
-                        background: '#000000',
-                        borderColor: '#1f1f1f',
-                        borderRadius: 12,
-                        height: 200,
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        padding: '32px',
+                        background: '#000000',
+                        border: '1px solid #1f1f1f',
+                        borderRadius: 12,
+                        height: '200px',
+                        width: '100%'
                       }}
-                      bodyStyle={{ padding: 32, textAlign: 'center' }}
                     >
                       <img
                         src={platform.logo}
                         alt={platform.name}
                         style={{
-                          maxWidth: '120px',
-                          maxHeight: '120px',
+                          maxWidth: '100%',
+                          maxHeight: '100%',
                           width: 'auto',
                           height: 'auto',
                           objectFit: 'contain'
                         }}
-                        onError={(e) => {
-                          // Fallback to text if logo fails to load
-                          const target = e.target as HTMLImageElement
-                          target.style.display = 'none'
-                          const parent = target.parentElement
-                          if (parent) {
-                            const title = document.createElement('h3')
-                            title.textContent = platform.name
-                            title.style.color = '#ffffff'
-                            title.style.fontSize = '32px'
-                            title.style.fontWeight = '600'
-                            title.style.margin = '0'
-                            parent.appendChild(title)
-                          }
-                        }}
+                        draggable="false"
+                        onContextMenu={(e) => e.preventDefault()}
+                        onDragStart={(e) => e.preventDefault()}
                       />
-                    </Card>
+                    </div>
                   </Col>
                 ))}
               </Row>
