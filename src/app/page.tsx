@@ -304,187 +304,145 @@ export default function Home() {
           display: 'flex',
           alignItems: 'center'
         }}>
-          <Row justify="center" style={{ width: '100%' }}>
-            <Col xs={24} lg={20} xl={16}>
-              <div style={{ marginBottom: 64 }}>
-                <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                  VM SERVICES
-                </Text>
-                <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
-          </div>
+          <Row justify="center" gutter={[64, 48]} style={{ width: '100%' }}>
+            <Col xs={24} lg={12}>
+              <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                TOKENOMICS
+              </Text>
+              <Divider style={{ margin: '8px 0 40px 0', borderColor: '#1f1f1f' }} />
               
-              <Title level={2} style={{ color: '#ffffff', marginBottom: isMobile ? 32 : 48, fontSize: isMobile ? 28 : 40, fontWeight: 600, textAlign: 'center' }}>
-                Services Offered Through Virtual Machine Environment
-              </Title>
-
-              <Row gutter={[16, 24]}>
-                {[
-                  {
-                    title: 'Music',
-                    description: 'Audio production tools',
-                    items: [
-                      'Composing, arranging, and producing music',
-                      'Mixing and mastering tracks',
-                      'Audio synthesis and sound design',
-                      'Collaborative music sessions',
-                      'Practicing or performing with virtual instruments'
-                    ]
-                  },
-                  {
-                    title: 'Graphic Design',
-                    description: 'Design and video editing',
-                    items: [
-                      'Image creation and enhancement',
-                      'Video montage, editing, and post-production',
-                      'Animation and motion graphics',
-                      'AI-assisted content creation (photogenic pictures/videos)',
-                      'Collaborative creative projects'
-                    ]
-                  },
-                  {
-                    title: 'Coding',
-                    description: 'Development environments',
-                    items: [
-                      'Writing, testing, and deploying code',
-                      'Collaborative coding sessions',
-                      'Algorithm development and experimentation',
-                      'Running scripts, simulations, or software projects'
-                    ]
-                  },
-                  {
-                    title: 'Finance',
-                    description: 'Trading and analysis tools',
-                    items: [
-                      'Algorithmic trading simulations',
-                      'Data analysis for financial markets',
-                      'Portfolio modeling and risk assessment',
-                      'Backtesting trading strategies'
-                    ]
-                  },
-                  {
-                    title: 'Collaboration',
-                    description: 'Team workspaces',
-                    items: [
-                      'Multi-user sessions for joint projects',
-                      'Sharing VM resources for teamwork',
-                      'Merit and token rewards for contributions',
-                      'Project tracking and analytics'
-                    ]
-                  },
-                  {
-                    title: 'Education',
-                    description: 'Learning platforms',
-                    items: [
-                      'Skill-building exercises (coding, music, design)',
-                      'Virtual workshops or tutorials',
-                      'Mentorship and guided learning sessions'
-                    ]
-                  }
-                ].map((service, index) => {
-                  // Use Unsplash for professional stock images with service-specific keywords (fallback)
-                  const imageUrl = `https://source.unsplash.com/400x400/?${encodeURIComponent(
-                    service.title === 'Music' ? 'music,audio,studio' :
-                    service.title === 'Graphic Design' ? 'design,graphic,creative' :
-                    service.title === 'Coding' ? 'coding,programming,computer' :
-                    service.title === 'Finance' ? 'finance,business,data' :
-                    service.title === 'Collaboration' ? 'teamwork,collaboration,meeting' :
-                    'education,learning,study'
-                  )}`
-
-                  // Better stock images from Unsplash with specific dimensions (square)
-                  const stockImages: { [key: string]: string } = {
-                    'Music': 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop',
-                    'Graphic Design': 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=400&fit=crop',
-                    'Coding': 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=400&fit=crop',
-                    'Finance': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=400&fit=crop',
-                    'Collaboration': 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=400&fit=crop',
-                    'Education': 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=400&fit=crop'
-  }
-
-  const categorySlugMap: { [key: string]: string } = {
-    'Music': 'music',
-    'Graphic Design': 'graphic-design',
-    'Coding': 'coding',
-    'Finance': 'finance',
-    'Collaboration': 'collaboration',
-    'Education': 'education'
-  }
-
-  return (
-                    <Col xs={24} sm={12} md={8} lg={4} xl={4} key={index}>
-                      <Link href={`/category/${categorySlugMap[service.title] || service.title.toLowerCase().replace(/\s+/g, '-')}`} style={{ textDecoration: 'none' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                          <Card
-                            bordered
-                            hoverable
-                            style={{
-                              background: '#000000',
-                              borderColor: '#1f1f1f',
-                              borderRadius: 12,
-                              overflow: 'hidden',
-                              aspectRatio: '1',
-                              display: 'flex',
-                              flexDirection: 'column',
-                              marginBottom: 12,
-                              cursor: 'pointer',
-                              transition: 'all 0.3s ease',
-                              boxShadow: 'none'
-                            }}
-                            bodyStyle={{ padding: 0, display: 'flex', flexDirection: 'column', flex: 1 }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.borderColor = '#595959'
-                              e.currentTarget.style.boxShadow = '0 0 20px rgba(89, 89, 89, 0.5), 0 0 40px rgba(89, 89, 89, 0.3)'
-                              e.currentTarget.style.transform = 'translateY(-4px)'
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.borderColor = '#1f1f1f'
-                              e.currentTarget.style.boxShadow = 'none'
-                              e.currentTarget.style.transform = 'translateY(0)'
-                            }}
-                          >
-                          <div style={{ position: 'relative', width: '100%', paddingTop: '100%', background: '#141414' }}>
-                            <img
-                              src={stockImages[service.title] || imageUrl}
-                              alt={service.title}
-                              draggable="false"
-                              style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: 0,
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover',
-                                opacity: 0.9,
-                                pointerEvents: 'none',
-                                userSelect: 'none'
-                              } as any}
-                              onDragStart={(e) => e.preventDefault()}
-                              onContextMenu={(e) => e.preventDefault()}
-                              onError={(e) => {
-                                // Fallback to gradient if image fails to load
-                                const target = e.target as HTMLImageElement
-                                target.style.display = 'none'
-                                if (target.parentElement) {
-                                  target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
-                                }
-                              }}
-                            />
-              </div>
-                          </Card>
-                          <div style={{ textAlign: 'center', paddingTop: 8 }}>
-                            <Title level={4} style={{ color: '#ffffff', margin: '0 0 4px 0', fontSize: 16, fontWeight: 600, lineHeight: 1.4 }}>
-                              {service.title}
-                            </Title>
-                            <p style={{ color: '#999999', margin: 0, fontSize: 12, lineHeight: 1.4 }}>
-                              {service.description}
-                            </p>
+              <Space direction="vertical" size="large" style={{ width: '100%' }}>
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                    Platform Currency
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Coins are the primary currency for all platform interactions. Each action—messaging, content access, and VM utilization—is metered through a transparent system with rates displayed before execution.
+                  </Paragraph>
           </div>
-        </div>
-                      </Link>
+
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                    Resource Management
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    The metered consumption model ensures equitable resource distribution, maintains platform stability, and prevents resource abuse while guaranteeing fair access for all users.
+                  </Paragraph>
+                </div>
+
+            <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                    Consumption Model
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    All platform interactions consume coins at predefined, published rates. Consumption rates are visible before execution, ensuring complete transparency in resource utilization.
+                  </Paragraph>
+              </div>
+
+                <div>
+                  <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                    Acquisition & Balance Management
+                  </Title>
+                  <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, margin: 0 }}>
+                    Coins are purchased and deposited into your account wallet. Consumption is deducted in real-time, and balances can be replenished through the treasury with complete usage history available.
+                  </Paragraph>
+          </div>
+              </Space>
+            </Col>
+
+            <Col xs={24} lg={12} style={{ marginTop: 80 }}>
+              <Card 
+                bordered 
+                style={{ 
+                  background: '#0a0a0a', 
+                  borderColor: '#1f1f1f',
+                  borderRadius: 12
+                }}
+                bodyStyle={{ padding: 40 }}
+              >
+                <div style={{ marginBottom: 32 }}>
+                  <Row justify="space-between" style={{ marginBottom: 12 }}>
+                    <Col>
+                      <Text style={{ fontSize: 11, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                        BALANCE
+                      </Text>
                     </Col>
-                  )
-                })}
-              </Row>
+                    <Col>
+                      <Text style={{ fontSize: 11, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                        RATE
+                      </Text>
+                    </Col>
+                  </Row>
+                  <Progress 
+                    percent={65} 
+                    strokeColor="#595959"
+                    trailColor="#141414"
+                    showInfo={false}
+                    style={{ marginBottom: 12 }}
+                  />
+                  <Row justify="space-between">
+                    <Col>
+                      <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 18, fontWeight: 600 }}>
+                        1,247 COINS
+                      </Text>
+                    </Col>
+                    <Col>
+                      <Text style={{ color: '#8c8c8c', fontFamily: 'monospace', fontSize: 16 }}>
+                        0.5 COINS/MSG
+                      </Text>
+                    </Col>
+                  </Row>
+                  <Paragraph style={{ color: '#595959', fontSize: 13, marginTop: 16, lineHeight: 1.6, marginBottom: 0 }}>
+                    Current balance: 1,247 coins. Messaging rate: 0.5 coins per message, deducted immediately upon delivery.
+                  </Paragraph>
+        </div>
+
+                <Divider style={{ borderColor: '#1f1f1f', margin: '32px 0' }} />
+
+                <Space direction="vertical" size="large" style={{ width: '100%' }}>
+            <div>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Session Duration</Text>
+                      </Col>
+                      <Col>
+                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>12:34</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Total time elapsed in current active session.
+                    </Paragraph>
+                </div>
+                  
+                  <div>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Used This Session</Text>
+                      </Col>
+                      <Col>
+                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>23 COINS</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Total coins consumed this session through all platform interactions.
+                    </Paragraph>
+                </div>
+                  
+                  <div>
+                    <Row justify="space-between" style={{ marginBottom: 8 }}>
+                      <Col>
+                        <Text style={{ color: '#8c8c8c', fontSize: 14 }}>Coins Left</Text>
+                      </Col>
+                      <Col>
+                        <Text style={{ color: '#d9d9d9', fontFamily: 'monospace', fontSize: 16, fontWeight: 500 }}>1,224 COINS</Text>
+                      </Col>
+                    </Row>
+                    <Paragraph style={{ color: '#595959', fontSize: 12, margin: 0, lineHeight: 1.5 }}>
+                      Available coins remaining after session consumption. Replenish through the treasury as needed.
+                    </Paragraph>
+                </div>
+                </Space>
+              </Card>
             </Col>
           </Row>
       </section>
