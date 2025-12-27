@@ -354,19 +354,18 @@ export default function Home() {
 
         {/* Real-Time Communication */}
         <section style={{ 
-          minHeight: '100vh', 
           borderBottom: '1px solid #1f1f1f', 
           background: '#000000',
-          padding: isMobile ? '60px 24px' : '120px 48px',
-          display: 'flex',
-          alignItems: 'center'
+          padding: isMobile ? '60px 24px' : '120px 48px'
         }}>
-          <Row justify="center" gutter={[64, 48]} style={{ width: '100%' }}>
-            <Col xs={24} lg={12} style={{ height: '600px' }}>
-              <GoogleMeetsUI variant="communication" participants={4} showChat={true} showControls={true} />
-            </Col>
+          {/* Full-width illustration */}
+          <div style={{ marginBottom: isMobile ? '60px' : '120px' }}>
+            <GoogleMeetsUI variant="communication" participants={4} showChat={true} showControls={true} />
+          </div>
 
-            <Col xs={24} lg={12}>
+          {/* Content below illustration */}
+          <Row justify="center" style={{ width: '100%' }}>
+            <Col xs={24} lg={20} xl={16}>
               <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
                 REAL-TIME COMMUNICATION
               </Text>
