@@ -368,10 +368,12 @@ export default function Home() {
             </Col>
           </Row>
 
-          {/* Full-width illustration */}
-          <div style={{ marginBottom: isMobile ? '40px' : '48px' }}>
-            <GoogleMeetsUI variant="communication" participants={4} showChat={false} showControls={true} />
-          </div>
+          {/* Illustration with max width */}
+          <Row justify="center" style={{ width: '100%', marginBottom: isMobile ? '40px' : '48px' }}>
+            <Col xs={24} lg={18} xl={14}>
+              <GoogleMeetsUI variant="communication" participants={4} showChat={false} showControls={true} />
+            </Col>
+          </Row>
 
           {/* Content below illustration */}
           <Row justify="center" style={{ width: '100%' }}>
@@ -531,68 +533,6 @@ export default function Home() {
       </section>
 
 
-        {/* Integrated Platforms */}
-        <section style={{
-          minHeight: '100vh',
-          background: '#000000',
-          padding: isMobile ? '60px 24px' : '120px 48px',
-          display: 'flex',
-          alignItems: 'center'
-        }}>
-          <Row justify="center" style={{ width: '100%' }}>
-            <Col xs={24} lg={20} xl={16}>
-              <div style={{ marginBottom: 64 }}>
-                <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                  INTEGRATED PLATFORMS
-                </Text>
-                <Divider style={{ margin: '8px 0 0 0', borderColor: '#1f1f1f' }} />
-              </div>
-              <Row gutter={[24, 24]}>
-                {[
-                  { name: 'GitHub', logo: '/images/gtihubwhitelogo.png' },
-                  { name: 'Instagram', logo: '/images/instagramlogo.png' },
-                  { name: 'LinkedIn', logo: '/images/Linkedin-Logo.png' },
-                  { name: 'TikTok', logo: '/images/tiktoklogo.png' }
-                ].map((platform) => (
-                  <Col xs={24} sm={12} md={6} lg={6} key={platform.name}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        padding: '32px',
-                        background: '#000000',
-                        border: '1px solid #1f1f1f',
-                        borderRadius: 12,
-                        height: '200px',
-                        width: '100%'
-                      }}
-                    >
-                      <img
-                        src={platform.logo}
-                        alt={platform.name}
-                        style={{
-                          maxWidth: '100%',
-                          maxHeight: '100%',
-                          width: 'auto',
-                          height: 'auto',
-                          objectFit: 'contain',
-                          display: 'block'
-                        }}
-                        draggable="false"
-                        onContextMenu={(e) => e.preventDefault()}
-                        onDragStart={(e) => e.preventDefault()}
-                        onError={(e) => {
-                          console.error('Failed to load image:', platform.logo)
-                        }}
-                      />
-                    </div>
-                  </Col>
-                ))}
-              </Row>
-            </Col>
-          </Row>
-        </section>
       </Content>
 
       {/* Comprehensive Footer */}
