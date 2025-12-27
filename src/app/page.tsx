@@ -370,7 +370,7 @@ export default function Home() {
 
           {/* Full-width illustration */}
           <div style={{ marginBottom: isMobile ? '40px' : '48px' }}>
-            <GoogleMeetsUI variant="communication" participants={4} showChat={true} showControls={true} />
+            <GoogleMeetsUI variant="communication" participants={4} showChat={false} showControls={true} />
           </div>
 
           {/* Content below illustration */}
