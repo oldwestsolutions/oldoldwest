@@ -232,9 +232,12 @@ export default function GoogleMeetsUI({
               flex: 1,
               display: 'grid',
               gridTemplateColumns: participants <= 2 ? '1fr' : 'repeat(2, 1fr)',
+              gridTemplateRows: participants === 3 ? '1fr 1fr' : participants <= 2 ? '1fr' : 'repeat(2, 1fr)',
               gap: '12px',
               minHeight: 0,
-              overflow: 'hidden'
+              overflow: 'hidden',
+              justifyItems: 'stretch',
+              alignItems: 'stretch'
             }}>
               {Array.from({ length: Math.min(participants, 4) }).map((_, idx) => (
                 <div key={idx} style={{
@@ -245,7 +248,10 @@ export default function GoogleMeetsUI({
                   alignItems: 'center',
                   justifyContent: 'center',
                   position: 'relative',
-                  aspectRatio: '16/9'
+                  aspectRatio: '16/9',
+                  width: '100%',
+                  height: '100%',
+                  minHeight: 0
                 }}>
                   <div style={{
                     width: 40,
