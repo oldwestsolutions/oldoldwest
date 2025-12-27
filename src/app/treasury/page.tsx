@@ -82,90 +82,7 @@ export default function Treasury() {
           </Paragraph>
         </section>
 
-        {/* 1. Paid Placement */}
-        <section style={{
-          padding: isMobile ? '60px 24px' : '120px 48px',
-          borderBottom: '1px solid #1f1f1f',
-          background: '#000000'
-        }}>
-          <Row justify="center" gutter={[48, 48]}>
-            <Col xs={24} lg={12}>
-              <div style={{ marginBottom: 32 }}>
-                <Space align="center" style={{ marginBottom: 16 }}>
-                  <EyeOutlined style={{ fontSize: 24, color: '#595959' }} />
-                  <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
-                    PAID PLACEMENT
-                  </Text>
-                </Space>
-                <Title level={2} style={{ color: '#ffffff', marginBottom: 8, fontSize: isMobile ? 28 : 36, fontWeight: 600 }}>
-                  Visibility, not outcomes
-                </Title>
-                <Text style={{ color: '#8c8c8c', fontSize: 16, fontStyle: 'italic' }}>
-                  "Pay to be seen — not trusted."
-                </Text>
-              </div>
-
-              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 24 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  What it is
-                </Title>
-                <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 16 }}>
-                  Users or organizations pay to surface:
-                </Paragraph>
-                <Space direction="vertical" size="small" style={{ width: '100%' }}>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Profiles</Text>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Rooms</Text>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Offers</Text>
-                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Tools</Text>
-                </Space>
-              </Card>
-
-              <Card bordered style={{ background: '#0a0a0a', borderColor: '#1f1f1f', borderRadius: 12 }} bodyStyle={{ padding: 32 }}>
-                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
-                  How it works
-                </Title>
-                <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-                  <div>
-                    <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 500 }}>Placement is clearly labeled</Text>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, marginTop: 4, marginBottom: 0 }}>
-                      All paid placements are transparently marked, ensuring users know when content is promoted.
-                    </Paragraph>
-                  </div>
-                  <div>
-                    <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 500 }}>Eligibility requires a minimum reputation</Text>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, marginTop: 4, marginBottom: 0 }}>
-                      Only users with established reputation can purchase placement, maintaining platform quality.
-                    </Paragraph>
-                  </div>
-                  <div>
-                    <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 500 }}>Placement expires</Text>
-                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, marginTop: 4, marginBottom: 0 }}>
-                      Paid visibility has time limits, ensuring fresh content and preventing permanent dominance.
-                    </Paragraph>
-                  </div>
-                </Space>
-              </Card>
-            </Col>
-
-            <Col xs={24} lg={12}>
-              <BankingModal
-                title="Placement Activation"
-                subtitle="Paid Placement Service"
-                status="Placement Active"
-                statusColor="#27c93f"
-                items={[
-                  { label: 'Profile Visibility', value: 'Enabled' },
-                  { label: 'Reputation Check', value: 'Passed (min: 50)' },
-                  { label: 'Payment Processed', value: '1,000 coins' },
-                  { label: 'Placement Duration', value: '30 days' },
-                  { label: 'Label Status', value: '[PAID] visible' }
-                ]}
-              />
-            </Col>
-          </Row>
-        </section>
-
-        {/* 2. Escrow & Mediation */}
+        {/* 1. Escrow & Mediation */}
         <section style={{
           padding: isMobile ? '60px 24px' : '120px 48px',
           borderBottom: '1px solid #1f1f1f',
@@ -239,7 +156,7 @@ export default function Treasury() {
           </Row>
         </section>
 
-        {/* 3. Reputation */}
+        {/* 2. Reputation */}
         <section style={{
           padding: isMobile ? '60px 24px' : '120px 48px',
           borderBottom: '1px solid #1f1f1f',
@@ -536,6 +453,89 @@ export default function Treasury() {
                   </div>
                 </div>
               </div>
+            </Col>
+          </Row>
+        </section>
+
+        {/* 3. Paid Placement */}
+        <section style={{
+          padding: isMobile ? '60px 24px' : '120px 48px',
+          borderBottom: '1px solid #1f1f1f',
+          background: '#0a0a0a'
+        }}>
+          <Row justify="center" gutter={[48, 48]}>
+            <Col xs={24} lg={12}>
+              <div style={{ marginBottom: 32 }}>
+                <Space align="center" style={{ marginBottom: 16 }}>
+                  <EyeOutlined style={{ fontSize: 24, color: '#595959' }} />
+                  <Text style={{ fontSize: 12, color: '#595959', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600 }}>
+                    PAID PLACEMENT
+                  </Text>
+                </Space>
+                <Title level={2} style={{ color: '#ffffff', marginBottom: 8, fontSize: isMobile ? 28 : 36, fontWeight: 600 }}>
+                  Visibility, not outcomes
+                </Title>
+                <Text style={{ color: '#8c8c8c', fontSize: 16, fontStyle: 'italic' }}>
+                  "Pay to be seen — not trusted."
+                </Text>
+              </div>
+
+              <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12, marginBottom: 24 }} bodyStyle={{ padding: 32 }}>
+                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                  What it is
+                </Title>
+                <Paragraph style={{ color: '#8c8c8c', fontSize: 16, lineHeight: 1.8, marginBottom: 16 }}>
+                  Users or organizations pay to surface:
+                </Paragraph>
+                <Space direction="vertical" size="small" style={{ width: '100%' }}>
+                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Profiles</Text>
+                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Rooms</Text>
+                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Offers</Text>
+                  <Text style={{ color: '#d9d9d9', fontSize: 15 }}>• Tools</Text>
+                </Space>
+              </Card>
+
+              <Card bordered style={{ background: '#000000', borderColor: '#1f1f1f', borderRadius: 12 }} bodyStyle={{ padding: 32 }}>
+                <Title level={4} style={{ color: '#ffffff', marginBottom: 16, fontSize: 20, fontWeight: 600 }}>
+                  How it works
+                </Title>
+                <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+                  <div>
+                    <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 500 }}>Placement is clearly labeled</Text>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, marginTop: 4, marginBottom: 0 }}>
+                      All paid placements are transparently marked, ensuring users know when content is promoted.
+                    </Paragraph>
+                  </div>
+                  <div>
+                    <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 500 }}>Eligibility requires a minimum reputation</Text>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, marginTop: 4, marginBottom: 0 }}>
+                      Only users with established reputation can purchase placement, maintaining platform quality.
+                    </Paragraph>
+                  </div>
+                  <div>
+                    <Text style={{ color: '#d9d9d9', fontSize: 16, fontWeight: 500 }}>Placement expires</Text>
+                    <Paragraph style={{ color: '#8c8c8c', fontSize: 15, marginTop: 4, marginBottom: 0 }}>
+                      Paid visibility has time limits, ensuring fresh content and preventing permanent dominance.
+                    </Paragraph>
+                  </div>
+                </Space>
+              </Card>
+            </Col>
+
+            <Col xs={24} lg={12}>
+              <BankingModal
+                title="Placement Activation"
+                subtitle="Paid Placement Service"
+                status="Placement Active"
+                statusColor="#27c93f"
+                items={[
+                  { label: 'Profile Visibility', value: 'Enabled' },
+                  { label: 'Reputation Check', value: 'Passed (min: 50)' },
+                  { label: 'Payment Processed', value: '1,000 coins' },
+                  { label: 'Placement Duration', value: '30 days' },
+                  { label: 'Label Status', value: '[PAID] visible' }
+                ]}
+              />
             </Col>
           </Row>
         </section>
