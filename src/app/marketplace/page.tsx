@@ -1,6 +1,6 @@
 'use client'
 
-import { Layout, Typography, Row, Col, Card, Input, Button, Space, Tag, Avatar, Rate, Divider } from 'antd'
+import { Layout, Typography, Row, Col, Card, Input, Button, Space, Tag, Avatar, Rate, Divider, Tooltip } from 'antd'
 import Link from 'next/link'
 import { SearchOutlined, StarFilled, ClockCircleOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
@@ -293,9 +293,25 @@ export default function Marketplace() {
                       </Tag>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <Text style={{ color: '#ffffff', fontSize: 20, fontWeight: 700 }}>
-                        ${service.hourlyRate}/hr
-                      </Text>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                        <Text style={{ color: '#8c8c8c', fontSize: 11, fontWeight: 400 }}>
+                          Starting at
+                        </Text>
+                        <Tooltip
+                          title={
+                            <div style={{ color: '#ffffff', fontSize: 12, lineHeight: 1.6 }}>
+                              <div>Rates are based on an eight-hour workday.</div>
+                              <div style={{ marginTop: 4 }}>Users with higher ratings generally cost more per hour.</div>
+                            </div>
+                          }
+                          overlayStyle={{ maxWidth: 250 }}
+                          overlayInnerStyle={{ background: '#1f1f1f', border: '1px solid #2f2f2f' }}
+                        >
+                          <Text style={{ color: '#ffffff', fontSize: 20, fontWeight: 700, cursor: 'help' }}>
+                            ${service.hourlyRate}/hr
+                          </Text>
+                        </Tooltip>
+                      </div>
                       <Link href={`/sellers/${service.seller.toLowerCase().replace(/\s+/g, '-')}`}>
                         <Button
                           size="small"
