@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react'
 import { Typography, Space } from 'antd'
-import { VideoCameraOutlined, UserOutlined, ShareAltOutlined, MessageOutlined, BellOutlined, PhoneOutlined, AudioOutlined, MoreOutlined } from '@ant-design/icons'
+import { VideoCameraOutlined, UserOutlined, ShareAltOutlined, MessageOutlined, PhoneOutlined, AudioOutlined, MoreOutlined } from '@ant-design/icons'
 
 const { Text } = Typography
 

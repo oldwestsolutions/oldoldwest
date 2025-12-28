@@ -2,7 +2,7 @@
 
 import { Layout, Typography, Row, Col, Card, Input, Button, Space, Tag, Avatar, Rate, Divider } from 'antd'
 import Link from 'next/link'
-import { SearchOutlined, StarFilled, FireOutlined, ClockCircleOutlined } from '@ant-design/icons'
+import { SearchOutlined, StarFilled, ClockCircleOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 import StarryBackground from '@/components/StarryBackground'
 
@@ -17,6 +17,7 @@ const mockServices = [
     rating: 4.9,
     reviews: 127,
     price: 50,
+    hourlyRate: 75,
     image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400',
     category: 'Music Production',
     delivery: '3 days',
@@ -29,6 +30,7 @@ const mockServices = [
     rating: 4.9,
     reviews: 94,
     price: 120,
+    hourlyRate: 150,
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400',
     category: 'Trading & Finance',
     delivery: '4 days',
@@ -41,6 +43,7 @@ const mockServices = [
     rating: 5.0,
     reviews: 203,
     price: 150,
+    hourlyRate: 125,
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400',
     category: 'Game Development',
     delivery: '7 days',
@@ -53,6 +56,7 @@ const mockServices = [
     rating: 5.0,
     reviews: 180,
     price: 200,
+    hourlyRate: 175,
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400',
     category: 'Software Engineering',
     delivery: '5 days',
@@ -65,6 +69,7 @@ const mockServices = [
     rating: 4.7,
     reviews: 156,
     price: 100,
+    hourlyRate: 90,
     image: 'https://images.unsplash.com/photo-1533158326339-7f3cf2404354?w=400',
     category: 'Video Editing',
     delivery: '5 days',
@@ -77,6 +82,7 @@ const mockServices = [
     rating: 4.8,
     reviews: 78,
     price: 180,
+    hourlyRate: 160,
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400',
     category: 'Architecture',
     delivery: '6 days',
@@ -176,145 +182,48 @@ export default function Marketplace() {
               <Paragraph style={{ color: '#8c8c8c', fontSize: 20, textAlign: 'center', marginBottom: 40 }}>
                 Discover services, hire talent, and get work done in your virtual environment
               </Paragraph>
-              <Input
-                size="large"
-                placeholder="Search for services, skills, or sellers..."
-                prefix={<SearchOutlined style={{ color: '#8c8c8c' }} />}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{
-                  background: '#141414',
-                  borderColor: '#1f1f1f',
-                  color: '#ffffff',
-                  borderRadius: 12,
-                  height: 56,
-                  fontSize: 16
-                }}
-              />
+              <>
+                <style dangerouslySetInnerHTML={{__html: `
+                  .marketplace-search-input::placeholder {
+                    color: #d9d9d9 !important;
+                    opacity: 1;
+                  }
+                  .marketplace-search-input::-webkit-input-placeholder {
+                    color: #d9d9d9 !important;
+                    opacity: 1;
+                  }
+                  .marketplace-search-input::-moz-placeholder {
+                    color: #d9d9d9 !important;
+                    opacity: 1;
+                  }
+                  .marketplace-search-input:-ms-input-placeholder {
+                    color: #d9d9d9 !important;
+                    opacity: 1;
+                  }
+                `}} />
+                <Input
+                  size="large"
+                  placeholder="Search for services, skills, or sellers..."
+                  prefix={<SearchOutlined style={{ color: '#8c8c8c' }} />}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="marketplace-search-input"
+                  style={{
+                    background: '#141414',
+                    borderColor: '#1f1f1f',
+                    color: '#ffffff',
+                    borderRadius: 12,
+                    height: 56,
+                    fontSize: 16
+                  }}
+                />
+              </>
             </Col>
-          </Row>
-        </div>
-
-        {/* Featured Services */}
-        <div style={{ padding: isMobile ? '40px 24px' : '60px 48px', background: '#000000' }}>
-          <Row gutter={[24, 24]}>
-            <Col xs={24}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
-                <FireOutlined style={{ fontSize: 24, color: '#ff4d4f' }} />
-                <Title level={2} style={{ color: '#ffffff', margin: 0, fontSize: isMobile ? 24 : 32, fontWeight: 600 }}>
-                  Featured Services
-                </Title>
-              </div>
-            </Col>
-            {filteredServices.filter(s => s.featured).map((service) => {
-              const categorySlugMap: { [key: string]: string } = {
-                'Music Production': 'music',
-                'Trading & Finance': 'finance',
-                'Game Development': 'game-development',
-                'Software Engineering': 'software-engineering',
-                'Video Editing': 'video-editing',
-                'Architecture': 'architecture'
-              }
-              const categorySlug = categorySlugMap[service.category] || service.category.toLowerCase().replace(/\s+/g, '-').replace('&', '')
-              return (
-              <Col xs={24} sm={12} lg={8} key={service.id}>
-                <Link href={`/category/${categorySlug}`} style={{ textDecoration: 'none' }}>
-                  <Card
-                    hoverable
-                    bordered
-                    style={{
-                      background: '#0a0a0a',
-                      borderColor: '#1f1f1f',
-                      borderRadius: 12,
-                      overflow: 'hidden',
-                      height: '100%',
-                      cursor: 'pointer'
-                    }}
-                    bodyStyle={{ padding: 0 }}
-                  >
-                  <div style={{ position: 'relative', height: 200, background: '#141414' }}>
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      draggable="false"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        pointerEvents: 'none',
-                        userSelect: 'none'
-                      } as any}
-                      onContextMenu={(e) => e.preventDefault()}
-                      onDragStart={(e) => e.preventDefault()}
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement
-                        target.style.display = 'none'
-                        if (target.parentElement) {
-                          target.parentElement.style.background = 'linear-gradient(135deg, #141414 0%, #0a0a0a 100%)'
-                        }
-                      }}
-                    />
-                    {service.featured && (
-                      <Tag color="red" style={{ position: 'absolute', top: 12, right: 12 }}>
-                        <FireOutlined /> Featured
-                      </Tag>
-                    )}
-                  </div>
-                  <div style={{ padding: 24 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-                      <Avatar size="small" style={{ background: '#141414' }}>{service.seller[0]}</Avatar>
-                      <Text style={{ color: '#8c8c8c', fontSize: 14 }}>{service.seller}</Text>
-                    </div>
-                    <Title level={4} style={{ color: '#ffffff', marginBottom: 12, fontSize: 18, fontWeight: 600 }}>
-                      {service.title}
-                    </Title>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                        <StarFilled style={{ color: '#faad14', fontSize: 14 }} />
-                        <Text style={{ color: '#ffffff', fontSize: 14, fontWeight: 600 }}>{service.rating}</Text>
-                        <Text style={{ color: '#8c8c8c', fontSize: 12 }}>({service.reviews})</Text>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                        <ClockCircleOutlined style={{ color: '#8c8c8c', fontSize: 12 }} />
-                        <Text style={{ color: '#8c8c8c', fontSize: 12 }}>{service.delivery}</Text>
-                      </div>
-                    </div>
-                    <Tag style={{ background: '#141414', borderColor: '#1f1f1f', color: '#8c8c8c', marginBottom: 16 }}>
-                      {service.category}
-                    </Tag>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <Text style={{ color: '#ffffff', fontSize: 24, fontWeight: 700 }}>
-                        {service.price} MIN
-                      </Text>
-                      <Link href={`/sellers/${service.seller.toLowerCase().replace(/\s+/g, '-')}`}>
-                        <Button
-                          type="primary"
-                          style={{
-                            background: '#141414',
-                            borderColor: '#1f1f1f',
-                            color: '#ffffff',
-                            borderRadius: 8,
-                            boxShadow: '0 2px 8px rgba(140, 140, 140, 0.2)'
-                          }}
-                        >
-                          View Details
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </Card>
-                </Link>
-              </Col>
-            )
-            })}
           </Row>
         </div>
 
         {/* All Services */}
         <div style={{ padding: isMobile ? '40px 24px' : '60px 48px', background: '#0a0a0a', borderTop: '1px solid #1f1f1f' }}>
-          <Title level={2} style={{ color: '#ffffff', marginBottom: 32, fontSize: isMobile ? 24 : 32, fontWeight: 600 }}>
-            All Services
-          </Title>
           <Row gutter={[24, 24]}>
             {filteredServices.map((service) => {
               const categorySlugMap: { [key: string]: string } = {
@@ -385,7 +294,7 @@ export default function Marketplace() {
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <Text style={{ color: '#ffffff', fontSize: 20, fontWeight: 700 }}>
-                        {service.price} MIN
+                        ${service.hourlyRate}/hr
                       </Text>
                       <Link href={`/sellers/${service.seller.toLowerCase().replace(/\s+/g, '-')}`}>
                         <Button
